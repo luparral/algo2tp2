@@ -1,0 +1,85 @@
+\documentclass{article}
+\begin{document}
+
+\hspace{0.5cm} \textsc{iUnionNaif}(\textbf{in} $a, b: conj(\alpha)) \rightarrow res:conj(\alpha)$\\
+
+\hspace{1cm} itA $\leftarrow$ crearIt(a)
+
+\hspace{1cm} itB $\leftarrow$ crearIt(b)
+
+\hspace{1cm} res $\leftarrow$ Vacio()
+
+\hspace{1cm} \textbf{while}(hayMas?(itA))
+
+\hspace{1.5cm} \textbf{if} $\neg$ pertenece(b, actual(itA)) \textbf{then}
+
+\hspace{2cm} agregarRapido(res, actual(itA))
+
+\hspace{1.5cm} \textbf{endif}
+
+\hspace{1.5cm} avanzar(itA)
+
+\hspace{1cm} \textbf{endwhile}
+
+\hspace{1cm} \textbf{while}(hayMas?(itB))
+
+\hspace{1.5cm} agregarRapido(res, actual(itB))
+
+\hspace{1.5cm} avanzar(itB)
+
+\hspace{1cm} \textbf{endwhile}\\
+\\
+
+
+\hspace{0.5cm} \textsc{iUnionPosta}(\textbf{in} $a, b: conj(\alpha)) \rightarrow res:conj(\alpha)$\\
+
+\hspace{1cm} itA $\leftarrow$ crearIt(a)
+
+\hspace{1cm} itB $\leftarrow$ crearIt(b)
+
+\hspace{1cm} arregloA $\leftarrow$ Vac\'ia()
+
+\hspace{1cm} arregloB $\leftarrow$ Vac\'ia()
+
+\hspace{1cm} arregloRes $\leftarrow$ Vac\'ia()
+
+\hspace{1cm} res $\leftarrow$ Vacio()
+
+\hspace{1cm} \textbf{while}(hayMas?(itA))
+
+\hspace{1.5cm} agregarAtras(arregloA, actual(itA))
+
+\hspace{1.5cm} avanzar(itA)
+
+\hspace{1cm} \textbf{endwhile}
+
+\hspace{1cm} \textbf{while}(hayMas?(itB))
+
+\hspace{1.5cm} agregarAtras(arregloB, actual(itB))
+
+\hspace{1.5cm} avanzar(itB)
+
+\hspace{1cm} \textbf{endwhile}
+
+\hspace{1cm} MergeSort(arregloA)
+
+\hspace{1cm} MergeSort(arregloB)
+
+\hspace{1cm} Merge(arregloRes, arregloA, arregloB)
+
+\hspace{1cm} agregarRapido(res, arregloRes[0])
+
+\hspace{1cm} i $\leftarrow$ 1
+
+\hspace{1cm} \textbf{while}(i $<$ tam(arregloRes) )
+
+\hspace{1.5cm} \textbf{if} arregloRes[i] ! = arregloRes[i - 1] \textbf{then}
+
+\hspace{2cm} agregarRapido(res, arregloRes[i])
+
+\hspace{1.5cm} \textbf{endif}
+
+\hspace{1cm} \textbf{endwhile}
+
+\end{document}
+

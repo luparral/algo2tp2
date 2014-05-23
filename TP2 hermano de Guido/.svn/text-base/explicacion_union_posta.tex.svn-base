@@ -1,0 +1,10 @@
+\documentclass{article}
+\begin{document}
+ Ten\'iamos como objetivo proponer dos formas de hacer temasNoDisputados (una m\'as eficiente que la otra),
+ y decidimos basar esa diferencia en eficiencia en la función Unión de conjuntos (unionNaif y unionPosta)
+ La primer función tiene una complejidad de O($a \times b$), siendo $a$ y $b$ los tamaños de los conjuntos
+ a unir, ya para cada elemento perteneciente a $a$, recorre todo el otro conjunto viendo si pertenece a $b$,
+ es la implementación trivial. La segunda función tiene una complejidad de O($a \times log(a) + b \times log(b)$),
+ ya que ordena los dos arreglos con complejidad O($ n \times log(n)$), después hace un merge en un arreglo con complejidad O($a+b$), 
+ y, por último, elimina los repetidos del arreglo para satisfacer el invariante de conjunto con complejidad O($a+b$).
+\end{document}
