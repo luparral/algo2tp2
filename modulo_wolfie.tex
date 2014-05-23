@@ -1,0 +1,117 @@
+\subsection{Interfaz}
+%%###no tenemos no parametros formales?
+
+  %%\InterfazFuncion{AgregarAdelante}{\Inout{l}{lista($\alpha$)}, \In{a}{$\alpha$}}{itLista($\alpha$}
+
+%%Parámetros formales
+  \subsubsection{Par\'ametros formales}
+   \parbox{1.7cm}{\textbf{g\'eneros}} wolfie\\
+    %%\parbox[t]{1.7cm}{\textbf{funci\'on}}\parbox[t]{\textwidth-2\parindent-1.7cm}{%
+     %%\InterfazFuncion{Copiar}{\In{a}{$\alpha$}}{$\alpha$}
+     %%{$res \igobs a$}
+     %%[$\Theta(copy(a))$]
+     %%[funci\'on de copia de $\alpha$ s]
+    %%}
+
+  \textbf{se explica con}: \tadNombre{Wolfie}.
+
+    %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista($\alpha$)}.
+
+%%Operaciones básicas
+  \subsubsection{Operaciones b\'asicas de wolfie}
+ %%clientes
+  \InterfazFuncion{clientes}{\In{w}{wolfie}}{itUni(cliente)}
+  {$res$ \igobs crearIt(clientes($w$))}
+  [$\Theta(1)$]
+  [Devuelve un iterador a los clientes de un wolfie.]\\\\
+ %%titulos
+  \InterfazFuncion{t\'itulos}{\In{w}{wolfie}}{itUni(t\'itulo)}
+  {$res$ \igobs crearItUni(t\'itulos($w$))}%
+  [$\Theta(1)$]
+  [Devuelve un iterador a los t\'itulos de un wolfie.]\\\\
+%%promesasDe
+  \InterfazFuncion{promesasDe}{\In{c}{cliente}, \In{w}{wolfie}}{itPromesa(promesa)}
+  [$c \in$ clientes($w$)]
+  {$res$ \igobs crearItUni(promesasDe($c$, $w$))}%
+  [$\Theta(T \cdotp C \cdotp |max\_nt|)$]
+  [Devuelve un iterador a las promesas de un wolfie]\\\\
+  %%accionesPorCliente
+  \InterfazFuncion{accionesPorCliente}{\In{c}{cliente}, \In{nt}{nombreT\'itulo}, \In{w}{wolfie}}{$nat$}%
+  [$c \in$ clientes($w$) $\land$ ($\exists$ $t$:t\'itulo) ($t \in$ t\'itulos($w$) $\land$ nombre($t$) = $nt$)]
+  %%###ojo con nombreTitulo
+  {$res$ \igobs accionesPorCliente($c$, $nt$, $w$)}%
+  [$\Theta(log(C)+|nt|)$]
+  [Devuelve la cantidad de acciones que un cliente posee de un determinado t\'itulo.]\\\\
+%%inaugurarWolfie
+  \InterfazFuncion{inaugurarWolfie}{\In{cs}{conj(cliente)}}{wolfie}%%&&& conj(cliente)? No rompe nada usar un conjunto aca? ---lo implementamos como vector
+  [$\neg\emptyset$?($cs$)]
+  {$res$ \igobs inaugurarWolfie($cs$)}
+  [$\Theta(\#(cs)^2)$]
+  [Crea un nuevo wolfie a partir de un conjunto de clientes.]\\\\  %%&&& la complejidad habia quedado n log n si usamos merge sort
+%%agregarTitulo
+  \InterfazFuncion{agregarT\'itulo}{\In{t}{t\'itulo}, \Inout{w}{wolfie}}{wolfie}%
+  [$w_{0}$ \igobs $w$ $\land$ ($\forall$ $t2$:t\'itulo) ($t2$ $\in$ t\'itulos($w$) $\Rightarrow$ nombre($t$) $\neq$ nombre($t2$)]
+  {$w$ \igobs agregarT\'itulo($t$, $w_{0}$}%
+  [$\Theta(|nombre(t)|+C)$]
+%%actualizarCotizacion
+  \InterfazFuncion{actualizarCotizaci\'on}{\In{nt}{nombreT\'itulo}, \In{cot}{nat}, \Inout{w}{wolfie}}{wolfie}%
+  %%### ojo con NombreTítulo
+  [$w_{0}$ \igobs $w$ $\land$ ($\exists$ $t$:t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = $nt$)]
+  {$w$ $\igobs$ actualizarCotizaci\'on($nt$, $cot$, $w_{0}$)}%
+  [$\Theta(C \cdotp |nt|+C \cdotp log(C))$]
+  [Cambia la cotizaci\'on de un determinado t\'itulo. Esta operaci\'on genera que se desencadene el cumplimiento de promesas (seg\'un corresponda): primero de venta y luego, de compra, seg\'un el orden descendente de cantidad de acciones por t\'itulo de cada cliente.]\\\\
+%%agregarPromesa
+  \InterfazFuncion{agregarPromesa}{\In{c}{cliente}, \In{p}{promesa}, \Inout{w}{wolfie}}{wolfie}%
+  [$w_{0}$ \igobs $w$ $\land$ ($\exists$$t$: t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = t\'itulo($p$)) $\land$ $c$ $\in$ clientes($w$) \yluego ($\forall$$p2$: promesa) ($p2$ $\in$ promesasDe($c$, $w$) $\Rightarrow$ (t\'itulo($p$) $\neq$ t\'itulo($p2$) $\lor$ tipo($p$) $\neq$ tipo($p2$)) ) $\land$ (tipo($p$) = vender $\Rightarrow$ accionesPorCliente($c$, t\'itulo($p$), $w$) $\geq$ cantidad($p$)))]
+  {$w$ \igobs agregarPromesa($c$, $p$, $w_{0}$)}%
+  [$\Theta(|t$\'i$tulo(p)| + log(C))$]
+  [Agrega una nueva promesa.]\\\\
+%%enAlza
+  \InterfazFuncion{enAlza}{\In{nt}{nombreT\'itulo}, \In{w}{wolfie}}{bool}%%&&& aca estaba mal la aridad
+  [($\exists$$t$: t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = nt)]
+  {$res$ \igobs enAlza($nt$, $w$)}%
+  [$\Theta(|nt|)$]
+  [Dado un t\'itulo, informa si est\'a o no en alza.]\\\\
+  %%### ojo con NombreTítulo
+
+%%&&& las complejidades van con O grande, no con tita
+
+\subsection{Representaci\'on}
+\subsubsection{Representaci\'on de wolfie}
+%------------------------estr----------------------------
+\begin{Estructura}{wolfie}[estr]
+    \begin{Tupla}[estr]
+      \tupItem{t\'itulos}{diccTrie(nombreT, 
+      	\begin{minipage}[t]{\parindent+10cm}
+      		{<$vecClientes$: vector(<$cliente$: cliente, $cantAcc$: nat, \\$promCompra$: *promesa>), \\$cot$: nat, \\$enAlza$: bool, \\$maxAcc$:nat, \\$accDisponibles$: nat>)}
+      	\end{minipage}}%
+      	
+      \tupItem{clientes}{vector(
+      	\begin{minipage}[t]{\parindent+10cm}
+      		{<$cliente$: cliente, \\$titulosDeCli$:diccTrie(nombreT, vector(<$cantAcc$: *nat, $promVenta$: *promesa>))>)}%
+      	\end{minipage}}
+      
+      \tupItem{\'ultimoLlamado}{<$cliente$: cliente, $promPorTitulo$:diccTrie(nombreT, promesa)>)}%
+    \end{Tupla}
+    
+    \begin{Tupla}[promesa]
+    	\tupItem{l\'imite}{nat}
+    	\tupItem{cantidad}{nat}
+    \end{Tupla}
+\end{Estructura}
+ 
+ %----------------------------------------------------Rep------------------------------------------
+ \renewcommand{\labelenumi}{(\Roman{enumi})}
+ \begin{enumerate}
+ 	\item Las promesas de venta no cumplen los requisitos para ejecutarse
+ 	\item Las promesas de compra no cumplen los requisitos para ejecutarse
+ 	\item Las acciones disponibles de cada t\'itulo son el m\'aximo de acciones de ese t\'itulo menos la suma de las acciones de ese titulo que tengan los clientes, y son mayores o iguales a 0
+ 	\item Cada puntero a nat de $cantAcc$ en los titulos de $clientes$ apunta a su correspondiente $cantAcc$ en $vecClientes$ de $titulos$
+ 	\item Los clientes de $clientes$ son los mismos que hay dentro de $titulos$
+ 	\item Los t\'itulos de $titulos$ son los mismos que hay dentro de $clientes$
+ 	\item En $ultimoLlamado$, los significados de $promPorTitulo$ son todas las promesas que tiene $cliente$
+  \end{enumerate}
+  
+  \Rep[estr][l]{}\mbox{}
+
+
