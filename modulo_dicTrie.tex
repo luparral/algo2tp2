@@ -1,0 +1,91 @@
+\subsection{Interfaz}
+%%###no tenemos no parametros formales?
+
+  %%\InterfazFuncion{AgregarAdelante}{\Inout{l}{lista($\alpha$)}, \In{a}{$\alpha$}}{itLista($\alpha$}
+
+%%Parámetros formales
+  \subsubsection{Par\'ametros formales}
+   \parbox{1.7cm}{\textbf{g\'eneros}} string, $\alpha$\\
+    %%\parbox[t]{1.7cm}{\textbf{funci\'on}}\parbox[t]{\textwidth-2\parindent-1.7cm}{%
+     %%\InterfazFuncion{Copiar}{\In{a}{$\alpha$}}{$\alpha$}
+     %%{$res \igobs a$}
+     %%[$\Theta(copy(a))$]
+     %%[funci\'on de copia de $\alpha$ s]
+    %%}
+
+  \textbf{se explica con}: \tadNombre{diccTrie($\alpha$)}.
+
+  \textbf{g\'eneros}: \TipoVariable{diccTrie($\alpha$)}.
+
+%%Operaciones básicas
+  \subsubsection{Operaciones b\'asicas de DiccTrie($\alpha$)}
+%%crearDicc
+  \InterfazFuncion{CrearDicc}{()}{diccTrie($\alpha$)}
+  {$res \igobs vacio$}%
+  [$\Theta(1)$]
+  [Crea un diccionario vac\'io.]\\\\
+%%definir
+  \InterfazFuncion{Definir}{\Inout{d}{diccTrie($\alpha$)}, \In{c}{string}, \In{s}{conj($\alpha$)}}{}
+  [$d \igobs d_0 \wedge \neg definido?(d,c)$]
+  {$d \igobs definir(d_0,c,s)$}%
+  [$\Theta(longitud(c))$]
+  [Define la clave c con el significado s en el diccionario d.]\\\\
+%%definido?  
+  \InterfazFuncion{Definido?}{\In{d}{diccTrie($\alpha$)}, \In{c}{string}}{bool}
+  {$res \igobs def?(c,d)$}%
+  [$\Theta(longitud(c))$]
+  [Devuelve true si y solo si c est\'a definido como clave en el diccionario.]\\\\
+%%significado  
+  \InterfazFuncion{Significado}{\In{d}{diccTrie($\alpha$)}, \In{c}{string}}{$\alpha$}
+  [$def?(c,d)$]
+  {$res \igobs obtener(c,d)$}%
+  [$\Theta(longitud(c))$]
+  [Devuelve el significado con clave c.]
+  [No se devuelve una copia del $\alpha$ en res, se devuelve una referencia a la original.]\\\\
+%%todosLosSignificados  
+  \InterfazFuncion{TodosLosSignificados}{\Inout{d}{diccTrie($\alpha$)}}{conj($\alpha$)}
+  {$(\forall a: \alpha) \, a \in res \rightarrow (\exists c: clave) \, c \in claves(d) \yluego a = obtener(d,c) $}%
+  [$\Theta(|max_c|)$]
+  [Devuelve todos los significados guardados en el diccionario d.]
+  [res no es modificable]\\\\
+
+\subsection{Representacion}
+  
+  \subsubsection{Representaci\'on del DiccionarioTrie($\alpha$)}
+%%Estructura
+  \begin{Estructura}{diccTrie$(\alpha)$}[dic]
+    \begin{Tupla}[dic]
+      \tupItem{raiz}{puntero(nodoTrie)}%%
+    \end{Tupla}
+\end{Estructura}
+
+  \begin{Estructura}{NodoTrie}[nodo]
+    \begin{Tupla}[nodo]
+      \tupItem{valor}{$\alpha$}
+      \tupItem{finPalabra?}{bool}%%
+      \tupItem{hijos}{arreglo(puntero(nodoTrie))}%%
+    \end{Tupla}
+\end{Estructura}
+
+%%Rep 
+  \begin{enumerate}
+  \item |hijos| = 27
+  \end{enumerate}
+
+
+\subsection{Algoritmos}
+
+
+\begin{algorithm}
+\caption{iCrear}
+\begin{algorithmic}
+%\begin{comment}
+\State $d: arreglo(tuplas)$
+\State $i: nat$
+\State $d\gets crearArreglo[27]$
+\State $i\gets 0$
+\While{$i < 27$}
+
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
