@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{M\363dulo Wolfie}{}
+\BOOKMARK [2][-]{subsection.1.1}{Interfaz}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Par\341metros formales}{subsection.1.1}
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Operaciones b\341sicas de wolfie}{subsection.1.1}
+\BOOKMARK [2][-]{subsection.1.2}{Representaci\363n}{section.1}
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Representaci\363n de wolfie}{subsection.1.2}
+\BOOKMARK [1][-]{section.2}{M\363dulo DiccionarioTrie\(alpha\)}{}
+\BOOKMARK [2][-]{subsection.2.1}{Interfaz}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Par\341metros formales}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Operaciones b\341sicas de DiccTrie\(\)}{subsection.2.1}
+\BOOKMARK [2][-]{subsection.2.2}{Representacion}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Representaci\363n del DiccionarioTrie\(\)}{subsection.2.2}
+\BOOKMARK [2][-]{subsection.2.3}{Algoritmos}{section.2}

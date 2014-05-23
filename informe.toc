@@ -1,0 +1,14 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}M\'odulo Wolfie}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Interfaz}{3}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Par\'ametros formales}{3}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Operaciones b\'asicas de wolfie}{3}{subsubsection.1.1.2}
+\contentsline {subsection}{\numberline {1.2}Representaci\'on}{4}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Representaci\'on de wolfie}{4}{subsubsection.1.2.1}
+\contentsline {section}{\numberline {2}M\'odulo DiccionarioTrie(alpha)}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Interfaz}{5}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Par\'ametros formales}{5}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Operaciones b\'asicas de DiccTrie($\alpha $)}{5}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Representacion}{6}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Representaci\'on del DiccionarioTrie($\alpha $)}{6}{subsubsection.2.2.1}
+\contentsline {subsection}{\numberline {2.3}Algoritmos}{6}{subsection.2.3}
