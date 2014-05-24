@@ -61,31 +61,70 @@
 
   \begin{Estructura}{NodoTrie}[nodo]
     \begin{Tupla}[nodo]
-      \tupItem{valor}{$\alpha$}
-      \tupItem{finPalabra?}{bool}%%
+      \tupItem{valor}{puntero($\alpha$)}
       \tupItem{hijos}{arreglo(puntero(nodoTrie))}%%
     \end{Tupla}
 \end{Estructura}
 
 %%Rep 
-  \begin{enumerate}
-  \item |hijos| = 27
-  \end{enumerate}
-
 
 \subsection{Algoritmos}
 
 
 \begin{algorithm}
-\caption{iCrear}
+\caption{iCrear()}
 \begin{algorithmic}
 %\begin{comment}
-\State $d: arreglo(tuplas)$
-\State $i: nat$
-\State $d\gets crearArreglo[27]$
-\State $i\gets 0$
-\While{$i < 27$}
+\State $n : nodo$
+\State $n \gets crearNodo()$
+\State $raiz \gets *n$
+\end{algorithmic}
+\end{algorithm}
 
+
+\begin{algorithm}
+\caption{iCrearNodo()}
+\begin{algorithmic}
+%\begin{comment}
+\State $d : arreglo\_estatico[256]$
+\State $i \gets 0$
+\While {$i < 256$}
+\State $d[i] \gets NULL$
 \EndWhile
+\State $this.hijos \gets d$
+\State $this.valor \gets NULL$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{iDefinir(string: s, alfa: a)}
+\begin{algorithmic}
+%\begin{comment}
+\State $i \gets 0$
+\State $p \gets this.raiz$
+\While {$i < (longitud(s))$}
+\If {$p.hijos[ord(s[i])] == NULL$}
+\State $n: nodo \gets crearNodo()$
+\State $p.hijos[ord(s[i])] \gets *n$
+\EndIf
+\State $p \gets p.hijos[ord(s[i])]$
+\State $i++$
+\EndWhile
+\State $p.valor \gets a$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{iObtener(string: s)}
+\begin{algorithmic}
+%\begin{comment}
+\State $i \gets 0$
+\State $p \gets this.raiz$
+\While {$i < (longitud(s))$}
+\State $p \gets p.hijos[ord(s[i])]$
+\State $i++$
+\EndWhile
+\State $p.valor \gets a$
+\Return $p.valor$
 \end{algorithmic}
 \end{algorithm}
