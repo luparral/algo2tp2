@@ -86,31 +86,28 @@
       		{<$arrayClientes$: array\_dimensionable(tuplaPorCliente), \\$cot$: nat, \\$enAlza$: bool, \\$maxAcc$:nat, \\$accDisponibles$: nat>),}
       	\end{minipage}}%
       	
-      \tupItem{clientes}{array\_dimensionable(tuplaCarteraCliente)}
+      \tupItem{clientes}{array\_dimensionable(cliente)}
       
-      \tupItem{\'ultimoLlamado}{<$cliente$: cliente, $promPorTitulo$:diccTrie(nombre, promesa)>)}%
+      \tupItem{\'ultimoLlamado}{<$cliente$: cliente, $promPorTitulo$:lista(promesa), $fueUltimo$: bool>)}%
     \end{Tupla}
     
     \begin{Tupla}[tuplaPorCliente]
     	\tupItem{cliente}{cliente,}
-    	\tupItem{cantAcc}{*nat,}
-    	\tupItem{promCompra}{*promesa}
+    	\tupItem{cantAcc}{nat,}
+    	\tupItem{promCompra}{*promesa,}
+    	\tupItem{promVenta}{*promesa}
     \end{Tupla}
     \indent\indent Con un orden definido por $a$<$b$ $\Leftrightarrow$ $a.cliente$ < $b.cliente$
     
     \begin{Tupla}[tuplaPorCantAcc]
     	\tupItem{cliente}{cliente,}
-    	\tupItem{cantAcc}{*nat,}
-    	\tupItem{promCompra}{*promesa}
+    	\tupItem{cantAcc}{nat,}
+    	\tupItem{promCompra}{*promesa,}
+    	\tupItem{promVenta}{*promesa}
     \end{Tupla}
     \indent\indent Con un orden definido por $a$<$b$ $\Leftrightarrow$ $a.cantAcc$ < $b.cantAcc$
     
-    \begin{Tupla}[tuplaCarteraCliente]
-    	\tupItem{cliente}{cliente,} 
-    	\tupItem{t\'itulosDeCliente}{diccTrie(nombre, <$cantAcc$: nat, $promVenta$: *promesa>)}
-    \end{Tupla}
-    \indent\indent Con un orden definido por $a$<$b$ $\Leftrightarrow$ $a.cliente$ < $b.cliente$
-    
+
 \end{Estructura}
  %----------------------------------------------------Rep------------------------------------------
  \renewcommand{\labelenumi}{(\Roman{enumi})}
