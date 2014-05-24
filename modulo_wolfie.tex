@@ -88,7 +88,7 @@
       	
       \tupItem{clientes}{array\_dimensionable(cliente)}
       
-      \tupItem{\'ultimoLlamado}{<$cliente$: cliente, $promPorTitulo$:lista(promesa), $fueUltimo$: bool>)}%
+      \tupItem{\'ultimoLlamado}{<$cliente$: cliente, $promesas$:conj(promesa), $fueUltimo$: bool>)}%
     \end{Tupla}
     
     \begin{Tupla}[tuplaPorCliente]
@@ -106,45 +106,46 @@
     	\tupItem{promVenta}{*promesa}
     \end{Tupla}
     \indent\indent Con un orden definido por $a$<$b$ $\Leftrightarrow$ $a.cantAcc$ < $b.cantAcc$
-    
 
 \end{Estructura}
  %----------------------------------------------------Rep------------------------------------------
  \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
  	\item Los clientes de $clientes$ son los mismos que hay dentro de $titulos$.
- 	\item Los t\'itulos de $titulos$ son los mismos que hay dentro de $clientes$.
- 	\item Las promesas de compra son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
- 	\item Las promesas de venta son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
+ 	\item Las promesas de compra  son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
+ 	\item Las promesas de y venta son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
  	\item Las acciones disponibles de cada t\'itulo son el m\'aximo de acciones de ese t\'itulo menos la suma de las acciones de ese titulo que tengan los clientes, y son mayores o iguales a 0.
- 	\item Cada puntero a nat de $cantAcc$ en los titulos de $clientes$ apunta a su correspondiente $cantAcc$ en $vecClientes$ de $titulos$.
- 	\item En $ultimoLlamado$, los significados de $promPorTitulo$ son todas las promesas que tiene $cliente$.
+ 	\item El $cliente$ de $\acute{u}ltimoLlamado$ pertenece a $clientes$
+ 	\item En $\acute{u}ltimoLlamado$, si $fue\acute{U}ltimo$ es true, las promesas de $promesas$ son todas las promesas que tiene $cliente$.
   \end{enumerate}
   
   \Rep[estr][e]{\\
  	(I)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $c$: cliente) {\Large(}est\'aCliente?($c$, $e.clientes$) $\Leftrightarrow$ ($\exists$ $t$: t\'itulo) {\large(}def?($t$, $e.titulos$) \yluego est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$){\large)}{\Large)} $\land$
+  		($\forall$ $c$: cliente) {\Large(}est\'aCliente?($c$, $e.clientes$) $\Leftrightarrow$ ($\exists$ $t$: t\'itulo) {\large(}def?($t$, $e.titulos$) \yluego est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$){\large)}{\Large)} \yluego
   	\end{minipage}\vspace{3mm}
 
- 	(II)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $t$: t\'itulo) {\Large(}def?($t$, $e.titulos$) $\Leftrightarrow$ ($\exists$ $c$: cliente) {\large(}est\'aCliente?($c$, $e.clientes$) \yluego def?($t$, buscarCliente($c$, $e.clientes$).$titulosDeCliente$){\large)}{\Large)} $\land$
-  	\end{minipage}\vspace{3mm}
-  
-  	(III)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promCompra$=$p$) \impluego  t\'itulo($*p$)=$t$ $\land$ cliente($*p$)=c $\land$ (l\'imite($*p$)>obtener($t$, $e.titulos$).$cot$ $\lor$ cantidad($*p$)>obtener($t$, $e.titulos$).$accDisponibles$){\large)} $\land$
+  	(II)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
+  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promCompra$=$p$) \impluego  t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=compra $\land$ (l\'imite($*p$)>obtener($t$, $e.titulos$).$cot$ $\lor$ cantidad($*p$)>obtener($t$, $e.titulos$).$accDisponibles$){\large)} $\land$
   	\end{minipage}\vspace{3mm}
   	
-  	(IV)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $p$: *promesa, $t$: t\'itulo, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ est\'aCliente?($c$, $e.clientes$) \yluego  def?($t$, buscarCliente($c$, $e.clientes$)) \yluego obtener($t$, buscarCliente($c$, $e.clientes$).$titulosDeCliente$).$promVenta$=$p$) \impluego (t\'itulo($*p$)=$t$ $\land$ cliente($*p$)=c $\land$ l\'imite($*p$) < obtener($t$, $e.titulos$).$cot$){\large)} $\land$
+  	(III)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
+  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promVenta$=$p$) \impluego (t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=venta $\land$ l\'imite($*p$) < obtener($t$, $e.titulos$).$cot$){\large)} $\land$
+  	\end{minipage}\vspace{3mm}
+  	
+  	(IV)\begin{minipage}[t]{\linewidth-\parindent-2cm}
+		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (obtener($nt$, $e.titulos$).$accDisponibles$ = obtener($nt$, $e.titulos$).$maxAcc$ - sumaAccClientes(obtener($nt$, $e.titulos$).$arrayClientes$) $\land$ obtener($nt$, $e.titulos$).$accDisponibles$ $\geq$ 0)) $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(V)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (obtener($nt$, $e.titulos$).accDisponibles = obtener($nt$, $e.titulos$).maxAcc - sumaAccClientes(obtener($nt$, $e.titulos$).vecClientes) $\land$ obtener($nt$, $e.titulos$).accDisponibles $\geq$ 0)) $\land$
+		(est\'aCliente($e.\acute{u}ltimoLlamado.cliente$, $e.clientes$)) $\land$
   	\end{minipage}\vspace{3mm}
   	
-
+	(VI)\begin{minipage}[t]{\linewidth-\parindent-2cm}
+		($e.\acute{u}ltimoLlamado.fue\acute{U}ltimo$ $\Rightarrow$ ($\forall$ $p$: promesa) {\Large(}pertenece?($p$, $e.\acute{u}ltimoLlamado.promesas$) $\Leftrightarrow$ {\large(}def?(t\'itulo($p$), $e.titulos$) \yluego \\ {\IF tipo($p$)=compra THEN buscarCliente($e.\acute{u}ltimoLlamado.cliente$, obtener(t\'itulo($p$), $e.titulos$).$arrayClientes$).promCompra = $p$ ELSE buscarCliente($e.\acute{u}ltimoLlamado.cliente$, obtener(t\'itulo($p$), $e.titulos$).$arrayClientes$).promVenta = $p$ FI}{\large)}{\Large)}
+  	\end{minipage}\vspace{3mm}
+  	
   	
   }\mbox{}
-% para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente
+% para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente, sumaAccClientes 
 
 

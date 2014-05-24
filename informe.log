@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.1)  24 MAY 2014 13:37
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.1)  24 MAY 2014 15:24
 entering extended mode
  %&-line parsing enabled.
 **informe.tex
@@ -426,7 +426,7 @@ landscape: --
 twocolumn: --
 twoside: --
 asymmetric: --
-h-parts: 28.45274pt, 540.60239pt, 28.45274pt
+h-parts: 25.6073pt, 546.29327pt, 25.6073pt
 v-parts: 99.58464pt, 702.78308pt, 42.67912pt
 hmarginratio: --
 vmarginratio: --
@@ -441,10 +441,10 @@ driver: pdftex
 -------------------- Page layout dimensions and switches
 \paperwidth  597.50787pt
 \paperheight 845.04684pt
-\textwidth  540.60239pt
+\textwidth  546.29327pt
 \textheight 702.78308pt
-\oddsidemargin  -43.81725pt
-\evensidemargin -43.81725pt
+\oddsidemargin  -46.66269pt
+\evensidemargin -46.66269pt
 \topmargin  -9.68535pt
 \headheight 13.0pt
 \headsep    25.0pt
@@ -577,7 +577,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--76
  []
 
 [3]
-Underfull \hbox (badness 5217) in paragraph at lines 147--147
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
 \OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1
 /cmr/m/n/10 ) $\OMS/cmsy/m/n/10 ^[]$\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it
 /10 c$\T1/cmr/m/n/10 , obtener($\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 , $\OML/cmm/m
@@ -587,36 +587,44 @@ n/10 )
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 147--147
-\OMS/cmsy/m/n/10 )[]$\T1/cmr/m/n/10 título($\OMS/cmsy/m/n/10 ^^C\OML/cmm/m/it/1
-0 p$\T1/cmr/m/n/10 )=$\OML/cmm/m/it/10 t$ $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 c
-liente($\OMS/cmsy/m/n/10 ^^C\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 )=c $\OMS/cmsy/m/
-n/10 ^$ \T1/cmr/m/n/10 (límite($\OMS/cmsy/m/n/10 ^^C\OML/cmm/m/it/10 p$\T1/cmr/
-m/n/10 )>obtener($\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titul
-os$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 cot$ $\OMS/cmsy/m/n/10 _$ \T1/cmr/m/n/10 
-cantidad($\OMS/cmsy/m/n/10 ^^C\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 )>obtener($\OML
-/cmm/m/it/10 t$\T1/cmr/m/n/10 ,
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1
+/cmr/m/n/10 ) $\OMS/cmsy/m/n/10 ^[]$\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it
+/10 c$\T1/cmr/m/n/10 , obtener($\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 , $\OML/cmm/m
+/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m/n/1
+0 ).$\OML/cmm/m/it/10 promVenta$\T1/cmr/m/n/10 =$\OML/cmm/m/it/10 p$\T1/cmr/m/n
+/10 )
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 147--147
+Underfull \hbox (badness 1668) in paragraph at lines 148--148
 []\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8$ $\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 : no
 m-breT) (def?($\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titulos
 $\T1/cmr/m/n/10 ) $\OMS/cmsy/m/n/10 )[]$\T1/cmr/m/n/10 (obtener($\OML/cmm/m/it/
-10 nt$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).accDisponib
-les = obtener($\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 ,
+10 nt$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m
+/it/10 accDisponibles$ \T1/cmr/m/n/10 = obtener($\OML/cmm/m/it/10 nt$\T1/cmr/m/
+n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--147
-\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).maxAcc - sumaAccClientes(obtener($\
-OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 
-).vecClientes) $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 obtener($\OML/cmm/m/it/10 nt
-$\T1/cmr/m/n/10 ,
+Underfull \hbox (badness 10000) in paragraph at lines 148--148
+\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 maxAcc$ \T1/cmr/m
+/n/10 - sumaAccClientes(obtener($\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 , $\OML/cmm
+/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m/n
+/10 ) $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 obtener($\OML/cmm/m/it/10 nt$\T1/cmr/
+m/n/10 ,
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 147--147
+Overfull \hbox (1.17874pt too wide) in paragraph at lines 148--148
+[]\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it/10 e:[]ltimoLlamado:cliente$\T1/c
+mr/m/n/10 , obtener(título($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 ), $\OML/cmm/m/it
+/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m/n/10 )
+.promCompra
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 148--148
 []\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
 Q$| [] 
  []
@@ -685,13 +693,13 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 75.
 ) AED: lastpage setting LastPage [6] [7] (./informe.aux) ) 
 Here is how much of TeX's memory you used:
- 7524 strings out of 495061
- 103291 string characters out of 1182622
- 195992 words of memory out of 3000000
- 10502 multiletter control sequences out of 15000+50000
+ 7530 strings out of 495061
+ 103406 string characters out of 1182622
+ 195994 words of memory out of 3000000
+ 10509 multiletter control sequences out of 15000+50000
  15030 words of font info for 38 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,15n,43p,506b,332s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,15n,43p,548b,332s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/nico/.texmf-v
 ar/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/nico/.texmf-var/fonts/pk/
 ljfour/jknappen/ec/eccc1000.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknap
@@ -707,9 +715,9 @@ share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-
 texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts
 /type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public
 /amsfonts/cm/cmsy10.pfb>
-Output written on informe.pdf (7 pages, 203247 bytes).
+Output written on informe.pdf (7 pages, 203095 bytes).
 PDF statistics:
- 512 PDF objects out of 1000 (max. 8388607)
- 33 named destinations out of 1000 (max. 500000)
+ 510 PDF objects out of 1000 (max. 8388607)
+ 32 named destinations out of 1000 (max. 500000)
  105 words of extra memory for PDF output out of 10000 (max. 10000000)
 
