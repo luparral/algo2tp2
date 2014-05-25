@@ -1,4 +1,4 @@
-\section{M\'odulo Conjunto Est\'atico de Nats}
+
 \subsection{Interfaz}
 
 %%Parámetros formales
@@ -10,42 +10,46 @@
      %%[funci\'on de copia de $\alpha$ s]
     %%}
 
-  \textbf{se explica con}: \tadNombre{Conjunto}.
-
+  \textbf{Se explica con}: \tadNombre{Conjunto(nat)}, \tadNombre{Iterador Unidireccional(nat)}.
+  \textbf{Usa}: \
     %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista($\alpha$)}.
 
 %%Operaciones básicas
   \subsubsection{Operaciones b\'asicas de conjEstNat}
  %%clientes
-  \InterfazFuncion{nuevoConjEstNat}{\In{c}{conj(nat)}}{conjEstNat}
+  \InterfazFuncion{NuevoConjEstNat}{\In{c}{conj(nat)}}{conjEstNat}
   {$res$ \igobs c}
-  [$\Theta(n*(log n))$]
+  [$\Theta(n*(log (n)))$]
   [Crea un conjunto est\'atico de nats]\\\\
   
-  \InterfazFuncion{pertenece?}{\In{n}{nat}, \In{c}{conjEstNat}}{bool}
+  \InterfazFuncion{Pertenece?}{\In{n}{nat}, \In{c}{conjEstNat}}{bool}
   {$res$ \igobs n $\in$ c}
   [$\Theta(n)$]
-  [Crea un conjunto est\'atico de nats]\\\\
-  
+  [Pregunta si el elemento pertenece al conjunto]\\\\
+
+  \InterfazFuncion{Cardinal}{\In{n}{conjEstNat}}{nat}
+  {$res$ \igobs n $\in$ c}
+  [$\Theta(n)$]
+  [Pregunta si el elemento pertenece al conjunto]\\\\  
   \subsubsection{Operaciones b\'asicas de itConjEstNat}  
   
-  \InterfazFuncion{crearIt}{\In{c}{conjEstNat}}{itConjEstNat}
+  \InterfazFuncion{CrearIt}{\In{c}{conjEstNat}}{itConjEstNat}
   {$res$ \igobs crearItUni($c$)}
   [$\Theta(1)$]
   [Devuelve un iterador unidireccional a un conjunto est\'atico de nats]\\\\
   
-  \InterfazFuncion{actual}{\In{i}{itConjEstNat}}{nat}
+  \InterfazFuncion{Actual}{\In{i}{itConjEstNat}}{nat}
   {$res$ \igobs actual($i$)}
   [$\Theta(1)$]
   [Devuelve la posicion actual]\\\\
   
-  \InterfazFuncion{pr\'oximo}{\In{i}{itConjEstNat}}{itConjEstNat}
+  \InterfazFuncion{Pr\'oximo}{\In{i}{itConjEstNat}}{itConjEstNat}
   [hayMas?($i$)]
   {$res$ \igobs avanzar($i$)}
   [$\Theta(1)$]
   [Avanza el iterador]\\\\
   
-  \InterfazFuncion{hayPr\'ox?}{\In{i}{itConjEstNat}}{bool}
+  \InterfazFuncion{HayPr\'ox?}{\In{i}{itConjEstNat}}{bool}
   [$i_{0}$ = $i$]
   {$res$ \igobs hayMas?($i$}
   [$\Theta(1)$]
@@ -78,8 +82,8 @@
 \caption{iNuevoConjEstNat(conj)}
 \begin{algorithmic}
 	%\begin{comment}
-	\State $it:itConj$
-	\State $it \gets crearIt(conj)$
+	\State $it:itConj(nat)$
+	\State $it \gets crearIt(conj(nat))$
 	\State $a : arreglo\_dimensionable[cardinal(conj)]$
 	\State $i : nat$
 	\State $i \gets 0$

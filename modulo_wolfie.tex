@@ -20,8 +20,8 @@
 %%Operaciones básicas
   \subsubsection{Operaciones b\'asicas de wolfie}
  %%clientes
-  \InterfazFuncion{clientes}{\In{w}{wolfie}}{itUni(cliente)}
-  {$res$ \igobs crearIt(clientes($w$))}
+  \InterfazFuncion{clientes}{\In{w}{wolfie}}{itConjEstNat(cliente)}
+  {$res$ \igobs crearItUni(clientes($w$))}
   [$\Theta(1)$]
   [Devuelve un iterador a los clientes de un wolfie.]\\\\
  %%titulos
@@ -30,7 +30,7 @@
   [$\Theta(1)$]
   [Devuelve un iterador a los t\'itulos de un wolfie.]\\\\
 %%promesasDe
-  \InterfazFuncion{promesasDe}{\In{c}{cliente}, \In{w}{wolfie}}{itPromesa(promesa)}
+  \InterfazFuncion{promesasDe}{\In{c}{cliente}, \In{w}{wolfie}}{itConj(promesa)}
   [$c \in$ clientes($w$)]
   {$res$ \igobs crearItUni(promesasDe($c$, $w$))}%
   [$\Theta(T \cdotp C \cdotp |max\_nt|)$]
@@ -49,10 +49,10 @@
   [$\Theta(\#(cs)^2)$]
   [Crea un nuevo wolfie a partir de un conjunto de clientes.]\\\\  %%&&& la complejidad habia quedado n log n si usamos merge sort
 %%agregarTitulo
-  \InterfazFuncion{agregarT\'itulo}{\In{t}{t\'itulo}, \Inout{w}{wolfie}}{wolfie}%
+  \InterfazFuncion{agregarT\'itulo}{\In{t}{t\'itulo}, \Inout{w}{wolfie}}{}%
   [$w_{0}$ \igobs $w$ $\land$ ($\forall$ $t2$:t\'itulo) ($t2$ $\in$ t\'itulos($w$) $\Rightarrow$ nombre($t$) $\neq$ nombre($t2$)]
   {$w$ \igobs agregarT\'itulo($t$, $w_{0}$}%
-  [$\Theta(|nombre(t)|+C)$]
+  [$\Theta(|nombre(t)|+C)$]\\\\
 %%actualizarCotizacion
   \InterfazFuncion{actualizarCotizaci\'on}{\In{nt}{nombreT\'itulo}, \In{cot}{nat}, \Inout{w}{wolfie}}{wolfie}%
   %%### ojo con NombreTítulo
@@ -61,7 +61,7 @@
   [$\Theta(C \cdotp |nt|+C \cdotp log(C))$]
   [Cambia la cotizaci\'on de un determinado t\'itulo. Esta operaci\'on genera que se desencadene el cumplimiento de promesas (seg\'un corresponda): primero de venta y luego, de compra, seg\'un el orden descendente de cantidad de acciones por t\'itulo de cada cliente.]\\\\
 %%agregarPromesa
-  \InterfazFuncion{agregarPromesa}{\In{c}{cliente}, \In{p}{promesa}, \Inout{w}{wolfie}}{wolfie}%
+  \InterfazFuncion{agregarPromesa}{\In{c}{cliente}, \In{p}{promesa}, \Inout{w}{wolfie}}{}%
   [$w_{0}$ \igobs $w$ $\land$ ($\exists$$t$: t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = t\'itulo($p$)) $\land$ $c$ $\in$ clientes($w$) \yluego ($\forall$$p2$: promesa) ($p2$ $\in$ promesasDe($c$, $w$) $\Rightarrow$ (t\'itulo($p$) $\neq$ t\'itulo($p2$) $\lor$ tipo($p$) $\neq$ tipo($p2$)) ) $\land$ (tipo($p$) = vender $\Rightarrow$ accionesPorCliente($c$, t\'itulo($p$), $w$) $\geq$ cantidad($p$)))]
   {$w$ \igobs agregarPromesa($c$, $p$, $w_{0}$)}%
   [$\Theta(|t$\'i$tulo(p)| + log(C))$]
@@ -134,7 +134,7 @@
   	\end{minipage}\vspace{3mm}
   	
   	(IV)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (obtener($nt$, $e.titulos$).$accDisponibles$ = obtener($nt$, $e.titulos$).$maxAcc$ - sumaAccClientes(obtener($nt$, $e.titulos$).$arrayClientes$) $\land$ obtener($nt$, $e.titulos$).$accDisponibles$ $\geq$ 0)) $\land$
+		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (obtener($nt$, $e.titulos$).$accDisponibles$ = obtener($nt$, $e.titulos$).$maxAcc$ - sumaAccClientes(obtener($nt$, $e.titulos$).$arrayClientes$, 0) $\land$ obtener($nt$, $e.titulos$).$accDisponibles$ $\geq$ 0)) $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(V)\begin{minipage}[t]{\linewidth-\parindent-2cm}
@@ -161,6 +161,10 @@
   	
   \tadOperacion{auxBuscarCliente}{cliente, array\_dimensionable(tuplaPorCliente), nat}{tuplaPorCliente}{est\'aCliente($c,a$)}
   \tadAxioma{auxBuscarCliente($c, a$, $i$)}{{\IF $a[i].cliente=c$ THEN $a[i]$ ELSE auxBuscarCliente($c, a, i+1$) FI}}
+
+  \tadOperacion{sumaAccClientes}{array\_dimensionable(tuplaPorCliente), nat}{nat}{}
+  \tadAxioma{auxBuscarCliente($a$, $i$)}{{\IF $i$=longitud($a$) THEN 0 ELSE $a[i].cantAcc$ + sumaAccClientes($a, i+1$) FI}}
+
   	  }\mbox{}
   	  
   	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ t\'itulos($w$)=????????? $\land$ \\($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
