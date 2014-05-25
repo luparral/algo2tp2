@@ -13,47 +13,47 @@
 %%crearDicc
   \InterfazFuncion{CrearDicc}{}{diccString($\alpha$)}
   {$res \igobs vacio$}%
-  [$\Theta(1)$]
+  [O$(1)$]
   [Crea un diccionario vac\'io.]\\\\
 %%definir
   \InterfazFuncion{Definir}{\Inout{d}{diccString($\alpha$)}, \In{c}{string}, \In{s}{$\alpha$}}{}
   [$d \igobs d_0 \wedge \neg def?(d,c)$]
   {$d \igobs definir(d_0,c,s)$}%
-  [$\Theta(longitud(c))$]
+  [O$(longitud(c))$]
   [Define la clave c con el significado s en el diccionario d.]\\\\
 %%definido?  
   \InterfazFuncion{Definido?}{\In{d}{diccString($\alpha$)}, \In{c}{string}}{bool}
   {$res \igobs def?(c,d)$}%
-  [$\Theta(longitud(c))$]
+  [O$(longitud(c))$]
   [Devuelve true si y solo si c est\'a definido como clave en el diccionario.]\\\\
 %%significado  
   \InterfazFuncion{Significado}{\In{d}{diccString($\alpha$)}, \In{c}{string}}{$\alpha$}
   [$def?(c,d)$]
   {$res \igobs obtener(c,d)$}%
-  [$\Theta(longitud(c))$]
+  [O$(longitud(c))$]
   [Devuelve el significado con clave c.]
   [No se devuelve una copia del $\alpha$ en res, se devuelve una referencia a la original.]\\\\
 
  \subsubsection{Operaciones b\'asicas del iterador de claves de Diccionario String($\alpha$)}
   \InterfazFuncion{CrearIt}{\In{d}{diccString($\alpha$)}}{itClaves($string$)}
   {res \igobs crearIt(d.claves) }
-  [$\Theta(1)$]
+  [O$(1)$]
   [Crea y devuelve un iterador de claves Diccionario String.]\\\\
 
   \InterfazFuncion{HayMas?}{\In{d}{itClaves($string$)}}{$bool$}
   {res \igobs hayMas?($it$)}%
-  [$\Theta(longitud(c))$] %%##revisar
+  [O$(longitud(c))$] %%##revisar
   [Informa si hay m\'as elementos por iterar.]\\\\
 
   \InterfazFuncion{Actual}{\In{d}{itClaves($string$)}}{$string$}
   {res \igobs actual($it$)}
-  [$\Theta(longitud(c))$]%%##revisar
+  [O$(longitud(c))$]%%##revisar
   [Devuelve la clave de la posici\'on actual.]\\\\
 
   \InterfazFuncion{Avanzar}{\Inout{it}{itClaves($string$)}}{itClaves($\alpha$)}
   [hayMas?($it$) $\land$ $it = it_{0}$] %%##revisar
   {res \igobs avanzar($it_{0}$)}
-  [$\Theta(longitud(c))$]%%##revisar
+  [O$(longitud(c))$]%%##revisar
   [Avanza a la pr\'oxima clave.]\\\\
 
 
@@ -131,15 +131,15 @@
   \subsection{Algoritmos}
 \subsubsection{Algoritmos de Diccionario String}
 
-iCrearDicc() $\rightarrow$ res = diccString($\alpha$)
+\textsc{iCrearDicc}() $\rightarrow$ \textbf{res} = diccString($\alpha$)
 \begin{lstlisting}[mathescape]
  n $\leftarrow$ nodo
  n $\leftarrow$ crearNodo()
  raiz $\leftarrow$ *n
 \end{lstlisting}
+\textbf{Complejidad}\\
 
-
-iCrearNodo() $\rightarrow$ res = nodo
+\textsc{iCrearNodo}() $\rightarrow$ \textbf{res} = nodo
 \begin{lstlisting}[mathescape]
  d : arreglo\_estatico[256]
  i $\leftarrow$ 0
@@ -149,8 +149,9 @@ iCrearNodo() $\rightarrow$ res = nodo
  hijos $\leftarrow$ d
  valor $\leftarrow$ NULL
 \end{lstlisting}
+\textbf{Complejidad}\\
 
-iDefinir(inout diccString($\alpha$): d, in string: c, in alfa: s)
+\textsc{iDefinir}(\textbf{in/out} diccString($\alpha$): d, \textbf{in} string: c, \textbf{in} alfa: s)
 \begin{lstlisting}[mathescape]
  i $\leftarrow$ 0
  p $\leftarrow$ d.raiz
@@ -165,9 +166,9 @@ iDefinir(inout diccString($\alpha$): d, in string: c, in alfa: s)
  p.valor $\leftarrow$ a
  agregarAdelante(hijos, c)
 \end{lstlisting}
+\textbf{Complejidad}\\
 
-
-iSignificado(in diccString($\alpha$): d, in string: c) $\rightarrow$ res = alfa
+\textsc{iSignificado}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = $\alpha$
 \begin{lstlisting}[mathescape]
  i $\leftarrow$ 0
  p $\leftarrow$ d.raiz
@@ -177,9 +178,9 @@ iSignificado(in diccString($\alpha$): d, in string: c) $\rightarrow$ res = alfa
  endWhile
  return p.valor
 \end{lstlisting}
+\textbf{Complejidad}\\
 
-
-iDefinido?(in diccString: d, in string: c) $\rightarrow$ res = bool
+\textsc{iDefinido?}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = bool
 \begin{lstlisting}[mathescape]
  i $\leftarrow$ 0
  p $\leftarrow$ d.raiz
@@ -193,13 +194,13 @@ iDefinido?(in diccString: d, in string: c) $\rightarrow$ res = bool
  endWhile
  return p.valor != NULL
 \end{lstlisting}
+\textbf{Complejidad}\\
 
-
-iClaves(in diccString: d) $\rightarrow$ res = lista\_enlazada(string)
+\textsc{iClaves}(\textbf{in} diccString($\alpha$): d) $\rightarrow$ \textbf{res} = lista\_enlazada(string)
 \begin{lstlisting}[mathescape]
 return itClaves(d)
 \end{lstlisting}
-
+\textbf{Complejidad}\\
 
 \subsubsection{Algoritmos del iterador de claves del Diccionario String}
 
