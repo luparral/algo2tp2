@@ -57,7 +57,7 @@
   \begin{Estructura}{Nodo}[estrNodo]
     \begin{Tupla}[estrNodo]
       \tupItem{valor}{puntero($\alpha$)}
-      \tupItem{hijos}{arreglo(puntero(nodo))}%%
+      \tupItem{hijos}{arreglo\_estatico[256](puntero(nodo))}%%
     \end{Tupla}
 \end{Estructura}
 
@@ -68,19 +68,47 @@
  	\item Existe un \'unico camino entre cada nodo y el nodo raiz (es decir, no hay ciclos).
  	\item Todos los nodos hojas, es decir, todos los que tienen su arreglo hijos con todas sus posiciones en NULL, tienen que tener un valor distinto de NULL.
  	\item Raiz es distinto de NULL
- 	\item El arreglo hijos de cualquier nodo tiene 256 posiciones.
   \end{enumerate}
 
 \Rep[estrDic][e]{\\
  	\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  	{raiz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e) $\land$ nodosConCantHijosValidos(e)} 
+  	{raiz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e)} 
   	\end{minipage}\vspace{3mm}
   	 }\mbox{}
 
-  \tadOperacion{damePromesas}{itTrie??????, estr, cliente}{conj(promesa)}{}
-  \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
+ \Abs[estrDicc]{diccString(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL $\yluego$ significado($c,d$) = leer($e.clave$).valor}
 
-\subsection{Algoritmos}
+
+ \subsubsection{Operaciones auxiliares del invatriante de Representaci\'on}
+
+  \tadOperacion{noHayCiclos}{puntero(nodo)}{bool}{}
+  \tadAxioma{noHayCiclos($n,p$)}{($\exists$ n:nat)(($\forall$ c: string)(|s| = n $\Rightarrow$ leer($p,s$) = NULL))}
+  \tadOperacion{leer}{puntero(nodo), string}{bool}{}
+  \tadAxioma{leer($p,s$)}{\IF vacia?($s$) THEN p $\rightarrow$ valor ELSE {\IF p $\rightarrow$ arr[prim(s)] = NULL THEN NULL ELSE leer(p $\rightarrow$ arr[prim(s)], fin(s)) FI} FI}
+  \tadOperacion{todosNull}{arreglo(puntero(nodo))}{bool}{}
+  \tadAxioma{todosNull($a$)}{auxTodosNull($a, 0$)}
+  \tadOperacion{auxTodosNull}{arreglo(puntero(nodo)), nat}{bool}{}
+  \tadAxioma{auxTodosNull($a, i$)}{\IF i < |a| THEN a[i] == NULL $\land$ auxTodosNull($a, i+1$) ELSE a[i].valor == NULL FI}
+  \tadOperacion{esHoja}{puntero(nodo)}{bool}{}
+  \tadAxioma{esHoja($p$)}{\IF p == NULL THEN false ELSE todosNull(p.hijos) FI}
+  \tadOperacion{todasLasHojas}{puntero(nodo), nat}{conj(nodo)}{}
+  \tadAxioma{todasLasHojas($p, n$)}{\IF p == NULL THEN false ELSE {\IF esHoja($p$) THEN Ag(*p, vacio) ELSE auxTodasLasHojas((*p).hijos, 256) FI} FI}
+
+  \tadOperacion{auxTodasLasHojas}{arreglo(puntero(nodo)), nat}{conj(nodo)}{}
+  \tadAxioma{auxTodasLasHojas($a, n$)}{hojasDeHijos($a,n,0$)}
+
+  \tadOperacion{hojasDeHijos}{arreglo(puntero(nodo)), nat, nat}{conj(nodo)}{}
+  \tadAxioma{hojasDeHijos($a, n, i$)}{\IF i = n THEN $\emptyset$ ELSE todasLasHojas(a[i]) $\cup$ hojasDeHijos($a, n, (i+1)$) FI}
+
+  \tadOperacion{todasLasHojasTienenValor}{puntero(nodo)}{bool}{}
+  \tadAxioma{todasLasHojasTienenValor($p$)}{auxTodasLasHojasTienenValor(todasLasHojas($p, 256$))}
+
+  \tadOperacion{auxTodasLasHojasTienenValor}{arreglo(puntero(nodo))}{bool}{}
+  \tadAxioma{auxTodasLasHojasTienenValor($a$)}{\IF |a| = 0 THEN true ELSE dameUno(a).valor != NULL $\land$ auxTodasLasHojasTienenValor(sinUno(a)) FI}
+
+
+  
+  \subsection{Algoritmos}
 
 
 \begin{algorithm}

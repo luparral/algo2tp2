@@ -1,20 +1,25 @@
 \relax 
-\catcode`"\active
-\catcode`<\active
-\catcode`>\active
+\providecommand\hyper@newdestlabel[2]{}
+\catcode `"\active 
+\catcode `<\active 
+\catcode `>\active 
 \@nameuse{es@quoting}
-\ifx\hyper@anchor\@undefined
-\global \let \oldcontentsline\contentsline
-\gdef \contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
-\global \let \oldnewlabel\newlabel
-\gdef \newlabel#1#2{\newlabelxx{#1}#2}
-\gdef \newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\let \contentsline\oldcontentsline
-\let \newlabel\oldnewlabel}
-\else
-\global \let \hyper@last\relax 
-\fi
-
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
 \select@language{spanish}
 \@writefile{toc}{\select@language{spanish}}
 \@writefile{lof}{\select@language{spanish}}
@@ -28,25 +33,21 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}M\'odulo DiccionarioTrie(alpha)}{6}{section.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Interfaz}{6}{subsection.2.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Par\'ametros formales}{6}{subsubsection.2.1.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Operaciones b\'asicas de DiccTrie($\alpha $)}{6}{subsubsection.2.1.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Representacion}{7}{subsection.2.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Representaci\'on del DiccionarioTrie($\alpha $)}{7}{subsubsection.2.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Algoritmos}{7}{subsection.2.3}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces iCrear()}}{7}{algorithm.1}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces iCrearNodo()}}{7}{algorithm.2}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces iDefinir(string: s, alfa: a)}}{7}{algorithm.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}M\'odulo Conjunto Est\'atico de Nats}{7}{section.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Interfaz}{7}{subsection.3.1}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces iObtener(string: s)}}{8}{algorithm.4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Operaciones b\'asicas de conjEstNat}{8}{subsubsection.3.1.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Operaciones b\'asicas de itConjEstNat}{8}{subsubsection.3.1.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Representaci\'on}{9}{subsection.3.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Representaci\'on de conjEstNat}{9}{subsubsection.3.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Representaci\'on de itConjEstNat}{9}{subsubsection.3.2.2}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces iNuevoConjEstNat(conj)}}{9}{algorithm.5}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces iPertenece?(n, c)}}{10}{algorithm.6}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces iCrearIt(c)}}{10}{algorithm.7}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {8}{\ignorespaces iActual(it)}}{10}{algorithm.8}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {9}{\ignorespaces iPr\'oximo(it)}}{10}{algorithm.9}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {10}{\ignorespaces ihayPr\'ox(it)}}{10}{algorithm.10}}
-\newlabel{LastPage}{{}{10}{}{page.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{6}{subsubsection.2.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Representacion}{6}{subsection.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Representaci\'on del Diccionario String($\alpha $)}{6}{subsubsection.2.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Operaciones auxiliares del invatriante de Representaci\'on}{7}{subsubsection.2.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Algoritmos}{8}{subsection.2.3}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces iCrearDicc}}{8}{algorithm.1}}
+\newlabel{() -> res = diccString}{{1}{8}{Algoritmos}{algorithm.1}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces iCrearNodo()}}{8}{algorithm.2}}
+\newlabel{() -> res = nodo}{{2}{8}{Algoritmos}{algorithm.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces iDefinir}}{8}{algorithm.3}}
+\newlabel{inout d: diccString(alfa), in c: string, in s: alfa}{{3}{8}{Algoritmos}{algorithm.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces iSignificado}}{9}{algorithm.4}}
+\newlabel{in d: diccString(alfa), in c: string -> res = alfa}{{4}{9}{Algoritmos}{algorithm.4}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces iDefinido?}}{9}{algorithm.5}}
+\newlabel{in d: diccString, in c: string -> res = bool}{{5}{9}{Algoritmos}{algorithm.5}{}}
+\newlabel{LastPage}{{}{9}{}{page.9}{}}
+\xdef\lastpage@lastpage{9}
+\xdef\lastpage@lastpageHy{9}
