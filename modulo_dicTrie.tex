@@ -131,95 +131,75 @@
   \subsection{Algoritmos}
 \subsubsection{Algoritmos de Diccionario String}
 
-\begin{algorithm}
-\caption{iCrearDicc}
-\label{() -> res = diccString}
-\begin{algorithmic}
-%\begin{comment}
-\State $n : nodo$
-\State $n \gets crearNodo()$
-\State $raiz \gets *n$
-\end{algorithmic}
-\end{algorithm}
+iCrearDicc() $\rightarrow$ res = diccString($\alpha$)
+\begin{lstlisting}[mathescape]
+ n $\leftarrow$ nodo
+ n $\leftarrow$ crearNodo()
+ raiz $\leftarrow$ *n
+\end{lstlisting}
 
 
-\begin{algorithm}
-\caption{iCrearNodo()}
-\label{() -> res = nodo}
-\begin{algorithmic}
-%\begin{comment}
-\State $d : arreglo\_estatico[256]$
-\State $i \gets 0$
-\While {$i < 256$}
-\State $d[i] \gets NULL$
-\EndWhile
-\State $hijos \gets d$
-\State $valor \gets NULL$
-\end{algorithmic}
-\end{algorithm}
+iCrearNodo() $\rightarrow$ res = nodo
+\begin{lstlisting}[mathescape]
+ d : arreglo\_estatico[256]
+ i $\leftarrow$ 0
+ while (i < 256)
+ 	d[i] $\leftarrow$ NULL
+ endWhile
+ hijos $\leftarrow$ d
+ valor $\leftarrow$ NULL
+\end{lstlisting}
 
-\begin{algorithm}
-\caption{iDefinir}
-\label{inout diccString(alfa): d, in string: c, in alfa: s}
-\begin{algorithmic}
-%\begin{comment}
-\State $i \gets 0$
-\State $p \gets d.raiz$
-\While {$i < (longitud(s))$}
-\If {$p.hijos[ord(s[i])] == NULL$}
-\State $n: nodo \gets crearNodo()$
-\State $p.hijos[ord(s[i])] \gets *n$
-\EndIf
-\State $p \gets p.hijos[ord(s[i])]$
-\State $i++$
-\EndWhile
-\State $p.valor \gets a$
-\State agregarAdelante(hijos, c)
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}
-\caption{iSignificado}
-\label{in diccString(alfa): d, in string: c -> res = alfa}
-\begin{algorithmic}
-%\begin{comment}
-\State $i \gets 0$
-\State $p \gets d.raiz$
-\While {$i < (longitud(s))$}
-\State $p \gets p.hijos[ord(s[i])]$
-\State $i++$
-\EndWhile\\
-\Return $p.valor$
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}
-\caption{iDefinido?}
-\label{in diccString: d, in string: c -> res = bool}
-\begin{algorithmic}
-\State $i \gets 0$
-\State $p \gets d.raiz$
-\While {$i < (longitud(s))$}
-\If {$p.hijos[ord(s[i])] != NULL$}
-\State $p \gets p.hijos[ord(s[i])]$
-\State $i++$
-\Else \\{$\Return false$}
-\EndIf
-\EndWhile\\
-\Return $p.valor != NULL$
-\end{algorithmic}
-\end{algorithm}
+iDefinir(inout diccString($\alpha$): d, in string: c, in alfa: s)
+\begin{lstlisting}[mathescape]
+ i $\leftarrow$ 0
+ p $\leftarrow$ d.raiz
+ while (i < (longitud(s)))
+ 	if (p.hijos[ord(s[i])] == NULL)
+		n: nodo $\leftarrow$ crearNodo()
+		p.hijos[ord(s[i])] $\leftarrow$ *n
+	endIf
+ p $\leftarrow$ p.hijos[ord(s[i])]
+ i++
+ endWhile
+ p.valor $\leftarrow$ a
+ agregarAdelante(hijos, c)
+\end{lstlisting}
 
 
-\begin{comment}
-\begin{algorithm}
-\caption{iClaves}
-\label{in diccString: d -> res = lista_enlazada(string)}
-\begin{algorithmic}
-\Return itClaves(d)
-\end{algorithmic}
-\end{algorithm}
-\end{comment}
+iSignificado(in diccString($\alpha$): d, in string: c) $\rightarrow$ res = alfa
+\begin{lstlisting}[mathescape]
+ i $\leftarrow$ 0
+ p $\leftarrow$ d.raiz
+ while (i < (longitud(s)))
+	p $\leftarrow$ p.hijos[ord(s[i])]
+ i++
+ endWhile
+ return p.valor
+\end{lstlisting}
+
+
+iDefinido?(in diccString: d, in string: c) $\rightarrow$ res = bool
+\begin{lstlisting}[mathescape]
+ i $\leftarrow$ 0
+ p $\leftarrow$ d.raiz
+ while (i < (longitud(s)))
+ 	if (p.hijos[ord(s[i])] != NULL)
+		p $\leftarrow$ p.hijos[ord(s[i])]
+		i++
+	else
+		return false
+	endIf
+ endWhile
+ return p.valor != NULL
+\end{lstlisting}
+
+
+iClaves(in diccString: d) $\rightarrow$ res = lista\_enlazada(string)
+\begin{lstlisting}[mathescape]
+return itClaves(d)
+\end{lstlisting}
+
 
 \subsubsection{Algoritmos del iterador de claves del Diccionario String}
 
