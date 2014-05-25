@@ -86,7 +86,7 @@
       		{<$arrayClientes$: array\_dimensionable(tuplaPorCliente), \\$cot$: nat, \\$enAlza$: bool, \\$maxAcc$:nat, \\$accDisponibles$: nat>),}
       	\end{minipage}}%
       	
-      \tupItem{clientes}{array\_dimensionable(cliente)}
+      \tupItem{clientes}{conjEstNat(cliente)}
       
       \tupItem{\'ultimoLlamado}{<$cliente$: cliente, $promesas$:conj(promesa), $fueUltimo$: bool>)}%
     \end{Tupla}
@@ -115,13 +115,14 @@
  	\item Las promesas de compra  son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
  	\item Las promesas de y venta son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
  	\item Las acciones disponibles de cada t\'itulo son el m\'aximo de acciones de ese t\'itulo menos la suma de las acciones de ese titulo que tengan los clientes, y son mayores o iguales a 0.
- 	\item El $cliente$ de $\acute{u}ltimoLlamado$ pertenece a $clientes$
+ 	\item El $cliente$ de $\acute{u}ltimoLlamado$ pertenece a $clientes$.
  	\item En $\acute{u}ltimoLlamado$, si $fue\acute{U}ltimo$ es true, las promesas de $promesas$ son todas las promesas que tiene $cliente$.
+ 	\item Los clientes est\'an ordenados en $arrayClientes$ de $e.titulos$.
   \end{enumerate}
   
   \Rep[estr][e]{\\
  	(I)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $c$: cliente) {\Large(}est\'aCliente?($c$, $e.clientes$) $\Leftrightarrow$ ($\exists$ $t$: t\'itulo) {\large(}def?($t$, $e.titulos$) \yluego est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$){\large)}{\Large)} \yluego
+  		($\forall$ $c$: cliente) {\Large(}pertenece?($c$, $e.clientes$) $\Leftrightarrow$ ($\exists$ $t$: t\'itulo) {\large(}def?($t$, $e.titulos$) \yluego est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$){\large)}{\Large)} \yluego
   	\end{minipage}\vspace{3mm}
 
   	(II)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
@@ -137,15 +138,23 @@
   	\end{minipage}\vspace{3mm}
   	
   	(V)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		(est\'aCliente($e.\acute{u}ltimoLlamado.cliente$, $e.clientes$)) $\land$
+		(pertenece?($e.\acute{u}ltimoLlamado.cliente$, $e.clientes$)) \yluego
   	\end{minipage}\vspace{3mm}
   	
 	(VI)\begin{minipage}[t]{\linewidth-\parindent-2cm}
 		($e.\acute{u}ltimoLlamado.fue\acute{U}ltimo$ $\Rightarrow$ ($\forall$ $p$: promesa) {\Large(}pertenece?($p$, $e.\acute{u}ltimoLlamado.promesas$) $\Leftrightarrow$ {\large(}def?(t\'itulo($p$), $e.titulos$) \yluego \\ {\IF tipo($p$)=compra THEN buscarCliente($e.\acute{u}ltimoLlamado.cliente$, obtener(t\'itulo($p$), $e.titulos$).$arrayClientes$).promCompra = $p$ ELSE buscarCliente($e.\acute{u}ltimoLlamado.cliente$, obtener(t\'itulo($p$), $e.titulos$).$arrayClientes$).promVenta = $p$ FI}{\large)}{\Large)}
   	\end{minipage}\vspace{3mm}
   	
-  	
-  }\mbox{}
+  	(VII)\begin{minipage}[t]{\linewidth-\parindent-2cm}
+		($\forall$ $t$: t\'itulo) def?($t, e.titulos$) \impluego {\large(}($\forall$ $i$:nat) i<longitud(buscar($t, e.titulos$).$arrayClientes$)-1 $\Rightarrow$ (buscar($t, e.titulos$).$arrayClientes$)[i] < (buscar($t, e.titulos$).$arrayClientes$)[i+1]{\large)}
+  	\end{minipage}\vspace{3mm}
+  	  }\mbox{}
+  	  
+  	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ t\'itulos($w$)=????????? $\land$ \\($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
+
+  \tadOperacion{damePromesas}{itTrie??????, estr, cliente}{conj(promesa)}{}
+  \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
+
 % para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente, sumaAccClientes 
 
 

@@ -11,3 +11,10 @@
 \BOOKMARK [2][-]{subsection.2.2}{Representacion}{section.2}
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Representaci\363n del DiccionarioTrie\(\)}{subsection.2.2}
 \BOOKMARK [2][-]{subsection.2.3}{Algoritmos}{section.2}
+\BOOKMARK [1][-]{section.3}{M\363dulo Conjunto Est\341tico de Nats}{}
+\BOOKMARK [2][-]{subsection.3.1}{Interfaz}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Operaciones b\341sicas de conjEstNat}{subsection.3.1}
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Operaciones b\341sicas de itConjEstNat}{subsection.3.1}
+\BOOKMARK [2][-]{subsection.3.2}{Representaci\363n}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Representaci\363n de conjEstNat}{subsection.3.2}
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Representaci\363n de itConjEstNat}{subsection.3.2}
