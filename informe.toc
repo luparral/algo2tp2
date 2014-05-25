@@ -13,7 +13,7 @@
 \contentsline {subsection}{\numberline {2.2}Representacion}{7}{subsection.2.2}
 \contentsline {subsubsection}{\numberline {2.2.1}Representaci\'on del Diccionario String($\alpha $)}{7}{subsubsection.2.2.1}
 \contentsline {subsubsection}{\numberline {2.2.2}Operaciones auxiliares del invatriante de Representaci\'on}{7}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}Representaci\'on del iterador de claves de Diccionario String($\alpha $)}{8}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.3}Representaci\'on del iterador de Claves del Diccionario String($\alpha $)}{8}{subsubsection.2.2.3}
 \contentsline {subsection}{\numberline {2.3}Algoritmos}{8}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}Algoritmos de Diccionario String}{8}{subsubsection.2.3.1}
 \contentsline {subsubsection}{\numberline {2.3.2}Algoritmos del iterador de claves del Diccionario String}{8}{subsubsection.2.3.2}

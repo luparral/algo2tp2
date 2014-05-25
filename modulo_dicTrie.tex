@@ -4,14 +4,14 @@
   \subsubsection{Par\'ametros formales}
    \parbox{1.7cm}{\textbf{g\'eneros}} string, $\alpha$\\
 
-  \textbf{se explica con}: \tadNombre{Diccionario}, \tadNombre{Iterador Unidireccional}.
+  \textbf{se explica con}: \tadNombre{Diccionario(string, $\alpha$)}, \tadNombre{Iterador Unidireccional}.
 
   \textbf{g\'eneros}: \TipoVariable{diccString($\alpha$), itDicc(diccString)}. %%###revisar
 
 %%Operaciones básicas
   \subsubsection{Operaciones b\'asicas de Diccionario String($\alpha$)}
 %%crearDicc
-  \InterfazFuncion{CrearDicc}{()}{diccString($\alpha$)}
+  \InterfazFuncion{CrearDicc}{}{diccString($\alpha$)}
   {$res \igobs vacio$}%
   [$\Theta(1)$]
   [Crea un diccionario vac\'io.]\\\\
@@ -35,22 +35,22 @@
   [No se devuelve una copia del $\alpha$ en res, se devuelve una referencia a la original.]\\\\
 
  \subsubsection{Operaciones b\'asicas del iterador de claves de Diccionario String($\alpha$)}
-  \InterfazFuncion{CrearIt}{\In{d}{diccString($\alpha$)}}{itdicc($\alpha$)}
-  {($\exists$ s:secu($string$)) secuAconj($s$) \igobs claves($d$) $\land$ res \igobs crearIt($s$)}
+  \InterfazFuncion{CrearIt}{\In{d}{diccString($\alpha$)}}{itClaves($string$)}
+  {res \igobs crearIt(d.claves) }
   [$\Theta(1)$]
   [Crea y devuelve un iterador de claves Diccionario String.]\\\\
 
-  \InterfazFuncion{HayMas?}{\In{d}{itDicc($\alpha$)}}{$bool$}
+  \InterfazFuncion{HayMas?}{\In{d}{itClaves($string$)}}{$bool$}
   {res \igobs hayMas?($it$)}%
   [$\Theta(longitud(c))$] %%##revisar
   [Informa si hay m\'as elementos por iterar.]\\\\
 
-  \InterfazFuncion{Actual}{\In{d}{itDicc($\alpha$)}}{$string$}
+  \InterfazFuncion{Actual}{\In{d}{itClaves($string$)}}{$string$}
   {res \igobs actual($it$)}
   [$\Theta(longitud(c))$]%%##revisar
   [Devuelve la clave de la posici\'on actual.]\\\\
 
-  \InterfazFuncion{Avanzar}{\Inout{it}{itDicc($\alpha$)}}{itDicc($\alpha$)}
+  \InterfazFuncion{Avanzar}{\Inout{it}{itClaves($string$)}}{itClaves($\alpha$)}
   [hayMas?($it$) $\land$ $it = it_{0}$] %%##revisar
   {res \igobs avanzar($it_{0}$)}
   [$\Theta(longitud(c))$]%%##revisar
@@ -63,14 +63,15 @@
 %%Estructura
   \begin{Estructura}{diccString$(\alpha)$}[estrDic]
     \begin{Tupla}[estrDic]
-      \tupItem{raiz}{puntero(nodo)}%%
+      \tupItem{raiz}{puntero(nodo)}
+      \tupItem{claves}{lista\_enlazada($string$)}%%
     \end{Tupla}
 \end{Estructura}
 
   \begin{Estructura}{Nodo}[estrNodo]
     \begin{Tupla}[estrNodo]
       \tupItem{valor}{puntero($\alpha$)}
-      \tupItem{hijos}{arreglo\_estatico[256](puntero(nodo))}%%
+      \tupItem{hijos}{arreglo\_estatico[256](puntero(nodo))}
     \end{Tupla}
 \end{Estructura}
 
@@ -81,15 +82,16 @@
  	\item Existe un \'unico camino entre cada nodo y el nodo raiz (es decir, no hay ciclos).
  	\item Todos los nodos hojas, es decir, todos los que tienen su arreglo hijos con todas sus posiciones en NULL, tienen que tener un valor distinto de NULL.
  	\item Raiz es distinto de NULL
+ 	\item En claves est\'a el camino que se recorre desde la raiz hasta cada nodo hoja.
   \end{enumerate}
 
 \Rep[estrDic][e]{\\
  	\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  	{raiz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e)} 
+  	{raiz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e) $\land$\\ hayHojas(e) $\Rightarrow$ |e.claves|> 0 $\land$ \\($\forall$ c $\in$ caminosANodos(e))($\exists$ i \{0..|e.claves|\}) e.claves[i] = c}
   	\end{minipage}\vspace{3mm}
   	 }\mbox{}
 
- \Abs[estrDicc]{diccString(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL $\yluego$ significado($c,d$) = leer($e.clave$).valor}
+ \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i \{0..|e.claves|\}) e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
 
 
  \subsubsection{Operaciones auxiliares del invatriante de Representaci\'on}
@@ -97,7 +99,7 @@
   \tadOperacion{noHayCiclos}{puntero(nodo)}{bool}{}
   \tadAxioma{noHayCiclos($n,p$)}{($\exists$ n:nat)(($\forall$ c: string)(|s| = n $\Rightarrow$ leer($p,s$) = NULL))}
   \tadOperacion{leer}{puntero(nodo), string}{bool}{}
-  \tadAxioma{leer($p,s$)}{\IF vacia?($s$) THEN p $\rightarrow$ valor ELSE {\IF p $\rightarrow$ arr[prim(s)] = NULL THEN NULL ELSE leer(p $\rightarrow$ arr[prim(s)], fin(s)) FI} FI}
+  \tadAxioma{leer($p,s$)}{\IF vacia?($s$) THEN p $\rightarrow$ valor ELSE {\IF p $\rightarrow$ hijos[prim(s)] = NULL THEN NULL ELSE leer(p $\rightarrow$ hijos[prim(s)], fin(s)) FI} FI}
   \tadOperacion{todosNull}{arreglo(puntero(nodo))}{bool}{}
   \tadAxioma{todosNull($a$)}{auxTodosNull($a, 0$)}
   \tadOperacion{auxTodosNull}{arreglo(puntero(nodo)), nat}{bool}{}
@@ -119,13 +121,12 @@
   \tadOperacion{auxTodasLasHojasTienenValor}{arreglo(puntero(nodo))}{bool}{}
   \tadAxioma{auxTodasLasHojasTienenValor($a$)}{\IF |a| = 0 THEN true ELSE dameUno(a).valor != NULL $\land$ auxTodasLasHojasTienenValor(sinUno(a)) FI}
 
-  \subsubsection{Representaci\'on del iterador de claves de Diccionario String($\alpha$)}
+  \subsubsection{Representaci\'on del iterador de Claves del Diccionario String($\alpha$)}
 
-  \begin{comment}
-	\Rep[iterador][i]{$i.pos$<longitud($*(i.lista)$)}
-	
-	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
-  \end{comment}
+    \begin{Estructura}{itClaves($string$)}[puntero(nodo)]
+    \end{Estructura}
+
+    Su Rep y Abs son los de itSecu($\alpha$) definido en el apunte de iteradores..
 
   \subsection{Algoritmos}
 \subsubsection{Algoritmos de Diccionario String}
@@ -173,6 +174,7 @@
 \State $i++$
 \EndWhile
 \State $p.valor \gets a$
+\State agregarAdelante(hijos, c)
 \end{algorithmic}
 \end{algorithm}
 
@@ -208,7 +210,19 @@
 \end{algorithmic}
 \end{algorithm}
 
+
+\begin{comment}
+\begin{algorithm}
+\caption{iClaves}
+\label{in diccString: d -> res = lista_enlazada(string)}
+\begin{algorithmic}
+\Return itClaves(d)
+\end{algorithmic}
+\end{algorithm}
+\end{comment}
+
 \subsubsection{Algoritmos del iterador de claves del Diccionario String}
 
+Utiliza los mismos algoritmos que itSecu($\alpha$) definido en el apunte de iteradores.
 
 \end{document}
