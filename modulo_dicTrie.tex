@@ -1,21 +1,12 @@
 \subsection{Interfaz}
-%%###no tenemos no parametros formales?
-
-  %%\InterfazFuncion{AgregarAdelante}{\Inout{l}{lista($\alpha$)}, \In{a}{$\alpha$}}{itLista($\alpha$}
 
 %%Parámetros formales
   \subsubsection{Par\'ametros formales}
    \parbox{1.7cm}{\textbf{g\'eneros}} string, $\alpha$\\
-    %%\parbox[t]{1.7cm}{\textbf{funci\'on}}\parbox[t]{\textwidth-2\parindent-1.7cm}{%
-     %%\InterfazFuncion{Copiar}{\In{a}{$\alpha$}}{$\alpha$}
-     %%{$res \igobs a$}
-     %%[$\Theta(copy(a))$]
-     %%[funci\'on de copia de $\alpha$ s]
-    %%}
 
-  \textbf{se explica con}: \tadNombre{Diccionario}.
+  \textbf{se explica con}: \tadNombre{Diccionario}, \tadNombre{Iterador Unidireccional}.
 
-  \textbf{g\'eneros}: \TipoVariable{diccString($\alpha$)}.
+  \textbf{g\'eneros}: \TipoVariable{diccString($\alpha$), itDicc(diccString)}. %%###revisar
 
 %%Operaciones básicas
   \subsubsection{Operaciones b\'asicas de Diccionario String($\alpha$)}
@@ -26,7 +17,7 @@
   [Crea un diccionario vac\'io.]\\\\
 %%definir
   \InterfazFuncion{Definir}{\Inout{d}{diccString($\alpha$)}, \In{c}{string}, \In{s}{$\alpha$}}{}
-  [$d \igobs d_0 \wedge \neg definido?(d,c)$]
+  [$d \igobs d_0 \wedge \neg def?(d,c)$]
   {$d \igobs definir(d_0,c,s)$}%
   [$\Theta(longitud(c))$]
   [Define la clave c con el significado s en el diccionario d.]\\\\
@@ -42,7 +33,29 @@
   [$\Theta(longitud(c))$]
   [Devuelve el significado con clave c.]
   [No se devuelve una copia del $\alpha$ en res, se devuelve una referencia a la original.]\\\\
-%%todosLosSignificados  
+
+ \subsubsection{Operaciones b\'asicas del iterador de claves de Diccionario String($\alpha$)}
+  \InterfazFuncion{CrearIt}{\In{d}{diccString($\alpha$)}}{itdicc($\alpha$)}
+  {($\exists$ s:secu($string$)) secuAconj($s$) \igobs claves($d$) $\land$ res \igobs crearIt($s$)}
+  [$\Theta(1)$]
+  [Crea y devuelve un iterador de claves Diccionario String.]\\\\
+
+  \InterfazFuncion{HayMas?}{\In{d}{itDicc($\alpha$)}}{$bool$}
+  {res \igobs hayMas?($it$)}%
+  [$\Theta(longitud(c))$] %%##revisar
+  [Informa si hay m\'as elementos por iterar.]\\\\
+
+  \InterfazFuncion{Actual}{\In{d}{itDicc($\alpha$)}}{$string$}
+  {res \igobs actual($it$)}
+  [$\Theta(longitud(c))$]%%##revisar
+  [Devuelve la clave de la posici\'on actual.]\\\\
+
+  \InterfazFuncion{Avanzar}{\Inout{it}{itDicc($\alpha$)}}{itDicc($\alpha$)}
+  [hayMas?($it$) $\land$ $it = it_{0}$] %%##revisar
+  {res \igobs avanzar($it_{0}$)}
+  [$\Theta(longitud(c))$]%%##revisar
+  [Avanza a la pr\'oxima clave.]\\\\
+
 
 \subsection{Representacion}
   
@@ -106,10 +119,16 @@
   \tadOperacion{auxTodasLasHojasTienenValor}{arreglo(puntero(nodo))}{bool}{}
   \tadAxioma{auxTodasLasHojasTienenValor($a$)}{\IF |a| = 0 THEN true ELSE dameUno(a).valor != NULL $\land$ auxTodasLasHojasTienenValor(sinUno(a)) FI}
 
+  \subsubsection{Representaci\'on del iterador de claves de Diccionario String($\alpha$)}
 
-  
+  \begin{comment}
+	\Rep[iterador][i]{$i.pos$<longitud($*(i.lista)$)}
+	
+	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
+  \end{comment}
+
   \subsection{Algoritmos}
-
+\subsubsection{Algoritmos de Diccionario String}
 
 \begin{algorithm}
 \caption{iCrearDicc}
@@ -140,7 +159,7 @@
 
 \begin{algorithm}
 \caption{iDefinir}
-\label{inout d: diccString(alfa), in c: string, in s: alfa}
+\label{inout diccString(alfa): d, in string: c, in alfa: s}
 \begin{algorithmic}
 %\begin{comment}
 \State $i \gets 0$
@@ -159,7 +178,7 @@
 
 \begin{algorithm}
 \caption{iSignificado}
-\label{in d: diccString(alfa), in c: string -> res = alfa}
+\label{in diccString(alfa): d, in string: c -> res = alfa}
 \begin{algorithmic}
 %\begin{comment}
 \State $i \gets 0$
@@ -174,7 +193,7 @@
 
 \begin{algorithm}
 \caption{iDefinido?}
-\label{in d: diccString, in c: string -> res = bool}
+\label{in diccString: d, in string: c -> res = bool}
 \begin{algorithmic}
 \State $i \gets 0$
 \State $p \gets d.raiz$
@@ -188,6 +207,8 @@
 \Return $p.valor != NULL$
 \end{algorithmic}
 \end{algorithm}
+
+\subsubsection{Algoritmos del iterador de claves del Diccionario String}
 
 
 \end{document}
