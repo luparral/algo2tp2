@@ -13,66 +13,79 @@
      %%[funci\'on de copia de $\alpha$ s]
     %%}
 
-  \textbf{se explica con}: \tadNombre{diccTrie($\alpha$)}.
+  \textbf{se explica con}: \tadNombre{Diccionario}.
 
-  \textbf{g\'eneros}: \TipoVariable{diccTrie($\alpha$)}.
+  \textbf{g\'eneros}: \TipoVariable{diccString($\alpha$)}.
 
 %%Operaciones básicas
-  \subsubsection{Operaciones b\'asicas de DiccTrie($\alpha$)}
+  \subsubsection{Operaciones b\'asicas de Diccionario String($\alpha$)}
 %%crearDicc
-  \InterfazFuncion{CrearDicc}{()}{diccTrie($\alpha$)}
+  \InterfazFuncion{CrearDicc}{()}{diccString($\alpha$)}
   {$res \igobs vacio$}%
   [$\Theta(1)$]
   [Crea un diccionario vac\'io.]\\\\
 %%definir
-  \InterfazFuncion{Definir}{\Inout{d}{diccTrie($\alpha$)}, \In{c}{string}, \In{s}{conj($\alpha$)}}{}
+  \InterfazFuncion{Definir}{\Inout{d}{diccString($\alpha$)}, \In{c}{string}, \In{s}{$\alpha$}}{}
   [$d \igobs d_0 \wedge \neg definido?(d,c)$]
   {$d \igobs definir(d_0,c,s)$}%
   [$\Theta(longitud(c))$]
   [Define la clave c con el significado s en el diccionario d.]\\\\
 %%definido?  
-  \InterfazFuncion{Definido?}{\In{d}{diccTrie($\alpha$)}, \In{c}{string}}{bool}
+  \InterfazFuncion{Definido?}{\In{d}{diccString($\alpha$)}, \In{c}{string}}{bool}
   {$res \igobs def?(c,d)$}%
   [$\Theta(longitud(c))$]
   [Devuelve true si y solo si c est\'a definido como clave en el diccionario.]\\\\
 %%significado  
-  \InterfazFuncion{Significado}{\In{d}{diccTrie($\alpha$)}, \In{c}{string}}{$\alpha$}
+  \InterfazFuncion{Significado}{\In{d}{diccString($\alpha$)}, \In{c}{string}}{$\alpha$}
   [$def?(c,d)$]
   {$res \igobs obtener(c,d)$}%
   [$\Theta(longitud(c))$]
   [Devuelve el significado con clave c.]
   [No se devuelve una copia del $\alpha$ en res, se devuelve una referencia a la original.]\\\\
 %%todosLosSignificados  
-  \InterfazFuncion{TodosLosSignificados}{\Inout{d}{diccTrie($\alpha$)}}{conj($\alpha$)}
-  {$(\forall a: \alpha) \, a \in res \rightarrow (\exists c: clave) \, c \in claves(d) \yluego a = obtener(d,c) $}%
-  [$\Theta(|max_c|)$]
-  [Devuelve todos los significados guardados en el diccionario d.]
-  [res no es modificable]\\\\
 
 \subsection{Representacion}
   
-  \subsubsection{Representaci\'on del DiccionarioTrie($\alpha$)}
+  \subsubsection{Representaci\'on del Diccionario String($\alpha$)}
 %%Estructura
-  \begin{Estructura}{diccTrie$(\alpha)$}[dic]
-    \begin{Tupla}[dic]
-      \tupItem{raiz}{puntero(nodoTrie)}%%
+  \begin{Estructura}{diccString$(\alpha)$}[estrDic]
+    \begin{Tupla}[estrDic]
+      \tupItem{raiz}{puntero(nodo)}%%
     \end{Tupla}
 \end{Estructura}
 
-  \begin{Estructura}{NodoTrie}[nodo]
-    \begin{Tupla}[nodo]
+  \begin{Estructura}{Nodo}[estrNodo]
+    \begin{Tupla}[estrNodo]
       \tupItem{valor}{puntero($\alpha$)}
-      \tupItem{hijos}{arreglo(puntero(nodoTrie))}%%
+      \tupItem{hijos}{arreglo(puntero(nodo))}%%
     \end{Tupla}
 \end{Estructura}
 
 %%Rep 
 
+\renewcommand{\labelenumi}{(\Roman{enumi})}
+ \begin{enumerate}
+ 	\item Existe un \'unico camino entre cada nodo y el nodo raiz (es decir, no hay ciclos).
+ 	\item Todos los nodos hojas, es decir, todos los que tienen su arreglo hijos con todas sus posiciones en NULL, tienen que tener un valor distinto de NULL.
+ 	\item Raiz es distinto de NULL
+ 	\item El arreglo hijos de cualquier nodo tiene 256 posiciones.
+  \end{enumerate}
+
+\Rep[estrDic][e]{\\
+ 	\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
+  	{raiz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e) $\land$ nodosConCantHijosValidos(e)} 
+  	\end{minipage}\vspace{3mm}
+  	 }\mbox{}
+
+  \tadOperacion{damePromesas}{itTrie??????, estr, cliente}{conj(promesa)}{}
+  \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
+
 \subsection{Algoritmos}
 
 
 \begin{algorithm}
-\caption{iCrear()}
+\caption{iCrearDicc}
+\label{() -> res = diccString}
 \begin{algorithmic}
 %\begin{comment}
 \State $n : nodo$
@@ -84,6 +97,7 @@
 
 \begin{algorithm}
 \caption{iCrearNodo()}
+\label{() -> res = nodo}
 \begin{algorithmic}
 %\begin{comment}
 \State $d : arreglo\_estatico[256]$
@@ -91,17 +105,18 @@
 \While {$i < 256$}
 \State $d[i] \gets NULL$
 \EndWhile
-\State $this.hijos \gets d$
-\State $this.valor \gets NULL$
+\State $hijos \gets d$
+\State $valor \gets NULL$
 \end{algorithmic}
 \end{algorithm}
 
 \begin{algorithm}
-\caption{iDefinir(string: s, alfa: a)}
+\caption{iDefinir}
+\label{inout d: diccString(alfa), in c: string, in s: alfa}
 \begin{algorithmic}
 %\begin{comment}
 \State $i \gets 0$
-\State $p \gets this.raiz$
+\State $p \gets d.raiz$
 \While {$i < (longitud(s))$}
 \If {$p.hijos[ord(s[i])] == NULL$}
 \State $n: nodo \gets crearNodo()$
@@ -115,16 +130,36 @@
 \end{algorithm}
 
 \begin{algorithm}
-\caption{iObtener(string: s)}
+\caption{iSignificado}
+\label{in d: diccString(alfa), in c: string -> res = alfa}
 \begin{algorithmic}
 %\begin{comment}
 \State $i \gets 0$
-\State $p \gets this.raiz$
+\State $p \gets d.raiz$
 \While {$i < (longitud(s))$}
 \State $p \gets p.hijos[ord(s[i])]$
 \State $i++$
-\EndWhile
-\State $p.valor \gets a$
+\EndWhile\\
 \Return $p.valor$
 \end{algorithmic}
 \end{algorithm}
+
+\begin{algorithm}
+\caption{iDefinido?}
+\label{in d: diccString, in c: string -> res = bool}
+\begin{algorithmic}
+\State $i \gets 0$
+\State $p \gets d.raiz$
+\While {$i < (longitud(s))$}
+\If {$p.hijos[ord(s[i])] != NULL$}
+\State $p \gets p.hijos[ord(s[i])]$
+\State $i++$
+\Else \\{$\Return false$}
+\EndIf
+\EndWhile\\
+\Return $p.valor != NULL$
+\end{algorithmic}
+\end{algorithm}
+
+
+\end{document}
