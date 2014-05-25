@@ -148,6 +148,19 @@
   	(VII)\begin{minipage}[t]{\linewidth-\parindent-2cm}
 		($\forall$ $t$: t\'itulo) def?($t, e.titulos$) \impluego {\large(}($\forall$ $i$:nat) i<longitud(buscar($t, e.titulos$).$arrayClientes$)-1 $\Rightarrow$ (buscar($t, e.titulos$).$arrayClientes$)[i] < (buscar($t, e.titulos$).$arrayClientes$)[i+1]{\large)}
   	\end{minipage}\vspace{3mm}
+  	
+  \tadOperacion{est\'aCliente?}{cliente, array\_dimensionable(tuplaPorCliente)}{bool}{}
+  \tadAxioma{est\'aCliente?($c, a$)}{auxEst\'aCliente($c, a, 0$)}\vspace{3mm}
+  	
+  \tadOperacion{auxEst\'aCliente}{cliente, array\_dimensionable(tuplaPorCliente), nat}{bool}{}
+  \tadAxioma{auxEst\'aCliente($c, a$, $i$)}{{\IF $i$=longitud($a$) THEN false ELSE $a[i].cliente=c \lor$ auxEst\'aCliente($c, a, i+1$) FI}}\vspace{3mm}
+  	
+  
+  \tadOperacion{buscarCliente}{cliente, array\_dimensionable(tuplaPorCliente)}{tuplaPorCliente}{est\'aCliente($c,a$)}
+  \tadAxioma{buscarCliente($c, a$)}{auxBuscarCliente($c, a, 0$)}\vspace{3mm}
+  	
+  \tadOperacion{auxBuscarCliente}{cliente, array\_dimensionable(tuplaPorCliente), nat}{tuplaPorCliente}{est\'aCliente($c,a$)}
+  \tadAxioma{auxBuscarCliente($c, a$, $i$)}{{\IF $a[i].cliente=c$ THEN $a[i]$ ELSE auxBuscarCliente($c, a, i+1$) FI}}
   	  }\mbox{}
   	  
   	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ t\'itulos($w$)=????????? $\land$ \\($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
@@ -156,5 +169,6 @@
   \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
 
 % para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente, sumaAccClientes 
+
 
 

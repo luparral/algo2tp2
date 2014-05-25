@@ -1,0 +1,141 @@
+\section{M\'odulo Conjunto Est\'atico de Nats}
+\subsection{Interfaz}
+
+%%Parámetros formales
+   \parbox{1.7cm}{\textbf{g\'eneros}} conjEstNat, itConjEstNat\\
+    %%\parbox[t]{1.7cm}{\textbf{funci\'on}}\parbox[t]{\textwidth-2\parindent-1.7cm}{%
+     %%\InterfazFuncion{Copiar}{\In{a}{$\alpha$}}{$\alpha$}
+     %%{$res \igobs a$}
+     %%[$\Theta(copy(a))$]
+     %%[funci\'on de copia de $\alpha$ s]
+    %%}
+
+  \textbf{se explica con}: \tadNombre{Conjunto}.
+
+    %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista($\alpha$)}.
+
+%%Operaciones básicas
+  \subsubsection{Operaciones b\'asicas de conjEstNat}
+ %%clientes
+  \InterfazFuncion{nuevoConjEstNat}{\In{c}{conj(nat)}}{conjEstNat}
+  {$res$ \igobs c}
+  [$\Theta(n*(log n))$]
+  [Crea un conjunto est\'atico de nats]\\\\
+  
+  \InterfazFuncion{pertenece?}{\In{n}{nat}, \In{c}{conjEstNat}}{bool}
+  {$res$ \igobs n $\in$ c}
+  [$\Theta(n)$]
+  [Crea un conjunto est\'atico de nats]\\\\
+  
+  \subsubsection{Operaciones b\'asicas de itConjEstNat}  
+  
+  \InterfazFuncion{crearIt}{\In{c}{conjEstNat}}{itConjEstNat}
+  {$res$ \igobs crearItUni($c$)}
+  [$\Theta(1)$]
+  [Devuelve un iterador unidireccional a un conjunto est\'atico de nats]\\\\
+  
+  \InterfazFuncion{actual}{\In{i}{itConjEstNat}}{nat}
+  {$res$ \igobs actual($i$)}
+  [$\Theta(1)$]
+  [Devuelve la posicion actual]\\\\
+  
+  \InterfazFuncion{pr\'oximo}{\In{i}{itConjEstNat}}{itConjEstNat}
+  [hayMas?($i$)]
+  {$res$ \igobs avanzar($i$)}
+  [$\Theta(1)$]
+  [Avanza el iterador]\\\\
+  
+  \InterfazFuncion{hayPr\'ox?}{\In{i}{itConjEstNat}}{bool}
+  [$i_{0}$ = $i$]
+  {$res$ \igobs hayMas?($i$}
+  [$\Theta(1)$]
+  [Pregunta si hay mas elementos para iterar]\\\\
+\subsection{Representaci\'on}
+%------------------------estr----------------------------
+\subsubsection{Representaci\'on de conjEstNat}
+\begin{Estructura}{conjEstNat}[array: arreglo\_dimensionable(nat)]\end{Estructura}
+ 	Rep: los elementos estan ordenados y no hay repeticiones
+ 	\Rep[array][a]{($\forall$ $i$: nat) ($i$ < longitud($a$)-1 $\Rightarrow$ (definido?($a$, $i$) $\land$ definido?($a$, $i+1$) \yluego $a[i]$<$a[i+1]$))}
+ 	
+ 	\Abs[array]{conjEstNat}[a]{$c$}{($\forall$ $n$: nat) $n \in c \Leftrightarrow$ est\'aEnArray?($n$, $a$, 0)}
+ 	
+  \tadOperacion{est\'aEnArray?}{nat, arreglo\_dimensionable(nat), nat}{bool}{}
+  \tadAxioma{est\'aEnArray($n, a, i$)}{{\IF $i$= longitud($a$)-1 THEN false ELSE $a[i]=n$ $\lor$ est\'aEnArray?($n, a, i+1$) FI}}
+ 	
+\subsubsection{Representaci\'on de itConjEstNat}
+\begin{Estructura}{itConjEstNat}[iterador]
+	\begin{Tupla}[iterador]
+		\tupItem{pos}{nat,} 
+		\tupItem{lista}{puntero(arreglo\_dimensionable(nat))}
+	\end{Tupla}
+\end{Estructura}
+
+	\Rep[iterador][i]{$i.pos$<longitud($*(i.lista)$)}
+	
+	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
+	
+\begin{algorithm}
+\caption{iNuevoConjEstNat(conj)}
+\begin{algorithmic}
+	%\begin{comment}
+	\State $it:itConj$
+	\State $it \gets crearIt(conj)$
+	\State $a : arreglo\_dimensionable[cardinal(conj)]$
+	\State $i : nat$
+	\State $i \gets 0$
+	\While {$haySiguiente?(it)$}
+	\State $a[i] \gets siguiente(it)$
+	\State $i++$
+	\State $avanzar(it)$
+	\EndWhile
+	\State $heapSort(a)$
+	\State $return(a)$
+\end{algorithmic}
+\end{algorithm}
+	
+\begin{algorithm}
+\caption{iPertenece?(n, c)}
+\begin{algorithmic}
+	%\begin{comment}
+	\State $i : nat$
+	\State $i \gets 0$
+	\State $b : bool$
+	\State $b \gets false$
+	\While {$i<longitud(c)$}
+	\State $b \gets b \lor c[i]=n$
+	\EndWhile
+	\State $return(b)$
+\end{algorithmic}
+\end{algorithm}
+	
+\begin{algorithm}
+\caption{iCrearIt(c)}
+\begin{algorithmic}
+	%\begin{comment}
+	\State $return <longitud(c), \&c>$ 
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{iActual(it)}
+\begin{algorithmic}
+	\State $return *(it.lista)[it.pos]$	
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{iPr\'oximo(it)}
+\begin{algorithmic}
+	\State $return <it.pos+1, it.lista>$	
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{ihayPr\'ox(it)}
+\begin{algorithmic}
+	\State $return it.pos+1<longitud(it.lista)$	
+\end{algorithmic}
+\end{algorithm}
+
+Servicios usados: se utlilzan solo tipos basicos, incluido el arreglo y punteros.
