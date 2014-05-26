@@ -19,40 +19,40 @@
  %%clientes
   \InterfazFuncion{NuevoConjEstNat}{\In{c}{conj(nat)}}{conjEstNat}
   {$res$ \igobs c}
-  [$\Theta(n*(log (n)))$]
+  [$O(n*(log (n)))$]
   [Crea un conjunto est\'atico de nats]\\\\
   
   \InterfazFuncion{Pertenece?}{\In{n}{nat}, \In{c}{conjEstNat}}{bool}
   {$res$ \igobs n $\in$ c}
-  [$\Theta(n)$]
+  [$O(n)$]
   [Pregunta si el elemento pertenece al conjunto]\\\\
 
   \InterfazFuncion{Cardinal}{\In{c}{conjEstNat}}{nat}
   {$res$ \igobs \#$c$}
-  [$\Theta(n)$]
+  [$O(n)$]
   [Devuelve la cantidad de elementos que hay en el conjunto]\\\\  
   \subsubsection{Operaciones b\'asicas de itConjEstNat}  
   
   \InterfazFuncion{CrearIt}{\In{c}{conjEstNat}}{itConjEstNat}
   {$res$ \igobs crearItUni($c$)}
-  [$\Theta(1)$]
+  [$O(1)$]
   [Devuelve un iterador unidireccional a un conjunto est\'atico de nats]\\\\
   
   \InterfazFuncion{Actual}{\In{i}{itConjEstNat}}{nat}
   {$res$ \igobs actual($i$)}
-  [$\Theta(1)$]
+  [$O(1)$]
   [Devuelve la posicion actual]\\\\
   
   \InterfazFuncion{Pr\'oximo}{\In{i}{itConjEstNat}}{itConjEstNat}
   [hayMas?($i$)]
   {$res$ \igobs avanzar($i$)}
-  [$\Theta(1)$]
+  [$O(1)$]
   [Avanza el iterador]\\\\
   
   \InterfazFuncion{HayPr\'ox?}{\In{i}{itConjEstNat}}{bool}
   [$i_{0}$ = $i$]
   {$res$ \igobs hayMas?($i$}
-  [$\Theta(1)$]
+  [$O(1)$]
   [Pregunta si hay mas elementos para iterar]\\\\
 \subsection{Representaci\'on}
 %------------------------estr----------------------------
@@ -81,50 +81,68 @@
 	
 iNuevoConjEstNat(in c: conj(nat)) $\rightarrow$ res: array
 \begin{lstlisting}[mathescape]
- $\textbf{itConj(nat)}$ it $\leftarrow$ crearIt(c))
- $\textbf{arreglo\_dimensionable(nat)[cardinal(c)]}$ a 
- $\textbf{nat}$ i $\leftarrow$ 0
- while (HaySiguiente?(it))
- 	a[i] $\leftarrow$ Siguiente(it)
- 	i++
- 	Avanzar(it)
+ $\textbf{itConj(nat)}$ it $\leftarrow$ crearIt(c))								O(1)
+ $\textbf{arreglo\_dimensionable(nat)[cardinal(c)]}$ a										O(n)
+ $\textbf{nat}$ i $\leftarrow$ 0										O(1)
+ while (HaySiguiente?(it))						n*
+ 	a[i] $\leftarrow$ Siguiente(it)						O(1)
+ 	i++								O(1)
+ 	Avanzar(it)							O(1)
  endWhile
- heapsort(a)
+ heapsort(a)						  		  O(n(log(n)))
  return(a)
 \end{lstlisting}
-	
+\textbf{Complejidad:} O(1)+O(n)+O(1)+n*(O(1)+O(1)+O(1))+O(n(log(n))) = O(n(log(n)))\\
+
 iPertenece(in n: nat, in c: array) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
- $\textbf{bool}$ b $\leftarrow$ false
- $\textbf{nat}$ i $\leftarrow$ 0
- while (i<|c|)
- 	b $\leftarrow$ (b $\lor$ c[i]=n)
- 	i++
+ $\textbf{bool}$ b $\leftarrow$ false									O(1)
+ $\textbf{nat}$ i $\leftarrow$ 0										O(1)
+ while (i<|c|)								n*
+ 	b $\leftarrow$ (b $\lor$ c[i]=n)							O(1)
+ 	i++								O(1)
  endWhile
  return(b)
 \end{lstlisting}
+\textbf{Complejidad:} O(1)+O(1)+n*(O(1)+O(1)) = O(n)\\
 	
 iCrearIt(in a: array) $\rightarrow$ res: iterador
 \begin{lstlisting}[mathescape]
  return (<|c|, &c>)
 \end{lstlisting}
+\textbf{Complejidad:} O(1)\\
 
 iActual(in it: iterador) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
  return *(it.lista)[it.pos]
 \end{lstlisting}
+\textbf{Complejidad:} O(1)\\
 
 iActual(in/out it: iterador)
 \begin{lstlisting}[mathescape]
  return <it.pos+1, it.lista>
 \end{lstlisting}
+\textbf{Complejidad:} O(1)\\
 
 iHayPr\'oximo?(in it: iterador) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
  return (it.pos+1<longitud(it.lista))
 \end{lstlisting}
+\textbf{Complejidad:} O(1)\\
 
 Servicios usados: se utlilzan solo tipos basicos, incluidos arreglos y punteros.
+
+\subsection{Servicios Usados}
+\begin{center}
+\begin{tabular*}{2.75\textwidth}{c |c | c }
+\textbf{M\'odulo} & \textbf{Operaci\'on} & \textbf{Complejidad Requerida}\\
+arreglo\_est\'atico & CrearNuevo & O(n)\\
+arreglo\_est\'atico & AgregarElemento & O(1)\\
+arreglo\_est\'atico & $\bullet$[$\bullet$] & O(1)\\
+& heapsort & O(n(log(n)))\\
+\end{tabular*}
+\end{center}
+
 
 \subsection {TAD \tadNombre{Conjunto Est\'atico de Nats}}
 

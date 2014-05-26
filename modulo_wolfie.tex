@@ -188,132 +188,168 @@ iClientes(in e: estr) $\rightarrow$ res: itConjEstNat
 \begin{lstlisting}[mathescape]
   return(CrearIt(e.clientes))
 \end{lstlisting}
-
+\textbf{Complejidad:} O(1)
 %--------------------------falta iTitulos------------------
 
 iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res: itConj(promesa)
 \begin{lstlisting}[mathescape]
- if $\neg$(e.ultimoLlamado.cliente = c $\land$ e.ultimoLlamado.fueUltimo) then
-   $\textbf{itClaves(diccString)}$ it $\leftarrow$ crearIt(e.titulos)
-   $\textbf{conj(promesa)}$ proms $\leftarrow$ vacio() 
-   $\textbf{tuplaPorClientes}$ tup
-   while (HayMas?(it))
-     tup $\leftarrow$ BuscarCliente(Obtener(Nombre(Actual(it)), e. titulos).arrayClientes)
-     if tup.promVenta $\neq$ NULL then AgregarRapido(proms, *(tup.promVenta))
-     if tup.promCompra $\neq$ NULL then AgregarRapido(proms, *(tup.promCompra))
-     Avanzar(it)
+ if $\neg$(e.ultimoLlamado.cliente = c $\land$ e.ultimoLlamado.fueUltimo) then		O(1)
+   $\textbf{itClaves(diccString(nombre, infoTitulo))}$ it $\leftarrow$ CrearIt(e.titulos)							O(1)
+   $\textbf{conj(promesa)}$ proms $\leftarrow$ vacio() 								O(1)
+   $\textbf{tuplaPorClientes}$ tup										O(1)
+   while (HayMas?(it))						T*	   O(1)
+     tup $\leftarrow$ BuscarCliente(Obtener(Nombre(Actual(it)), e. titulos).arrayClientes)	
+     							O(C*|nombre(actual(it))|)
+     if tup.promVenta $\neq$ NULL then AgregarRapido(proms, *(tup.promVenta))	   O(1)
+     if tup.promCompra $\neq$ NULL then AgregarRapido(proms, *(tup.promCompra)) O(1)
+     Avanzar(it)								O(1)
    endWhile
-   e.ultimoLlamado.promesas $\leftarrow$ proms
+   e.ultimoLlamado.promesas $\leftarrow$ proms						O(1)
  fi
- return(crearIt(e.ultimoLlamado.promesas)
+ return(crearIt(e.ultimoLlamado.promesas))					O(1)
 \end{lstlisting}
+\textbf{Complejidad:} 4*O(1)+T*(O(1)+O(C*|nombre(actual(it))|)+3*O(1))+O(1)+O(1)$\subseteq$O(T*C*|max\_nt|)
 
 iAccionesPorCliente(in c: cliente, in nt, nombreT, in e: estr) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
   return(BuscarCliente(c, Obtener(nt, e.titulos)).cantAcc)
 \end{lstlisting}
+\textbf{Complejidad:} O(log(C)+|nt|)
 
 iInaugurarWolfie(in c: conj(cliente)) $\rightarrow$ res: estr
 \begin{lstlisting}[mathescape]
-  res.titulos $\leftarrow$ CrearDicc()
-  res.clientes $\leftarrow$ NuevoConjEstNat(c)
-  res.ultimoLlamado $\leftarrow$ <0, Vacio(), false>
+  res.titulos $\leftarrow$ CrearDicc()							O(1)
+  res.clientes $\leftarrow$ NuevoConjEstNat(c)					O(C(log(C)))	
+  res.ultimoLlamado $\leftarrow$ <0, Vacio(), false>					O(1)
 \end{lstlisting}
+\textbf{Complejidad:} O(C(log(C)))
 
 iAgregarT\'itulo(in t: t\'itulo, in/out e: estr) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
   Definir(e.titulos, nombre(t), <CrearArrayClientes(CrearIt(e.clientes),cardinal
   	(e.clientes)), cotizacion(t), enAlza(t), #maxAcciones(t), #maxAcciones(t))
 \end{lstlisting}
+\textbf{Complejidad:} O(|nombre(t)|+C)
 
 iActualizarCotizaci\'on(in nt: nombre, in cot: nat, in/out e: estr)
 \begin{lstlisting}[mathescape]
-  $\textbf{infoTitulo}$ s $\leftarrow$ Obtener(nt, e.titulos)
-  if s.cot < cot then 
-  	s.enAlza $\leftarrow$ true 
+  $\textbf{infoTitulo}$ s $\leftarrow$ Obtener(nt, e.titulos) 		O(|nt|)
+  if s.cot < cot then								O(1)
+  	s.enAlza $\leftarrow$ true 								O(1)
   else 
-  	s.enAlza $\leftarrow$ false
+  	s.enAlza $\leftarrow$ false								O(1)
   fi
-  s.cot $\leftarrow$ cot
-  $\textbf{nat}$ i $\leftarrow$ 0
-  while i<|s.arrayClientes|
+  s.cot $\leftarrow$ cot									O(1)
+  $\textbf{nat}$ i $\leftarrow$ 0										O(1)
+  while i<|s.arrayClientes|						C*
     if (s.arrayClientes[i].promVenta $\neq$ NULL \yluego limite(*(s.arrayClientes[i].promVenta))
-> s.cot) then
-      s.arrayClientes[i].cantAcc -= cantidad(*(s.arrayClientes[i].promVenta))
-      s.accDisponibles += cantidad(*(s.arrayClientes[i].promVenta))
-      s.arrayClientes[i].promVenta = NULL
+> s.cot) then									O(1)
+      s.arrayClientes[i].cantAcc -= cantidad(*(s.arrayClientes[i].promVenta))	O(1)
+      s.accDisponibles += cantidad(*(s.arrayClientes[i].promVenta))		O(1)
+      s.arrayClientes[i].promVenta = NULL					O(1)
     fi
   endWhile
-  $\textbf{arreglo\_dimensionable(tuplaPorCantAcc)[|s.arrayClientes|]}$ arr
-  CambiarPorCantAcc(s.arrayClientes, arr)
-  heapsort(arr)
-  i $\leftarrow$ 0
-  while i<|s.arrayClientes|
+  $\textbf{arreglo\_dimensionable(tuplaPorCantAcc)[|s.arrayClientes|]}$ arr										O(C)
+  CambiarPorCantAcc(s.arrayClientes, arr)					O(C)
+  heapsort(arr)								    O(C(log(C)))
+  i $\leftarrow$ 0										O(1)
+  while i<|s.arrayClientes|						C*
     if (arr[i].promCompra $\neq$ NULL \yluego limite(*(arr[i].promCompra)) < s.cot $\land$ 
-cantidad(*(arr[i].promCompra)) $\leq$ s.accDisponibles) then  
-      arr[i].cantAcc += cantidad(*(arr[i].promCompra))
-      s.accDisponibles -= cantidad(*(arr[i].promCompra))
-      arr[i].promCompra = NULL
+cantidad(*(arr[i].promCompra)) $\leq$ s.accDisponibles) then			O(1)
+      arr[i].cantAcc += cantidad(*(arr[i].promCompra))			O(1)
+      s.accDisponibles -= cantidad(*(arr[i].promCompra))		O(1)
+      arr[i].promCompra = NULL						O(1)
     fi
-    i++
+    i++									O(1)
   endWhile
-  CambiarPorCliente(arr, s.arrayClientes)
-  heapsort(s.arrayClientes)
+  CambiarPorCliente(arr, s.arrayClientes)					O(C)
+  heapsort(s.arrayClientes)						   O(C(log(C)))
   
 \end{lstlisting}
+\textbf{Complejidad:} O(|nt|)+5*O(1)+C*4*O(1)+O(C)+O(C)+O(C(log(C)))+O(1)+C*4*O(1)+O(C)+O(C(log(C)))=\\\indent\indent\indent O(|nt|+C(log(C)))
 
 iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
 \begin{lstlisting}[mathescape]
-  $\textbf{promesa}$ prom $\leftarrow$ p
-  if tipo(prom)=compra then
+  $\textbf{promesa}$ prom $\leftarrow$ p									O(1)
+  if tipo(prom)=compra then							O(1)
    BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+   									O(|titulo(p)|+C)
   else
    BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+   									O(|titulo(p)|+C)
   fi
 \end{lstlisting}
+\textbf{Complejidad:} O(1)+O(1)+O(|titulo(p)|+C)=O(|titulo(p)|+C)
 
 iEnAlza(in nt: nombreT, in e: estr) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
   return(Obtener(nt, e.titulos).enAlza)
 \end{lstlisting}
-
+\textbf{Complejidad:} O(1)
 
 
 
 \subsubsection{Funciones auxiliares}
 CrearArrayClientes(in it: itConjEstNat, in n: nat) $\rightarrow$ res: arreglo\_dimensionable(tuplaPorClientes)
 \begin{lstlisting}[mathescape]
-  $\textbf{arreglo\_dimensionable(tuplaPorClientes)[n]}$ arr
-  $\textbf{nat}$ i $\leftarrow$ 0
-  do
-    arr[i] $\leftarrow$ <Actual(it), 0, NULL, NULL>
-    i++
-    Proximo(it)
-  while hayProx(it)
+  $\textbf{arreglo\_dimensionable(tuplaPorClientes)[n]}$ arr					O(n)
+  $\textbf{nat}$ i $\leftarrow$ 0									O(1)
+  do								n*
+    arr[i] $\leftarrow$ <Actual(it), 0, NULL, NULL>				O(1)
+    i++								O(1)
+    Proximo(it)							O(1)
+  while hayProx(it)						O(1)
   return arr
 \end{lstlisting}
+\textbf{Complejidad:} O(n)+O(1)+n*4*O(1)=O(n)
 
 CambiarPorCantAcc(in a1: arreglo\_dimensionable(tuplaPorCliente), in/out a2: arreglo\_dimensionable(tuplaPorCantAcc))
 \begin{lstlisting}[mathescape]
-  $\textbf{nat}$ i $\leftarrow$ 0
-  while i<|a1|
-    a2[i].cliente $\leftarrow$ a1[i].cliente
-    a2[i].cantAcc $\leftarrow$ a1[i].cantAcc
-    a2[i].promCompra $\leftarrow$ a1[i].promCompra
-    a2[i].promVenta $\leftarrow$ a1[i].promVenta
-    i++
+  $\textbf{nat}$ i $\leftarrow$ 0										O(1)
+  while i<|a1|								|a1|*
+    a2[i].cliente $\leftarrow$ a1[i].cliente					O(1)
+    a2[i].cantAcc $\leftarrow$ a1[i].cantAcc					O(1)
+    a2[i].promCompra $\leftarrow$ a1[i].promCompra					O(1)
+    a2[i].promVenta $\leftarrow$ a1[i].promVenta					O(1)
+    i++									O(1)
   endWhile
 \end{lstlisting}
-
+\textbf{Complejidad:} O(1)+|a1|*5*O(1)=O(|a1|)
 
 CambiarPorCliente(in a1: arreglo\_dimensionable(tuplaPorCantAcc), in/out a2: arreglo\_dimensionable(tuplaPorCliente))
 \begin{lstlisting}[mathescape]
-  $\textbf{nat}$ i $\leftarrow$ 0
-  while i<|a1|
-    a2[i].cliente $\leftarrow$ a1[i].cliente
-    a2[i].cantAcc $\leftarrow$ a1[i].cantAcc
-    a2[i].promCompra $\leftarrow$ a1[i].promCompra
-    a2[i].promVenta $\leftarrow$ a1[i].promVenta
-    i++
+  $\textbf{nat}$ i $\leftarrow$ 0										O(1)
+  while i<|a1|								|a1|*
+    a2[i].cliente $\leftarrow$ a1[i].cliente					O(1)
+    a2[i].cantAcc $\leftarrow$ a1[i].cantAcc					O(1)
+    a2[i].promCompra $\leftarrow$ a1[i].promCompra					O(1)
+    a2[i].promVenta $\leftarrow$ a1[i].promVenta					O(1)
+    i++									O(1)
   endWhile
 \end{lstlisting}
+\textbf{Complejidad:} O(1)+|a1|*5*O(1)=O(|a1|)
+
+\subsection{Servicios Usados}
+\begin{center}
+\begin{tabular*}{4\textwidth}{c |c | c }
+\textbf{M\'odulo} & \textbf{Operaci\'on} & \textbf{Complejidad Requerida}\\
+diccString(infoTitulo) & CrearIt & O(1)\\
+diccString(infoTitulo) & Definir & |nt|\\
+diccString(infoTitulo) & Obtener & |nt|\\
+conj(promesa) & Vacio & O(1)\\
+conj(promesa) & AgregarRapido & O(1)\\
+itDicc(diccString(infoT\'itulo)) & HayM\'as & O(1)\\
+itDicc(diccString(infoT\'itulo)) & Actual & O(1)\\
+itDicc(diccString(infoT\'itulo)) & Avanzar & O(1)\\
+& BuscarCliente & O(log(C))\\
+conjEstNat & NuevoConjEstNat & O(C(log(C)))\\
+itConjEstNat & CrearIt & O(1)\\
+itConjEstNat & HayProx & O(1)\\
+itConjEstNat & Proximo & O(1)\\
+itConjEstNat & Actual & O(1)\\
+arreglo\_dimensionable & CrearNuevo & O(n)\\
+arreglo\_dimensionable & AgregarElemento & O(1)\\
+arreglo\_dimensionable & $\bullet$[$\bullet$] & O(1)\\
+& heapsort & O(n(log(n)))\\
+\end{tabular*}
+\end{center}
