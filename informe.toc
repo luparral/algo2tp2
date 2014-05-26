@@ -1,25 +1,35 @@
 \select@language {spanish}
-\contentsline {section}{\numberline {1}M\'odulo Wolfie}{3}{section.1}
-\contentsline {subsection}{\numberline {1.1}Interfaz}{3}{subsection.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1}Par\'ametros formales}{3}{subsubsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.2}Operaciones b\'asicas de wolfie}{3}{subsubsection.1.1.2}
-\contentsline {subsection}{\numberline {1.2}Representaci\'on}{4}{subsection.1.2}
-\contentsline {subsubsection}{\numberline {1.2.1}Representaci\'on de wolfie}{4}{subsubsection.1.2.1}
-\contentsline {section}{\numberline {2}M\'odulo DiccionarioTrie(alpha)}{6}{section.2}
-\contentsline {subsection}{\numberline {2.1}Interfaz}{6}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}Par\'ametros formales}{6}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{6}{subsubsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.3}Operaciones b\'asicas del iterador de claves de Diccionario String($\alpha $)}{6}{subsubsection.2.1.3}
-\contentsline {subsection}{\numberline {2.2}Representacion}{7}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Representaci\'on del Diccionario String($\alpha $)}{7}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Operaciones auxiliares del invatriante de Representaci\'on}{8}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}Representaci\'on del iterador de Claves del Diccionario String($\alpha $)}{8}{subsubsection.2.2.3}
-\contentsline {subsection}{\numberline {2.3}Algoritmos}{8}{subsection.2.3}
-\contentsline {subsubsection}{\numberline {2.3.1}Algoritmos de Diccionario String}{8}{subsubsection.2.3.1}
-\contentsline {subsubsection}{\numberline {2.3.2}Algoritmos del iterador de claves del Diccionario String}{10}{subsubsection.2.3.2}
-\contentsline {subsection}{\numberline {2.4}Interfaz}{10}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Operaciones b\'asicas de conjEstNat}{10}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}Operaciones b\'asicas de itConjEstNat}{10}{subsubsection.2.4.2}
-\contentsline {subsection}{\numberline {2.5}Representaci\'on}{11}{subsection.2.5}
-\contentsline {subsubsection}{\numberline {2.5.1}Representaci\'on de conjEstNat}{11}{subsubsection.2.5.1}
-\contentsline {subsubsection}{\numberline {2.5.2}Representaci\'on de itConjEstNat}{11}{subsubsection.2.5.2}
+\contentsline {section}{\numberline {1}Renombres de M\'odulos}{3}{section.1}
+\contentsline {section}{\numberline {2}M\'odulo Wolfie}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Interfaz}{3}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Par\'ametros formales}{3}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Operaciones b\'asicas de wolfie}{3}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Representaci\'on}{4}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Representaci\'on de wolfie}{4}{subsubsection.2.2.1}
+\contentsline {section}{\numberline {3}M\'odulo DiccionarioTrie(alpha)}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Interfaz}{6}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Par\'ametros formales}{6}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{7}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Operaciones b\'asicas del iterador de claves de Diccionario String($\alpha $)}{7}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Representacion}{8}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Representaci\'on del Diccionario String($\alpha $)}{8}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Operaciones auxiliares del invatriante de Representaci\'on}{8}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Representaci\'on del iterador de Claves del Diccionario String($\alpha $)}{9}{subsubsection.3.2.3}
+\contentsline {subsection}{\numberline {3.3}Algoritmos}{9}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Algoritmos de Diccionario String}{9}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Algoritmos del iterador de claves del Diccionario String}{10}{subsubsection.3.3.2}
+\contentsline {section}{\numberline {4}M\'odulo Conjunto Est\'atico de Nats}{10}{section.4}
+\contentsline {subsection}{\numberline {4.1}Interfaz}{10}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Operaciones b\'asicas de conjEstNat}{11}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Operaciones b\'asicas de itConjEstNat}{11}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Representaci\'on}{12}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Representaci\'on de conjEstNat}{12}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Representaci\'on de itConjEstNat}{12}{subsubsection.4.2.2}
+\contentsline {section}{\numberline {5}M\'odulo Promesa}{13}{section.5}
+\contentsline {subsection}{\numberline {5.1}Interfaz}{13}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Par\'ametros formales}{13}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Operaciones b\'asicas de promesa}{13}{subsubsection.5.1.2}
+\contentsline {subsection}{\numberline {5.2}Representaci\'on}{14}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Representaci\'on de promesa}{14}{subsubsection.5.2.1}
+\contentsline {subsection}{\numberline {5.3}Algoritmos}{14}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}Algoritmos de promesa}{14}{subsubsection.5.3.1}

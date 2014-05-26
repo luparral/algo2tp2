@@ -78,68 +78,50 @@
 	
 	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
 	
-\begin{algorithm}
-\caption{iNuevoConjEstNat(conj)}
-\begin{algorithmic}
-	%\begin{comment}
-	\State $it:itConj(nat)$
-	\State $it \gets crearIt(conj(nat))$
-	\State $a : arreglo\_dimensionable[cardinal(conj)]$
-	\State $i : nat$
-	\State $i \gets 0$
-	\While {$haySiguiente?(it)$}
-	\State $a[i] \gets siguiente(it)$
-	\State $i++$
-	\State $avanzar(it)$
-	\EndWhile
-	\State $heapSort(a)$
-	\State $return(a)$
-\end{algorithmic}
-\end{algorithm}
 	
-\begin{algorithm}
-\caption{iPertenece?(n, c)}
-\begin{algorithmic}
-	%\begin{comment}
-	\State $i : nat$
-	\State $i \gets 0$
-	\State $b : bool$
-	\State $b \gets false$
-	\While {$i<longitud(c)$}
-	\State $b \gets b \lor c[i]=n$
-	\EndWhile
-	\State $return(b)$
-\end{algorithmic}
-\end{algorithm}
+iNuevoConjEstNat(in c: conj(nat)) $\rightarrow$ res = array
+\begin{lstlisting}[mathescape]
+ $\textbf{itConj(nat)}$ it $\leftarrow$ crearIt(c))
+ $\textbf{arreglo\_dimensionable(nat)[cardinal(c)]}$ a 
+ $\textbf{nat}$ i $\leftarrow$ 0
+ while (HaySiguiente?(it))
+ 	a[i] $\leftarrow$ Siguiente(it)
+ 	i++
+ 	Avanzar(it)
+ endWhile
+ heapsort(a)
+ return(a)
+\end{lstlisting}
 	
-\begin{algorithm}
-\caption{iCrearIt(c)}
-\begin{algorithmic}
-	%\begin{comment}
-	\State $return <longitud(c), \&c>$ 
-\end{algorithmic}
-\end{algorithm}
+iPertenece(in n: nat, in c: array) $\rightarrow$ res = bool
+\begin{lstlisting}[mathescape]
+ $\textbf{bool}$ b $\leftarrow$ false
+ $\textbf{nat}$ i $\leftarrow$ 0
+ while (i<|c|)
+ 	b $\leftarrow$ (b $\lor$ c[i]=n)
+ 	i++
+ endWhile
+ return(b)
+\end{lstlisting}
+	
+iCrearIt(in a: array) $\rightarrow$ res = iterador
+\begin{lstlisting}[mathescape]
+ return (<|c|, &c>)
+\end{lstlisting}
 
-\begin{algorithm}
-\caption{iActual(it)}
-\begin{algorithmic}
-	\State $return *(it.lista)[it.pos]$	
-\end{algorithmic}
-\end{algorithm}
+iActual(in it: iterador) $\rightarrow$ res = nat
+\begin{lstlisting}[mathescape]
+ return *(it.lista)[it.pos]
+\end{lstlisting}
 
-\begin{algorithm}
-\caption{iPr\'oximo(it)}
-\begin{algorithmic}
-	\State $return <it.pos+1, it.lista>$	
-\end{algorithmic}
-\end{algorithm}
+iActual(in/out it: iterador)
+\begin{lstlisting}[mathescape]
+ return <it.pos+1, it.lista>
+\end{lstlisting}
 
+iHayPr\'oximo?(in it: iterador) $\rightarrow$ res = bool
+\begin{lstlisting}[mathescape]
+ return (it.pos+1<longitud(it.lista))
+\end{lstlisting}
 
-\begin{algorithm}
-\caption{ihayPr\'ox(it)}
-\begin{algorithmic}
-	\State $return it.pos+1<longitud(it.lista)$	
-\end{algorithmic}
-\end{algorithm}
-
-Servicios usados: se utlilzan solo tipos basicos, incluido el arreglo y punteros.
+Servicios usados: se utlilzan solo tipos basicos, incluidos arreglos y punteros.

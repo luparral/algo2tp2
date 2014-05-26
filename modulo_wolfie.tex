@@ -20,54 +20,54 @@
 %%Operaciones básicas
   \subsubsection{Operaciones b\'asicas de wolfie}
  %%clientes
-  \InterfazFuncion{clientes}{\In{w}{wolfie}}{itConjEstNat(cliente)}
+  \InterfazFuncion{Clientes}{\In{w}{wolfie}}{itConjEstNat(cliente)}
   {$res$ \igobs crearItUni(clientes($w$))}
   [$\Theta(1)$]
   [Devuelve un iterador a los clientes de un wolfie.]\\\\
  %%titulos
-  \InterfazFuncion{t\'itulos}{\In{w}{wolfie}}{itUni(t\'itulo)}
+  \InterfazFuncion{T\'itulos}{\In{w}{wolfie}}{itUni(t\'itulo)}
   {$res$ \igobs crearItUni(t\'itulos($w$))}%
   [$\Theta(1)$]
   [Devuelve un iterador a los t\'itulos de un wolfie.]\\\\
 %%promesasDe
-  \InterfazFuncion{promesasDe}{\In{c}{cliente}, \In{w}{wolfie}}{itConj(promesa)}
+  \InterfazFuncion{PromesasDe}{\In{c}{cliente}, \In{w}{wolfie}}{itConj(promesa)}
   [$c \in$ clientes($w$)]
   {$res$ \igobs crearItUni(promesasDe($c$, $w$))}%
   [$\Theta(T \cdotp C \cdotp |max\_nt|)$]
   [Devuelve un iterador a las promesas de un wolfie]\\\\
   %%accionesPorCliente
-  \InterfazFuncion{accionesPorCliente}{\In{c}{cliente}, \In{nt}{nombreT\'itulo}, \In{w}{wolfie}}{$nat$}%
+  \InterfazFuncion{AccionesPorCliente}{\In{c}{cliente}, \In{nt}{nombreT\'itulo}, \In{w}{wolfie}}{$nat$}%
   [$c \in$ clientes($w$) $\land$ ($\exists$ $t$:t\'itulo) ($t \in$ t\'itulos($w$) $\land$ nombre($t$) = $nt$)]
   %%###ojo con nombreTitulo
   {$res$ \igobs accionesPorCliente($c$, $nt$, $w$)}%
   [$\Theta(log(C)+|nt|)$]
   [Devuelve la cantidad de acciones que un cliente posee de un determinado t\'itulo.]\\\\
 %%inaugurarWolfie
-  \InterfazFuncion{inaugurarWolfie}{\In{cs}{conj(cliente)}}{wolfie}%%&&& conj(cliente)? No rompe nada usar un conjunto aca? ---lo implementamos como vector
+  \InterfazFuncion{InaugurarWolfie}{\In{cs}{conj(cliente)}}{wolfie}%%&&& conj(cliente)? No rompe nada usar un conjunto aca? ---lo implementamos como vector
   [$\neg\emptyset$?($cs$)]
   {$res$ \igobs inaugurarWolfie($cs$)}
   [$\Theta(\#(cs)^2)$]
   [Crea un nuevo wolfie a partir de un conjunto de clientes.]\\\\  %%&&& la complejidad habia quedado n log n si usamos merge sort
 %%agregarTitulo
-  \InterfazFuncion{agregarT\'itulo}{\In{t}{t\'itulo}, \Inout{w}{wolfie}}{}%
+  \InterfazFuncion{AgregarT\'itulo}{\In{t}{t\'itulo}, \Inout{w}{wolfie}}{}%
   [$w_{0}$ \igobs $w$ $\land$ ($\forall$ $t2$:t\'itulo) ($t2$ $\in$ t\'itulos($w$) $\Rightarrow$ nombre($t$) $\neq$ nombre($t2$)]
   {$w$ \igobs agregarT\'itulo($t$, $w_{0}$}%
   [$\Theta(|nombre(t)|+C)$]\\\\
 %%actualizarCotizacion
-  \InterfazFuncion{actualizarCotizaci\'on}{\In{nt}{nombreT\'itulo}, \In{cot}{nat}, \Inout{w}{wolfie}}{wolfie}%
+  \InterfazFuncion{ActualizarCotizaci\'on}{\In{nt}{nombreT\'itulo}, \In{cot}{nat}, \Inout{w}{wolfie}}{wolfie}%
   %%### ojo con NombreTítulo
   [$w_{0}$ \igobs $w$ $\land$ ($\exists$ $t$:t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = $nt$)]
   {$w$ $\igobs$ actualizarCotizaci\'on($nt$, $cot$, $w_{0}$)}%
   [$\Theta(C \cdotp |nt|+C \cdotp log(C))$]
   [Cambia la cotizaci\'on de un determinado t\'itulo. Esta operaci\'on genera que se desencadene el cumplimiento de promesas (seg\'un corresponda): primero de venta y luego, de compra, seg\'un el orden descendente de cantidad de acciones por t\'itulo de cada cliente.]\\\\
 %%agregarPromesa
-  \InterfazFuncion{agregarPromesa}{\In{c}{cliente}, \In{p}{promesa}, \Inout{w}{wolfie}}{}%
+  \InterfazFuncion{AgregarPromesa}{\In{c}{cliente}, \In{p}{promesa}, \Inout{w}{wolfie}}{}%
   [$w_{0}$ \igobs $w$ $\land$ ($\exists$$t$: t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = t\'itulo($p$)) $\land$ $c$ $\in$ clientes($w$) \yluego ($\forall$$p2$: promesa) ($p2$ $\in$ promesasDe($c$, $w$) $\Rightarrow$ (t\'itulo($p$) $\neq$ t\'itulo($p2$) $\lor$ tipo($p$) $\neq$ tipo($p2$)) ) $\land$ (tipo($p$) = vender $\Rightarrow$ accionesPorCliente($c$, t\'itulo($p$), $w$) $\geq$ cantidad($p$)))]
   {$w$ \igobs agregarPromesa($c$, $p$, $w_{0}$)}%
   [$\Theta(|t$\'i$tulo(p)| + log(C))$]
   [Agrega una nueva promesa.]\\\\
 %%enAlza
-  \InterfazFuncion{enAlza}{\In{nt}{nombreT\'itulo}, \In{w}{wolfie}}{bool}%%&&& aca estaba mal la aridad
+  \InterfazFuncion{EnAlza}{\In{nt}{nombreT\'itulo}, \In{w}{wolfie}}{bool}%%&&& aca estaba mal la aridad
   [($\exists$$t$: t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = nt)]
   {$res$ \igobs enAlza($nt$, $w$)}%
   [$\Theta(|nt|)$]
@@ -169,10 +169,65 @@
   	  
   	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ t\'itulos($w$)=????????? $\land$ \\($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
 
-  \tadOperacion{damePromesas}{itTrie??????, estr, cliente}{conj(promesa)}{}
+  \tadOperacion{damePromesas}{itDicc(diccString), estr, cliente}{conj(promesa)}{}
   \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
 
 % para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente, sumaAccClientes 
+\lstset { %
+    showstringspaces=false,
+}
+iClientes(in e: estr) $\rightarrow$ res = itConjEstNat
+\begin{lstlisting}[mathescape]
+  return(CrearIt(e.clientes))
+\end{lstlisting}
 
+%--------------------------falta iTitulos------------------
 
+iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res = itConj(promesa)
+\begin{lstlisting}[mathescape]
+ if $\neg$(e.ultimoLlamado.cliente = c $\land$ e.ultimoLlamado.fueUltimo) then
+	 $\textbf{itClaves(diccString)}$ it $\leftarrow$ crearIt(e.titulos)
+	 $\textbf{conj(promesa)}$ proms $\leftarrow$ vacio() 
+	 $\textbf{tuplaPorClientes}$ tup
+	 while (HayMas?(it))
+	 	tup $\leftarrow$ BuscarCliente(Obtener(Nombre(Actual(it)), e. titulos).arrayClientes)
+	 	if tup.promVenta $\neq$ NULL then AgregarRapido(proms, *(tup.promVenta))
+	 	if tup.promCompra $\neq$ NULL then AgregarRapido(proms, *(tup.promCompra))
+	 	Avanzar(it)
+	 endWhile
+	 e.ultimoLlamado.promesas $\leftarrow$ proms
+ fi
+ return(crearIt(e.ultimoLlamado.promesas)
+\end{lstlisting}
 
+iAccionesPorCliente(in c: cliente, in nt, nombreT, in e: estr) $\rightarrow$ res = nat
+\begin{lstlisting}[mathescape]
+  return(BuscarCliente(c, Obtener(nt, e.titulos)).cantAcc)
+\end{lstlisting}
+
+iInaugurarWolfie(in c: conj(cliente)) $\rightarrow$ res = estr
+\begin{lstlisting}[mathescape]
+  res.titulos $\leftarrow$ CrearDicc()
+  res.clientes $\leftarrow$ CrearDicc()
+  res.ultimoLlamado $\leftarrow$ <0, Vacio(), false>
+\end{lstlisting}
+
+iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
+\begin{lstlisting}[mathescape]
+  promesa prom $\leftarrow$ p
+  if tipo(prom)=compra then
+  	BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+  else
+  	BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+  fi
+\end{lstlisting}
+
+iEnAlza(in nt: nombreT, in e: estr) $\rightarrow$ res = bool
+\begin{lstlisting}[mathescape]
+  return(Obtener(nt, e.titulos).enAlza)
+\end{lstlisting}
+
+iAgregarTitulo(in t: titulo, in/out e: estr) $\rightarrow$ res = nat
+\begin{lstlisting}[mathescape]
+  Definir(e.titulos, nombre(t), <CrearArrayClientes
+\end{lstlisting}
