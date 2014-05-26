@@ -216,8 +216,50 @@ iAccionesPorCliente(in c: cliente, in nt, nombreT, in e: estr) $\rightarrow$ res
 iInaugurarWolfie(in c: conj(cliente)) $\rightarrow$ res: estr
 \begin{lstlisting}[mathescape]
   res.titulos $\leftarrow$ CrearDicc()
-  res.clientes $\leftarrow$ CrearDicc()
+  res.clientes $\leftarrow$ NuevoConjEstNat(c)
   res.ultimoLlamado $\leftarrow$ <0, Vacio(), false>
+\end{lstlisting}
+
+iAgregarT\'itulo(in t: t\'itulo, in/out e: estr) $\rightarrow$ res: nat
+\begin{lstlisting}[mathescape]
+  Definir(e.titulos, nombre(t), <CrearArrayClientes(CrearIt(e.clientes),cardinal
+  	(e.clientes)), cotizacion(t), enAlza(t), #maxAcciones(t), #maxAcciones(t))
+\end{lstlisting}
+
+iActualizarCotizaci\'on(in nt: nombre, in cot: nat, in/out e: estr)
+\begin{lstlisting}[mathescape]
+  $\textbf{infoTitulo}$ s $\leftarrow$ Obtener(nt, e.titulos)
+  if s.cot < cot then 
+  	s.enAlza $\leftarrow$ true 
+  else 
+  	s.enAlza $\leftarrow$ false
+  fi
+  s.cot $\leftarrow$ cot
+  $\textbf{nat}$ i $\leftarrow$ 0
+  while i<|s.arrayClientes|
+    if (s.arrayClientes[i].promVenta $\neq$ NULL \yluego limite(*(s.arrayClientes[i].promVenta))
+> s.cot) then
+      s.arrayClientes[i].cantAcc -= cantidad(*(s.arrayClientes[i].promVenta))
+      s.accDisponibles += cantidad(*(s.arrayClientes[i].promVenta))
+      s.arrayClientes[i].promVenta = NULL
+    fi
+  endWhile
+  $\textbf{arreglo\_dimensionable(tuplaPorCantAcc)[|s.arrayClientes|]}$ arr
+  CambiarPorCantAcc(s.arrayClientes, arr)
+  heapsort(arr)
+  i $\leftarrow$ 0
+  while i<|s.arrayClientes|
+    if (arr[i].promCompra $\neq$ NULL \yluego limite(*(arr[i].promCompra)) < s.cot $\land$ 
+cantidad(*(arr[i].promCompra)) $\leq$ s.accDisponibles) then  
+      arr[i].cantAcc += cantidad(*(arr[i].promCompra))
+      s.accDisponibles -= cantidad(*(arr[i].promCompra))
+      arr[i].promCompra = NULL
+    fi
+    i++
+  endWhile
+  CambiarPorCliente(arr, s.arrayClientes)
+  heapsort(s.arrayClientes)
+  
 \end{lstlisting}
 
 iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
@@ -235,11 +277,7 @@ iEnAlza(in nt: nombreT, in e: estr) $\rightarrow$ res: bool
   return(Obtener(nt, e.titulos).enAlza)
 \end{lstlisting}
 
-iAgregarT\'itulo(in t: titulo, in/out e: estr) $\rightarrow$ res: nat
-\begin{lstlisting}[mathescape]
-  Definir(e.titulos, nombre(t), <CrearArrayClientes(CrearIt(e.clientes),cardinal
-  	(e.clientes)), cotizacion(t), enAlza(t), #maxAcciones(t), #maxAcciones(t))
-\end{lstlisting}
+
 
 
 \subsubsection{Funciones auxiliares}
@@ -248,11 +286,34 @@ CrearArrayClientes(in it: itConjEstNat, in n: nat) $\rightarrow$ res: arreglo\_d
   $\textbf{arreglo\_dimensionable(tuplaPorClientes)[n]}$ arr
   $\textbf{nat}$ i $\leftarrow$ 0
   do
-  	arr[i] $\leftarrow$ <Actual(it), 0, NULL, NULL>
-  	i++
-  	Proximo(it)
+    arr[i] $\leftarrow$ <Actual(it), 0, NULL, NULL>
+    i++
+    Proximo(it)
   while hayProx(it)
   return arr
 \end{lstlisting}
 
+CambiarPorCantAcc(in a1: arreglo\_dimensionable(tuplaPorCliente), in/out a2: arreglo\_dimensionable(tuplaPorCantAcc))
+\begin{lstlisting}[mathescape]
+  $\textbf{nat}$ i $\leftarrow$ 0
+  while i<|a1|
+    a2[i].cliente $\leftarrow$ a1[i].cliente
+    a2[i].cantAcc $\leftarrow$ a1[i].cantAcc
+    a2[i].promCompra $\leftarrow$ a1[i].promCompra
+    a2[i].promVenta $\leftarrow$ a1[i].promVenta
+    i++
+  endWhile
+\end{lstlisting}
 
+
+CambiarPorCliente(in a1: arreglo\_dimensionable(tuplaPorCantAcc), in/out a2: arreglo\_dimensionable(tuplaPorCliente))
+\begin{lstlisting}[mathescape]
+  $\textbf{nat}$ i $\leftarrow$ 0
+  while i<|a1|
+    a2[i].cliente $\leftarrow$ a1[i].cliente
+    a2[i].cantAcc $\leftarrow$ a1[i].cantAcc
+    a2[i].promCompra $\leftarrow$ a1[i].promCompra
+    a2[i].promVenta $\leftarrow$ a1[i].promVenta
+    i++
+  endWhile
+\end{lstlisting}
