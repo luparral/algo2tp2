@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.1)  25 MAY 2014 21:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.9.1)  25 MAY 2014 23:13
 entering extended mode
  %&-line parsing enabled.
 **informe.tex
@@ -557,11 +557,11 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 160.
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./informe.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./informe.toc [2])
 \tf@toc=\write4
 \openout4 = `informe.toc'.
 
- [2]
+ [3]
 Underfull \hbox (badness 10000) in paragraph at lines 169--173
 
  []
@@ -621,8 +621,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--76
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 168--168
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 174--174
 \OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1
 /cmr/m/n/10 ) $\OMS/cmsy/m/n/10 ^[]$\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it
 /10 c$\T1/cmr/m/n/10 , obtener($\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 , $\OML/cmm/m
@@ -632,7 +632,7 @@ n/10 )
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--168
+Underfull \hbox (badness 10000) in paragraph at lines 174--174
 \OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1
 /cmr/m/n/10 ) $\OMS/cmsy/m/n/10 ^[]$\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it
 /10 c$\T1/cmr/m/n/10 , obtener($\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 , $\OML/cmm/m
@@ -642,7 +642,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--168
  []
 
 
-Underfull \hbox (badness 1668) in paragraph at lines 168--168
+Underfull \hbox (badness 1668) in paragraph at lines 174--174
 []\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8$ $\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 : no
 m-breT) (def?($\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titulos
 $\T1/cmr/m/n/10 ) $\OMS/cmsy/m/n/10 )[]$\T1/cmr/m/n/10 (obtener($\OML/cmm/m/it/
@@ -652,7 +652,7 @@ n/10 ,
  []
 
 
-Underfull \hbox (badness 4872) in paragraph at lines 168--168
+Underfull \hbox (badness 4872) in paragraph at lines 174--174
 \OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 maxAcc$ \T1/cmr/m
 /n/10 - sumaAccClientes(obtener($\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 , $\OML/cmm
 /m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m/n
@@ -661,7 +661,7 @@ mr/m/n/10 ,
  []
 
 
-Overfull \hbox (1.17874pt too wide) in paragraph at lines 168--168
+Overfull \hbox (1.17874pt too wide) in paragraph at lines 174--174
 []\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it/10 e:[]ltimoLlamado:cliente$\T1/c
 mr/m/n/10 , obtener(título($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 ), $\OML/cmm/m/it
 /10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m/n/10 )
@@ -669,7 +669,7 @@ mr/m/n/10 , obtener(título($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 ), $\OML/cmm/m/it
  []
 
 
-Underfull \hbox (badness 1515) in paragraph at lines 168--168
+Underfull \hbox (badness 1515) in paragraph at lines 174--174
 []\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8$ $\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 : tí-
 tu-lo) def?($\OML/cmm/m/it/10 t; e:titulos$\T1/cmr/m/n/10 ) $\OMS/cmsy/m/n/10 )
 []$\T1/cmr/m/n/12 (\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8$ $\OML/cmm/m/it/10 i$\T1
@@ -678,50 +678,45 @@ tu-lo) def?($\OML/cmm/m/it/10 t; e:titulos$\T1/cmr/m/n/10 ) $\OMS/cmsy/m/n/10 )
  []
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 168--168
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 174--174
 []\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
 Q$| [] 
  []
 
-[4]
+[5]
 
 Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instea
-d on input line 173.
+d on input line 179.
 
 
-Overfull \hbox (14.99998pt too wide) in paragraph at lines 173--173
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 179--179
 []\T1/cmr/m/n/10 damePromesas($\OML/cmm/m/it/10 it; e; c$\T1/cmr/m/n/10 )| $\OM
 S/cmsy/m/n/10 ^^Q$| [] 
  []
 
-[5]
-Overfull \hbox (31.72365pt too wide) in paragraph at lines 193--194
-[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+[6]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 202.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 194.
-
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+ (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 194.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 202.
 
-Overfull \hbox (37.72223pt too wide) in paragraph at lines 219--220
+Overfull \hbox (7.72932pt too wide) in paragraph at lines 227--228
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (37.72223pt too wide) in paragraph at lines 221--222
+Overfull \hbox (7.72932pt too wide) in paragraph at lines 229--230
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (./modulo_dicTrie.tex
+[7]) (./modulo_dicTrie.tex
 Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
 
-[6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 12.
@@ -781,7 +776,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--42
 
  []
 
-
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
@@ -811,7 +806,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 57--58
 
  []
 
-[7]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 62.
@@ -830,7 +824,7 @@ Overfull \hbox (14.99998pt too wide) in paragraph at lines 92--92
 Q$| [] 
  []
 
-
+[9]
 Overfull \hbox (14.99998pt too wide) in paragraph at lines 100--100
 []\T1/cmr/m/n/10 noHayCiclos($\OML/cmm/m/it/10 n; p$\T1/cmr/m/n/10 )| $\OMS/cms
 y/m/n/10 ^^Q$| [] 
@@ -854,7 +848,7 @@ Overfull \hbox (14.99998pt too wide) in paragraph at lines 106--106
 sy/m/n/10 ^^Q$| [] 
  []
 
-[8]
+
 Overfull \hbox (14.99998pt too wide) in paragraph at lines 108--108
 []\T1/cmr/m/n/10 esHoja($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10
  ^^Q$| [] 
@@ -902,7 +896,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 124.
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
@@ -912,7 +906,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
-[9]
+
 Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
@@ -932,7 +926,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--204
 
  []
 
-) (./modulo_conjEstNat.tex
+) [11] (./modulo_conjEstNat.tex
 Underfull \hbox (badness 10000) in paragraph at lines 5--12
 
  []
@@ -947,7 +941,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
-[10]
+
 Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
@@ -997,7 +991,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
 
-
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
@@ -1007,7 +1001,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
 
-[11]
+
 Overfull \hbox (14.99998pt too wide) in paragraph at lines 62--62
 []\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 a$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
 Q$| [] 
@@ -1025,12 +1019,17 @@ Overfull \hbox (14.99998pt too wide) in paragraph at lines 77--77
 Q$| [] 
  []
 
-[12]) (./modulo_promesa.tex
+[13]
+Overfull \hbox (7.08159pt too wide) in paragraph at lines 144--144
+[]\T1/cmr/m/n/10 crearConjEstNat 
+ []
+
+) (./modulo_promesa.tex
 Underfull \hbox (badness 10000) in paragraph at lines 8--15
 
  []
 
-
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 26--47
 
  []
@@ -1060,40 +1059,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--47
 
  []
 
-[13]
+
 Overfull \hbox (14.99998pt too wide) in paragraph at lines 65--65
 []\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
 Q$| [] 
  []
 
-AED: lastpage setting LastPage [14] (./informe.aux) ) ) 
+[15] AED: lastpage setting LastPage [16] (./informe.aux) ) ) 
 Here is how much of TeX's memory you used:
- 9627 strings out of 495061
- 130920 string characters out of 1182622
- 256862 words of memory out of 3000000
- 12422 multiletter control sequences out of 15000+50000
- 18282 words of font info for 44 fonts, out of 3000000 for 9000
+ 9665 strings out of 495061
+ 131472 string characters out of 1182622
+ 262865 words of memory out of 3000000
+ 12442 multiletter control sequences out of 15000+50000
+ 18972 words of font info for 45 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 47i,15n,97p,548b,1853s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/nico/.texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/nico/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/ecti1000.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen
-/ec/eccc1000.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200
-.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </ho
-me/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/nico/.tex
-mf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/nico/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecrm1200.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm1440.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600p
-k></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
-msy10.pfb>
-Output written on informe.pdf (14 pages, 278120 bytes).
+ 47i,16n,97p,548b,1830s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/nico/.texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecxc1200.600pk> </home/nico/.texmf-var/fonts/p
+k/ljfour/jknappen/ec/ecrm0900.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jkn
+appen/ec/ecti1000.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecb
+x1200.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.600pk>
+ </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/nico
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/nico/.texmf-var/
+fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/nico/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/ecbx1440.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen
+/ec/ecrm1200.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1440
+.600pk> </home/nico/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on informe.pdf (16 pages, 303593 bytes).
 PDF statistics:
- 870 PDF objects out of 1000 (max. 8388607)
- 181 named destinations out of 1000 (max. 500000)
- 273 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 953 PDF objects out of 1000 (max. 8388607)
+ 198 named destinations out of 1000 (max. 500000)
+ 313 words of extra memory for PDF output out of 10000 (max. 10000000)
 

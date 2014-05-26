@@ -36,7 +36,7 @@
   [$\Theta(T \cdotp C \cdotp |max\_nt|)$]
   [Devuelve un iterador a las promesas de un wolfie]\\\\
   %%accionesPorCliente
-  \InterfazFuncion{AccionesPorCliente}{\In{c}{cliente}, \In{nt}{nombreT\'itulo}, \In{w}{wolfie}}{$nat$}%
+  \InterfazFuncion{AccionesPorCliente}{\In{c}{cliente}, \In{nt}{nombre}, \In{w}{wolfie}}{$nat$}%
   [$c \in$ clientes($w$) $\land$ ($\exists$ $t$:t\'itulo) ($t \in$ t\'itulos($w$) $\land$ nombre($t$) = $nt$)]
   %%###ojo con nombreTitulo
   {$res$ \igobs accionesPorCliente($c$, $nt$, $w$)}%
@@ -54,7 +54,7 @@
   {$w$ \igobs agregarT\'itulo($t$, $w_{0}$}%
   [$\Theta(|nombre(t)|+C)$]\\\\
 %%actualizarCotizacion
-  \InterfazFuncion{ActualizarCotizaci\'on}{\In{nt}{nombreT\'itulo}, \In{cot}{nat}, \Inout{w}{wolfie}}{wolfie}%
+  \InterfazFuncion{ActualizarCotizaci\'on}{\In{nt}{nombre}, \In{cot}{nat}, \Inout{w}{wolfie}}{}%
   %%### ojo con NombreTítulo
   [$w_{0}$ \igobs $w$ $\land$ ($\exists$ $t$:t\'itulo) ($t$ $\in$ t\'itulos($w$) $\land$ nombre($t$) = $nt$)]
   {$w$ $\igobs$ actualizarCotizaci\'on($nt$, $cot$, $w_{0}$)}%
@@ -81,14 +81,19 @@
 %------------------------estr----------------------------
 \begin{Estructura}{wolfie}[estr]
     \begin{Tupla}[estr]
-      \tupItem{t\'itulos}{diccTrie(nombre, 
-      	\begin{minipage}[t]{\parindent+10cm}
-      		{<$arrayClientes$: array\_dimensionable(tuplaPorCliente), \\$cot$: nat, \\$enAlza$: bool, \\$maxAcc$:nat, \\$accDisponibles$: nat>),}
-      	\end{minipage}}%
+      \tupItem{t\'itulos}{diccTrie(nombre, infoT\'itulo),}%
       	
       \tupItem{clientes}{conjEstNat(cliente)}
       
       \tupItem{\'ultimoLlamado}{<$cliente$: cliente, $promesas$:conj(promesa), $fueUltimo$: bool>)}%
+    \end{Tupla}
+
+    \begin{Tupla}[infoT\'itulo]
+    	\tupItem{arrayClientes}{array\_dimensionable(tuplaPorCliente),}
+    	\tupItem{cot}{nat,}
+    	\tupItem{enAlza}{bool,}
+    	\tupItem{maxAcc}{nat,}
+    	\tupItem{accDisponibles}{nat}
     \end{Tupla}
     
     \begin{Tupla}[tuplaPorCliente]
@@ -109,6 +114,7 @@
 
 \end{Estructura}
  %----------------------------------------------------Rep------------------------------------------
+\subsubsection{Invariante de representaci\'on}
  \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
  	\item Los clientes de $clientes$ son los mismos que hay dentro de $titulos$.
@@ -166,46 +172,48 @@
   \tadAxioma{auxBuscarCliente($a$, $i$)}{{\IF $i$=longitud($a$) THEN 0 ELSE $a[i].cantAcc$ + sumaAccClientes($a, i+1$) FI}}
 
   	  }\mbox{}
-  	  
+\subsubsection{Funci\'on de abstracci\'on}
   	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ t\'itulos($w$)=????????? $\land$ \\($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
 
   \tadOperacion{damePromesas}{itDicc(diccString), estr, cliente}{conj(promesa)}{}
   \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
 
 % para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente, sumaAccClientes 
+
+\subsection{Algoritmos}
 \lstset { %
     showstringspaces=false,
 }
-iClientes(in e: estr) $\rightarrow$ res = itConjEstNat
+iClientes(in e: estr) $\rightarrow$ res: itConjEstNat
 \begin{lstlisting}[mathescape]
   return(CrearIt(e.clientes))
 \end{lstlisting}
 
 %--------------------------falta iTitulos------------------
 
-iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res = itConj(promesa)
+iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res: itConj(promesa)
 \begin{lstlisting}[mathescape]
  if $\neg$(e.ultimoLlamado.cliente = c $\land$ e.ultimoLlamado.fueUltimo) then
-	 $\textbf{itClaves(diccString)}$ it $\leftarrow$ crearIt(e.titulos)
-	 $\textbf{conj(promesa)}$ proms $\leftarrow$ vacio() 
-	 $\textbf{tuplaPorClientes}$ tup
-	 while (HayMas?(it))
-	 	tup $\leftarrow$ BuscarCliente(Obtener(Nombre(Actual(it)), e. titulos).arrayClientes)
-	 	if tup.promVenta $\neq$ NULL then AgregarRapido(proms, *(tup.promVenta))
-	 	if tup.promCompra $\neq$ NULL then AgregarRapido(proms, *(tup.promCompra))
-	 	Avanzar(it)
-	 endWhile
-	 e.ultimoLlamado.promesas $\leftarrow$ proms
+   $\textbf{itClaves(diccString)}$ it $\leftarrow$ crearIt(e.titulos)
+   $\textbf{conj(promesa)}$ proms $\leftarrow$ vacio() 
+   $\textbf{tuplaPorClientes}$ tup
+   while (HayMas?(it))
+     tup $\leftarrow$ BuscarCliente(Obtener(Nombre(Actual(it)), e. titulos).arrayClientes)
+     if tup.promVenta $\neq$ NULL then AgregarRapido(proms, *(tup.promVenta))
+     if tup.promCompra $\neq$ NULL then AgregarRapido(proms, *(tup.promCompra))
+     Avanzar(it)
+   endWhile
+   e.ultimoLlamado.promesas $\leftarrow$ proms
  fi
  return(crearIt(e.ultimoLlamado.promesas)
 \end{lstlisting}
 
-iAccionesPorCliente(in c: cliente, in nt, nombreT, in e: estr) $\rightarrow$ res = nat
+iAccionesPorCliente(in c: cliente, in nt, nombreT, in e: estr) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
   return(BuscarCliente(c, Obtener(nt, e.titulos)).cantAcc)
 \end{lstlisting}
 
-iInaugurarWolfie(in c: conj(cliente)) $\rightarrow$ res = estr
+iInaugurarWolfie(in c: conj(cliente)) $\rightarrow$ res: estr
 \begin{lstlisting}[mathescape]
   res.titulos $\leftarrow$ CrearDicc()
   res.clientes $\leftarrow$ CrearDicc()
@@ -214,20 +222,37 @@ iInaugurarWolfie(in c: conj(cliente)) $\rightarrow$ res = estr
 
 iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
 \begin{lstlisting}[mathescape]
-  promesa prom $\leftarrow$ p
+  $\textbf{promesa}$ prom $\leftarrow$ p
   if tipo(prom)=compra then
-  	BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+   BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
   else
-  	BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+   BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
   fi
 \end{lstlisting}
 
-iEnAlza(in nt: nombreT, in e: estr) $\rightarrow$ res = bool
+iEnAlza(in nt: nombreT, in e: estr) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
   return(Obtener(nt, e.titulos).enAlza)
 \end{lstlisting}
 
-iAgregarTitulo(in t: titulo, in/out e: estr) $\rightarrow$ res = nat
+iAgregarT\'itulo(in t: titulo, in/out e: estr) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
-  Definir(e.titulos, nombre(t), <CrearArrayClientes
+  Definir(e.titulos, nombre(t), <CrearArrayClientes(CrearIt(e.clientes),cardinal
+  	(e.clientes)), cotizacion(t), enAlza(t), #maxAcciones(t), #maxAcciones(t))
 \end{lstlisting}
+
+
+\subsubsection{Funciones auxiliares}
+CrearArrayClientes(in it: itConjEstNat, in n: nat) $\rightarrow$ res: arreglo\_dimensionable(tuplaPorClientes)
+\begin{lstlisting}[mathescape]
+  $\textbf{arreglo\_dimensionable(tuplaPorClientes)[n]}$ arr
+  $\textbf{nat}$ i $\leftarrow$ 0
+  do
+  	arr[i] $\leftarrow$ <Actual(it), 0, NULL, NULL>
+  	i++
+  	Proximo(it)
+  while hayProx(it)
+  return arr
+\end{lstlisting}
+
+

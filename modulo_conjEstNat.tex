@@ -4,15 +4,15 @@
 %%Parámetros formales
    \parbox{1.7cm}{\textbf{g\'eneros}} conjEstNat, itConjEstNat\\
     %%\parbox[t]{1.7cm}{\textbf{funci\'on}}\parbox[t]{\textwidth-2\parindent-1.7cm}{%
-     %%\InterfazFuncion{Copiar}{\In{a}{$\alpha$}}{$\alpha$}
+     %%\InterfazFuncion{Copiar}{\In{a}{EstNat}}{EstNat}
      %%{$res \igobs a$}
      %%[$\Theta(copy(a))$]
-     %%[funci\'on de copia de $\alpha$ s]
+     %%[funci\'on de copia de EstNat s]
     %%}
 
   \textbf{Se explica con}: \tadNombre{Conjunto(nat)}, \tadNombre{Iterador Unidireccional(nat)}.
   \textbf{Usa}: \
-    %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista($\alpha$)}.
+    %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista(EstNat)}.
 
 %%Operaciones básicas
   \subsubsection{Operaciones b\'asicas de conjEstNat}
@@ -27,10 +27,10 @@
   [$\Theta(n)$]
   [Pregunta si el elemento pertenece al conjunto]\\\\
 
-  \InterfazFuncion{Cardinal}{\In{n}{conjEstNat}}{nat}
-  {$res$ \igobs n $\in$ c}
+  \InterfazFuncion{Cardinal}{\In{c}{conjEstNat}}{nat}
+  {$res$ \igobs \#$c$}
   [$\Theta(n)$]
-  [Pregunta si el elemento pertenece al conjunto]\\\\  
+  [Devuelve la cantidad de elementos que hay en el conjunto]\\\\  
   \subsubsection{Operaciones b\'asicas de itConjEstNat}  
   
   \InterfazFuncion{CrearIt}{\In{c}{conjEstNat}}{itConjEstNat}
@@ -79,7 +79,7 @@
 	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
 	
 	
-iNuevoConjEstNat(in c: conj(nat)) $\rightarrow$ res = array
+iNuevoConjEstNat(in c: conj(nat)) $\rightarrow$ res: array
 \begin{lstlisting}[mathescape]
  $\textbf{itConj(nat)}$ it $\leftarrow$ crearIt(c))
  $\textbf{arreglo\_dimensionable(nat)[cardinal(c)]}$ a 
@@ -93,7 +93,7 @@ iNuevoConjEstNat(in c: conj(nat)) $\rightarrow$ res = array
  return(a)
 \end{lstlisting}
 	
-iPertenece(in n: nat, in c: array) $\rightarrow$ res = bool
+iPertenece(in n: nat, in c: array) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
  $\textbf{bool}$ b $\leftarrow$ false
  $\textbf{nat}$ i $\leftarrow$ 0
@@ -104,12 +104,12 @@ iPertenece(in n: nat, in c: array) $\rightarrow$ res = bool
  return(b)
 \end{lstlisting}
 	
-iCrearIt(in a: array) $\rightarrow$ res = iterador
+iCrearIt(in a: array) $\rightarrow$ res: iterador
 \begin{lstlisting}[mathescape]
  return (<|c|, &c>)
 \end{lstlisting}
 
-iActual(in it: iterador) $\rightarrow$ res = nat
+iActual(in it: iterador) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
  return *(it.lista)[it.pos]
 \end{lstlisting}
@@ -119,9 +119,38 @@ iActual(in/out it: iterador)
  return <it.pos+1, it.lista>
 \end{lstlisting}
 
-iHayPr\'oximo?(in it: iterador) $\rightarrow$ res = bool
+iHayPr\'oximo?(in it: iterador) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
  return (it.pos+1<longitud(it.lista))
 \end{lstlisting}
 
 Servicios usados: se utlilzan solo tipos basicos, incluidos arreglos y punteros.
+
+\subsection {TAD \tadNombre{Conjunto Est\'atico de Nats}}
+
+\begin{tad}{\tadNombre{Conjunto Est\'atico de Nats}}
+\tadIgualdadObservacional{c}{c'}{conjEstNat}{$(\forall a: nat)(a \in c \igobs a \in c')$}
+
+\tadGeneros{conjEstNat}
+\tadExporta{conjEstNat, generadores, observadores, \#}
+\tadUsa{\tadNombre{Bool, Nat, Conjunto(nat)}}
+
+\tadAlinearFunciones{crearconjestnat}{conj(EstNat),conj(EstNat)}
+
+\tadObservadores
+\tadOperacion{\argumento $\in$ \argumento}{nat,conjEstNat}{bool}{}
+
+\tadGeneradores
+\tadOperacion{crearConjEstNat}{conj(nat)}{conj(EstNat)}{}
+
+\tadOtrasOperaciones
+\tadOperacion{\#}{conj(EstNat)}{nat}{}
+
+\tadAxiomas[\paratodo{conj(nat)}{c}, \paratodo{nat}{n}]
+\tadAlinearAxiomas{dameUno($c$) $\in$ $c$-----------}
+
+\tadAxioma{$n \in$ crearConjEstNat($c$)}{($n \in c$)}
+
+\tadAxioma{\#(crearConjEstNat($c$))}{\#($c$) }
+
+\end{tad}
