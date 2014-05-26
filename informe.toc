@@ -41,3 +41,10 @@
 \contentsline {subsubsection}{\numberline {5.2.1}Representaci\'on de promesa}{19}{subsubsection.5.2.1}
 \contentsline {subsection}{\numberline {5.3}Algoritmos}{19}{subsection.5.3}
 \contentsline {subsubsection}{\numberline {5.3.1}Algoritmos de promesa}{19}{subsubsection.5.3.1}
+\contentsline {section}{\numberline {6}M\'odulo Titulo}{19}{section.6}
+\contentsline {subsection}{\numberline {6.1}Interfaz}{19}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Operaciones b\'asicas de titulo}{19}{subsubsection.6.1.1}
+\contentsline {subsection}{\numberline {6.2}Representaci\'on}{20}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Representaci\'on de titulo}{20}{subsubsection.6.2.1}
+\contentsline {subsection}{\numberline {6.3}Algoritmos}{21}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Algoritmos de promesa}{21}{subsubsection.6.3.1}
