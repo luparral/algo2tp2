@@ -91,7 +91,7 @@
   	\end{minipage}\vspace{3mm}
   	 }\mbox{}
 
- \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i \{0..|e.claves|\}) e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
+ \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
 
 
  \subsubsection{Operaciones auxiliares del invatriante de Representaci\'on}
