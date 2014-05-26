@@ -207,7 +207,7 @@ return itClaves(d)
 Utiliza los mismos algoritmos que itSecu($\alpha$) definido en el apunte de iteradores.
 
 %requiere arreglo heapificado
-\textsc{Heapsort}(\textbf{in} arreglo(tuplas): a, \textbf{in} int: n) $\rightarrow$ \textbf{res} = arreglo(tuplas)
+\textsc{Heapsort}(\textbf{in/out} arreglo(tuplas): a, \textbf{in} int: n)
 \begin{lstlisting}[mathescape]
  fin $\leftarrow$ (n-1)
  while (end > 0)
@@ -219,7 +219,7 @@ Utiliza los mismos algoritmos que itSecu($\alpha$) definido en el apunte de iter
 \textbf{Complejidad}\\
 
 
-\textsc{Heapificar}(\textbf{in} arreglo(tuplas): a, \textbf{in} int: n) $\rightarrow$ \textbf{res} = arreglo(tuplas)
+\textsc{Heapificar}(\textbf{in/out} arreglo(tuplas): a, \textbf{in} int: n)
 \begin{lstlisting}[mathescape]
  comienzo $\leftarrow$ (parteEntera((n-2)/2))
  while (comienzo > 0)
@@ -229,7 +229,7 @@ Utiliza los mismos algoritmos que itSecu($\alpha$) definido en el apunte de iter
 \end{lstlisting}
 \textbf{Complejidad}\\
 
-\textsc{Bajar}(\textbf{in} arreglo(tuplas): a, \textbf{in} int: comienzo, \textbf{in} int: fin) $\rightarrow$ \textbf{res} = arreglo(tuplas)
+\textsc{Bajar}(\textbf{in/out} arreglo(tuplas): a, \textbf{in} int: comienzo, \textbf{in} int: fin)
 \begin{lstlisting}[mathescape]
  int: raiz
  int: hijo
@@ -253,7 +253,7 @@ Utiliza los mismos algoritmos que itSecu($\alpha$) definido en el apunte de iter
 \textbf{Complejidad}\\
 
 
-\textsc{BusquedaBinaria}(\textbf{in} arreglo(tuplas): a, nat: cliente, nat: tam)
+\textsc{BusquedaBinaria}(\textbf{in} arreglo(tuplas): a, \textbf{in} nat: cliente, \textbf{in} nat: tam) $\rightarrow$ \textbf{res} = int
 \begin{lstlisting}[mathescape]
  int: arriba $\leftarrow$ tam-1
  int: abajo $\leftarrow$ 0
