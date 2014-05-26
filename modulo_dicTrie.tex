@@ -206,6 +206,18 @@ return itClaves(d)
 
 Utiliza los mismos algoritmos que itSecu($\alpha$) definido en el apunte de iteradores.
 
+
+\subsection{Servicios Usados}
+\begin{center}
+\begin{tabular*}{2.75\textwidth}{c |c | c }
+\textbf{M\'odulo} & \textbf{Operaci\'on} & \textbf{Complejidad Requerida}\\
+arreglo\_est\'atico & AgregarElemento & O(1)\\
+arreglo\_est\'atico & $\bullet$[$\bullet$] & O(1)\\
+lista\_enlazada & AgregarAdelante & O(copy($\alpha$))\\
+lista\_enalzada & $\bullet$[$\bullet$] & O(1)\\
+\end{tabular*}
+\end{center}
+
 %requiere arreglo heapificado
 \textsc{Heapsort}(\textbf{in/out} arreglo(tuplas): a, \textbf{in} int: n)
 \begin{lstlisting}[mathescape]
