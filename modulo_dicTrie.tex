@@ -119,11 +119,12 @@
   \tadOperacion{auxTodasLasHojasTienenValor}{arreglo(puntero(nodo))}{bool}{}
   \tadAxioma{auxTodasLasHojasTienenValor($a$)}{\IF |a| = 0 THEN true ELSE dameUno(a).valor != NULL $\land$ auxTodasLasHojasTienenValor(sinUno(a)) FI}
 
+\subsubsection{Funci\'on de abstracci\'on}
+ \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
+ 
   \subsubsection{Representaci\'on del iterador de Claves del Diccionario String($\alpha$)}
 
-\subsubsection{Funci\'on de abstracci\'on}
 
- \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
 
     \begin{Estructura}{itClaves($string$)}[puntero(nodo)]
     \end{Estructura}

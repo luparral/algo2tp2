@@ -60,6 +60,7 @@
 \begin{Estructura}{conjEstNat}[array: arreglo\_dimensionable(nat)]\end{Estructura}
  	Rep: los elementos estan ordenados y no hay repeticiones
  	\Rep[array][a]{($\forall$ $i$: nat) ($i$ < longitud($a$)-1 $\Rightarrow$ (definido?($a$, $i$) $\land$ definido?($a$, $i+1$) \yluego $a[i]$<$a[i+1]$))}
+  \subsubsection{Funci\'on de abstracci\'on}
  	
  	\Abs[array]{conjEstNat}[a]{$c$}{($\forall$ $n$: nat) $n \in c \Leftrightarrow$ est\'aEnArray?($n$, $a$, 0)}
  	
@@ -75,6 +76,7 @@
 \end{Estructura}
 
 	\Rep[iterador][i]{$i.pos$<longitud($*(i.lista)$)}
+  \subsubsection{Funci\'on de abstracci\'on}
 	
 	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
 	
