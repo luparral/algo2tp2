@@ -51,12 +51,16 @@
 \BOOKMARK [3][-]{subsubsection.5.1.2}{Operaciones b\341sicas de promesa}{subsection.5.1}% 51
 \BOOKMARK [2][-]{subsection.5.2}{Representaci\363n}{section.5}% 52
 \BOOKMARK [3][-]{subsubsection.5.2.1}{Representaci\363n de promesa}{subsection.5.2}% 53
-\BOOKMARK [2][-]{subsection.5.3}{Algoritmos}{section.5}% 54
-\BOOKMARK [3][-]{subsubsection.5.3.1}{Algoritmos de promesa}{subsection.5.3}% 55
-\BOOKMARK [1][-]{section.6}{M\363dulo T\355tulo}{}% 56
-\BOOKMARK [2][-]{subsection.6.1}{Interfaz}{section.6}% 57
-\BOOKMARK [3][-]{subsubsection.6.1.1}{Operaciones b\341sicas de t\355tulo}{subsection.6.1}% 58
-\BOOKMARK [2][-]{subsection.6.2}{Representaci\363n}{section.6}% 59
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Representaci\363n de t\355tulo}{subsection.6.2}% 60
-\BOOKMARK [2][-]{subsection.6.3}{Algoritmos}{section.6}% 61
-\BOOKMARK [3][-]{subsubsection.6.3.1}{Algoritmos de t\355tulo}{subsection.6.3}% 62
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Invariante de Representaci\363n de Promesa}{subsection.5.2}% 54
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Funci\363n de abstracci\363n de Promesa}{subsection.5.2}% 55
+\BOOKMARK [2][-]{subsection.5.3}{Algoritmos}{section.5}% 56
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Algoritmos de promesa}{subsection.5.3}% 57
+\BOOKMARK [1][-]{section.6}{M\363dulo T\355tulo}{}% 58
+\BOOKMARK [2][-]{subsection.6.1}{Interfaz}{section.6}% 59
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Operaciones b\341sicas de t\355tulo}{subsection.6.1}% 60
+\BOOKMARK [2][-]{subsection.6.2}{Representaci\363n}{section.6}% 61
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Representaci\363n de t\355tulo}{subsection.6.2}% 62
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Invariante de Representaci\363n de T\355tulo'}{subsection.6.2}% 63
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Funci\363n de abstracci\363n de T\355tulo'}{subsection.6.2}% 64
+\BOOKMARK [2][-]{subsection.6.3}{Algoritmos}{section.6}% 65
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Algoritmos de t\355tulo}{subsection.6.3}% 66
