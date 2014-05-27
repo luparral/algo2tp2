@@ -134,7 +134,7 @@
   \subsection{Algoritmos}
 \subsubsection{Algoritmos de Diccionario String}
 
-\textsc{iCrearDicc}() $\rightarrow$ \textbf{res} = diccString($\alpha$)
+\textsc{iCrearDicc}() $\rightarrow$ \textbf{res} = estrDicc($\alpha$)
 \begin{lstlisting}[mathescape]
  n $\leftarrow$ nodo									O(1)
  n $\leftarrow$ crearNodo() 								O(1)
@@ -154,7 +154,7 @@
 \end{lstlisting}
 \textbf{Complejidad:}2*O(1) + 256*O(1) + 2*O(1) = O(1)
 
-\textsc{iDefinir}(\textbf{in/out} diccString($\alpha$): d, \textbf{in} string: c, \textbf{in} alfa: s)
+\textsc{iDefinir}(\textbf{in/out} estrDicc($\alpha$): d, \textbf{in} string: c, \textbf{in} alfa: s)
 \begin{lstlisting}[mathescape]
  i $\leftarrow$ 0 										O(1)
  p $\leftarrow$ d.raiz 									O(1)
@@ -171,7 +171,7 @@
 \end{lstlisting}
 \textbf{Complejidad:} 2*O(1) + |s|*5*O(1) + O(1) + O(|s|) = O(|s|)
 
-\textsc{iSignificado}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = $\alpha$
+\textsc{iSignificado}(\textbf{in} estrDicc($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = $\alpha$
 \begin{lstlisting}[mathescape]
  i $\leftarrow$ 0 										O(1)
  p $\leftarrow$ d.raiz 									O(1)
@@ -183,7 +183,7 @@
 \end{lstlisting}
 \textbf{Complejidad:} 2*O(1) + |s|*2*O(1) + O(1) = O(|s|)
 
-\textsc{iDefinido?}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = bool
+\textsc{iDefinido?}(\textbf{in} estrDicc($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = bool
 \begin{lstlisting}[mathescape]
  i $\leftarrow$ 0 										O(1)
  p $\leftarrow$ d.raiz 									O(1)
@@ -199,7 +199,7 @@
 \end{lstlisting}
 \textbf{Complejidad:} 2*O(1) + |s|*3*O(1) + O(1) = O(|s|)
 
-\textsc{iClaves}(\textbf{in} diccString($\alpha$): d) $\rightarrow$ \textbf{res} = lista\_enlazada(string)
+\textsc{iClaves}(\textbf{in} estrDicc($\alpha$): d) $\rightarrow$ \textbf{res} = lista\_enlazada(string)
 \begin{lstlisting}[mathescape]
 return itClaves(d)								O(1)
 \end{lstlisting}
