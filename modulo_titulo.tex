@@ -1,7 +1,7 @@
 \subsection{Interfaz}
 
 %%Parámetros formales
-
+  \subsubsection{Par\'ametros formales}
    \parbox{1.7cm}{\textbf{g\'eneros}} t\'itulo\\
     
   \textbf{se explica con}: \tadNombre{T\'itulo}.
@@ -17,91 +17,87 @@
   [Devuelve el nombre del t\'itulo]\\\\
 
 %%#máxAcciones
-  \InterfazFuncion{$\#$m\'axAcciones}{\In{t}{t\'itulo}}{nat}
-  {$res$ \igobs $\#$m\'axAcciones(t)}
+  \InterfazFuncion{#m\'axAcciones}{\In{t}{t\'itulo}}{nat}
+  {$res$ \igobs #m\'axAcciones(t)}
   [$O(1)$]
-  [Devuelve el m\'aximo de cantidad de acciones]\\\\
+  [Devuelve el m\'aximo de cantidad de acciones.]\\\\
 
 %%cotizacion
   \InterfazFuncion{cotizaci\'on}{\In{t}{t\'itulo}}{dinero}
-  {$res$ \igobs cotizaci\'on(t)}
+  {$res$ \igobs cotizacion(t)}
   [$O(1)$]
-  [Devuelve la cotizaci\'on del t\'itulo]\\\\
+  [Devuelve la cotizaci\'on del t\'itulo.]\\\\
 
-%%enAlza
-  \InterfazFuncion{enAlza}{\In{t}{t\'itulo}}{bool}
-  {$res$ \igobs enAlza(t)}
-  [$O(1)$]
-  [Indica si el t\'itulo est\'a o no en alza]\\\\
+%%      %%enAlza
+%%            \InterfazFuncion{enAlza}{\In{t}{t\'itulo}}{bool}
+%%           {$res$ \igobs enAlza(t)}
+%%            [$O(1)$]
+%%            [Indica si el t\'itulo est\'a o no en alza.]\\\\
 
 %%crearTitulo
   \InterfazFuncion{crearT\'itulo}{\In{t}{nombre}, \In{c}{dinero}, \In{n}{nat}}{t\'itulo}
-  {$res$ \igobs crearT\'itulo($s$, $c$, $n$)}
-  [$O(1)$]
-  [Devuelve una nuevo t\'itulo]\\\\
+  {$res$ \igobs crearT\'itulo($t$, $c$, $n$)}
+  [$O(|t|)$]
+  [Devuelve una nueva promesa.]\\\\
 
 %%recotizar
   \InterfazFuncion{recotizar}{\In{d}{dinero}, \In{t}{t\'itulo}}{t\'itulo}
   {$res$ \igobs recotizar($d$, $t$)}
   [$O(1)$]
-  [Cambia la cotizaci\'on del t\'itulo]\\\\
+  [Devuelve una nueva promesa.]\\\\
 
 
 \subsection{Representaci\'on}
 \subsubsection{Representaci\'on de t\'itulo}
 %------------------------estr----------------------------
-\begin{Estructura}{promesa}[estr]
+\begin{Estructura}{t\'itulo}[estr]
     \begin{Tupla}[estr]
-      \tupItem{nombre}{nombre,}
-      \tupItem{$\#$m\'axAcciones}{nat,}
-      \tupItem{cotizaci\'on}{dinero,}
+      \tupItem{nombre}{nombre}
+      \tupItem{#m\'axAcciones}{nat}
+      \tupItem{cotizaci\'on}{dinero}
       \tupItem{enAlza}{bool}
     \end{Tupla}
 \end{Estructura}
 
  %----------------------------------------------------Rep------------------------------------------
 
-\Rep[estr][e]{true}
-\Abs[estr]{t\'itulo}[e]{t}{nombre(t) = e.nombre $\land$ $\#$m\'axAcciones(t) = e.$\#$m\'axAcciones $\land$ cotizaci\'on(t) = e.cotizaci\'on $\land$ enAlza(t) = e.enAlza}
+\Rep[estr][e]{(true}
+
+\subsubsection{Funci\'on abstracci\'on}
+\Abs[estr]{titulo}[e]{t}{nombre(t) = e.nombre $\land$ #m\'axAcciones(t) = e.#m\'axAcciones $\land$ cotizacion(t) = e.cotizacion} %%enAlza(t) = e.enAlza
 
   \subsection{Algoritmos}
 \subsubsection{Algoritmos de t\'itulo}
 
-iNombre(in estr: t) $\rightarrow$ res = nombre
+iNombre(in Titulo: t) $\rightarrow$ res = nombre
 \begin{lstlisting}[mathescape]
- res = e.nombre
+ res $\leftarrow$ e.nombre
 \end{lstlisting}
 
-i$\#$m\'axAcciones(in estr: t) $\rightarrow$ res = nat
+i#m\'axAcciones(in Titulo: t) $\rightarrow$ res = nat
 \begin{lstlisting}[mathescape]
- res = e.$\#$maxAcciones
+ res $\leftarrow$ e.#m\'axAcciones
 \end{lstlisting}
 
-iCotizaci\'on(in estr:: t) $\rightarrow$ res = dinero
+iCotización(in Titulo: t) $\rightarrow$ res = dinero
 \begin{lstlisting}[mathescape]
- res = e.cotizacion
+ res $\leftarrow$ e.cotizacion
 \end{lstlisting}
 
 
-iEnAlza(in estr: t) $\rightarrow$ res = bool
+%%    iEnAlza(in Titulo: t) $\rightarrow$ res = bool
+%%    \begin{lstlisting}[mathescape]
+        %%%%%%%%%%
+%%    \end{lstlisting}
+
+iCrearTitulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = t\'itulo
 \begin{lstlisting}[mathescape]
- res = e.enAlza
+ res.nombre $\leftarrow$ n
+ res.#m\'axAcciones $\leftarrow$ max
+ res.cotizacion $\leftarrow$ c
 \end{lstlisting}
 
-iCrearT\'itulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = estr
+iRecotizar(in dinero: c, inout titulo: t)
 \begin{lstlisting}[mathescape]
- res.nombre = n
- res.$\#$maxAcciones = max
- res.enAlza=true
- res.cotizacion = c
-\end{lstlisting}
-
-iRecotizar(in dinero: c, in/out estr: t)
-\begin{lstlisting}[mathescape]
- if c>t.cotizacion then
-   t.enAlza=true
- else
-   t.enAlza=false
- fi
- t.cotizacion <- c
+t.cotizacion $\leftarrow$ c
 \end{lstlisting}
