@@ -14,7 +14,7 @@
 \contentsline {section}{\numberline {3}M\'odulo DiccionarioTrie(alpha)}{9}{section.3}
 \contentsline {subsection}{\numberline {3.1}Interfaz}{9}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Par\'ametros formales}{9}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{10}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{9}{subsubsection.3.1.2}
 \contentsline {subsubsection}{\numberline {3.1.3}Operaciones b\'asicas del iterador de claves de Diccionario String($\alpha $)}{10}{subsubsection.3.1.3}
 \contentsline {subsection}{\numberline {3.2}Representacion}{11}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Representaci\'on del Diccionario String($\alpha $)}{11}{subsubsection.3.2.1}

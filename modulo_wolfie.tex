@@ -81,7 +81,7 @@
 %------------------------estr----------------------------
 \begin{Estructura}{wolfie}[estr]
     \begin{Tupla}[estr]
-      \tupItem{t\'itulos}{diccTrie(nombre, infoT\'itulo),}%
+      \tupItem{t\'itulos}{diccString(infoT\'itulo),}%
       	
       \tupItem{clientes}{conjEstNat(cliente)}
       
@@ -90,9 +90,7 @@
 
     \begin{Tupla}[infoT\'itulo]
     	\tupItem{arrayClientes}{array\_dimensionable(tuplaPorCliente),}
-    	\tupItem{cot}{nat,}
-    	\tupItem{enAlza}{bool,}
-    	\tupItem{maxAcc}{nat,}
+    	\tupItem{t\'itulo}{t\'itulo,}
     	\tupItem{accDisponibles}{nat}
     \end{Tupla}
     
@@ -110,7 +108,7 @@
     	\tupItem{promCompra}{*promesa,}
     	\tupItem{promVenta}{*promesa}
     \end{Tupla}
-    \indent\indent Con un orden definido por $a$<$b$ $\Leftrightarrow$ $a.cantAcc$ < $b.cantAcc$
+    \indent\indent Con un orden definido por $a$<$b$ $\Leftrightarrow$ $a.cantAcc$ > $b.cantAcc$ %%%%%manganeta
 
 \end{Estructura}
  %----------------------------------------------------Rep------------------------------------------
@@ -118,12 +116,13 @@
  \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
  	\item Los clientes de $clientes$ son los mismos que hay dentro de $titulos$.
- 	\item Las promesas de compra  son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
- 	\item Las promesas de y venta son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
+ 	\item Las promesas de compra son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
+ 	\item Las promesas de venta son de su t\'itulo y cliente y no cumplen los requisitos para ejecutarse.
  	\item Las acciones disponibles de cada t\'itulo son el m\'aximo de acciones de ese t\'itulo menos la suma de las acciones de ese titulo que tengan los clientes, y son mayores o iguales a 0.
  	\item El $cliente$ de $\acute{u}ltimoLlamado$ pertenece a $clientes$.
  	\item En $\acute{u}ltimoLlamado$, si $fue\acute{U}ltimo$ es true, las promesas de $promesas$ son todas las promesas que tiene $cliente$.
  	\item Los clientes est\'an ordenados en $arrayClientes$ de $e.titulos$.
+ 	\item Los t\'itulos en infoT\'itulo tienen el mismo nombre que la clave que lleva a ellos.
   \end{enumerate}
   
   \Rep[estr][e]{\\
@@ -132,15 +131,15 @@
   	\end{minipage}\vspace{3mm}
 
   	(II)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promCompra$=$p$) \impluego  t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=compra $\land$ (l\'imite($*p$)>obtener($t$, $e.titulos$).$cot$ $\lor$ cantidad($*p$)>obtener($t$, $e.titulos$).$accDisponibles$){\large)} $\land$
+  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promCompra$=$p$) \impluego  t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=compra $\land$ (l\'imite($*p$)>cotizaci\'on(obtener($t$, $e.titulos$).$titulo$) $\lor$ cantidad($*p$)>obtener($t$, $e.titulos$).$accDisponibles$){\large)} $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(III)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promVenta$=$p$) \impluego (t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=venta $\land$ l\'imite($*p$) < obtener($t$, $e.titulos$).$cot$){\large)} $\land$
+  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promVenta$=$p$) \impluego (t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=venta $\land$ l\'imite($*p$) < cotizaci\'on(obtener($t$, $e.titulos$).$titulo$)){\large)} $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(IV)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (obtener($nt$, $e.titulos$).$accDisponibles$ = obtener($nt$, $e.titulos$).$maxAcc$ - sumaAccClientes(obtener($nt$, $e.titulos$).$arrayClientes$, 0) $\land$ obtener($nt$, $e.titulos$).$accDisponibles$ $\geq$ 0)) $\land$
+		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (obtener($nt$, $e.titulos$).$accDisponibles$ = m\'aximo(obtener($nt$, $e.titulos$).$titulo$) - sumaAccClientes(obtener($nt$, $e.titulos$).$arrayClientes$, 0) $\land$ obtener($nt$, $e.titulos$).$accDisponibles$ $\geq$ 0)) $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(V)\begin{minipage}[t]{\linewidth-\parindent-2cm}
@@ -152,7 +151,11 @@
   	\end{minipage}\vspace{3mm}
   	
   	(VII)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		($\forall$ $t$: t\'itulo) def?($t, e.titulos$) \impluego {\large(}($\forall$ $i$:nat) i<longitud(buscar($t, e.titulos$).$arrayClientes$)-1 $\Rightarrow$ (buscar($t, e.titulos$).$arrayClientes$)[i] < (buscar($t, e.titulos$).$arrayClientes$)[i+1]{\large)}
+		($\forall$ $t$: nombre) def?($t, e.titulos$) \impluego {\large(}($\forall$ $i$:nat) i<longitud(buscar($t, e.titulos$).$arrayClientes$)-1 $\Rightarrow$ (buscar($t, e.titulos$).$arrayClientes$)[i] < (buscar($t, e.titulos$).$arrayClientes$)[i+1]{\large)}
+  	\end{minipage}\vspace{3mm}
+  	
+  	(VIII)\begin{minipage}[t]{\linewidth-\parindent-2cm}
+		($\forall$ $t$: nombre) def?($t, e.titulos$) \impluego $t$ = nombre(obtener($t$, $e.titulos$).$titulo$)
   	\end{minipage}\vspace{3mm}
   	
   \tadOperacion{est\'aCliente?}{cliente, array\_dimensionable(tuplaPorCliente)}{bool}{}
@@ -173,9 +176,9 @@
 
   	  }\mbox{}
 \subsubsection{Funci\'on de abstracci\'on}
-  	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ t\'itulos($w$)=????????? $\land$ \\($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
+  	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ ($\forall t$: t\'itulo) {\large(}$t \in$t\'itulos($w$)$\Leftrightarrow$(def?($t, e.titulos$)\yluego$t$=obtener($t, e.titulos$).$titulo$){\large)} $\land$ ($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
 
-  \tadOperacion{damePromesas}{itDicc(diccString), estr, cliente}{conj(promesa)}{}
+  \tadOperacion{damePromesas}{itDicc(diccString(infoTítulo)), estr, cliente}{conj(promesa)}{}
   \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
 
 % para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente, sumaAccClientes 
@@ -194,7 +197,7 @@ iClientes(in e: estr) $\rightarrow$ res: itConjEstNat
 iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res: itConj(promesa)
 \begin{lstlisting}[mathescape]
  if $\neg$(e.ultimoLlamado.cliente = c $\land$ e.ultimoLlamado.fueUltimo) then		O(1)
-   $\textbf{itClaves(diccString(nombre, infoTitulo))}$ it $\leftarrow$ CrearIt(e.titulos)							O(1)
+   $\textbf{itClaves(diccString(infoTitulo))}$ it $\leftarrow$ CrearIt(e.titulos)							O(1)
    $\textbf{conj(promesa)}$ proms $\leftarrow$ vacio() 								O(1)
    $\textbf{tuplaPorClientes}$ tup										O(1)
    while (HayMas?(it))						T*	   O(1)
@@ -227,23 +230,18 @@ iInaugurarWolfie(in c: conj(cliente)) $\rightarrow$ res: estr
 iAgregarT\'itulo(in t: t\'itulo, in/out e: estr) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
   Definir(e.titulos, nombre(t), <CrearArrayClientes(CrearIt(e.clientes),cardinal
-  	(e.clientes)), cotizacion(t), enAlza(t), #maxAcciones(t), #maxAcciones(t))
+  	(e.clientes)), t, #maxAcciones(t))
 \end{lstlisting}
 \textbf{Complejidad:} O(|nombre(t)|+C)
 
 iActualizarCotizaci\'on(in nt: nombre, in cot: nat, in/out e: estr)
 \begin{lstlisting}[mathescape]
   $\textbf{infoTitulo}$ s $\leftarrow$ Obtener(nt, e.titulos) 		O(|nt|)
-  if s.cot < cot then								O(1)
-  	s.enAlza $\leftarrow$ true 								O(1)
-  else 
-  	s.enAlza $\leftarrow$ false								O(1)
-  fi
-  s.cot $\leftarrow$ cot									O(1)
+  recotizar(cot, s.titulo)									O(1)
   $\textbf{nat}$ i $\leftarrow$ 0										O(1)
   while i<|s.arrayClientes|						C*
     if (s.arrayClientes[i].promVenta $\neq$ NULL \yluego limite(*(s.arrayClientes[i].promVenta))
-> s.cot) then									O(1)
+> cotizacion(s.titulo)) then									O(1)
       s.arrayClientes[i].cantAcc -= cantidad(*(s.arrayClientes[i].promVenta))	O(1)
       s.accDisponibles += cantidad(*(s.arrayClientes[i].promVenta))		O(1)
       s.arrayClientes[i].promVenta = NULL					O(1)
@@ -254,7 +252,7 @@ iActualizarCotizaci\'on(in nt: nombre, in cot: nat, in/out e: estr)
   heapsort(arr)								    O(C(log(C)))
   i $\leftarrow$ 0										O(1)
   while i<|s.arrayClientes|						C*
-    if (arr[i].promCompra $\neq$ NULL \yluego limite(*(arr[i].promCompra)) < s.cot $\land$ 
+    if (arr[i].promCompra $\neq$ NULL \yluego limite(*(arr[i].promCompra)) < cotizacion(s.titulo) $\land$ 
 cantidad(*(arr[i].promCompra)) $\leq$ s.accDisponibles) then			O(1)
       arr[i].cantAcc += cantidad(*(arr[i].promCompra))			O(1)
       s.accDisponibles -= cantidad(*(arr[i].promCompra))		O(1)
@@ -266,7 +264,7 @@ cantidad(*(arr[i].promCompra)) $\leq$ s.accDisponibles) then			O(1)
   heapsort(s.arrayClientes)						   O(C(log(C)))
   
 \end{lstlisting}
-\textbf{Complejidad:} O(|nt|)+5*O(1)+C*4*O(1)+O(C)+O(C)+O(C(log(C)))+O(1)+C*4*O(1)+O(C)+O(C(log(C)))=\\\indent\indent\indent O(|nt|+C(log(C)))
+\textbf{Complejidad:} O(|nt|)+2*O(1)+C*4*O(1)+O(C)+O(C)+O(C(log(C)))+O(1)+C*4*O(1)+O(C)+O(C(log(C)))=\\\indent\indent\indent O(|nt|+C(log(C)))
 
 iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
 \begin{lstlisting}[mathescape]
@@ -283,7 +281,7 @@ iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
 
 iEnAlza(in nt: nombreT, in e: estr) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
-  return(Obtener(nt, e.titulos).enAlza)
+  return(enAlza(Obtener(nt, e.titulos).titulo))
 \end{lstlisting}
 \textbf{Complejidad:} O(1)
 
