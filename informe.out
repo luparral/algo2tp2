@@ -1,9 +1,9 @@
-\BOOKMARK [1][-]{section.1}{Renombres de M\363dulos}{}
+\BOOKMARK [1][-]{section.1}{Introducci\363n}{}
+\BOOKMARK [2][-]{subsection.1.1}{Renombres de M\363dulos}{section.1}
 \BOOKMARK [1][-]{section.2}{M\363dulo Wolfie}{}
 \BOOKMARK [2][-]{subsection.2.1}{Interfaz}{section.2}
-\BOOKMARK [3][-]{subsubsection.2.1.1}{Par\341metros formales}{subsection.2.1}
-\BOOKMARK [3][-]{subsubsection.2.1.2}{Operaciones b\341sicas de wolfie}{subsection.2.1}
-\BOOKMARK [3][-]{subsubsection.2.1.3}{Operaciones b\341sicas de itT\355tulos}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Operaciones b\341sicas de wolfie}{subsection.2.1}
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Operaciones b\341sicas de itT\355tulos}{subsection.2.1}
 \BOOKMARK [2][-]{subsection.2.2}{Representaci\363n}{section.2}
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Representaci\363n de wolfie}{subsection.2.2}
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Invariante de representaci\363n de wolfie}{subsection.2.2}
@@ -49,8 +49,7 @@
 \BOOKMARK [2][-]{subsection.4.5}{TAD Conjunto Est\341tico de Nats}{section.4}
 \BOOKMARK [1][-]{section.5}{M\363dulo Promesa}{}
 \BOOKMARK [2][-]{subsection.5.1}{Interfaz}{section.5}
-\BOOKMARK [3][-]{subsubsection.5.1.1}{Par\341metros formales}{subsection.5.1}
-\BOOKMARK [3][-]{subsubsection.5.1.2}{Operaciones b\341sicas de promesa}{subsection.5.1}
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Operaciones b\341sicas de promesa}{subsection.5.1}
 \BOOKMARK [2][-]{subsection.5.2}{Representaci\363n}{section.5}
 \BOOKMARK [3][-]{subsubsection.5.2.1}{Representaci\363n de promesa}{subsection.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.2}{Invariante de Representaci\363n de Promesa}{subsection.5.2}

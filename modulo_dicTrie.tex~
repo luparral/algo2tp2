@@ -1,8 +1,11 @@
+El m\'odulo Diccionario String provee un diccionario en el que la caracter\'istica distintiva es que las claves definidas son strings, permitiendo esto que las operaciones de definici\'on de claves en complejidad O(|clave|), como as\'i tambi\'en la obtenci\'on del valor asociado a la clave y el testeo de si dicha clave est\'a definida.
+Para el recorrido sus elementos se provee de un iterador de Claves que permite recorrer las claves del Diccionario String.
+
 \subsection{Interfaz}
 
 %%Parámetros formales
   \subsubsection{Par\'ametros formales}
-
+	\textbf{g\'enero} $\alpha$\\
   \textbf{se explica con}: \tadNombre{Diccionario(string, $\alpha$)}, \tadNombre{Iterador Unidireccional}.
 
   \textbf{g\'eneros}: \TipoVariable{diccString($\alpha$), itClaves(diccString)}. %%###revisar
@@ -41,18 +44,18 @@
 
   \InterfazFuncion{HayMas?}{\In{d}{itClaves($string$)}}{$bool$}
   {res \igobs hayMas?($it$)}%
-  [O$(longitud(c))$] %%##revisar
+  [O$(longitud(secuSuby(d)))$] %%##revisar
   [Informa si hay m\'as elementos por iterar.]\\\\
 
   \InterfazFuncion{Actual}{\In{d}{itClaves($string$)}}{$string$}
   {res \igobs actual($it$)}
-  [O$(longitud(c))$]%%##revisar
+  [O$(longitud(secuSuby(d)))$]%%##revisar
   [Devuelve la clave de la posici\'on actual.]\\\\
 
-  \InterfazFuncion{Avanzar}{\Inout{it}{itClaves($string$)}}{itClaves($\alpha$)}
+  \InterfazFuncion{Avanzar}{\Inout{it}{itClaves($string$)}}{}
   [hayMas?($it$) $\land$ $it = it_{0}$] %%##revisar
-  {res \igobs avanzar($it_{0}$)}
-  [O$(longitud(c))$]%%##revisar
+  {it \igobs avanzar($it_{0}$)}
+  [O$(longitud(secuSuby(d)))$]%%##revisar
   [Avanza a la pr\'oxima clave.]\\\\
 
 
@@ -75,7 +78,7 @@
 \end{Estructura}
 
 %%Rep 
-
+ \subsubsection{Invariante de Representaci\'on de diccString}
 \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
  	\item Existe un \'unico camino entre cada nodo y el nodo ra\'iz (no hay ciclos).
@@ -86,13 +89,13 @@
 
 \Rep[estrDic][e]{\\
  	\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  	{ra\'iz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e) $\land$\\ hayHojas(e) $\Rightarrow$ |e.claves|> 0 $\land$ \\($\forall$ c $\in$ caminosANodos(e))($\exists$ i \{0..|e.claves|\}) e.claves[i] = c}
+  	{ra\'iz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e) $\land$\\ hayHojas(e) $\Rightarrow$ |e.claves|> 0 $\land$ \\($\forall$ c : string)(c $\in$ caminosANodos(e)) $\Rightarrow$ {\large(}($\exists$ i: nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ (e.claves[i] = c){\large)}}
   	\end{minipage}\vspace{3mm}
   	 }\mbox{}
 
 
 
- \subsubsection{Operaciones auxiliares del invatriante de Representaci\'on}
+ \subsubsection{Operaciones auxiliares del invariante de Representaci\'on}
 
   \tadOperacion{noHayCiclos}{puntero(nodo)}{bool}{}
   \tadAxioma{noHayCiclos($n,p$)}{($\exists$ n:nat)(($\forall$ c: string)(|s| = n $\Rightarrow$ leer($p,s$) = NULL))}
@@ -119,7 +122,13 @@
   \tadOperacion{auxTodasLasHojasTienenValor}{arreglo(puntero(nodo))}{bool}{}
   \tadAxioma{auxTodasLasHojasTienenValor($a$)}{\IF |a| = 0 THEN true ELSE dameUno(a).valor != NULL $\land$ auxTodasLasHojasTienenValor(sinUno(a)) FI}
 
-\subsubsection{Funci\'on de abstracci\'on}
+\tadOperacion{hayHojas}{puntero(nodo)}{bool}{}
+Dada una estructura, indica si en la misma existe algun nodo cuyo arreglo hijos tenga todas las posiciones NULL.
+\tadOperacion{caminosANodos}{puntero(nodo)}{conj(string)}{}
+Dada una estructura, devuelve un conjunto con el \'unico camino existente entre la raiz y cada hoja. El camino se obtiene de agregar la posici\'on del arreglo hijos por la cual hay que bajar en cada nivel de la estructura hasta llegar a la hoja, conviritendo en cada paso esa posici\'on en un \textsc{char} y junt\'andolos en un \textsc{string}.
+
+
+\subsubsection{Funci\'on de abstracci\'on de diccString}
  \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
 
   \subsubsection{Representaci\'on del iterador de Claves del Diccionario String($\alpha$)}
@@ -144,7 +153,7 @@
 
 \textsc{iCrearNodo}() $\rightarrow$ \textbf{res} = nodo
 \begin{lstlisting}[mathescape]
- d : arreglo\_estatico[256] 							O(1)
+ d : arreglo_estatico[256] 							O(1)
  i $\leftarrow$ 0 										O(1)
  while (i < 256) 							256*
  	d[i] $\leftarrow$ NULL 							O(1)

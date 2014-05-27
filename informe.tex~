@@ -163,7 +163,7 @@
 
 \newpage
 \section{Introducci\'on}
-En los distintos m\'odulos se asume que los tipos b\'asicos se pasan por copia, con complejidad O(1). Para los m\'odulos diseñados, el pasaje es p
+En los distintos m\'odulos se asume que los tipos b\'asicos se pasan por copia, con complejidad O(1). Para los m\'odulos dise\~nados, el pasaje es por referencia. De todos modos, las aclaraciones que nos parecieron necesarias se encuentran en la secci\'on de aliasing de la interfaz.
 \subsection{Renombres de M\'odulos}
 \begin{minipage}{15cm}
 M\'odulo Dinero es Nat\\

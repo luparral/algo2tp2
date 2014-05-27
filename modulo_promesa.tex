@@ -73,9 +73,9 @@
 
 iTitulo(in p: estr) $\rightarrow$ res = nombre
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.titulo                                                         O(copy(titulo(p)))
+ res $\leftarrow$ e.titulo                                                         	O(|p.titulo|)
 \end{lstlisting}
-\textbf{Complejidad:} O(copy(titulo(p)))
+\textbf{Complejidad:} O(|p.titulo|)
 
 iTipo(in p: estr) $\rightarrow$ res = tipoPromesa
 \begin{lstlisting}[mathescape]
@@ -98,11 +98,11 @@ iCantidad(in p: estr) $\rightarrow$ res = nat
 
 iCrearPromesa(in t: nombreT, in tipo: TipoPromesa, in n: dinero, in c: nat) $\rightarrow$ res = estr
 \begin{lstlisting}[mathescape]
- res.titulo $\leftarrow$ t                                                            O(copy(titulo(p)))
+ res.titulo $\leftarrow$ t                                                            O(|p.titulo|)
  res.tipo $\leftarrow$ tipo                                                               O(1)
  res.limite $\leftarrow$ n                                                                O(1)
  res.cantidad $\leftarrow$ m                                                              O(1)
 \end{lstlisting}
-\textbf{Complejidad:} 3*O(1) + O(copy(titulo(p)))
+\textbf{Complejidad:} 3*O(1) + O(|p.titulo|) = O(|p.titulo|)
 
 
