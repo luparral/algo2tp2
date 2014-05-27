@@ -22,7 +22,7 @@
 %%titulo
   \InterfazFuncion{t\'itulo}{\In{p}{promesa}}{nombre}
   {$res$ \igobs t\'itulo(p)}
-  [$O(1)$]
+  [$O(|titulo(p)|)$]
   [Devuelve el nombre del t\'itulo de la promesa]\\\\
 %%tipoPromesa
   \InterfazFuncion{tipo}{\In{p}{promesa}}{tipoPromesa}
@@ -42,7 +42,7 @@
 %%crearPromesa
   \InterfazFuncion{crearPromesa}{\In{t}{nombre}, \In{tipo}{tipoPromesa}, \In{n}{dinero}, \In{m}{nat}}{estr}
   {$res$ \igobs crearPromesa($t$, $tipo$, $n$, $m$)}
-  [$(1)$]
+  [$(|t|)$]
   [Devuelve una nueva promesa]\\\\
 
 

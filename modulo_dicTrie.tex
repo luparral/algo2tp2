@@ -41,18 +41,18 @@
 
   \InterfazFuncion{HayMas?}{\In{d}{itClaves($string$)}}{$bool$}
   {res \igobs hayMas?($it$)}%
-  [O$(longitud(c))$] %%##revisar
+  [O$(longitud(secuSuby(d)))$] %%##revisar
   [Informa si hay m\'as elementos por iterar.]\\\\
 
   \InterfazFuncion{Actual}{\In{d}{itClaves($string$)}}{$string$}
   {res \igobs actual($it$)}
-  [O$(longitud(c))$]%%##revisar
+  [O$(longitud(secuSuby(d)))$]%%##revisar
   [Devuelve la clave de la posici\'on actual.]\\\\
 
-  \InterfazFuncion{Avanzar}{\Inout{it}{itClaves($string$)}}{itClaves($\alpha$)}
+  \InterfazFuncion{Avanzar}{\Inout{it}{itClaves($string$)}}
   [hayMas?($it$) $\land$ $it = it_{0}$] %%##revisar
-  {res \igobs avanzar($it_{0}$)}
-  [O$(longitud(c))$]%%##revisar
+  {it \igobs avanzar($it_{0}$)}
+  [O$(longitud(secuSuby(d)))$]%%##revisar
   [Avanza a la pr\'oxima clave.]\\\\
 
 
@@ -75,7 +75,7 @@
 \end{Estructura}
 
 %%Rep 
-
+ \subsubsection{Invariante de Representaci\'on de diccString}
 \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
  	\item Existe un \'unico camino entre cada nodo y el nodo ra\'iz (no hay ciclos).
@@ -92,7 +92,7 @@
 
 
 
- \subsubsection{Operaciones auxiliares del invatriante de Representaci\'on}
+ \subsubsection{Operaciones auxiliares del invariante de Representaci\'on}
 
   \tadOperacion{noHayCiclos}{puntero(nodo)}{bool}{}
   \tadAxioma{noHayCiclos($n,p$)}{($\exists$ n:nat)(($\forall$ c: string)(|s| = n $\Rightarrow$ leer($p,s$) = NULL))}
@@ -119,7 +119,7 @@
   \tadOperacion{auxTodasLasHojasTienenValor}{arreglo(puntero(nodo))}{bool}{}
   \tadAxioma{auxTodasLasHojasTienenValor($a$)}{\IF |a| = 0 THEN true ELSE dameUno(a).valor != NULL $\land$ auxTodasLasHojasTienenValor(sinUno(a)) FI}
 
-\subsubsection{Funci\'on de abstracci\'on}
+\subsubsection{Funci\'on de abstracci\'on de diccString}
  \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
 
   \subsubsection{Representaci\'on del iterador de Claves del Diccionario String($\alpha$)}
@@ -144,7 +144,7 @@
 
 \textsc{iCrearNodo}() $\rightarrow$ \textbf{res} = nodo
 \begin{lstlisting}[mathescape]
- d : arreglo\_estatico[256] 							O(1)
+ d : arreglo_estatico[256] 							O(1)
  i $\leftarrow$ 0 										O(1)
  while (i < 256) 							256*
  	d[i] $\leftarrow$ NULL 							O(1)
