@@ -22,7 +22,7 @@
 %%titulo
   \InterfazFuncion{t\'itulo}{\In{p}{promesa}}{nombre}
   {$res$ \igobs t\'itulo(p)}
-  [$O(|titulo(p)|)$]
+  [$O(copy(titulo(p)))$]
   [Devuelve el nombre del t\'itulo de la promesa]\\\\
 %%tipoPromesa
   \InterfazFuncion{tipo}{\In{p}{promesa}}{tipoPromesa}
@@ -70,31 +70,36 @@
 
 iTitulo(in p: estr) $\rightarrow$ res = nombre
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.titulo
+ res $\leftarrow$ e.titulo                                                         O(copy(titulo(p)))
 \end{lstlisting}
+\textbf{Complejidad:} O(copy(titulo(p)))
 
 iTipo(in p: estr) $\rightarrow$ res = tipoPromesa
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.tipo
+ res $\leftarrow$ e.tipo                                                                  O(1)
 \end{lstlisting}
+\textbf{Complejidad:} O(1)
 
 iLimite(in p: estr) $\rightarrow$ res = dinero
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.limite
+ res $\leftarrow$ e.limite                                                                O(1)
 \end{lstlisting}
+\textbf{Complejidad:} O(1)
 
 
 iCantidad(in p: estr) $\rightarrow$ res = nat
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.cantidad
+ res $\leftarrow$ e.cantidad                                                              O(1)
 \end{lstlisting}
+\textbf{Complejidad:} O(1)
 
 iCrearPromesa(in t: nombreT, in tipo: TipoPromesa, in n: dinero, in c: nat) $\rightarrow$ res = estr
 \begin{lstlisting}[mathescape]
- res.titulo $\leftarrow$ t
- res.tipo $\leftarrow$ tipo
- res.limite $\leftarrow$ n
- res.cantidad $\leftarrow$ m
+ res.titulo $\leftarrow$ t                                                            O(copy(titulo(p)))
+ res.tipo $\leftarrow$ tipo                                                               O(1)
+ res.limite $\leftarrow$ n                                                                O(1)
+ res.cantidad $\leftarrow$ m                                                              O(1)
 \end{lstlisting}
+\textbf{Complejidad:} 3*O(1) + O(copy(titulo(p)))
 
 

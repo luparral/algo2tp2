@@ -17,7 +17,7 @@
 \contentsline {subsubsection}{\numberline {2.3.3}Algoritmos de itT\'itulos}{9}{subsubsection.2.3.3}
 \contentsline {subsubsection}{\numberline {2.3.4}Funciones auxiliares}{9}{subsubsection.2.3.4}
 \contentsline {subsection}{\numberline {2.4}Servicios Usados}{10}{subsection.2.4}
-\contentsline {section}{\numberline {3}M\'odulo Diccionario String(alpha)}{11}{section.3}
+\contentsline {section}{\numberline {3}M\'odulo Diccionario String(alpha)}{10}{section.3}
 \contentsline {subsection}{\numberline {3.1}Interfaz}{11}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Par\'ametros formales}{11}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{11}{subsubsection.3.1.2}
