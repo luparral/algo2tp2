@@ -1,0 +1,100 @@
+\subsection{Interfaz}
+%%###no tenemos no parametros formales?
+
+  %%\InterfazFuncion{AgregarAdelante}{\Inout{l}{lista($\alpha$)}, \In{a}{$\alpha$}}{itLista($\alpha$}
+
+%%Parámetros formales
+  \subsubsection{Par\'ametros formales}
+   \parbox{1.7cm}{\textbf{g\'eneros}} promesa\\
+    %%\parbox[t]{1.7cm}{\textbf{funci\'on}}\parbox[t]{\textwidth-2\parindent-1.7cm}{%
+     %%\InterfazFuncion{Copiar}{\In{a}{$\alpha$}}{$\alpha$}
+     %%{$res \igobs a$}
+     %%[$\Theta(copy(a))$]
+     %%[funci\'on de copia de $\alpha$ s]
+    %%}
+
+  \textbf{se explica con}: \tadNombre{Promesa}.
+
+    %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista($\alpha$)}.
+
+%%Operaciones básicas
+  \subsubsection{Operaciones b\'asicas de promesa}
+%%titulo
+  \InterfazFuncion{t\'itulo}{\In{p}{promesa}}{nombre}
+  {$res$ \igobs t\'itulo(p)}
+  [$O(|titulo(p)|)$]
+  [Devuelve el nombre del t\'itulo de la promesa]\\\\
+%%tipoPromesa
+  \InterfazFuncion{tipo}{\In{p}{promesa}}{tipoPromesa}
+  {$res$ \igobs tipo(p)}
+  [$O(1)$]
+  [Devuelve el tipo de promesa de la promesa]\\\\
+%%limite
+  \InterfazFuncion{limite}{\In{p}{promesa}}{dinero}
+  {$res$ \igobs l\'imite(p)}
+  [$O(1)$]
+  [Devuelve el l\'imite de la promesa]\\\\
+%%cantidad
+  \InterfazFuncion{cantidad}{\In{p}{promesa}}{cantidad}
+  {$res$ \igobs cantidad(p)}
+  [$O(1)$]
+  [Devuelve la cantidad de acciones de la promesa]\\\\
+%%crearPromesa
+  \InterfazFuncion{crearPromesa}{\In{t}{nombre}, \In{tipo}{tipoPromesa}, \In{n}{dinero}, \In{m}{nat}}{estr}
+  {$res$ \igobs crearPromesa($t$, $tipo$, $n$, $m$)}
+  [$(|t|)$]
+  [Devuelve una nueva promesa]\\\\
+
+
+%%&&& las complejidades van con O grande, no con tita
+
+\subsection{Representaci\'on}
+\subsubsection{Representaci\'on de promesa}
+%------------------------estr----------------------------
+\begin{Estructura}{promesa}[estr]
+    \begin{Tupla}[estr]
+      \tupItem{t\'itulo}{nombre}
+      \tupItem{tipo}{tipoPromesa}
+      \tupItem{l\'imite}{dinero}
+      \tupItem{cantidad}{nat}
+    \end{Tupla}
+\end{Estructura}
+
+ %----------------------------------------------------Rep------------------------------------------
+
+\Rep[estr][e]{true}
+\Abs[estr]{promesa}[e]{p}{t\'itulo(p) = e.t\'itulo $\land$ tipo(p) = e.tipo $\land$ l\'imite(p) = e.l\'imite $\land$ cantidad(p) = e.cantidad}
+
+  \subsection{Algoritmos}
+\subsubsection{Algoritmos de promesa}
+
+iTitulo(in p: estr) $\rightarrow$ res = nombre
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.titulo
+\end{lstlisting}
+
+iTipo(in p: estr) $\rightarrow$ res = tipoPromesa
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.tipo
+\end{lstlisting}
+
+iLimite(in p: estr) $\rightarrow$ res = dinero
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.limite
+\end{lstlisting}
+
+
+iCantidad(in p: estr) $\rightarrow$ res = nat
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.cantidad
+\end{lstlisting}
+
+iCrearPromesa(in t: nombreT, in tipo: TipoPromesa, in n: dinero, in c: nat) $\rightarrow$ res = estr
+\begin{lstlisting}[mathescape]
+ res.titulo $\leftarrow$ t
+ res.tipo $\leftarrow$ tipo
+ res.limite $\leftarrow$ n
+ res.cantidad $\leftarrow$ m
+\end{lstlisting}
+
+

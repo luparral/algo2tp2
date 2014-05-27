@@ -1,0 +1,103 @@
+\subsection{Interfaz}
+
+%%Parámetros formales
+
+   \parbox{1.7cm}{\textbf{g\'eneros}} t\'itulo\\
+    
+  \textbf{se explica con}: \tadNombre{T\'itulo}.
+
+
+%%Operaciones básicas
+  \subsubsection{Operaciones b\'asicas de t\'itulo}
+
+%%nombre
+  \InterfazFuncion{nombre}{\In{t}{t\'itulo}}{nombre}
+  {$res$ \igobs nombre(t)}
+  [$O(1)$]
+  [Devuelve el nombre del t\'itulo]\\\\
+
+%%#máxAcciones
+  \InterfazFuncion{$\#$m\'axAcciones}{\In{t}{t\'itulo}}{nat}
+  {$res$ \igobs $\#$m\'axAcciones(t)}
+  [$O(1)$]
+  [Devuelve el m\'aximo de cantidad de acciones]\\\\
+
+%%cotizacion
+  \InterfazFuncion{cotizaci\'on}{\In{t}{t\'itulo}}{dinero}
+  {$res$ \igobs cotizaci\'on(t)}
+  [$O(1)$]
+  [Devuelve la cotizaci\'on del t\'itulo]\\\\
+
+%%enAlza
+  \InterfazFuncion{enAlza}{\In{t}{t\'itulo}}{bool}
+  {$res$ \igobs enAlza(t)}
+  [$O(1)$]
+  [Indica si el t\'itulo est\'a o no en alza]\\\\
+
+%%crearTitulo
+  \InterfazFuncion{crearT\'itulo}{\In{t}{nombre}, \In{c}{dinero}, \In{n}{nat}}{t\'itulo}
+  {$res$ \igobs crearT\'itulo($s$, $c$, $n$)}
+  [$O(1)$]
+  [Devuelve una nuevo t\'itulo]\\\\
+
+%%recotizar
+  \InterfazFuncion{recotizar}{\In{d}{dinero}, \In{t}{t\'itulo}}{t\'itulo}
+  {$res$ \igobs recotizar($d$, $t$)}
+  [$O(1)$]
+  [Cambia la cotizaci\'on del t\'itulo]\\\\
+
+
+\subsection{Representaci\'on}
+\subsubsection{Representaci\'on de t\'itulo}
+%------------------------estr----------------------------
+\begin{Estructura}{promesa}[estr]
+    \begin{Tupla}[estr]
+      \tupItem{nombre}{nombre,}
+      \tupItem{$\#$m\'axAcciones}{nat,}
+      \tupItem{cotizaci\'on}{dinero,}
+      \tupItem{enAlza}{bool}
+    \end{Tupla}
+\end{Estructura}
+
+ %----------------------------------------------------Rep------------------------------------------
+
+\Rep[estr][e]{true}
+\Abs[estr]{t\'itulo}[e]{t}{nombre(t) = e.nombre $\land$ $\#$m\'axAcciones(t) = e.$\#$m\'axAcciones $\land$ cotizaci\'on(t) = e.cotizaci\'on $\land$ enAlza(t) = e.enAlza}
+
+  \subsection{Algoritmos}
+\subsubsection{Algoritmos de t\'itulo}
+
+iNombre(in estr: t) $\rightarrow$ res = nombre
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.nombre
+\end{lstlisting}
+
+i$\#$m\'axAcciones(in estr: t) $\rightarrow$ res = nat
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.$\#$maxAcciones
+\end{lstlisting}
+
+iCotizaci\'on(in estr:: t) $\rightarrow$ res = dinero
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.cotizacion
+\end{lstlisting}
+
+
+iEnAlza(in estr: t) $\rightarrow$ res = bool
+\begin{lstlisting}[mathescape]
+ res $\leftarrow$ e.enAlza
+\end{lstlisting}
+
+iCrearT\'itulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = estr
+\begin{lstlisting}[mathescape]
+ res.nombre $\leftarrow$ n
+ res.$\#$maxAcciones $\leftarrow$ max
+ res.enAlza $\leftarrow$ true
+ res.cotizacion $\leftarrow$ c
+\end{lstlisting}
+
+iRecotizar(in dinero: c, in/out estr: t)
+\begin{lstlisting}[mathescape]
+ t.enAlza $\leftarrow$ (c>t.cotizacion) 
+ t.cotizacion $\leftarrow$ c
+\end{lstlisting}
