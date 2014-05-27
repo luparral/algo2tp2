@@ -5,7 +5,7 @@
 
 %%Parámetros formales
   \subsubsection{Par\'ametros formales}
-   \parbox{1.7cm}{\textbf{g\'eneros}} wolfie\\
+   \parbox{1.7cm}{\textbf{g\'eneros}} wolfie, itT\'itulos\\
     %%\parbox[t]{1.7cm}{\textbf{funci\'on}}\parbox[t]{\textwidth-2\parindent-1.7cm}{%
      %%\InterfazFuncion{Copiar}{\In{a}{$\alpha$}}{$\alpha$}
      %%{$res \igobs a$}
@@ -13,7 +13,7 @@
      %%[funci\'on de copia de $\alpha$ s]
     %%}
 
-  \textbf{se explica con}: \tadNombre{Wolfie}.
+  \textbf{se explica con}: \tadNombre{Wolfie}, \tadNombre{Iterador Unidireccional}
 
     %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista($\alpha$)}.
 
@@ -76,24 +76,24 @@
   
    \subsubsection{Operaciones b\'asicas de itT\'itulos}
    
-  \InterfazFuncion{CrearIt}{\In{w}{wolfie}}{itT\'itulo}%%&&& aca estaba mal la aridad
-  {$res$ \igobs crearItUni(titulos(w))}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+  \InterfazFuncion{CrearIt}{\In{w}{wolfie}}{itT\'itulos}%%&&& 
+  {$res$ \igobs crearItUni(titulos(w))}
   [$O(1)$]
   [Devuelve un iterador unidireccional a los t\'itulos de wolfie.]\\\\
   
-  \InterfazFuncion{Actual}{\In{i}{itT\'itulo}}{t\'itulo}%%&&& aca estaba mal la aridad
-  {$res$ \igobs actual(i)}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+  \InterfazFuncion{Actual}{\In{i}{itT\'itulos}}{t\'itulo}%%&&& 
+  {$res$ \igobs actual(i)}
   [$O(|titulo(actual(i))|)$]
   [Devuelve el t\'itulo actual.]\\\\
   
-  \InterfazFuncion{Pr\'oximo}{\Inout{i}{itT\'itulo}}%%&&& aca estaba mal la aridad
+  \InterfazFuncion{Pr\'oximo}{\Inout{i}{itT\'itulos}}%%&&&
   [HayPr\'oximo(i) $\land$ $i_{0}=i$]
-  {$i$ \igobs avanzar($i_{0}$)}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+  {$i$ \igobs avanzar($i_{0}$)}
   [$O(1)$]
   [Avanza el iterador.]\\\\
      
-  \InterfazFuncion{HayPr\'oximo}{\Inout{i}{itT\'itulo}}{bool}%%&&& aca estaba mal la aridad
-  {$res$ \igobs hayMas(i)}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+  \InterfazFuncion{HayPr\'oximo}{\Inout{i}{itT\'itulos}}{bool}%%&&&
+  {$res$ \igobs hayMas(i)}
   [$O(1)$]
   [Pregunta si hay m\'as elementos para iterar.]\\\\
   
@@ -225,7 +225,7 @@
   \tadOperacion{esIterador}{itClaves(infoT\'itulo), itClaves(infoT\'itulo)}{bool}{}
   \tadAxioma{esIterador(it1, it2}{actual($it1$)=actual($it2$) $\lor$ (hayMas?($it2$) \yluego esIterador($it1$, Avanzar(it2)))}
 
- \Abs[iterador]{itT\'itulo}[i]{$t$}{actual(t)=obtener(actual(i.it), *(i.dicc)) $\land$ (hayM\'as(i.it)\impluego (hayM\'as(t) \yluego Abs(<Avanzar(i.it), i.dicc>, avanzar(t))))}
+ \Abs[iterador]{itT\'itulos}[i]{$t$}{actual(t)=obtener(actual(i.it), *(i.dicc)) $\land$ (hayM\'as(i.it)\impluego (hayM\'as(t) \yluego Abs(<Avanzar(i.it), i.dicc>, avanzar(t))))}
 
 
 \subsection{Algoritmos}
@@ -238,7 +238,13 @@ iClientes(in e: estr) $\rightarrow$ res: itConjEstNat
   return(CrearIt(e.clientes))
 \end{lstlisting}
 \textbf{Complejidad:} O(1)
-%--------------------------falta iTitulos------------------
+
+\subsubsection{Algoritmos de wolfie}
+iClientes(in e: estr) $\rightarrow$ res: itT\'itulos
+\begin{lstlisting}[mathescape]
+  return(CrearIt(e))
+\end{lstlisting}
+\textbf{Complejidad:} O(1)
 
 iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res: itConj(promesa)
 \begin{lstlisting}[mathescape]

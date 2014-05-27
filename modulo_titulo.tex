@@ -69,39 +69,35 @@
 
 iNombre(in estr: t) $\rightarrow$ res = nombre
 \begin{lstlisting}[mathescape]
- res = e.nombre
+ res $\leftarrow$ e.nombre
 \end{lstlisting}
 
 i$\#$m\'axAcciones(in estr: t) $\rightarrow$ res = nat
 \begin{lstlisting}[mathescape]
- res = e.$\#$maxAcciones
+ res $\leftarrow$ e.$\#$maxAcciones
 \end{lstlisting}
 
 iCotizaci\'on(in estr:: t) $\rightarrow$ res = dinero
 \begin{lstlisting}[mathescape]
- res = e.cotizacion
+ res $\leftarrow$ e.cotizacion
 \end{lstlisting}
 
 
 iEnAlza(in estr: t) $\rightarrow$ res = bool
 \begin{lstlisting}[mathescape]
- res = e.enAlza
+ res $\leftarrow$ e.enAlza
 \end{lstlisting}
 
 iCrearT\'itulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = estr
 \begin{lstlisting}[mathescape]
- res.nombre = n
- res.$\#$maxAcciones = max
- res.enAlza=true
- res.cotizacion = c
+ res.nombre $\leftarrow$ n
+ res.$\#$maxAcciones $\leftarrow$ max
+ res.enAlza $\leftarrow$ true
+ res.cotizacion $\leftarrow$ c
 \end{lstlisting}
 
 iRecotizar(in dinero: c, in/out estr: t)
 \begin{lstlisting}[mathescape]
- if c>t.cotizacion then
-   t.enAlza=true
- else
-   t.enAlza=false
- fi
- t.cotizacion <- c
+ t.enAlza $\leftarrow$ (c>t.cotizacion) 
+ t.cotizacion $\leftarrow$ c
 \end{lstlisting}
