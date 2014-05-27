@@ -13,7 +13,7 @@
 %%nombre
   \InterfazFuncion{nombre}{\In{t}{t\'itulo}}{nombre}
   {$res$ \igobs nombre(t)}
-  [$O(1)$]
+  [$O(copy(nombre(t)))$]
   [Devuelve el nombre del t\'itulo]\\\\
 
 %%#máxAcciones
@@ -37,7 +37,7 @@
 %%crearTitulo
   \InterfazFuncion{crearT\'itulo}{\In{t}{nombre}, \In{c}{dinero}, \In{n}{nat}}{t\'itulo}
   {$res$ \igobs crearT\'itulo($s$, $c$, $n$)}
-  [$O(1)$]
+  [$O(copy(nombre(t)))$]
   [Devuelve una nuevo t\'itulo]\\\\
 
 %%recotizar
@@ -61,7 +61,12 @@
 
  %----------------------------------------------------Rep------------------------------------------
 
+ \subsubsection{Invariante de Representaci\'on de T\'itulo}
+
 \Rep[estr][e]{true}
+
+\subsubsection{Funci\'on de abstracci\'on de T\'itulo}
+
 \Abs[estr]{t\'itulo}[e]{t}{nombre(t) = e.nombre $\land$ $\#$m\'axAcciones(t) = e.$\#$m\'axAcciones $\land$ cotizaci\'on(t) = e.cotizaci\'on $\land$ enAlza(t) = e.enAlza}
 
   \subsection{Algoritmos}
@@ -69,35 +74,44 @@
 
 iNombre(in estr: t) $\rightarrow$ res = nombre
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.nombre
+ res $\leftarrow$ e.nombre                                                        O(copy(nombre(t))
 \end{lstlisting}
+\textbf{Complejidad:}O(copy(nombre(t))
 
 i$\#$m\'axAcciones(in estr: t) $\rightarrow$ res = nat
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.$\#$maxAcciones
+ res $\leftarrow$ e.$\#$maxAcciones                                                   O(1)
 \end{lstlisting}
+\textbf{Complejidad:}O(1)
+
 
 iCotizaci\'on(in estr:: t) $\rightarrow$ res = dinero
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.cotizacion
+ res $\leftarrow$ e.cotizacion                                                    O(1)
 \end{lstlisting}
+\textbf{Complejidad:}O(1)
 
 
 iEnAlza(in estr: t) $\rightarrow$ res = bool
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.enAlza
+ res $\leftarrow$ e.enAlza                                                        O(1)
 \end{lstlisting}
+\textbf{Complejidad:}O(1)
+
 
 iCrearT\'itulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = estr
 \begin{lstlisting}[mathescape]
- res.nombre $\leftarrow$ n
- res.$\#$maxAcciones $\leftarrow$ max
- res.enAlza $\leftarrow$ true
- res.cotizacion $\leftarrow$ c
+ res.nombre $\leftarrow$ n                                                        O(copy(nombre(t)))
+ res.$\#$maxAcciones $\leftarrow$ max                                                 O(1)
+ res.enAlza $\leftarrow$ true                                                     O(1)
+ res.cotizacion $\leftarrow$ c                                                    O(1)
 \end{lstlisting}
+\textbf{Complejidad:} O(copy(nombre(t))) + 3*O(1) = O(copy(nombre(t)))
+
 
 iRecotizar(in dinero: c, in/out estr: t)
 \begin{lstlisting}[mathescape]
- t.enAlza $\leftarrow$ (c>t.cotizacion) 
- t.cotizacion $\leftarrow$ c
+ t.enAlza $\leftarrow$ (c>t.cotizacion)                                           O(1)
+ t.cotizacion $\leftarrow$ c                                                      O(1)
 \end{lstlisting}
+\textbf{Complejidad:} 2*O(1) = O(1)
