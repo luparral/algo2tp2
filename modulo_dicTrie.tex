@@ -2,11 +2,10 @@
 
 %%Parámetros formales
   \subsubsection{Par\'ametros formales}
-   \parbox{1.7cm}{\textbf{g\'eneros}} string, $\alpha$\\
 
   \textbf{se explica con}: \tadNombre{Diccionario(string, $\alpha$)}, \tadNombre{Iterador Unidireccional}.
 
-  \textbf{g\'eneros}: \TipoVariable{diccString($\alpha$), itDicc(diccString)}. %%###revisar
+  \textbf{g\'eneros}: \TipoVariable{diccString($\alpha$), itClaves(diccString)}. %%###revisar
 
 %%Operaciones básicas
   \subsubsection{Operaciones b\'asicas de Diccionario String($\alpha$)}
@@ -38,7 +37,7 @@
   \InterfazFuncion{CrearIt}{\In{d}{diccString($\alpha$)}}{itClaves($string$)}
   {res \igobs crearIt(d.claves) }
   [O$(1)$]
-  [Crea y devuelve un iterador de claves Diccionario String.]\\\\
+  [Crea y devuelve un iterador de claves de Diccionario String.]\\\\
 
   \InterfazFuncion{HayMas?}{\In{d}{itClaves($string$)}}{$bool$}
   {res \igobs hayMas?($it$)}%
@@ -57,21 +56,21 @@
   [Avanza a la pr\'oxima clave.]\\\\
 
 
-\subsection{Representacion}
+\subsection{Representaci\'on}
   
   \subsubsection{Representaci\'on del Diccionario String($\alpha$)}
 %%Estructura
   \begin{Estructura}{diccString$(\alpha)$}[estrDic]
     \begin{Tupla}[estrDic]
       \tupItem{raiz}{puntero(nodo)}
-      \tupItem{claves}{lista\_enlazada($string$)}%%
+      \tupItem{claves}{lista($string$)}%%
     \end{Tupla}
 \end{Estructura}
 
   \begin{Estructura}{Nodo}[estrNodo]
     \begin{Tupla}[estrNodo]
       \tupItem{valor}{puntero($\alpha$)}
-      \tupItem{hijos}{arreglo\_estatico[256](puntero(nodo))}
+      \tupItem{hijos}{arreglo\_est\'atico[256](puntero(nodo))}
     \end{Tupla}
 \end{Estructura}
 
@@ -79,19 +78,18 @@
 
 \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
- 	\item Existe un \'unico camino entre cada nodo y el nodo raiz (es decir, no hay ciclos).
+ 	\item Existe un \'unico camino entre cada nodo y el nodo ra\'iz (no hay ciclos).
  	\item Todos los nodos hojas, es decir, todos los que tienen su arreglo hijos con todas sus posiciones en NULL, tienen que tener un valor distinto de NULL.
- 	\item Raiz es distinto de NULL
- 	\item En claves est\'a el camino que se recorre desde la raiz hasta cada nodo hoja.
+ 	\item Ra\'iz es distinto de NULL
+ 	\item En claves est\'a el camino que se recorre desde la ra\'z hasta cada nodo hoja.
   \end{enumerate}
 
 \Rep[estrDic][e]{\\
  	\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  	{raiz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e) $\land$\\ hayHojas(e) $\Rightarrow$ |e.claves|> 0 $\land$ \\($\forall$ c $\in$ caminosANodos(e))($\exists$ i \{0..|e.claves|\}) e.claves[i] = c}
+  	{ra\'iz != NULL \yluego \, noHayCiclos(e) $\land$ todasLasHojasTienenValor(e) $\land$\\ hayHojas(e) $\Rightarrow$ |e.claves|> 0 $\land$ \\($\forall$ c $\in$ caminosANodos(e))($\exists$ i \{0..|e.claves|\}) e.claves[i] = c}
   	\end{minipage}\vspace{3mm}
   	 }\mbox{}
 
- \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
 
 
  \subsubsection{Operaciones auxiliares del invatriante de Representaci\'on}
@@ -123,84 +121,88 @@
 
   \subsubsection{Representaci\'on del iterador de Claves del Diccionario String($\alpha$)}
 
+\subsubsection{Funci\'on de abstracci\'on}
+
+ \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
+
     \begin{Estructura}{itClaves($string$)}[puntero(nodo)]
     \end{Estructura}
 
-    Su Rep y Abs son los de itSecu($\alpha$) definido en el apunte de iteradores..
+    Su Rep y Abs son los de itSecu($\alpha$) definido en el apunte de iteradores.
 
   \subsection{Algoritmos}
 \subsubsection{Algoritmos de Diccionario String}
 
 \textsc{iCrearDicc}() $\rightarrow$ \textbf{res} = diccString($\alpha$)
 \begin{lstlisting}[mathescape]
- n $\leftarrow$ nodo
- n $\leftarrow$ crearNodo()
- raiz $\leftarrow$ *n
+ n $\leftarrow$ nodo $\hfill$ O(1)
+ n $\leftarrow$ crearNodo() 					O(1)
+ raiz $\leftarrow$ *n 							O(1)
 \end{lstlisting}
-\textbf{Complejidad}\\
+\textbf{Complejidad:} 3*O(1)
 
 \textsc{iCrearNodo}() $\rightarrow$ \textbf{res} = nodo
 \begin{lstlisting}[mathescape]
- d : arreglo\_estatico[256]
- i $\leftarrow$ 0
- while (i < 256)
- 	d[i] $\leftarrow$ NULL
+ d : arreglo\_estatico[256] 					O(1)
+ i $\leftarrow$ 0 								O(1)
+ while (i < 256) 								256*
+ 	d[i] $\leftarrow$ NULL 						O(1)
  endWhile
- hijos $\leftarrow$ d
- valor $\leftarrow$ NULL
+ hijos $\leftarrow$ d 							O(1)
+ valor $\leftarrow$ NULL 						O(1)
 \end{lstlisting}
-\textbf{Complejidad}\\
+\textbf{Complejidad:}2*O(1) + 256*O(1) + 2*O(1)
 
 \textsc{iDefinir}(\textbf{in/out} diccString($\alpha$): d, \textbf{in} string: c, \textbf{in} alfa: s)
 \begin{lstlisting}[mathescape]
- i $\leftarrow$ 0
- p $\leftarrow$ d.raiz
- while (i < (longitud(s)))
- 	if (p.hijos[ord(s[i])] == NULL)
-		n: nodo $\leftarrow$ crearNodo()
-		p.hijos[ord(s[i])] $\leftarrow$ *n
+ i $\leftarrow$ 0 								O(1)
+ p $\leftarrow$ d.raiz 							O(1)
+ while (i < (longitud(s))) 						|s|*
+ 	if (p.hijos[ord(s[i])] == NULL) 			O(1)
+		n: nodo $\leftarrow$ crearNodo() 		O(1)
+		p.hijos[ord(s[i])] $\leftarrow$ *n 		O(1)
 	endIf
- p $\leftarrow$ p.hijos[ord(s[i])]
- i++
+ p $\leftarrow$ p.hijos[ord(s[i])] 				O(1)
+ i++ 											O(1)
  endWhile
- p.valor $\leftarrow$ a
- agregarAdelante(hijos, c)
+ p.valor $\leftarrow$ a 						O(1)
+ agregarAdelante(hijos, c) 						O(|s|)
 \end{lstlisting}
-\textbf{Complejidad}\\
+\textbf{Complejidad:} 2*O(1) + |s|*5*O(1) + O(1) + O(|s|) = O(|s|)
 
 \textsc{iSignificado}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = $\alpha$
 \begin{lstlisting}[mathescape]
- i $\leftarrow$ 0
- p $\leftarrow$ d.raiz
- while (i < (longitud(s)))
-	p $\leftarrow$ p.hijos[ord(s[i])]
- i++
+ i $\leftarrow$ 0 								O(1)
+ p $\leftarrow$ d.raiz 							O(1)
+ while (i < (longitud(s))) 						|s|*
+	p $\leftarrow$ p.hijos[ord(s[i])] 			O(1)
+ i++ 											O(1)
  endWhile
- return p.valor
+ return p.valor 								O(1)
 \end{lstlisting}
-\textbf{Complejidad}\\
+\textbf{Complejidad:} 2*O(1) + |s|*2*O(1) + O(1) = O(|s|)
 
 \textsc{iDefinido?}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = bool
 \begin{lstlisting}[mathescape]
- i $\leftarrow$ 0
- p $\leftarrow$ d.raiz
- while (i < (longitud(s)))
- 	if (p.hijos[ord(s[i])] != NULL)
-		p $\leftarrow$ p.hijos[ord(s[i])]
-		i++
+ i $\leftarrow$ 0 								O(1)
+ p $\leftarrow$ d.raiz 							O(1)
+ while (i < (longitud(s))) 						|s|*
+ 	if (p.hijos[ord(s[i])] != NULL) 			O(1)
+		p $\leftarrow$ p.hijos[ord(s[i])] 		O(1)
+		i++ O(1)
 	else
-		return false
+		return false 							O(1)
 	endIf
  endWhile
- return p.valor != NULL
+ return p.valor != NULL 						O(1)
 \end{lstlisting}
-\textbf{Complejidad}\\
+\textbf{Complejidad:} 2*O(1) + |s|*3*O(1) + O(1) = O(|s|)
 
 \textsc{iClaves}(\textbf{in} diccString($\alpha$): d) $\rightarrow$ \textbf{res} = lista\_enlazada(string)
 \begin{lstlisting}[mathescape]
-return itClaves(d)
+return itClaves(d)								O(1)
 \end{lstlisting}
-\textbf{Complejidad}\\
+\textbf{Complejidad:} O(1)
 
 \subsubsection{Algoritmos del iterador de claves del Diccionario String}
 
@@ -213,8 +215,8 @@ Utiliza los mismos algoritmos que itSecu($\alpha$) definido en el apunte de iter
 \textbf{M\'odulo} & \textbf{Operaci\'on} & \textbf{Complejidad Requerida}\\
 arreglo\_est\'atico & AgregarElemento & O(1)\\
 arreglo\_est\'atico & $\bullet$[$\bullet$] & O(1)\\
-lista\_enlazada & AgregarAdelante & O(copy($\alpha$))\\
-lista\_enalzada & $\bullet$[$\bullet$] & O(1)\\
+lista & AgregarAdelante & O(copy($\alpha$))\\
+lista & $\bullet$[$\bullet$] & O(1)\\
 \end{tabular*}
 \end{center}
 
