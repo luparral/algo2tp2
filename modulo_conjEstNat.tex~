@@ -1,4 +1,4 @@
-
+El m\'odulo conjunto est\'atico de nats representa a un conjunto de naturales, con la diferencia de que no se le pueden agregar y quitar elementos, sino que se inicializa con una cantidad fija de naturales. Adem\'as, el iterador recorre el conjunto de menor a mayor.
 \subsection{Interfaz}
 
 %%Parámetros formales
@@ -11,7 +11,7 @@
     %%}
 
   \textbf{Se explica con}: \tadNombre{Conjunto(nat)}, \tadNombre{Iterador Unidireccional(nat)}.
-  \textbf{Usa}: \
+  \textbf{Usa}: nat, bool, Conjunto Lineal(nat)\\
     %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista(EstNat)}.
 
 %%Operaciones básicas
@@ -114,7 +114,7 @@ iPertenece(in n: nat, in c: array) $\rightarrow$ res: bool
 \subsubsection{Algoritmos de itConjEstNat}
 iCrearIt(in a: array) $\rightarrow$ res: iterador
 \begin{lstlisting}[mathescape]
- return (<|c|, &c>)
+ return (<0, &a>)
 \end{lstlisting}
 \textbf{Complejidad:} O(1)\\
 

@@ -135,7 +135,7 @@
 
 \end{Estructura}
  %----------------------------------------------------Rep------------------------------------------
-\subsubsection{Invariante de representaci\'on}
+\subsubsection{Invariante de representaci\'on de wolfie}
  \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
  	\item Los clientes de $clientes$ son los mismos que hay dentro de $titulos$.
@@ -150,19 +150,19 @@
   
   \Rep[estr][e]{\\
  	(I)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $c$: cliente) {\Large(}pertenece?($c$, $e.clientes$) $\Leftrightarrow$ ($\exists$ $t$: t\'itulo) {\large(}def?($t$, $e.titulos$) \yluego est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$){\large)}{\Large)} \yluego
+  		($\forall$ $c$: cliente) {\Large(}pertenece?($c$, $e.clientes$) $\Leftrightarrow$ ($\exists$ $t$: t\'itulo) {\large(}def?($t$, $e.titulos$) \yluego est\'aCliente?($c$, Significado($t$, $e.titulos$).$arrayClientes$){\large)}{\Large)} \yluego
   	\end{minipage}\vspace{3mm}
 
   	(II)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promCompra$=$p$) \impluego  t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=compra $\land$ (l\'imite($*p$)>cotizaci\'on(obtener($t$, $e.titulos$).$titulo$) $\lor$ cantidad($*p$)>obtener($t$, $e.titulos$).$accDisponibles$){\large)} $\land$
+  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, Significado($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, Significado($t$, $e.titulos$).$arrayClientes$).$promCompra$=$p$) \impluego  t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=compra $\land$ (l\'imite($*p$)>cotizaci\'on(Significado($t$, $e.titulos$).$titulo$) $\lor$ cantidad($*p$)>Significado($t$, $e.titulos$).$accDisponibles$){\large)} $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(III)\begin{minipage}[t]{\linewidth-\parindent-1.3cm}
-  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, obtener($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, obtener($t$, $e.titulos$).$arrayClientes$).$promVenta$=$p$) \impluego (t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=venta $\land$ l\'imite($*p$) < cotizaci\'on(obtener($t$, $e.titulos$).$titulo$)){\large)} $\land$
+  		($\forall$ $p$: $*$promesa, $t$: nombre, $c$: cliente) {\large(}(p $\neq$ NULL $\land$ def?($t$, $e.titulos$) \yluego  est\'aCliente?($c$, Significado($t$, $e.titulos$).$arrayClientes$) \yluego buscarCliente($c$, Significado($t$, $e.titulos$).$arrayClientes$).$promVenta$=$p$) \impluego (t\'itulo($*p$)=$t$ $\land$ tipo($*p$)=venta $\land$ l\'imite($*p$) < cotizaci\'on(Significado($t$, $e.titulos$).$titulo$)){\large)} $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(IV)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (obtener($nt$, $e.titulos$).$accDisponibles$ = m\'aximo(obtener($nt$, $e.titulos$).$titulo$) - sumaAccClientes(obtener($nt$, $e.titulos$).$arrayClientes$, 0) $\land$ obtener($nt$, $e.titulos$).$accDisponibles$ $\geq$ 0)) $\land$
+		($\forall$ $nt$: nombreT) (def?($nt$, $e.titulos$) \impluego (Significado($nt$, $e.titulos$).$accDisponibles$ = m\'aximo(Significado($nt$, $e.titulos$).$titulo$) - sumaAccClientes(Significado($nt$, $e.titulos$).$arrayClientes$, 0) $\land$ Significado($nt$, $e.titulos$).$accDisponibles$ $\geq$ 0)) $\land$
   	\end{minipage}\vspace{3mm}
   	
   	(V)\begin{minipage}[t]{\linewidth-\parindent-2cm}
@@ -170,7 +170,7 @@
   	\end{minipage}\vspace{3mm}
   	
 	(VI)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		($e.\acute{u}ltimoLlamado.fue\acute{U}ltimo$ $\Rightarrow$ ($\forall$ $p$: promesa) {\Large(}pertenece?($p$, $e.\acute{u}ltimoLlamado.promesas$) $\Leftrightarrow$ {\large(}def?(t\'itulo($p$), $e.titulos$) \yluego \\ {\IF tipo($p$)=compra THEN buscarCliente($e.\acute{u}ltimoLlamado.cliente$, obtener(t\'itulo($p$), $e.titulos$).$arrayClientes$).promCompra = $p$ ELSE buscarCliente($e.\acute{u}ltimoLlamado.cliente$, obtener(t\'itulo($p$), $e.titulos$).$arrayClientes$).promVenta = $p$ FI}{\large)}{\Large)}
+		($e.\acute{u}ltimoLlamado.fue\acute{U}ltimo$ $\Rightarrow$ ($\forall$ $p$: promesa) {\Large(}pertenece?($p$, $e.\acute{u}ltimoLlamado.promesas$) $\Leftrightarrow$ {\large(}def?(t\'itulo($p$), $e.titulos$) \yluego \\ {\IF tipo($p$)=compra THEN buscarCliente($e.\acute{u}ltimoLlamado.cliente$, Significado(t\'itulo($p$), $e.titulos$).$arrayClientes$).promCompra = $p$ ELSE buscarCliente($e.\acute{u}ltimoLlamado.cliente$, Significado(t\'itulo($p$), $e.titulos$).$arrayClientes$).promVenta = $p$ FI}{\large)}{\Large)}
   	\end{minipage}\vspace{3mm}
   	
   	(VII)\begin{minipage}[t]{\linewidth-\parindent-2cm}
@@ -178,7 +178,7 @@
   	\end{minipage}\vspace{3mm}
   	
   	(VIII)\begin{minipage}[t]{\linewidth-\parindent-2cm}
-		($\forall$ $t$: nombre) def?($t, e.titulos$) \impluego $t$ = nombre(obtener($t$, $e.titulos$).$titulo$)
+		($\forall$ $t$: nombre) def?($t, e.titulos$) \impluego $t$ = nombre(Significado($t$, $e.titulos$).$titulo$)
   	\end{minipage}\vspace{3mm}
   	
   \tadOperacion{est\'aCliente?}{cliente, array\_dimensionable(tuplaPorCliente)}{bool}{}
@@ -198,11 +198,11 @@
   \tadAxioma{auxBuscarCliente($a$, $i$)}{{\IF $i$=longitud($a$) THEN 0 ELSE $a[i].cantAcc$ + sumaAccClientes($a, i+1$) FI}}
 
   	  }\mbox{}
-\subsubsection{Funci\'on de abstracci\'on}
-  	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ ($\forall t$: t\'itulo) {\large(}$t \in$t\'itulos($w$)$\Leftrightarrow$(def?($t, e.titulos$)\yluego$t$=obtener($t, e.titulos$).$titulo$){\large)} $\land$ ($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(obtener($t, e.titulos$).$arrayClientes$).$cantAcc$}
+\subsubsection{Funci\'on de abstracci\'on de wolfie}
+  	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ ($\forall t$: t\'itulo) {\large(}$t \in$t\'itulos($w$)$\Leftrightarrow$(def?($t, e.titulos$)\yluego$t$=Significado($t, e.titulos$).$titulo$){\large)} $\land$ ($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(Significado($t, e.titulos$).$arrayClientes$).$cantAcc$}
 
-  \tadOperacion{damePromesas}{itDicc(diccString(infoTítulo)), estr, cliente}{conj(promesa)}{}
-  \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(obtener(actual($it$))).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
+  \tadOperacion{damePromesas}{itClaves(diccString), estr, cliente}{conj(promesa)}{}
+  \tadAxioma{damePromesas($it, e, c$)}{{\IF hayMas?($it$) THEN $\bold{if}$ buscarCliente(Significado(actual($it$), e.titulos)).$promCompra \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(Significado(actual($it$), e.titulos)).$promCompra \neq$ NULL\} $\cup$ $\bold{fi}$\\ $\bold{if}$ buscarCliente(Significado(actual($it$)e.titulos)).$promVenta \neq$ NULL $\bold{then}$ \\\phantom{---}\{buscarCliente(Significado(actual($it$), e.titulos)).$promVenta \neq$ NULL\} $\cup$ $\bold{fi}$\\ damePromesas(avanzar($it$), $e$, $c$) ELSE vacio FI}}
 
 % para el rep, necesito las operaciones: def? y obtener de dicTrie, estaCliente? y buscarCliente de arrays de tuplas con cliente, sumaAccClientes 
 
@@ -225,7 +225,8 @@
   \tadOperacion{esIterador}{itClaves(infoT\'itulo), itClaves(infoT\'itulo)}{bool}{}
   \tadAxioma{esIterador(it1, it2}{actual($it1$)=actual($it2$) $\lor$ (hayMas?($it2$) \yluego esIterador($it1$, Avanzar(it2)))}
 
- \Abs[iterador]{itT\'itulos}[i]{$t$}{actual(t)=obtener(actual(i.it), *(i.dicc)) $\land$ (hayM\'as(i.it)\impluego (hayM\'as(t) \yluego Abs(<Avanzar(i.it), i.dicc>, avanzar(t))))}
+\subsubsection{Funci\'on de abstracci\'on de itT\'itulos}
+ \Abs[iterador]{itT\'itulos}[i]{$t$}{actual(t)=Significado(actual(i.it), *(i.dicc)) $\land$ (hayM\'as(i.it)\impluego (hayM\'as(t) \yluego Abs(<Avanzar(i.it), i.dicc>, avanzar(t))))}
 
 
 \subsection{Algoritmos}
@@ -239,8 +240,8 @@ iClientes(in e: estr) $\rightarrow$ res: itConjEstNat
 \end{lstlisting}
 \textbf{Complejidad:} O(1)
 
-\subsubsection{Algoritmos de wolfie}
-iClientes(in e: estr) $\rightarrow$ res: itT\'itulos
+
+iT\'itulos(in e: estr) $\rightarrow$ res: itT\'itulos
 \begin{lstlisting}[mathescape]
   return(CrearIt(e))
 \end{lstlisting}
@@ -253,7 +254,7 @@ iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res: itConj(promesa)
    $\textbf{conj(promesa)}$ proms $\leftarrow$ vacio() 								O(1)
    $\textbf{tuplaPorClientes}$ tup										O(1)
    while (HayMas?(it))						T*	   O(1)
-     tup $\leftarrow$ BuscarCliente(Obtener(Nombre(Actual(it)), e. titulos).arrayClientes)	
+     tup $\leftarrow$ BuscarCliente(Significado(Nombre(Actual(it)), e. titulos).arrayClientes)	
      							O(C*|nombre(actual(it))|)
      if tup.promVenta $\neq$ NULL then AgregarRapido(proms, *(tup.promVenta))	   O(1)
      if tup.promCompra $\neq$ NULL then AgregarRapido(proms, *(tup.promCompra)) O(1)
@@ -267,7 +268,7 @@ iPromesasDe(in c: cliente, in/out e: estr) $\rightarrow$ res: itConj(promesa)
 
 iAccionesPorCliente(in c: cliente, in nt, nombreT, in e: estr) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
-  return(BuscarCliente(c, Obtener(nt, e.titulos)).cantAcc)
+  return(BuscarCliente(c, Significado(nt, e.titulos)).cantAcc)
 \end{lstlisting}
 \textbf{Complejidad:} O(log(C)+|nt|)
 
@@ -288,7 +289,7 @@ iAgregarT\'itulo(in t: t\'itulo, in/out e: estr) $\rightarrow$ res: nat
 
 iActualizarCotizaci\'on(in nt: nombre, in cot: nat, in/out e: estr)
 \begin{lstlisting}[mathescape]
-  $\textbf{infoTitulo}$ s $\leftarrow$ Obtener(nt, e.titulos) 		O(|nt|)
+  $\textbf{infoTitulo}$ s $\leftarrow$ Significado(nt, e.titulos) 		O(|nt|)
   recotizar(cot, s.titulo)									O(1)
   $\textbf{nat}$ i $\leftarrow$ 0										O(1)
   while i<|s.arrayClientes|						C*
@@ -318,14 +319,16 @@ cantidad(*(arr[i].promCompra)) $\leq$ s.accDisponibles) then			O(1)
 \end{lstlisting}
 \textbf{Complejidad:} O(|nt|)+2*O(1)+C*4*O(1)+O(C)+O(C)+O(C(log(C)))+O(1)+C*4*O(1)+O(C)+O(C(log(C)))=\\\indent\indent\indent O(|nt|+C(log(C)))
 
+\textbf{Aclaraciones:} En este algoritmo hicimos un cambio de tipo de tupla a tuplaPorCantAcc, que es igual pero con otra relaci\'on de orden, por lo que al ordenar el arreglo, queda ordenado de mayor a menor por la cantidad de acciones de cada cliente. Luego de efectuar el cumplimiento de las promesas de compra, volvemos a cambiar a tuplaPorClientes y reordenamos en base a los clientes para poder seguir haciendo b\'usqueda logar\'itmica por clientes.
+
 iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
 \begin{lstlisting}[mathescape]
   $\textbf{promesa}$ prom $\leftarrow$ p									O(1)
   if tipo(prom)=compra then							O(1)
-   BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+   BuscarCliente(c, Significado(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
    									O(|titulo(p)|+C)
   else
-   BuscarCliente(c, Obtener(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
+   BuscarCliente(c, Significado(titulo(prom), e.titulos).arrayClientes).promCompra $\leftarrow$ &prom
    									O(|titulo(p)|+C)
   fi
 \end{lstlisting}
@@ -333,7 +336,7 @@ iAgregarPromesa(in c: cliente, in p:promesa, in/out e:estr)
 
 iEnAlza(in nt: nombreT, in e: estr) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
-  return(enAlza(Obtener(nt, e.titulos).titulo))
+  return(enAlza(Significado(nt, e.titulos).titulo))
 \end{lstlisting}
 \textbf{Complejidad:} O(|nt|)
 
@@ -433,12 +436,12 @@ CambiarPorCliente(in a1: arreglo\_dimensionable(tuplaPorCantAcc), in/out a2: arr
 \textbf{M\'odulo} & \textbf{Operaci\'on} & \textbf{Complejidad Requerida}\\
 diccString(infoTitulo) & CrearIt & O(1)\\
 diccString(infoTitulo) & Definir & |nt|\\
-diccString(infoTitulo) & Obtener & |nt|\\
+diccString(infoTitulo) & Significado & |nt|\\
 conj(promesa) & Vacio & O(1)\\
 conj(promesa) & AgregarRapido & O(1)\\
-itDicc(diccString(infoT\'itulo)) & HayM\'as & O(1)\\
-itDicc(diccString(infoT\'itulo)) & Actual & O(1)\\
-itDicc(diccString(infoT\'itulo)) & Avanzar & O(1)\\
+itClaves(diccString) & HayM\'as & O(1)\\
+itClaves(diccString) & Actual & O(1)\\
+itClaves(diccString) & Avanzar & O(1)\\
 & BuscarCliente & O(log(C))\\
 conjEstNat & NuevoConjEstNat & O(C(log(C)))\\
 itConjEstNat & CrearIt & O(1)\\

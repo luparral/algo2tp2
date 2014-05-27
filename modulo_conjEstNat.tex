@@ -1,4 +1,4 @@
-
+El m\'odulo conjunto est\'atico de nats representa a un conjunto de naturales, con la diferencia de que no se le pueden agregar y quitar elementos, sino que se inicializa con una cantidad fija de naturales. Adem\'as, el iterador recorre el conjunto de menor a mayor.
 \subsection{Interfaz}
 
 %%Parámetros formales
@@ -11,7 +11,7 @@
     %%}
 
   \textbf{Se explica con}: \tadNombre{Conjunto(nat)}, \tadNombre{Iterador Unidireccional(nat)}.
-  \textbf{Usa}: \
+  \textbf{Usa}: nat, bool, Conjunto Lineal(nat)\\
     %%\textbf{g\'eneros}: \TipoVariable{lista$(\alpha)$}, \TipoVariable{itLista(EstNat)}.
 
 %%Operaciones básicas
@@ -58,10 +58,10 @@
 %------------------------estr----------------------------
 \subsubsection{Representaci\'on de conjEstNat}
 \begin{Estructura}{conjEstNat}[array: arreglo\_dimensionable(nat)]\end{Estructura}
+\subsubsection{Invariante de representaci\'on de conjEstNat}
  	Rep: los elementos estan ordenados y no hay repeticiones
  	\Rep[array][a]{($\forall$ $i$: nat) ($i$ < longitud($a$)-1 $\Rightarrow$ (definido?($a$, $i$) $\land$ definido?($a$, $i+1$) \yluego $a[i]$<$a[i+1]$))}
   \subsubsection{Funci\'on de abstracci\'on de conjEstNat}
- 	
  	\Abs[array]{conjEstNat}[a]{$c$}{($\forall$ $n$: nat) $n \in c \Leftrightarrow$ est\'aEnArray?($n$, $a$, 0)}
  	
   \tadOperacion{est\'aEnArray?}{nat, arreglo\_dimensionable(nat), nat}{bool}{}
@@ -74,10 +74,9 @@
 		\tupItem{lista}{puntero(arreglo\_dimensionable(nat))}
 	\end{Tupla}
 \end{Estructura}
-
+\subsubsection{Invariante de representaci\'on de itConjEstNat}
 	\Rep[iterador][i]{$i.pos$<longitud($*(i.lista)$)}
   \subsubsection{Funci\'on de abstracci\'on de itConjEstNat}
-	
 	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
 	
 \subsection{Algoritmos}
