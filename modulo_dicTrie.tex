@@ -121,7 +121,7 @@
 
 \subsubsection{Funci\'on de abstracci\'on}
  \Abs[estrDicc]{dicc(string,$\alpha$)}[e]{$d$}{($\forall$ c:string)(definido?($c,d$)) = ($\exists$ n: nodo)(n $\in$ todasLasHojas($e$)) n.valor != NULL \\ $\land$ ($\exists$ i:nat)(i $\in$ \{0..|e.claves|\}) $\Rightarrow$ e.claves[i] = c $\yluego$ significado($c,d$) = leer($e.clave$).valor}
- 
+
   \subsubsection{Representaci\'on del iterador de Claves del Diccionario String($\alpha$)}
 
 
@@ -221,69 +221,3 @@ lista & $\bullet$[$\bullet$] & O(1)\\
 \end{tabular*}
 \end{center}
 
-%requiere arreglo heapificado
-\textsc{Heapsort}(\textbf{in/out} arreglo(tuplas): a, \textbf{in} int: n)
-\begin{lstlisting}[mathescape]
- fin $\leftarrow$ (n-1)
- while (end > 0)
- 	swap(a[fin], a[0])
- 	fin $\leftarrow$ (fin - 1)
- 	bajar(a,0,fin)
- endWhile
-\end{lstlisting}
-\textbf{Complejidad}\\
-
-
-\textsc{Heapificar}(\textbf{in/out} arreglo(tuplas): a, \textbf{in} int: n)
-\begin{lstlisting}[mathescape]
- comienzo $\leftarrow$ (parteEntera((n-2)/2))
- while (comienzo > 0)
- 	bajar(a,comienzo,n-1)
- 	comienzo $\leftarrow$ comienzo - 1
- endWhile
-\end{lstlisting}
-\textbf{Complejidad}\\
-
-\textsc{Bajar}(\textbf{in/out} arreglo(tuplas): a, \textbf{in} int: comienzo, \textbf{in} int: fin)
-\begin{lstlisting}[mathescape]
- int: raiz
- int: hijo
- int: pasaMano
- raiz $\leftarrow$ comienzo
- while ((raiz * 2)+ 1 $\leq$ fin)
- 	hijo $\leftarrow$ (raiz*2)+1
- 	pasaMano $\leftarrow$ raiz
- 	if(a[pasaMano] < a[hijo])
- 		pasaMano $\leftarrow$ hijo
- 	endIf
- 	if((hijo + 1 $\leq$ fin) && (a[pasaMano] < a[hijo+1]))
- 		pasaMano $\leftarrow$ hijo + 1
- 	endIf
- 	if(pasaMano != raiz)
- 		swap(a[raiz], a[pasaMano])
- 		raiz $\leftarrow$ pasaMano
- 	endIf
- endWhile
-\end{lstlisting}
-\textbf{Complejidad}\\
-
-
-\textsc{BusquedaBinaria}(\textbf{in} arreglo(tuplas): a, \textbf{in} nat: cliente, \textbf{in} nat: tam) $\rightarrow$ \textbf{res} = int
-\begin{lstlisting}[mathescape]
- int: arriba $\leftarrow$ tam-1
- int: abajo $\leftarrow$ 0
- int: centro
- while (abajo $\leq$ arriba)
- 	centro $\leftarrow$ (arriba + abajo)/2;
-    if (arreglo[centro].$\Pi_{1}$ == cliente)
- 		return centro;
-    else
- 		if (cliente < arreglo[centro].$\Pi_{1}$)
-   			arriba $\leftarrow$ centro-1;
- 		else
-   			abajo $\leftarrow$ centro+1;
-   		endIf
-   	endIf
- endWhile
-\end{lstlisting}
-\textbf{Complejidad}\\

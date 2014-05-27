@@ -96,6 +96,8 @@ iNuevoConjEstNat(in c: conj(nat)) $\rightarrow$ res: array
  return(a)
 \end{lstlisting}
 \textbf{Complejidad:} O(1)+O(n)+O(1)+n*(O(1)+O(1)+O(1))+O(n(log(n))) = O(n(log(n)))\\
+\textbf{Aclaraciones:}Utilizamos el algoritmo \textsc{Heapsort} provisto en el apunte \textsc{Algoritmos b\'asicos}, con las complejidades all\'i descriptas.
+
 
 iPertenece(in n: nat, in c: array) $\rightarrow$ res: bool
 \begin{lstlisting}[mathescape]
