@@ -13,7 +13,7 @@
 %%nombre
   \InterfazFuncion{nombre}{\In{t}{t\'itulo}}{nombre}
   {$res$ \igobs nombre(t)}
-  [$O(copy(nombre(t)))$]
+  [$O(|nombre(t)|)$]
   [Devuelve el nombre del t\'itulo]\\\\
 
 %%#máxAcciones
@@ -37,7 +37,7 @@
 %%crearTitulo
   \InterfazFuncion{crearT\'itulo}{\In{t}{nombre}, \In{c}{dinero}, \In{n}{nat}}{t\'itulo}
   {$res$ \igobs crearT\'itulo($s$, $c$, $n$)}
-  [$O(copy(nombre(t)))$]
+  [$O(|nombre(t)|)$]
   [Devuelve una nuevo t\'itulo]\\\\
 
 %%recotizar
@@ -74,9 +74,9 @@
 
 iNombre(in estr: t) $\rightarrow$ res = nombre
 \begin{lstlisting}[mathescape]
- res $\leftarrow$ e.nombre                                                        O(copy(nombre(t))
+ res $\leftarrow$ e.nombre                                                        O(|nombre(t)|)
 \end{lstlisting}
-\textbf{Complejidad:}O(copy(nombre(t))
+\textbf{Complejidad:}O(|nombre(t)|)
 
 i$\#$m\'axAcciones(in estr: t) $\rightarrow$ res = nat
 \begin{lstlisting}[mathescape]
@@ -101,12 +101,12 @@ iEnAlza(in estr: t) $\rightarrow$ res = bool
 
 iCrearT\'itulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = estr
 \begin{lstlisting}[mathescape]
- res.nombre $\leftarrow$ n                                                        O(copy(nombre(t)))
+ res.nombre $\leftarrow$ n                                                        O(|nombre(t)|)
  res.$\#$maxAcciones $\leftarrow$ max                                                 O(1)
  res.enAlza $\leftarrow$ true                                                     O(1)
  res.cotizacion $\leftarrow$ c                                                    O(1)
 \end{lstlisting}
-\textbf{Complejidad:} O(copy(nombre(t))) + 3*O(1) = O(copy(nombre(t)))
+\textbf{Complejidad:} O(|nombre(t)|) + 3*O(1) = O(|nombre(t)|)
 
 
 iRecotizar(in dinero: c, in/out estr: t)
