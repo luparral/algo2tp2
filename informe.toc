@@ -11,10 +11,10 @@
 \contentsline {subsection}{\numberline {2.3}Algoritmos}{7}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}Funciones auxiliares}{8}{subsubsection.2.3.1}
 \contentsline {subsection}{\numberline {2.4}Servicios Usados}{9}{subsection.2.4}
-\contentsline {section}{\numberline {3}M\'odulo DiccionarioTrie(alpha)}{9}{section.3}
-\contentsline {subsection}{\numberline {3.1}Interfaz}{9}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Par\'ametros formales}{9}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{9}{subsubsection.3.1.2}
+\contentsline {section}{\numberline {3}M\'odulo DiccionarioTrie(alpha)}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Interfaz}{10}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Par\'ametros formales}{10}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Operaciones b\'asicas de Diccionario String($\alpha $)}{10}{subsubsection.3.1.2}
 \contentsline {subsubsection}{\numberline {3.1.3}Operaciones b\'asicas del iterador de claves de Diccionario String($\alpha $)}{10}{subsubsection.3.1.3}
 \contentsline {subsection}{\numberline {3.2}Representacion}{11}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Representaci\'on del Diccionario String($\alpha $)}{11}{subsubsection.3.2.1}
@@ -23,7 +23,7 @@
 \contentsline {subsection}{\numberline {3.3}Algoritmos}{12}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}Algoritmos de Diccionario String}{12}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Algoritmos del iterador de claves del Diccionario String}{13}{subsubsection.3.3.2}
-\contentsline {subsection}{\numberline {3.4}Servicios Usados}{13}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Servicios Usados}{14}{subsection.3.4}
 \contentsline {section}{\numberline {4}M\'odulo Conjunto Est\'atico de Nats}{15}{section.4}
 \contentsline {subsection}{\numberline {4.1}Interfaz}{15}{subsection.4.1}
 \contentsline {subsubsection}{\numberline {4.1.1}Operaciones b\'asicas de conjEstNat}{15}{subsubsection.4.1.1}
@@ -31,8 +31,11 @@
 \contentsline {subsection}{\numberline {4.2}Representaci\'on}{16}{subsection.4.2}
 \contentsline {subsubsection}{\numberline {4.2.1}Representaci\'on de conjEstNat}{16}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Representaci\'on de itConjEstNat}{16}{subsubsection.4.2.2}
-\contentsline {subsection}{\numberline {4.3}Servicios Usados}{17}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}TAD \textsc {Conjunto Est\'atico de Nats}}{17}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.3}Algoritmos}{16}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Algoritmos de conjEstNat}{16}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Algoritmos de itConjEstNat}{17}{subsubsection.4.3.2}
+\contentsline {subsection}{\numberline {4.4}Servicios Usados}{17}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}TAD \textsc {Conjunto Est\'atico de Nats}}{18}{subsection.4.5}
 \contentsline {section}{\numberline {5}M\'odulo Promesa}{18}{section.5}
 \contentsline {subsection}{\numberline {5.1}Interfaz}{18}{subsection.5.1}
 \contentsline {subsubsection}{\numberline {5.1.1}Par\'ametros formales}{18}{subsubsection.5.1.1}
@@ -41,10 +44,10 @@
 \contentsline {subsubsection}{\numberline {5.2.1}Representaci\'on de promesa}{19}{subsubsection.5.2.1}
 \contentsline {subsection}{\numberline {5.3}Algoritmos}{19}{subsection.5.3}
 \contentsline {subsubsection}{\numberline {5.3.1}Algoritmos de promesa}{19}{subsubsection.5.3.1}
-\contentsline {section}{\numberline {6}M\'odulo Titulo}{19}{section.6}
-\contentsline {subsection}{\numberline {6.1}Interfaz}{19}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}Operaciones b\'asicas de titulo}{19}{subsubsection.6.1.1}
-\contentsline {subsection}{\numberline {6.2}Representaci\'on}{20}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Representaci\'on de titulo}{20}{subsubsection.6.2.1}
+\contentsline {section}{\numberline {6}M\'odulo Titulo}{20}{section.6}
+\contentsline {subsection}{\numberline {6.1}Interfaz}{20}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Operaciones b\'asicas de titulo}{20}{subsubsection.6.1.1}
+\contentsline {subsection}{\numberline {6.2}Representaci\'on}{21}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Representaci\'on de titulo}{21}{subsubsection.6.2.1}
 \contentsline {subsection}{\numberline {6.3}Algoritmos}{21}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Algoritmos de promesa}{21}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.1}Algoritmos de t\'itulo}{21}{subsubsection.6.3.1}

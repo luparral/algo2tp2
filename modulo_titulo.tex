@@ -65,37 +65,43 @@
 \Abs[estr]{t\'itulo}[e]{t}{nombre(t) = e.nombre $\land$ $\#$m\'axAcciones(t) = e.$\#$m\'axAcciones $\land$ cotizacion(t) = e.cotizacion $\land$ enAlza(t) = e.enAlza}
 
   \subsection{Algoritmos}
-\subsubsection{Algoritmos de promesa}
+\subsubsection{Algoritmos de t\'itulo}
 
-iNombre(in T\'itulo: t) $\rightarrow$ res = nombre
+iNombre(in estr: t) $\rightarrow$ res = nombre
 \begin{lstlisting}[mathescape]
  res = e.nombre
 \end{lstlisting}
 
-i$\#$m\'axAcciones(in T\'itulo: t) $\rightarrow$ res = nat
+i$\#$m\'axAcciones(in estr: t) $\rightarrow$ res = nat
 \begin{lstlisting}[mathescape]
  res = e.$\#$maxAcciones
 \end{lstlisting}
 
-iCotizaci\'on(in T\'itulo: t) $\rightarrow$ res = dinero
+iCotizaci\'on(in estr:: t) $\rightarrow$ res = dinero
 \begin{lstlisting}[mathescape]
  res = e.cotizacion
 \end{lstlisting}
 
 
-iEnAlza(in Titulo: t) $\rightarrow$ res = bool
+iEnAlza(in estr: t) $\rightarrow$ res = bool
 \begin{lstlisting}[mathescape]
-%%%%%%%%%%
+ res = e.enAlza
 \end{lstlisting}
 
-iCrearT\'itulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = T\'itulo
+iCrearT\'itulo(in nombre: n, in nat: max, in dinero: c) $\rightarrow$ res = estr
 \begin{lstlisting}[mathescape]
  res.nombre = n
  res.$\#$maxAcciones = max
+ res.enAlza=true
  res.cotizacion = c
 \end{lstlisting}
 
-iRecotizar(in dinero: c, in/out t\'itulo: t)
+iRecotizar(in dinero: c, in/out estr: t)
 \begin{lstlisting}[mathescape]
+ if c>t.cotizacion then
+   t.enAlza=true
+ else
+   t.enAlza=false
+ fi
  t.cotizacion <- c
 \end{lstlisting}

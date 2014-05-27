@@ -78,7 +78,8 @@
 	
 	\Abs[iterador]{itConjEstNat}[it]{$iConj$}{actual($iConj$) = $a[i]$ $\land$ hayPr\'ox($iConj$)=($i.pos$<longitud($*(i.lista)$)-1) $\land$ \\(hayPr\'ox($i.Conj$)$\Rightarrow$pr\'oximo($iConj$)=Abs(<$i.pos+1, i.lista$>))}
 	
-	
+\subsection{Algoritmos}
+\subsubsection{Algoritmos de conjEstNat}
 iNuevoConjEstNat(in c: conj(nat)) $\rightarrow$ res: array
 \begin{lstlisting}[mathescape]
  $\textbf{itConj(nat)}$ it $\leftarrow$ crearIt(c))								O(1)
@@ -105,7 +106,8 @@ iPertenece(in n: nat, in c: array) $\rightarrow$ res: bool
  return(b)
 \end{lstlisting}
 \textbf{Complejidad:} O(1)+O(1)+n*(O(1)+O(1)) = O(n)\\
-	
+
+\subsubsection{Algoritmos de itConjEstNat}
 iCrearIt(in a: array) $\rightarrow$ res: iterador
 \begin{lstlisting}[mathescape]
  return (<|c|, &c>)
@@ -114,7 +116,7 @@ iCrearIt(in a: array) $\rightarrow$ res: iterador
 
 iActual(in it: iterador) $\rightarrow$ res: nat
 \begin{lstlisting}[mathescape]
- return *(it.lista)[it.pos]
+ return (*(it.lista))[it.pos]
 \end{lstlisting}
 \textbf{Complejidad:} O(1)\\
 
