@@ -135,7 +135,7 @@
 
 \end{Estructura}
  %----------------------------------------------------Rep------------------------------------------
-\subsubsection{Invariante de representaci\'on}
+\subsubsection{Invariante de representaci\'on de wolfie}
  \renewcommand{\labelenumi}{(\Roman{enumi})}
  \begin{enumerate}
  	\item Los clientes de $clientes$ son los mismos que hay dentro de $titulos$.
@@ -198,7 +198,7 @@
   \tadAxioma{auxBuscarCliente($a$, $i$)}{{\IF $i$=longitud($a$) THEN 0 ELSE $a[i].cantAcc$ + sumaAccClientes($a, i+1$) FI}}
 
   	  }\mbox{}
-\subsubsection{Funci\'on de abstracci\'on}
+\subsubsection{Funci\'on de abstracci\'on de wolfie}
   	 \Abs[estr]{wolfie}[e]{$w$}{clientes($w$)=$e.clientes$ $\land$ ($\forall t$: t\'itulo) {\large(}$t \in$t\'itulos($w$)$\Leftrightarrow$(def?($t, e.titulos$)\yluego$t$=Significado($t, e.titulos$).$titulo$){\large)} $\land$ ($\forall$ $c$: cliente) promesasDe($c, w$)=damePromesas(crearIt($e.titulos$), $e$, $c$) $\land$ \\accionesPorCliente($c$, $t$, $w$)=buscarCliente(Significado($t, e.titulos$).$arrayClientes$).$cantAcc$}
 
   \tadOperacion{damePromesas}{itClaves(diccString), estr, cliente}{conj(promesa)}{}

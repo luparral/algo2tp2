@@ -162,7 +162,9 @@
 \tableofcontents
 
 \newpage
-\section{Renombres de M\'odulos}
+\section{Introducci\'on}
+En los distintos m\'odulos se asume que los tipos b\'asicos se pasan por copia, con complejidad O(1). Para los m\'odulos diseñados, el pasaje es p
+\subsection{Renombres de M\'odulos}
 \begin{minipage}{15cm}
 M\'odulo Dinero es Nat\\
 M\'odulo Cliente es Nat\\
@@ -176,10 +178,10 @@ M\'odulo Nombre es String\\
 \input{modulo_dicTrie.tex}
 \section{M\'odulo Conjunto Est\'atico de Nats}
 \input{modulo_conjEstNat.tex}
-%\section{M\'odulo Promesa}
-%\input{modulo_promesa.tex}
-%\section{M\'odulo T\'itulo}
-%\input{modulo_titulo.tex}
+\section{M\'odulo Promesa}
+\input{modulo_promesa.tex}
+\section{M\'odulo T\'itulo}
+\input{modulo_titulo.tex}
 %%\section{M\'odulo Wolfie}
 %%\input{modulo_wolfie.tex}
 
