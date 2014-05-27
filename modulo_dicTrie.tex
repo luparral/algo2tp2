@@ -136,48 +136,48 @@
 
 \textsc{iCrearDicc}() $\rightarrow$ \textbf{res} = diccString($\alpha$)
 \begin{lstlisting}[mathescape]
- n $\leftarrow$ nodo $\hfill$ O(1)
- n $\leftarrow$ crearNodo() 					O(1)
- raiz $\leftarrow$ *n 							O(1)
+ n $\leftarrow$ nodo									O(1)
+ n $\leftarrow$ crearNodo() 								O(1)
+ raiz $\leftarrow$ *n 									O(1)
 \end{lstlisting}
-\textbf{Complejidad:} 3*O(1)
+\textbf{Complejidad:} 3*O(1) = O(1)
 
 \textsc{iCrearNodo}() $\rightarrow$ \textbf{res} = nodo
 \begin{lstlisting}[mathescape]
- d : arreglo\_estatico[256] 					O(1)
- i $\leftarrow$ 0 								O(1)
- while (i < 256) 								256*
- 	d[i] $\leftarrow$ NULL 						O(1)
+ d : arreglo\_estatico[256] 							O(1)
+ i $\leftarrow$ 0 										O(1)
+ while (i < 256) 							256*
+ 	d[i] $\leftarrow$ NULL 							O(1)
  endWhile
- hijos $\leftarrow$ d 							O(1)
- valor $\leftarrow$ NULL 						O(1)
+ hijos $\leftarrow$ d 								O(1)
+ valor $\leftarrow$ NULL 								O(1)
 \end{lstlisting}
-\textbf{Complejidad:}2*O(1) + 256*O(1) + 2*O(1)
+\textbf{Complejidad:}2*O(1) + 256*O(1) + 2*O(1) = O(1)
 
 \textsc{iDefinir}(\textbf{in/out} diccString($\alpha$): d, \textbf{in} string: c, \textbf{in} alfa: s)
 \begin{lstlisting}[mathescape]
- i $\leftarrow$ 0 								O(1)
- p $\leftarrow$ d.raiz 							O(1)
+ i $\leftarrow$ 0 										O(1)
+ p $\leftarrow$ d.raiz 									O(1)
  while (i < (longitud(s))) 						|s|*
- 	if (p.hijos[ord(s[i])] == NULL) 			O(1)
-		n: nodo $\leftarrow$ crearNodo() 		O(1)
-		p.hijos[ord(s[i])] $\leftarrow$ *n 		O(1)
+ 	if (p.hijos[ord(s[i])] == NULL) 				O(1)
+		n: nodo $\leftarrow$ crearNodo() 					O(1)
+		p.hijos[ord(s[i])] $\leftarrow$ *n 					O(1)
 	endIf
- p $\leftarrow$ p.hijos[ord(s[i])] 				O(1)
- i++ 											O(1)
+ p $\leftarrow$ p.hijos[ord(s[i])] 								O(1)
+ i++ 										O(1)
  endWhile
- p.valor $\leftarrow$ a 						O(1)
- agregarAdelante(hijos, c) 						O(|s|)
+ p.valor $\leftarrow$ a 									O(1)
+ agregarAdelante(hijos, c) 							O(|s|)
 \end{lstlisting}
 \textbf{Complejidad:} 2*O(1) + |s|*5*O(1) + O(1) + O(|s|) = O(|s|)
 
 \textsc{iSignificado}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = $\alpha$
 \begin{lstlisting}[mathescape]
- i $\leftarrow$ 0 								O(1)
- p $\leftarrow$ d.raiz 							O(1)
+ i $\leftarrow$ 0 										O(1)
+ p $\leftarrow$ d.raiz 									O(1)
  while (i < (longitud(s))) 						|s|*
-	p $\leftarrow$ p.hijos[ord(s[i])] 			O(1)
- i++ 											O(1)
+	p $\leftarrow$ p.hijos[ord(s[i])] 						O(1)
+ i++ 									O(1)
  endWhile
  return p.valor 								O(1)
 \end{lstlisting}
@@ -185,17 +185,17 @@
 
 \textsc{iDefinido?}(\textbf{in} diccString($\alpha$): d, \textbf{in} string: c) $\rightarrow$ \textbf{res} = bool
 \begin{lstlisting}[mathescape]
- i $\leftarrow$ 0 								O(1)
- p $\leftarrow$ d.raiz 							O(1)
+ i $\leftarrow$ 0 										O(1)
+ p $\leftarrow$ d.raiz 									O(1)
  while (i < (longitud(s))) 						|s|*
- 	if (p.hijos[ord(s[i])] != NULL) 			O(1)
-		p $\leftarrow$ p.hijos[ord(s[i])] 		O(1)
+ 	if (p.hijos[ord(s[i])] != NULL) 				O(1)
+		p $\leftarrow$ p.hijos[ord(s[i])] 					O(1)
 		i++ O(1)
 	else
-		return false 							O(1)
+		return false 						O(1)
 	endIf
  endWhile
- return p.valor != NULL 						O(1)
+ return p.valor != NULL 							O(1)
 \end{lstlisting}
 \textbf{Complejidad:} 2*O(1) + |s|*3*O(1) + O(1) = O(|s|)
 

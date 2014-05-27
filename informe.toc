@@ -6,8 +6,7 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Operaciones b\'asicas de wolfie}{4}{subsubsection.2.1.2}
 \contentsline {subsection}{\numberline {2.2}Representaci\'on}{5}{subsection.2.2}
 \contentsline {subsubsection}{\numberline {2.2.1}Representaci\'on de wolfie}{5}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Invariante de representaci\'on}{5}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}Funci\'on de abstracci\'on}{6}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.2}Funci\'on de abstracci\'on}{6}{subsubsection.2.2.2}
 \contentsline {subsection}{\numberline {2.3}Algoritmos}{7}{subsection.2.3}
 \contentsline {subsubsection}{\numberline {2.3.1}Funciones auxiliares}{8}{subsubsection.2.3.1}
 \contentsline {subsection}{\numberline {2.4}Servicios Usados}{9}{subsection.2.4}
