@@ -17,8 +17,8 @@
   [Devuelve el nombre del t\'itulo]\\\\
 
 %%#máxAcciones
-  \InterfazFuncion{#m\'axAcciones}{\In{t}{t\'itulo}}{nat}
-  {$res$ \igobs #m\'axAcciones(t)}
+  \InterfazFuncion{\#m\'axAcciones}{\In{t}{t\'itulo}}{nat}
+  {$res$ \igobs \#m\'axAcciones(t)}
   [$O(1)$]
   [Devuelve el m\'aximo de cantidad de acciones.]\\\\
 
@@ -47,6 +47,7 @@
   [Devuelve una nueva promesa.]\\\\
 
 
+\begin{comment}
 \subsection{Representaci\'on}
 \subsubsection{Representaci\'on de t\'itulo}
 %------------------------estr----------------------------
@@ -60,7 +61,6 @@
 \end{Estructura}
 
  %----------------------------------------------------Rep------------------------------------------
-
 \Rep[estr][e]{(true}
 
 \subsubsection{Funci\'on abstracci\'on}
@@ -101,3 +101,6 @@ iRecotizar(in dinero: c, inout titulo: t)
 \begin{lstlisting}[mathescape]
 t.cotizacion $\leftarrow$ c
 \end{lstlisting}
+
+
+\end{comment}
