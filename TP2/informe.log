@@ -1,0 +1,1353 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.16)  27 MAY 2014 18:50
+entering extended mode
+ %&-line parsing enabled.
+**informe.tex
+(./informe.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, spanish, galician, catalan, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@dimlist=\toks15
+
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/spanish.ldf
+Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count90
+\U@D=\dimen107
+)
+\es@datefmt=\count91
+\es@quottoks=\toks18
+\es@quotdepth=\count92
+Package babel Info: Making " an active character on input line 492.
+Package babel Info: Making . an active character on input line 585.
+Package babel Info: Making < an active character on input line 630.
+Package babel Info: Making > an active character on input line 630.
+))
+(/usr/share/texmf-texlive/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip43
+\f@ncyO@elh=\skip44
+\f@ncyO@erh=\skip45
+\f@ncyO@olh=\skip46
+\f@ncyO@orh=\skip47
+\f@ncyO@elf=\skip48
+\f@ncyO@erf=\skip49
+\f@ncyO@olf=\skip50
+\f@ncyO@orf=\skip51
+)
+(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/usr/share/texmf-texlive/tex/latex/lastpage/lastpage.sty
+Package: lastpage 1994/06/25 v0.1b LaTeX2e package for refs to last page number
+ (JPG)
+) (./aed2-symb.sty
+Package: aed2-symb 2004/04/17 - Para componer simbolitos frecuentemente usados 
+en AED2
+
+Cargando package 'aed2-symb'
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks19
+\ex@=\dimen108
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen109
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count93
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count94
+\leftroot@=\count95
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count96
+\DOTSCASE@=\count97
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen110
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
+\dotsspace@=\muskip10
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
+\tag@help=\toks20
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
+\andhelp@=\toks21
+\eqnshift@=\dimen111
+\alignsep@=\dimen112
+\tagshift@=\dimen113
+\tagwidth@=\dimen114
+\totwidth@=\dimen115
+\lineht@=\dimen116
+\@envbody=\toks22
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+(/usr/share/texmf-texlive/tex/latex/xargs/xargs.sty
+Package: xargs 2008/03/22 v1.1  extended macro definitions  (mpg)
+
+(/usr/share/texmf-texlive/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
+
+(/usr/share/texmf-texlive/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks24
+\XKV@tempa@toks=\toks25
+\XKV@depth=\count105
+File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
+))
+\xargs@max=\count106
+\xargs@toksa=\toks26
+\xargs@toksb=\toks27
+)) (./aed2-itef.sty
+Package: aed2-itef 2010/03/16 - if-then-else-fi en lenguaje de TADs.
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+Cargando package 'itef' (2010/03/16)
+\itefIndentacion=\skip55
+\itef@widthUnaLinea=\skip56
+\itef@linewidth=\skip57
+) (./aed2-tad.sty
+Package: aed2-tad 2011/04/04 - Para especificar TADs en formato AED2
+ (/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count107
+\calc@Bcount=\count108
+\calc@Adimen=\dimen117
+\calc@Bdimen=\dimen118
+\calc@Askip=\skip58
+\calc@Bskip=\skip59
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count109
+\calc@Cskip=\skip60
+)
+(./aed2-tokenizer.sty
+Package: aed2-tokenizer 2010/03/12
+)
+Package aed2-tad Info: Cargando package 'tad' (04/04/2011) on input line 26.
+\tadMargen=\skip61
+\tadSubMargen=\skip62
+\tadAnchoEncabezados=\skip63
+\tadSeparacionTitulos=\skip64
+\tadSeparacionFunciones=\skip65
+\tadAnchoNombreFunciones=\skip66
+\tadAnchoTipoFunciones=\skip67
+\tadSeparacionAxiomas=\skip68
+\tadAnchoIzquierdaAxioma=\skip69
+\tad@oldparindent=\skip70
+\pbox@len=\skip71
+\tad@ifFitsElse@largo=\skip72
+\igualobs@pre=\skip73
+\igualobs@max=\skip74
+\igualobssimple@max=\skip75
+\@Signatura=\box28
+\tadOperacion@textwidth=\skip76
+\tadAxioma@lenEquiv=\skip77
+\tadAxioma@lenDerecha=\skip78
+)
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen119
+\Hy@linkcounter=\count110
+\Hy@pagecounter=\count111
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 2864.
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 3428.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count112
+\Field@Width=\dimen120
+\Fld@charsize=\dimen121
+\Field@toks=\toks28
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring ON on input line 4395.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count113
+\c@Item=\count114
+\c@Hfootnote=\count115
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count116
+) (./caratula.sty
+Package: caratula 2013/08/04 v0.5 Para componer caratulas de TPs del DC
+
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count117
+))
+\Gin@req@height=\dimen122
+\Gin@req@width=\dimen123
+)
+Cargando package 'caratula' v0.5 (2013/08/04)
+\intlist=\toks29
+\intlistSinLU=\toks30
+\c@integrantesCount=\count118
+\intTabNombre=\toks31
+\intTabLU=\toks32
+\intTabEmail=\toks33
+\c@directoresCount=\count119
+\direcTabNombre=\toks34
+\direcTabEmail=\toks35
+) (./algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+ (/usr/share/texmf-texlive/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count120
+\float@exts=\toks36
+\float@box=\box29
+\@float@everytoks=\toks37
+\@floatcapt=\box30
+)
+\@float@every@algorithm=\toks38
+\c@algorithm=\count121
+)
+(./algpseudocode.sty
+Package: algpseudocode 
+ (./algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count122
+\c@ALG@rem=\count123
+\c@ALG@nested=\count124
+\ALG@tlm=\skip79
+\ALG@thistlm=\skip80
+\c@ALG@Lnr=\count125
+\c@ALG@blocknr=\count126
+\c@ALG@storecount=\count127
+\c@ALG@tmpcounter=\count128
+\ALG@tmplength=\skip81
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks39
+\verbatim@line=\toks40
+\verbatim@in@stream=\read1
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count129
+\lst@gtempboxa=\box31
+\lst@token=\toks41
+\lst@length=\count130
+\lst@currlwidth=\dimen124
+\lst@column=\count131
+\lst@pos=\count132
+\lst@lostspace=\dimen125
+\lst@width=\dimen126
+\lst@newlines=\count133
+\lst@lineno=\count134
+\lst@maxwidth=\dimen127
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count135
+\lst@skipnumbers=\count136
+\lst@framebox=\box32
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+\IntFuncionLengthA=\skip82
+\IntFuncionLengthB=\skip83
+\IntFuncionLengthC=\skip84
+\lenTupla=\skip85
+ (./informe.aux)
+\openout1 = `informe.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 148.
+LaTeX Font Info:    ... okay on input line 148.
+
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+-------------------- Geometry parameters
+paper: a4paper
+landscape: --
+twocolumn: --
+twoside: --
+asymmetric: --
+h-parts: 25.6073pt, 546.29327pt, 25.6073pt
+v-parts: 99.58464pt, 702.78308pt, 42.67912pt
+hmarginratio: --
+vmarginratio: --
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  597.50787pt
+\paperheight 845.04684pt
+\textwidth  546.29327pt
+\textheight 702.78308pt
+\oddsidemargin  -46.66269pt
+\evensidemargin -46.66269pt
+\topmargin  -9.68535pt
+\headheight 13.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 57.0pt
+\marginparsep   11.0pt
+\columnsep  10.0pt
+\skip\footins  9.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+Package hyperref Info: Link coloring ON on input line 148.
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count137
+)
+LaTeX Info: Redefining \ref on input line 148.
+LaTeX Info: Redefining \pageref on input line 148.
+ (./informe.out)
+(./informe.out)
+\@outlinefile=\write3
+\openout3 = `informe.out'.
+
+\AtBeginShipoutBox=\box33
+ (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count138
+\scratchdimen=\dimen128
+\scratchbox=\box34
+\nofMPsegments=\count139
+\nofMParguments=\count140
+\everyMPshowfont=\toks42
+\MPscratchCnt=\count141
+\MPscratchDim=\dimen129
+\MPnumerator=\count142
+\everyMPtoPDFconversion=\toks43
+)
+\c@lstlisting=\count143
+ (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+)
+<logo_dc.jpg, id=271, 215.6055pt x 83.5923pt>
+File: logo_dc.jpg Graphic file (type jpg)
+ <use logo_dc.jpg>
+LaTeX Font Info:    Try loading font information for U+lasy on input line 158.
+
+(/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 158.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 158.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 158.
+
+
+(/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+<logo_uba.jpg, id=272, 225.4824pt x 231.7458pt>
+File: logo_uba.jpg Graphic file (type jpg)
+ <use logo_uba.jpg>
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 158.
+
+
+(/usr/share/texmf-texlive/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 158--158
+
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo_dc.jpg> <./logo_uba
+.jpg>] (./informe.tocpdfTeX warning (ext4): destination with the same identifie
+r (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.41 ...on de conjEstNat}{16}{subsubsection.4.2.2}
+                                                   [1])
+\tf@toc=\write4
+\openout4 = `informe.toc'.
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 169--173
+
+ []
+
+(./modulo_wolfie.tex
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--74
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+\OMS/cmsy/m/n/10 )[]$\T1/cmr/m/n/10 título($\OMS/cmsy/m/n/10 ^^C\OML/cmm/m/it/1
+0 p$\T1/cmr/m/n/10 )=$\OML/cmm/m/it/10 t$ $\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 t
+ipo($\OMS/cmsy/m/n/10 ^^C\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 )=compra $\OMS/cmsy/
+m/n/10 ^$ \T1/cmr/m/n/10 (límite($\OMS/cmsy/m/n/10 ^^C\OML/cmm/m/it/10 p$\T1/cm
+r/m/n/10 )>cotización(Significado($\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 , $\OML/cm
+m/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 titulo$\T1/cmr/m/n/10 ) 
+$\OMS/cmsy/m/n/10 _$
+ []
+
+
+Underfull \hbox (badness 5431) in paragraph at lines 198--198
+\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1
+/cmr/m/n/10 ) $\OMS/cmsy/m/n/10 ^[]$\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it
+/10 c$\T1/cmr/m/n/10 , Significado($\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 , $\OML/c
+mm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m
+/n/10 ).$\OML/cmm/m/it/10 promVenta$\T1/cmr/m/n/10 =$\OML/cmm/m/it/10 p$\T1/cmr
+/m/n/10 )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+[]\T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8$ $\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 : no
+m-breT) (def?($\OML/cmm/m/it/10 nt$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titulos
+$\T1/cmr/m/n/10 ) $\OMS/cmsy/m/n/10 )[]$\T1/cmr/m/n/10 (Significado($\OML/cmm/m
+/it/10 nt$\T1/cmr/m/n/10 , $\OML/cmm/m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/c
+mm/m/it/10 accDisponibles$ \T1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (15.59189pt too wide) in paragraph at lines 198--198
+[]\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it/10 e:[]ltimoLlamado:cliente$\T1/c
+mr/m/n/10 , Significado(título($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 ), $\OML/cmm/
+m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m/n/
+10 ).promCompra
+ []
+
+
+Overfull \hbox (5.01114pt too wide) in paragraph at lines 198--198
+[]\T1/cmr/m/n/10 buscarCliente($\OML/cmm/m/it/10 e:[]ltimoLlamado:cliente$\T1/c
+mr/m/n/10 , Significado(título($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 ), $\OML/cmm/
+m/it/10 e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 arrayClientes$\T1/cmr/m/n/
+10 ).promVenta
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 198--198
+[]\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+[5]
+Overfull \hbox (26.33612pt too wide) in paragraph at lines 200--201
+[]\T1/cmr/m/n/10 Abs($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 ) $\OT1/cmr/m/n/10 =[]$
+ $\OML/cmm/m/it/10 w$\T1/cmr/m/n/10 : wol-fie $\OMS/cmsy/m/n/10 j$ \T1/cmr/m/n/
+10 clientes($\OML/cmm/m/it/10 w$\T1/cmr/m/n/10 )=$\OML/cmm/m/it/10 e:clientes$ 
+$\OMS/cmsy/m/n/10 ^$ \T1/cmr/m/n/10 ($\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 t$\T1/
+cmr/m/n/10 : tí-tu-lo) \T1/cmr/m/n/12 ($\OML/cmm/m/it/10 t \OMS/cmsy/m/n/10 2$\
+T1/cmr/m/n/10 títulos($\OML/cmm/m/it/10 w$\T1/cmr/m/n/10 )$\OMS/cmsy/m/n/10 ,$\
+T1/cmr/m/n/10 (def?($\OML/cmm/m/it/10 t; e:titulos$\T1/cmr/m/n/10 )$\OMS/cmsy/m
+/n/10 ^[]$$\OML/cmm/m/it/10 t$\T1/cmr/m/n/10 =Significado($\OML/cmm/m/it/10 t; 
+e:titulos$\T1/cmr/m/n/10 ).$\OML/cmm/m/it/10 titulo$\T1/cmr/m/n/10 )\T1/cmr/m/n
+/12 )
+ []
+
+
+Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instea
+d on input line 203.
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 203--203
+[]\T1/cmr/m/n/10 damePromesas($\OML/cmm/m/it/10 it; e; c$\T1/cmr/m/n/10 )| $\OM
+S/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+[6]
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 222--222
+[]\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 i$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+
+Overfull \hbox (13.89026pt too wide) in paragraph at lines 224--224
+[]\T1/cmr/m/n/10 esIterador(it1, it2| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 254.
+
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 254.
+ [7]
+Overfull \hbox (87.70802pt too wide) in paragraph at lines 291--292
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (35.50002pt too wide) in paragraph at lines 294--295
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (87.70802pt too wide) in paragraph at lines 295--296
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (15.72504pt too wide) in paragraph at lines 303--304
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (54.16386pt too wide) in paragraph at lines 306--307
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+] 
+ []
+
+
+Overfull \hbox (9.72646pt too wide) in paragraph at lines 315--317
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[8]
+Overfull \hbox (31.72365pt too wide) in paragraph at lines 326--327
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (15.72505pt too wide) in paragraph at lines 327--328
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (31.72365pt too wide) in paragraph at lines 329--330
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (15.72505pt too wide) in paragraph at lines 330--331
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (1.8343pt too wide) in paragraph at lines 385--386
+[]\T1/cmr/m/n/10 CambiarPorCantAcc(in a1: arre-glo_dimensionable(tuplaPorClient
+e), in/out a2: arre-glo_dimensionable(tuplaPorCantAcc)) 
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
+
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 433--453
+[][][]
+ []
+
+
+Overfull \hbox (1638.87982pt too wide) in paragraph at lines 433--454
+ [] 
+ []
+
+) (./modulo_dicTrie.tex [10]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\alpha' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 14.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--38
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--38
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 39.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\alpha' on input line 39.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 39.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 64.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\alpha' on input line 64.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 64.
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 94--94
+[]\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 101--101
+[]\T1/cmr/m/n/10 noHayCiclos($\OML/cmm/m/it/10 n; p$\T1/cmr/m/n/10 )| $\OMS/cms
+y/m/n/10 ^^Q$| [] 
+ []
+
+[12]
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 103--103
+[]\T1/cmr/m/n/10 leer($\OML/cmm/m/it/10 p; s$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/1
+0 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 105--105
+[]\T1/cmr/m/n/10 todosNull($\OML/cmm/m/it/10 a$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n
+/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 107--107
+[]\T1/cmr/m/n/10 auxTodosNull($\OML/cmm/m/it/10 a; i$\T1/cmr/m/n/10 )| $\OMS/cm
+sy/m/n/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 109--109
+[]\T1/cmr/m/n/10 esHoja($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10
+ ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 111--111
+[]\T1/cmr/m/n/10 todasLasHojas($\OML/cmm/m/it/10 p; n$\T1/cmr/m/n/10 )| $\OMS/c
+msy/m/n/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 114--114
+[]\T1/cmr/m/n/10 auxTodasLasHojas($\OML/cmm/m/it/10 a; n$\T1/cmr/m/n/10 )| $\OM
+S/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 117--117
+[]\T1/cmr/m/n/10 hojasDeHijos($\OML/cmm/m/it/10 a; n; i$\T1/cmr/m/n/10 )| $\OMS
+/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 120--120
+[]\T1/cmr/m/n/10 todasLasHojasTienenValor($\OML/cmm/m/it/10 p$\T1/cmr/m/n/10 )|
+ $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 123--123
+[]\T1/cmr/m/n/10 auxTodasLasHojasTienenValor($\OML/cmm/m/it/10 a$\T1/cmr/m/n/10
+ )| $\OMS/cmsy/m/n/10 ^^Q$| [] 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\alpha' on input line 134.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 134.
+
+[13]
+Overfull \hbox (3.72787pt too wide) in paragraph at lines 179--180
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[14]
+Underfull \hbox (badness 10000) in alignment at lines 224--230
+[][][]
+ []
+
+
+Overfull \hbox (956.01323pt too wide) in paragraph at lines 224--231
+ [] 
+ []
+
+) (./modulo_conjEstNat.tex
+Underfull \hbox (badness 10000) in paragraph at lines 5--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 62--62
+[]\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 a$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 67--67
+[]\T1/cmr/m/n/10 estáEnArray($\OML/cmm/m/it/10 n; a; i$\T1/cmr/m/n/10 )| $\OMS/
+cmsy/m/n/10 ^^Q$| [] 
+ []
+
+[16]
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 77--77
+[]\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 i$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+
+Overfull \hbox (3.72789pt too wide) in paragraph at lines 93--94
+[][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 141--147
+[][][]
+ []
+
+
+Overfull \hbox (956.01323pt too wide) in paragraph at lines 141--148
+ [] 
+ []
+
+
+Overfull \hbox (7.08159pt too wide) in paragraph at lines 166--166
+[]\T1/cmr/m/n/10 crearConjEstNat 
+ []
+
+) (./modulo_promesa.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--14
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 25--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--46
+
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 65--65
+[]\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+[19]
+Overfull \hbox (9.72647pt too wide) in paragraph at lines 101--102
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+) (./modulo_titulo.tex
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
+
+Overfull \hbox (14.99998pt too wide) in paragraph at lines 66--66
+[]\T1/cmr/m/n/10 Rep($\OML/cmm/m/it/10 e$\T1/cmr/m/n/10 )| $\OMS/cmsy/m/n/10 ^^
+Q$| [] 
+ []
+
+[21]) AED: lastpage setting LastPage [22] (./informe.aux) ) 
+Here is how much of TeX's memory you used:
+ 10102 strings out of 494999
+ 138148 string characters out of 1180816
+ 297856 words of memory out of 3000000
+ 12738 multiletter control sequences out of 15000+50000
+ 19725 words of font info for 46 fonts, out of 3000000 for 9000
+ 54 hyphenation exceptions out of 8191
+ 47i,16n,97p,605b,1855s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf/fo
+nts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-supe
+r/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr
+/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/ty
+pe1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/
+sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfss1000.pfb></usr/share/texmf/fonts/typ
+e1/public/cm-super/sfsx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
+fti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/sh
+are/texmf/fonts/type1/public/cm-super/sfxc1200.pfb>
+Output written on informe.pdf (23 pages, 854498 bytes).
+PDF statistics:
+ 849 PDF objects out of 1000 (max. 8388607)
+ 323 named destinations out of 1000 (max. 500000)
+ 547 words of extra memory for PDF output out of 10000 (max. 10000000)
+

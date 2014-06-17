@@ -1,0 +1,438 @@
+\documentclass{article}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=1.5cm, top=3.5cm]{geometry}
+\usepackage{fancyhdr}
+	
+\pagestyle{fancy}
+\thispagestyle{fancy}
+\addtolength{\headheight}{1pt}
+\lhead{Trabajo Pr\'{a}ctico 2}
+\rhead{Grupo 16}
+	
+	
+\begin{document}
+\section*{M\'odulo SADAIC}
+
+\subsection*{Interfaz}
+\hspace{0.5cm} \textbf{par\'ametros formales}
+
+\hspace{0.75cm} \textbf{g\'eneros} $tema$, $autor$
+
+(\hspace{0.75cm} \textbf{funci\'on} \textsc{copiar}(\textbf{in} \textit{s:} $sadaic$) $\rightarrow res : sadaic$
+
+\hspace{2cm} \textbf{Pre} $\equiv$ \{true\} 
+
+\hspace{2cm} \textbf{Post} $\equiv$ \{$res =_{obs} a$\}
+
+\hspace{2cm} \textbf{Complejidad:} $\Theta(copy(a))$ 
+
+\hspace{2cm} \textbf{Descripci\'on:} funci\'on de copia de $sadaic$'s) 
+
+\hspace{2cm} (esto creo que no va porque no tenemos hecha la funcion de copiar un sadaic)
+
+\textbf{se explica con:} \textsc{$Sadaic$}
+
+\textbf{g\'eneros:} \textsc{$sadaic$}
+
+\subsection*{Operaciones b\'asicas de SADAIC}
+\hspace{0.5cm} \textsc{Iniciar}(\textbf{in} $as$: conj(autor)) $\rightarrow res: sadaic$
+	
+\hspace{0cm} \textbf{Pre} $\equiv$ \{$\neg \emptyset(as)$\} 
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{$autores(res) = as \wedge temas(res) = \emptyset \wedge_{L} (\forall a:autor)(a \in autores(a)) \Rightarrow [temasDe(res,a) = \emptyset           \ \wedge$
+
+\ $temasDisputadosPor(res,a) = \emptyset]$\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta(1)$ 
+
+\hspace{0cm} \textbf{Descripci\'on:} genera un SADAIC con los autores del par\'ametro sin temas.
+\\
+
+\hspace{0cm} \textsc{NuevoTema}(\textbf{in/out} $s$: sadaic, \textbf{in} $t$: tema, \textbf{in} $as$: conj(autor)) 
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{ t $\notin$ temas(s) $\wedge$ $\neg$ $\emptyset$(as) $\wedge$ as $\subseteq$ autores(s) $\wedge$ s $=_{obs} s_{0}$\} 
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{s $=_{obs}$ nuevoTema($s_{0}$,t,as) $\wedge$ temas(s) $=_{obs}$ Ag(t,temas($s_{0}$)) $\wedge$ 
+
+\hspace{0cm} ($\forall$ a:autor) a $\in$ as $\Rightarrow$ (temasDe(s,a) $=$ Ag(t,temasDe($s_{0}$,a)))\} 
+ 
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$ 
+
+\hspace{0cm} \textbf{Descripci\'on:} genera un SADAIC con los autores del par\'ametro sin temas.
+\\
+
+\hspace{0cm} \textsc{DisputarTema}(\textbf{in/out} $s$: sadaic, \textbf{in} $a$: autor, \textbf{in} $t$: tema)
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{$t\in temas(s) \wedge a\in autores(s) \wedge t\notin temasDe(s,a) \cup temasDisputadosPor(s,a) \wedge s = s_{0}$\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{s $=_{obs}$ disputarTema($s_{0}$,a,t) $\wedge$ temasDisputadosPor(s,a) = Ag(t, temasDisputadosPor($s_{0}$,a))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} agrega el tema t a los temas disputados de a en el sadaic s.
+\\
+
+\hspace{0cm} \textsc{Temas}(\textbf{in} $s$: sadaic) $\rightarrow res : itConj(tema)$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{true\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{alias(esPermutacion?(secuSuby(res), temas(s)))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} devuelve un iterador a los temas del SADAIC.
+
+\hspace{0cm} \textbf{Aliasing:} El res no apunta a una copia del conjunto. El iterador se invalidad si y solo si se elimina el elemento 
+
+\hspace{0cm} siguiente del iterador sin utilizar EliminarSiguiente.
+\\
+
+\hspace{0cm} \textsc{Autores}(\textbf{in} $s$: sadaic) $\rightarrow res : itConj(autor)$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{true\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{alias(esPermutacion?(secuSuby(res),autores(s)\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} devuelve un iterador a un conjunto con los autores del SADAIC.
+
+\hspace{0cm} \textbf{Aliasing:} El res no apunta a una copia del conjunto. El iterador se invalidad si y solo si se elimina el elemento 
+
+\hspace{0cm} siguiente del iterador sin utilizar EliminarSiguiente.
+\\
+
+\hspace{0cm} \textsc{temasDe}(\textbf{in} $s$: sadaic, \textbf{in} $a$: autor) $\rightarrow res : itConj(tema)$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{a $\in$ autores(s)\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{alias(esPermutacion?(secuSuby(res),temasDe(s,a)))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} devuelve los temas del autor a en el SADAIC s.
+
+\hspace{0cm} \textbf{Aliasing:} El res no apunta a una copia del conjunto. El iterador se invalidad si y solo si se elimina el elemento
+
+\hspace{0cm} siguiente del iterador sin utilizar EliminarSiguiente.
+\\
+
+\hspace{0cm} \textsc{TemasDisputadosPor}(\textbf{in} $s$: sadaic, \textbf{in} $a$: autor) $\rightarrow res : itConj(tema)$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{a $\in$ autores(s)\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{alias(esPermutacion?(secuSuby(res),temasDisputadosPor(s,a)))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} devuelve los temas disputados por el autor a en el SADAIC s.
+
+\hspace{0cm} \textbf{Aliasing:} El res no apunta a una copia del conjunto. El iterador se invalidad si y solo si se elimina el elemento 
+
+\hspace{0cm} siguiente del iterador sin utilizar EliminarSiguiente.
+\\
+
+\hspace{0cm} \textsc{DameUnTemaDisputadoPor}(\textbf{in} $s$: sadaic, \textbf{in} $a$: autor) $\rightarrow$ $res:tema$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{a $\in$ autores(s)\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{res = dameUno(temasDisputadosPor(s,a))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} res no es modificable
+\\
+
+\hspace{0cm} \textsc{TemasNoDisputados}(\textbf{in} $s$: sadaic, \textbf{in} $a$: autor) $\rightarrow res : itConj(tema)$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{a $\in$ autores(s)\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{alias(esPermutacion?(secuSuby(res), temasNoDisputados(s,a)))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+	
+\hspace{0cm} \textbf{Descripci\'on:} devuelve los temas que no le disputaron al autor a, y los temas que no le disputaron a sus coautores 
+
+\hspace{0cm} en el SADAIC s.
+
+\hspace{0cm} \textbf{Aliasing:} El res no apunta a una copia del conjunto. El iterador se invalidad si y solo si se elimina el elemento 
+
+\hspace{0cm} siguiente del iterador sin utilizar EliminarSiguiente.
+\\
+
+\hspace{0cm} \textsc{FTS}(\textbf{in} $s$: sadaic, \textbf{in} $st$: string) $\rightarrow res : itConj(tema)$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{true\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{alias(esPermutacion?(secuSuby(res),FTS(s,st)))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} devuelve los temas tales que el string es prefijo del nombre del tema o prefijo de alguno de sus 
+
+\hspace{0cm} autores
+
+\hspace{0cm} \textbf{Aliasing:} El res no apunta a una copia del conjunto. El iterador se invalidad si y solo si se elimina el elemento 
+
+\hspace{0cm} siguiente del iterador sin utilizar EliminarSiguiente.
+\\
+
+\hspace{0cm} \textsc{Coautores}(\textbf{in} $s$: sadaic, \textbf{in} $a$: autor) $\rightarrow res : itConj(autor)$
+
+\hspace{0cm} \textbf{Pre} $\equiv$ \{a $\in$ autores(s)\}
+
+\hspace{0cm} \textbf{Post} $\equiv$ \{alias(esPermutacion?(secuSuby(res),coautores(s,a)))\}
+
+\hspace{0cm} \textbf{Complejidad:} $\Theta()$
+
+\hspace{0cm} \textbf{Descripci\'on:} devuelve todos los coautores de a.
+
+\hspace{0cm} \textbf{Aliasing:} El res no apunta a una copia del conjunto. El iterador se invalidad si y solo si se elimina el elemento 
+
+\hspace{0cm} siguiente del iterador sin utilizar EliminarSiguiente.
+\\
+\pagebreak
+
+\subsection*{Representacion}
+
+\hspace{0.5cm} TEMA es STRING
+
+\hspace{0cm} AUTOR es STRING
+\\
+
+\hspace{0cm} \textbf{SADAIC} se representa con \textbf{estr}
+\\
+
+\hspace{0cm} donde \textbf{estr} =
+\\
+
+\hspace{0cm} \textless temas: conj(tema),
+
+\hspace{0cm} \ \ autores: conj(autor),
+
+\hspace{0cm} \ \ FTS: diccTrie(tema, conj(itConj(tema))),
+
+\hspace{0cm} \ \ porAutor:diccTrie(autor, milagrosa),
+
+\hspace{0cm} \ \ cacheoAutor\textgreater
+\\
+
+\hspace{0cm} donde \textbf{milagrosa} es \\
+
+\hspace{0cm} \ \ $<$susTemas: conj(itConj(tema)), temasQDisputo: conj(itConj(tema)), susCoautores: conj(itConj(autor))$>$
+\\
+
+\hspace{0cm} donde \textbf{cacheoAutor} es \\
+
+\hspace{0cm} \ \ $<$ultimoAutor: autor, temas: itConj(tema)$>$
+
+\subsection*{Algoritmos}
+
+\hspace{0.5cm} \textsc{iIniciar}(\textbf{in} $as$: conj(autor)) $\rightarrow$ $res:estr$\\
+
+	
+\hspace{0.5cm} res.autores $\leftarrow$ copiar(as)
+
+\hspace{0.5cm} res.temas $\leftarrow$ Vacia()
+
+\hspace{0.5cm} res.FTS $\leftarrow$ CrearDicc()
+
+\hspace{0.5cm} res.porAutor $\leftarrow$ CrearDicc()
+
+\hspace{0.5cm} (res.cacheoAutor).autor $\leftarrow$ Vacia()
+
+\hspace{0.5cm} (res.cacheoAutor).susTemas $\leftarrow$ Vacia()
+\\
+	
+\hspace{0cm} \textsc{iNuevoTema}(\textbf{in/out} $e$: estr, \textbf{in} $t$: str, \textbf{in} $as$: conj(autor))\\
+	
+\hspace{0.5cm} itAutores: itConj(autor)
+
+\hspace{0.5cm} itAutores2: itConj(autor)
+	
+\hspace{0.5cm} itNuevoTema: itConj(tema)
+
+\hspace{0.5cm} itNuevoCoautor: itConj(autor)
+
+\hspace{0.5cm} itBasura: itConj(itConj(tema))
+
+\hspace{0.5cm} itBasura2: itConj(itConj(autor))
+
+\hspace{0.5cm} conj1: conj(itConj(tema))
+
+\hspace{0.5cm} conj2: conj(itConj(tema))
+
+\hspace{0.5cm} conj3: conj(itConj(autor))
+	
+\hspace{0.5cm} p: tupla(milagrosa)
+
+\hspace{0.5cm} temas: conj(itConj(tema))
+\\
+	
+\hspace{0.5cm} itNuevoTema $\leftarrow$ Agregar(e.temas, t)
+
+\hspace{0.5cm} itAutores $\leftarrow$ CrearIt(as)
+
+\hspace{0.5cm} \textbf{while} haySiguiente?(itAutores)
+
+\hspace{1cm} \textbf{if} Definido?(e.PorAutor, siguiente(it)) then
+
+\hspace{1.5cm} p $\leftarrow$ Significado(e.PorAutor,siguiente(it))
+
+\hspace{1.5cm} itBasura $\leftarrow$ Agregar(p.susTemas, itNuevoTema)
+
+\hspace{1cm} \textbf{else}
+
+<<<<<<< .mine
+\hspace{1.5cm} Definir(e.PorAutor, siguiente(it), itTema)
+=======
+\hspace{1.5cm} conj1 $\leftarrow$ vacia()
+>>>>>>> .r19
+
+\hspace{1.5cm} conj2 $\leftarrow$ vacia()
+
+\hspace{1.5cm} conj3 $\leftarrow$ vacia()
+
+\hspace{1.5cm} itBasura $\leftarrow$ Agregar(conj1, itNuevoTema)
+
+\hspace{1.5cm} p $\leftarrow$ $<$ conj1,conj2,conj3$>$
+
+\hspace{1.5cm} Definir(e.PorAutor, siguiente(it), p)
+
+\hspace{1cm} \textbf{fi}
+
+\hspace{1cm} itAutores2 $\leftarrow$ CrearIt(as)
+
+<<<<<<< .mine
+\hspace{1cm} \textbf{while} (haySiguiente?(it2)
+=======
+\hspace{1cm} \textbf{while} haySiguiente?(itAutores2)
+>>>>>>> .r19
+
+\hspace{1.5cm} \textbf{if} siguiente(itAutores2) != siguiente(itAutores) then
+
+\hspace{2cm} itNuevoCoautor $\leftarrow$ copiar(itAutores2)
+
+\hspace{2cm} itBasura2 $\leftarrow$ Agregar(p.susCoautores, itNuevoCoautor)
+
+\hspace{1.5cm} \textbf{fi}
+
+\hspace{1.5cm} avanzar(itAutores2)
+
+\hspace{1cm} \textbf{endwhile}
+
+\hspace{1cm} avanzar(itAutores)
+
+\hspace{0.5cm} \textbf{endwhile}
+
+\hspace{0.5cm} temas $\leftarrow$ vacia()
+
+\hspace{0.5cm} \textbf{if} t $\in$ e.autores \textbf{then}
+
+\hspace{1cm} temas $\leftarrow$ copiar(significado(e.PorAutor,t))
+
+\hspace{1cm} itBasura $\leftarrow$ Agregar(temas,itNuevoTema)
+
+\hspace{1cm} Definir(e.FTS, t, temas)
+
+\hspace{0.5cm} \textbf{else}
+
+\hspace{1cm} itBasura $\leftarrow$ Agregar(temas,itNuevoTema)
+
+\hspace{1cm} Definir(e.FTS, t, temas)
+
+\hspace{0.5cm} \textbf{fi}
+\\
+
+\hspace{0cm} \textsc{iDisputarTema}(\textbf{in/out} $e$: estr, \textbf{in} $a$: autor, \textbf{in} $t$: tema)\\
+
+\hspace{0.5cm} p: itConj(tema)
+
+\hspace{0.5cm} p $\leftarrow$ significado(e.PorAutor, a).temasDisputo
+
+\hspace{0.5cm} p $\leftarrow$ Agregar(p, t) (PROBLEMA)
+\\	
+	
+\hspace{0cm} \textsc{iTemas}(\textbf{in} $e$: estr) $\rightarrow$ $res:itConj(tema)$\\
+
+\hspace{0.5cm} res $\leftarrow$ e.temas
+\\
+	
+\hspace{0cm} \textsc{iAutores}(\textbf{in} $e$: estr) $\rightarrow$ $res:itConj(autor)$\\
+
+\hspace{0.5cm} res $\leftarrow$ e.autores
+\\
+
+\hspace{0cm} \textsc{iTemasDe}(\textbf{in} $e$: estr, \textbf{in} $a$: autor) $\rightarrow$ $res:itConj(tema)$\\
+
+\hspace{0.5cm} res $\leftarrow$ (significado(e.porAutor,a)).susTemas
+\\
+
+\hspace{0cm} \textsc{iTemasDisputadosPor}(\textbf{in} $e$: estr, \textbf{in} $a$: autor) $\rightarrow$ $res:itConj(tema)$\\
+
+\hspace{0.5cm} res $\leftarrow$ significado(e.porAutor,a).temasDisputo
+\\
+	
+\hspace{0cm} \textsc{iDameUnTemaDisputadoPor}(\textbf{in} $e$: estr, \textbf{in} $a$: autor) $\rightarrow$ $res:tema$\\
+
+\hspace{0.5cm} it: itConj(tema)
+
+\hspace{0.5cm} \textbf{if} (e.cacheoAutor).autor $=$ a then
+
+\hspace{1cm} res $\leftarrow$ siguiente((e.cacheoAutor).temas)
+
+\hspace{1cm} it $\leftarrow$ (e.cacheoAutor).temas
+
+\hspace{0.5cm} \textbf{else}
+
+\hspace{1cm} it $\leftarrow$ crearIt(significado(e.porAutor,a).disputo)
+
+\hspace{1cm} res $\leftarrow$ siguiente(it)
+
+\hspace{0.5cm} \textbf{fi}
+	
+\hspace{0.5cm} \textbf{if} haySiguiente?(it) \textbf{then}
+		
+\hspace{1.cm} avanzar(it)
+
+\hspace{0.5cm} \textbf{else}
+
+\hspace{1cm} it $\leftarrow$ crearIt(...)
+
+\hspace{0.5cm} \textbf{fi}
+
+\hspace{0.5cm} (e.cacheoAutor).autor $\leftarrow$ a
+
+\hspace{0.5cm} (e.cacheoAutor).temas $\leftarrow$ it
+\\
+
+\hspace{0cm} \textsc{iCoautores}(\textbf{in} $e$: estr, \textbf{in} $a$: autor) $\rightarrow$ $res:itConj(autor)$\\
+
+\hspace{0.5cm} res $\leftarrow$ significado(e.PorAutor,a).susCoautores
+\\
+
+\hspace{0cm} \textsc{iTemasNoDisputados}(\textbf{in} $e$: estr, \textbf{in} $a$: autor) $\rightarrow$ $res:itConj(tema)$
+\\
+
+\hspace{0cm} \textsc{iFTS}(\textbf{in} $e$: estr,\textbf{in} $s$: string) $\rightarrow$ $res:itConj(tema)$
+
+\hspace{0.5cm} \textbf{if} s[Longitud(s)-1] != * \textbf{then}
+
+\hspace{1cm} if def?(e.FTS,s) \textbf{then}
+
+\hspace{1.5cm} res $\leftarrow$ significado(e.FTS,s)
+
+\hspace{1cm} \textbf{else}
+
+\hspace{1.5cm} res $\leftarrow$ vacia()
+
+\hspace{1cm} \textbf{fi}
+
+\hspace{0.5cm} \textbf{else} 
+
+\hspace{1cm} res $\leftarrow$ significadosHijos(p,s)
+
+\hspace{0.5cm} \textbf{fi}
+\\
+
+\end{document}

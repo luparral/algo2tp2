@@ -1,0 +1,102 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, bottom=1.5cm, top=3.5cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{latexsym}
+\usepackage{lastpage}
+\usepackage{aed2-symb,aed2-itef,aed2-tad}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{calc}
+
+\newcommand{\f}[1]{\text{#1}}
+\renewcommand{\paratodo}[2]{$\forall~#2$: #1}
+
+\sloppy
+
+\hypersetup{%
+ % Para que el PDF se abra a página completa.
+ pdfstartview= {FitH \hypercalcbp{\paperheight-\topmargin-1in-\headheight}},
+ pdfauthor={Cátedra de Algoritmos y Estructuras de Datos II - DC - UBA},
+ pdfkeywords={TADs básicos},
+ pdfsubject={Tipos abstractos de datos básicos}
+}
+
+\parskip=5pt % 10pt es el tamaño de fuente
+
+% Pongo en 0 la distancia extra entre ítemes.
+\let\olditemize\itemize
+\def\itemize{\olditemize\itemsep=0pt}
+
+% Acomodo fancyhdr.
+\pagestyle{fancy}
+\thispagestyle{fancy}
+\addtolength{\headheight}{1pt}
+\lhead{Algoritmos y Estructuras de Datos II}
+\rhead{$2^{\mathrm{do}}$ cuatrimestre de 2013}
+\cfoot{\thepage /\pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\author{Algoritmos y Estructuras de Datos II, DC, UBA.}
+\date{}
+\title{Tipos abstractos de datos básicos}
+
+\begin{document}
+
+\section{TAD \tadNombre{Diccionario Rapido($\alpha$)}}
+
+\begin{tad}{\tadNombre{Diccionario Rapido($\alpha$)}}
+
+\tadIgualdadObservacional{d}{d'}{dicc(string,$\alpha$)}{$(\forall s:string)$(definido?($s, d$) $\igobs$ definido?($s, d'$) $\land$\\ (definido?($c, d$) $\implies$ obtener($s, d$) $\igobs$ obtener($s, d'$)))}
+
+\tadParametrosFormales{
+    \tadEncabezadoInline{géneros}{$string$, $\alpha$}
+}
+
+\tadGeneros{diccS(string,$\alpha$)}
+\tadExporta{diccS(string,$\alpha$), generadores, observadores, borrar, claves}
+\tadUsa{\tadNombre{Bool, Nat, Conjunto(String)}}
+
+%notar la importancia de agrupar el ultimo parametro, para la coma
+\tadAlinearFunciones{todosLosSignificados}{clave,significado,{dicc(clave, significado)}}
+
+\tadObservadores 
+\tadOperacion{definido?}{string}{bool}{} 
+\tadOperacion{significado}{string/s,{diccS(string,$\alpha$)}}{$\alpha$}{definido?($s$, $d$)}
+
+\tadGeneradores
+\tadOperacion{crearDicc}{}{diccS(string,$\alpha$)}{}
+\tadOperacion{definir}{string,$\alpha$,{diccS(string,$\alpha$)}}{diccS(string,$\alpha$)}{}
+
+\tadOtrasOperaciones
+\tadOperacion{borrar}{string/s,{diccS(string,$\alpha$)}/d}{diccS($\alpha$)}{definido?($s$,$d$)}
+\tadOperacion{claves}{{diccS(string,$\alpha$)}}{conj(string)}{}
+\tadOperacion{significadosHijos}{diccS(string,$\alpha$),string/s}{diccS($\alpha$)}{}
+\tadOperacion{todosLosSignificados}{{diccS(string,$\alpha$)}}{conj($\alpha$)}{}
+
+
+\tadAxiomas[\paratodo{diccS(string,$\alpha$)}{d}, \paratodo{string}{s, s'}, \paratodo{$\alpha$}{a}]
+\tadAlinearAxiomas{todosLosSignificados($c$, definir($k$, $s$, $d$))}
+
+\tadAxioma{definido?($s$, crearDicc)}{false}
+\tadAxioma{definido?($s$, definir($s'$, $a$, $d$)}{$s = s'$ $\lor$ definido?($s$, $d$)}
+
+\tadAxioma{significado($s$, definir($s'$, $a$, $d$))}{\IF $s = s'$ THEN $a$ ELSE significado($s$, $d$) FI}
+
+\tadAxioma{borrar($s$, definir($s'$, $a$, $d$))}{\IF $s = s'$ THEN {\IF definido?($s$,$d$) THEN borrar($s$,$d$) ELSE $d$ FI} ELSE
+definir($s'$, $a$, borrar($s$, $d$)) FI}
+
+\tadAxioma{claves(crearDicc)}{$\emptyset$}
+\tadAxioma{claves(definir($s$, $a$, $d$)}{Ag($s$, claves($d$))}
+
+\tadAxioma{significadosHijos(crearDicc,s)}{$\emptyset$}
+\tadAxioma{significadosHijos(definir($s'$,$a$,$d$),$s$)}{if coincide(s',s) then Ag(a, significadosHijos($d$,$s$) else significadosHijos($d$,$s$) fi}
+
+\tadAxioma{todosLosSignificados(crearDicc)}{$\emptyset$}
+\tadAxioma{todosLosSignificados(definir($s$, $a$, $d$)}{Ag($a$, todosLosSignificados($d$)}
+
+\end{tad}
+
+\end{document}
