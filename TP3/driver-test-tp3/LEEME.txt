@@ -1,0 +1,18 @@
+Driver de test para el TP3,  AED2 1c2014.,
+
+La interacción con el módulo Wolfie se debe hacer exclusivamente * a través de la interfaz del driver *.
+Ver recomendaciones sobre el TP3 en el enunciado:
+http://www.dc.uba.ar/materias/aed2/2014/1c/descargas/tps/tp3/enunciado-tp3/view
+
+
+Detalle de archivos incluidos
+------------------------------
+
+Driver.h
+- Interfaz del driver. Completar la parte privada y dejar intacta la parte publica.
+
+Driver.cpp
+- Cáscar a completar con la implementación del Driver por cada grupo. Atención: no compila así como está.
+
+Makefile
+- Archivo para compilar el driver y los test. Modificar cuando agreguen nuevos archivos.
