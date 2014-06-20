@@ -15,9 +15,6 @@ class DiccTrie {
 
 	DiccTrie();
 
-	/*
-	 * Acordarse de liberar toda la memoria!
-	 */
 	//~DiccTrie();
 
 	void definir(const String, const T&);
@@ -25,16 +22,6 @@ class DiccTrie {
 	bool definido(const String) const;
 
 	const T& obtener(const String) const;
-
-	/*class Iterator{
-		public:
-			void Proximo();
-			&T Actual() const;
-			bool HayProx() const; 
-		private:
-			Arreglo<Nat> _lista;
-			Nat _pos;
-	};*/
 
   private:
 	
@@ -50,16 +37,6 @@ class DiccTrie {
 	Conj<String> claves = Conj<String>();
 
 };
-
-/*template<class T>
-DiccTrie::Iterador DiccTrie::CrearIt() const {
-	return Iterator(*(this));
-}
-
-void DiccTrie::Iterador::Proximo(){
-	assert(_pos < _lista.Tamanho());
-	_pos++;
-}*/
 
 template<class T>
 DiccTrie<T>::DiccTrie(){
