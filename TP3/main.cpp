@@ -52,6 +52,41 @@ void conjEstNat_iterador(){
 }
 
 void diccTrie_crear(){
+	DiccTrie<Nat> d = DiccTrie<Nat>();
+	d.definir("test1",2);
+	d.definir("test2",67);
+	d.definir("test3",4);
+	d.definir("test4",22);
+}
+
+void diccTrie_definido(){
+	DiccTrie<Nat> d = DiccTrie<Nat>();
+	d.definir("test1",22);
+	d.definir("tesa-test4",4);
+	d.definir("tesa-test5",5);
+	d.definir("tesa-test6",6);
+	d.definir("tesa-test8",8);
+	ASSERT_EQ(d.definido("test1"), true);
+	ASSERT_EQ(d.definido("test2"), false);
+	ASSERT_EQ(d.definido("test4"), false);
+	ASSERT_EQ(d.definido("tesa-test4"), true);
+	ASSERT_EQ(d.definido("tesa-test5"), true);
+	ASSERT_EQ(d.definido("tesa-test6"), true);
+	ASSERT_EQ(d.definido("tesa-test8"), true);
+}
+
+void diccTrie_obtener(){
+	DiccTrie<Nat> d = DiccTrie<Nat>();
+	d.definir("test1",22);
+	d.definir("tesa-test4",4);
+	d.definir("tesa-test5",5);
+	d.definir("tesa-test6",6);
+	d.definir("tesa-test8",8);
+	ASSERT_EQ(d.obtener("test1"), 22);
+	ASSERT_EQ(d.obtener("tesa-test4"), 4);
+	ASSERT_EQ(d.obtener("tesa-test5"), 5);
+	ASSERT_EQ(d.obtener("tesa-test6"), 6);
+	ASSERT_EQ(d.obtener("tesa-test8"), 8);
 }
 
 int main(){
@@ -59,5 +94,7 @@ int main(){
 	RUN_TEST(conjEstNat_pertenece);
 	RUN_TEST(conjEstNat_cardinal);
 	RUN_TEST(conjEstNat_iterador);
-	RUN_TEST(diccTrie_crear); //No implementado este test
+	RUN_TEST(diccTrie_crear);
+	RUN_TEST(diccTrie_definido);
+	RUN_TEST(diccTrie_obtener);
 }

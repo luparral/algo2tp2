@@ -22,9 +22,7 @@ class DiccTrie {
   private:
 	
 	struct Nodo {
-        Nodo(const T& nuevoNodo):significado(nuevoNodo){}
-
-		T significado;
+        T significado;
 		Arreglo< Nodo* > letras;
 	};
 
@@ -37,7 +35,7 @@ template<class T>
 DiccTrie<T>::DiccTrie(){
 	_lenght = 0;
 	_raiz = new Nodo();
-	_raiz->letras = Arreglo< Nodo* >(256);
+	_raiz->letras = Arreglo<Nodo*>(256);
 }
 
 template<class T>
@@ -47,10 +45,13 @@ void DiccTrie<T>::definir(const String key, const T& value){
 	Nodo* actual = _raiz;
 	for(Nat i = 0;i < cantNodosNecesarios;i++){
 		Nat posicionDelCarater = (Nat)key[i];
-		if(actual->letras[posicionDelCarater] == NULL){
-			actual->letras.Definir(posicionDelCarater,new Nodo());
+		if(!(actual->letras.Definido(posicionDelCarater))){
+			Nodo* minodo = new Nodo();
+			minodo->letras = Arreglo<Nodo*>(256);
+			actual->letras.Definir(posicionDelCarater,minodo);
 		}
 		actual = actual->letras[posicionDelCarater];
+		// actual->letras = Arreglo<Nodo*>(256);
 	}
 	actual->significado = value;
 }
@@ -62,10 +63,9 @@ bool DiccTrie<T>::definido(const String key) const{
 	Nodo* actual = _raiz;
 	for(Nat i = 0;i < cantNodosNecesarios && ret;i++){
 		Nat posicionDelCarater = (Nat)key[i];
-		if(actual->letras[posicionDelCarater] == NULL){
-			ret = false;
-		}
-		actual = actual->letras[posicionDelCarater];
+		ret = actual->letras.Definido(posicionDelCarater);
+		if(ret)
+			actual = actual->letras[posicionDelCarater];
 	}
 	return ret;
 }
