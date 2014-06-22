@@ -50,10 +50,14 @@ void conjEstNat_iterador(){
 	ASSERT_EQ(it.Actual(), 4);
 	
 }
+
+void diccTrie_crear(){
+}
+
 int main(){
 	RUN_TEST(conjEstNat_crear);
 	RUN_TEST(conjEstNat_pertenece);
 	RUN_TEST(conjEstNat_cardinal);
 	RUN_TEST(conjEstNat_iterador);
-	
+	RUN_TEST(diccTrie_crear); //No implementado este test
 }

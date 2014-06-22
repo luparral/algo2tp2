@@ -14,27 +14,22 @@ class DiccTrie {
   public:
 
 	DiccTrie();
-
 	//~DiccTrie();
-
 	void definir(const String, const T&);
-
 	bool definido(const String) const;
-
 	const T& obtener(const String) const;
 
   private:
 	
 	struct Nodo {
-        Nodo(const T& nuevoNodo):valor(nuevoNodo){}
+        Nodo(const T& nuevoNodo):significado(nuevoNodo){}
 
 		T significado;
-		Arreglo<*Nodo>(256) letras;
+		Arreglo< Nodo* > letras;
 	};
 
 	Nodo* _raiz;
 	Nat _lenght;
-	Conj<String> claves = Conj<String>();
 
 };
 
@@ -42,18 +37,18 @@ template<class T>
 DiccTrie<T>::DiccTrie(){
 	_lenght = 0;
 	_raiz = new Nodo();
+	_raiz->letras = Arreglo< Nodo* >(256);
 }
 
 template<class T>
 void DiccTrie<T>::definir(const String key, const T& value){
-	_claves.Agregar(value);
 	_lenght++;
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
 	for(Nat i = 0;i < cantNodosNecesarios;i++){
 		Nat posicionDelCarater = (Nat)key[i];
 		if(actual->letras[posicionDelCarater] == NULL){
-			actual->letras.Definir(posicionDelCarater,new Nodo())
+			actual->letras.Definir(posicionDelCarater,new Nodo());
 		}
 		actual = actual->letras[posicionDelCarater];
 	}
