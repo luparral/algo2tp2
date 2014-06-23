@@ -1,6 +1,8 @@
 #include <iostream>
 #include "conjEstNat.h"
 #include "diccString.h"
+#include "promesa.h"
+#include "titulo.h"
 #include "Modulos-CPP/mini_test.h"
 
 void conjEstNat_crear(){
@@ -51,6 +53,9 @@ void conjEstNat_iterador(){
 	
 }
 
+void Promesa_Titulo__test(){
+}
+
 void diccString_crear(){
 	DiccString<Nat> d = DiccString<Nat>();
 	d.Definir("test1",2);
@@ -97,8 +102,9 @@ int main(){
 	RUN_TEST(conjEstNat_pertenece);
 	RUN_TEST(conjEstNat_cardinal);
 	RUN_TEST(conjEstNat_iterador);
+	RUN_TEST(Promesa_Titulo__test);//Falta implementar
 	RUN_TEST(diccString_crear);
 	RUN_TEST(diccString_definido);
 	RUN_TEST(diccString_obtener);
-	RUN_TEST(diccString_claves);//Falta ver porque no compila
+	RUN_TEST(diccString_claves);//Falta ver porque no anda
 }
