@@ -73,9 +73,9 @@ void DiccString<T>::Definir(const String key, const T& value){
 	for(Nat i = 0;i < cantNodosNecesarios;i++){
 		Nat posicionDelCarater = (Nat)key[i];
 		if(!(actual->letras.Definido(posicionDelCarater))){
-			Nodo* minodo = new Nodo();
-			minodo->letras = Arreglo<Nodo*>(256);
-			actual->letras.Definir(posicionDelCarater,minodo);
+			Nodo* newNode = new Nodo();
+			newNode->letras = Arreglo<Nodo*>(256);
+			actual->letras.Definir(posicionDelCarater,newNode);
 		}
 		actual = actual->letras[posicionDelCarater];
 	}
