@@ -53,40 +53,40 @@ void conjEstNat_iterador(){
 
 void diccString_crear(){
 	DiccString<Nat> d = DiccString<Nat>();
-	d.definir("test1",2);
-	d.definir("test2",67);
-	d.definir("test3",4);
-	d.definir("test4",22);
+	d.Definir("test1",2);
+	d.Definir("test2",67);
+	d.Definir("test3",4);
+	d.Definir("test4",22);
 }
 
 void diccString_definido(){
 	DiccString<Nat> d = DiccString<Nat>();
-	d.definir("test1",22);
-	d.definir("tesa-test4",4);
-	d.definir("tesa-test5",5);
-	d.definir("tesa-test6",6);
-	d.definir("tesa-test8",8);
-	ASSERT_EQ(d.definido("test1"), true);
-	ASSERT_EQ(d.definido("test2"), false);
-	ASSERT_EQ(d.definido("test4"), false);
-	ASSERT_EQ(d.definido("tesa-test4"), true);
-	ASSERT_EQ(d.definido("tesa-test5"), true);
-	ASSERT_EQ(d.definido("tesa-test6"), true);
-	ASSERT_EQ(d.definido("tesa-test8"), true);
+	d.Definir("test1",22);
+	d.Definir("tesa-test4",4);
+	d.Definir("tesa-test5",5);
+	d.Definir("tesa-test6",6);
+	d.Definir("tesa-test8",8);
+	ASSERT_EQ(d.Definido("test1"), true);
+	ASSERT_EQ(d.Definido("test2"), false);
+	ASSERT_EQ(d.Definido("test4"), false);
+	ASSERT_EQ(d.Definido("tesa-test4"), true);
+	ASSERT_EQ(d.Definido("tesa-test5"), true);
+	ASSERT_EQ(d.Definido("tesa-test6"), true);
+	ASSERT_EQ(d.Definido("tesa-test8"), true);
 }
 
 void diccString_obtener(){
 	DiccString<Nat> d = DiccString<Nat>();
-	d.definir("test1",22);
-	d.definir("tesa-test4",4);
-	d.definir("tesa-test5",5);
-	d.definir("tesa-test6",6);
-	d.definir("tesa-test8",8);
-	ASSERT_EQ(d.obtener("test1"), 22);
-	ASSERT_EQ(d.obtener("tesa-test4"), 4);
-	ASSERT_EQ(d.obtener("tesa-test5"), 5);
-	ASSERT_EQ(d.obtener("tesa-test6"), 6);
-	ASSERT_EQ(d.obtener("tesa-test8"), 8);
+	d.Definir("test1",22);
+	d.Definir("tesa-test4",4);
+	d.Definir("tesa-test5",5);
+	d.Definir("tesa-test6",6);
+	d.Definir("tesa-test8",8);
+	ASSERT_EQ(d.Obtener("test1"), 22);
+	ASSERT_EQ(d.Obtener("tesa-test4"), 4);
+	ASSERT_EQ(d.Obtener("tesa-test5"), 5);
+	ASSERT_EQ(d.Obtener("tesa-test6"), 6);
+	ASSERT_EQ(d.Obtener("tesa-test8"), 8);
 }
 
 void diccString_claves(){

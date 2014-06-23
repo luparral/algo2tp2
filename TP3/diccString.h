@@ -16,11 +16,11 @@ class DiccString {
 
 	DiccString();
 	//~DiccString();
-	void definir(const String, const T&);
-	bool definido(const String) const;
-	const T& obtener(const String) const;
+	void Definir(const String, const T&);
+	bool Definido(const String) const;
+	const T& Obtener(const String) const;
 
-	const_Iterador claves() const;
+	const_Iterador Claves() const;
 
 	class const_Iterador{
       public:
@@ -66,7 +66,7 @@ DiccString<T>::DiccString(){
 }
 
 template<class T>
-void DiccString<T>::definir(const String key, const T& value){
+void DiccString<T>::Definir(const String key, const T& value){
 	_claves.Agregar(key);
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
@@ -83,7 +83,7 @@ void DiccString<T>::definir(const String key, const T& value){
 }
 
 template<class T>
-bool DiccString<T>::definido(const String key) const{
+bool DiccString<T>::Definido(const String key) const{
 	bool ret = true;
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
@@ -97,7 +97,7 @@ bool DiccString<T>::definido(const String key) const{
 }
 
 template<class T>
-const T& DiccString<T>::obtener(const String key) const{
+const T& DiccString<T>::Obtener(const String key) const{
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
 	for(Nat i = 0;i < cantNodosNecesarios;i++){
@@ -108,7 +108,7 @@ const T& DiccString<T>::obtener(const String key) const{
 }
 
 template<class T>
-typename DiccString<T>::const_Iterador DiccString<T>::claves() const{
+typename DiccString<T>::const_Iterador DiccString<T>::Claves() const{
     return const_Iterador(_claves);
 }
 
