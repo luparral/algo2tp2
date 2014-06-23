@@ -1,6 +1,6 @@
 #include <iostream>
 #include "conjEstNat.h"
-#include "diccTrie.h"
+#include "diccString.h"
 #include "Modulos-CPP/mini_test.h"
 
 void conjEstNat_crear(){
@@ -51,16 +51,16 @@ void conjEstNat_iterador(){
 	
 }
 
-void diccTrie_crear(){
-	DiccTrie<Nat> d = DiccTrie<Nat>();
+void diccString_crear(){
+	DiccString<Nat> d = DiccString<Nat>();
 	d.definir("test1",2);
 	d.definir("test2",67);
 	d.definir("test3",4);
 	d.definir("test4",22);
 }
 
-void diccTrie_definido(){
-	DiccTrie<Nat> d = DiccTrie<Nat>();
+void diccString_definido(){
+	DiccString<Nat> d = DiccString<Nat>();
 	d.definir("test1",22);
 	d.definir("tesa-test4",4);
 	d.definir("tesa-test5",5);
@@ -75,8 +75,8 @@ void diccTrie_definido(){
 	ASSERT_EQ(d.definido("tesa-test8"), true);
 }
 
-void diccTrie_obtener(){
-	DiccTrie<Nat> d = DiccTrie<Nat>();
+void diccString_obtener(){
+	DiccString<Nat> d = DiccString<Nat>();
 	d.definir("test1",22);
 	d.definir("tesa-test4",4);
 	d.definir("tesa-test5",5);
@@ -89,12 +89,16 @@ void diccTrie_obtener(){
 	ASSERT_EQ(d.obtener("tesa-test8"), 8);
 }
 
+void diccString_claves(){
+}
+
 int main(){
 	RUN_TEST(conjEstNat_crear);
 	RUN_TEST(conjEstNat_pertenece);
 	RUN_TEST(conjEstNat_cardinal);
 	RUN_TEST(conjEstNat_iterador);
-	RUN_TEST(diccTrie_crear);
-	RUN_TEST(diccTrie_definido);
-	RUN_TEST(diccTrie_obtener);
+	RUN_TEST(diccString_crear);
+	RUN_TEST(diccString_definido);
+	RUN_TEST(diccString_obtener);
+	RUN_TEST(diccString_claves);//Falta ver porque no compila
 }
