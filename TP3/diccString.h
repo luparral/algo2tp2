@@ -11,63 +11,52 @@ using namespace aed2;
 template<typename T>
 class DiccString {
 
-  public:
-  	class const_Iterador;
+	public:
+	  	class Iterador;
 
-	DiccString();
-	//~DiccString();
-	void Definir(const String, const T&);
-	bool Definido(const String) const;
-	const T& Obtener(const String) const;
+		DiccString();
+		//~DiccString();
+		void Definir(const String, const T&);
+		bool Definido(const String) const;
+		const T& Obtener(const String) const;
+		Iterador Claves() const;
 
-	const_Iterador Claves() const;
+		class Iterador{
+	    	public:
+	        	Iterador(const DiccString<T> &d);
+        		void Avanzar();
+	        	const String& Siguiente() const;
+	        	bool HaySiguiente() const;
 
-	class const_Iterador{
-      public:
+	    	private:
+	      		Nat _pos;
+	      		Lista<String> _lista;
+	      		Nat _tam;
+		};
 
-        const_Iterador();
+	private:
+		struct Nodo {
+	    	T significado;
+			Arreglo< Nodo* > letras;
+		};
 
-        const_Iterador(const typename DiccString<T>::const_Iterador& otra);
-
-        bool HaySiguiente()const;
-        bool HayAnterior()const;
-
-        const T& Siguiente()const;
-        const T& Anterior()const;
-
-        void Avanzar();
-        void Retroceder();
-
-      private:
-      
-      	typename Conj<String>::const_Iterador it_dicc_;
-
-        const_Iterador(const DiccString<T>& c);
-
-		friend typename DiccString<T>::const_Iterador DiccString<T>::claves() const;
-	};
-
-  private:
-	
-	struct Nodo {
-        T significado;
-		Arreglo< Nodo* > letras;
-	};
-
-	Nodo* _raiz;
-	Conj<String> _claves;
-
+		Nodo* _raiz;
+		Lista<String> _claves;
+		Nat _cantClaves;
 };
 
 template<class T>
 DiccString<T>::DiccString(){
+	_cantClaves = 0;
+	_claves = Lista<String>();
 	_raiz = new Nodo();
 	_raiz->letras = Arreglo<Nodo*>(256);
 }
 
 template<class T>
 void DiccString<T>::Definir(const String key, const T& value){
-	_claves.Agregar(key);
+	_claves.AgregarAtras(key);
+	_cantClaves++;
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
 	for(Nat i = 0;i < cantNodosNecesarios;i++){
@@ -108,55 +97,31 @@ const T& DiccString<T>::Obtener(const String key) const{
 }
 
 template<class T>
-typename DiccString<T>::const_Iterador DiccString<T>::Claves() const{
-    return const_Iterador(_claves);
+typename DiccString<T>::Iterador DiccString<T>::Claves() const {
+	return Iterador(*(this));
 }
 
-//Implementación del iterador
+
+/*
+ *Implementación del iterador de claves
+ */
+template<class T>
+DiccString<T>::Iterador::Iterador(const DiccString<T> &d): _lista(d._claves), _pos(0), _tam(d._cantClaves) {}
 
 template<class T>
-DiccString<T>::const_Iterador::const_Iterador()
-{}
-
-template<class T>
-DiccString<T>::const_Iterador::const_Iterador(const typename DiccString<T>::const_Iterador& otra)
-  : it_dicc_( otra.it_dicc_ )
-{}
-
-template<class T>
-bool DiccString<T>::const_Iterador::HaySiguiente() const{
-  return it_dicc_.HaySiguiente();
+void DiccString<T>::Iterador::Avanzar(){
+	_pos++;
 }
 
 template<class T>
-bool DiccString<T>::const_Iterador::HayAnterior() const{
-  return it_dicc_.HayAnterior();
+const String& DiccString<T>::Iterador::Siguiente() const{
+	return _lista[_pos];
 }
 
 template<class T>
-const T& DiccString<T>::const_Iterador::Siguiente() const{
-  return it_dicc_.Siguiente();
+bool DiccString<T>::Iterador::HaySiguiente() const{
+	return (_pos < _tam);
 }
-
-template<class T>
-const T& DiccString<T>::const_Iterador::Anterior() const{
-  return it_dicc_.Anterior();
-}
-
-template<class T>
-void DiccString<T>::const_Iterador::Avanzar(){
-  it_dicc_.Avanzar();
-}
-
-template<class T>
-void DiccString<T>::const_Iterador::Retroceder(){
-  it_dicc_.Retroceder();
-}
-
-template<class T>
-DiccString<T>::const_Iterador::const_Iterador(const DiccString<T>& c)
-  : it_dicc_( c.dicc_.CrearIt() )
-{}
 
 
 #endif //DICCSTRING_H

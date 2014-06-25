@@ -94,7 +94,45 @@ void diccString_obtener(){
 	ASSERT_EQ(d.Obtener("tesa-test8"), 8);
 }
 
-void diccString_claves(){
+void diccString_claves_vacias(){
+	DiccString<Nat> d = DiccString<Nat>();
+	typename DiccString<Nat>::Iterador it = d.Claves();
+	ASSERT_EQ(it.HaySiguiente(), false);
+}
+
+void diccString_claves_noVacias(){
+	DiccString<Nat> e = DiccString<Nat>();
+	e.Definir("iterador_prueba_1",22);
+	e.Definir("iterador_prueba_2",4);
+	e.Definir("iterador_prueba_3",5);
+	e.Definir("iterador_prueba_4",6);
+	e.Definir("iterador_prueba_5",8);
+	typename DiccString<Nat>::Iterador it = e.Claves();
+	std::cout << "\n";
+	while(it.HaySiguiente()){
+		std::cout << it.Siguiente() << "\n";
+		it.Avanzar();
+	}
+
+	DiccString<Nat> d = DiccString<Nat>();
+	d.Definir("puto",22);
+	d.Definir("el",4);
+	d.Definir("que",5);
+	d.Definir("lee",6);
+	typename DiccString<Nat>::Iterador iter = d.Claves();
+	ASSERT_EQ(iter.HaySiguiente(), true);
+	ASSERT_EQ(iter.Siguiente(), "puto");
+	iter.Avanzar();
+	ASSERT_EQ(iter.HaySiguiente(), true);
+	ASSERT_EQ(iter.Siguiente(), "el");
+	iter.Avanzar();
+	ASSERT_EQ(iter.HaySiguiente(), true);
+	ASSERT_EQ(iter.Siguiente(), "que");
+	iter.Avanzar();
+	ASSERT_EQ(iter.HaySiguiente(), true);
+	ASSERT_EQ(iter.Siguiente(), "lee");
+	iter.Avanzar();
+	ASSERT_EQ(iter.HaySiguiente(), false);
 }
 
 int main(){
@@ -106,5 +144,6 @@ int main(){
 	RUN_TEST(diccString_crear);
 	RUN_TEST(diccString_definido);
 	RUN_TEST(diccString_obtener);
-	RUN_TEST(diccString_claves);//Falta ver porque no anda
+	RUN_TEST(diccString_claves_vacias);
+	RUN_TEST(diccString_claves_noVacias);
 }
