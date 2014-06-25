@@ -29,15 +29,13 @@ class DiccString {
 	        	bool HaySiguiente() const;
 
 	    	private:
-	      		Nat _pos;
-	      		Lista<String> _lista;
-	      		Nat _tam;
+	      		Lista<String>::const_Iterador it;
 		};
 
 	private:
 		struct Nodo {
 	    	T significado;
-			Arreglo< Nodo* > letras;
+				Arreglo< Nodo* > letras;
 		};
 
 		Nodo* _raiz;
@@ -106,21 +104,21 @@ typename DiccString<T>::Iterador DiccString<T>::Claves() const {
  *Implementación del iterador de claves
  */
 template<class T>
-DiccString<T>::Iterador::Iterador(const DiccString<T> &d): _lista(d._claves), _pos(0), _tam(d._cantClaves) {}
+DiccString<T>::Iterador::Iterador(const DiccString<T> &d): it(d._claves.CrearIt()) {}
 
 template<class T>
 void DiccString<T>::Iterador::Avanzar(){
-	_pos++;
+	it.Avanzar();;
 }
 
 template<class T>
 const String& DiccString<T>::Iterador::Siguiente() const{
-	return _lista[_pos];
+	return it.Siguiente();
 }
 
 template<class T>
 bool DiccString<T>::Iterador::HaySiguiente() const{
-	return (_pos < _tam);
+	return it.HaySiguiente();
 }
 
 
