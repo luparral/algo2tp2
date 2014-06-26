@@ -23,12 +23,15 @@ class DiccString
 */
 class Wolfie
 {
+	
+
+	
 	public:
 		
 		//esto donde va, public o private?*****************************************************************************
 		struct TuplaPorCliente{
 			public: 
-				TuplaPorCliente();
+				TuplaPorCliente(): cliente(0), cantAcc(0), promCompra(NULL), promVenta(NULL){}
 				TuplaPorCliente(Cliente c, Nat ca, Promesa* pc, Promesa* pv): cliente(c), cantAcc(ca), promCompra(pc), promVenta(pv) {}
 				Cliente cliente;
 				Nat cantAcc;
@@ -44,6 +47,7 @@ class Wolfie
 		
 		struct TuplaPorCantAcc{
 			public: 
+				TuplaPorCantAcc(): cliente(0), cantAcc(0), promCompra(NULL), promVenta(NULL){}
 				TuplaPorCantAcc(Cliente c, Nat ca, Promesa* pc, Promesa* pv): cliente(c), cantAcc(ca), promCompra(pc), promVenta(pv) {}
 				Cliente cliente;
 				Nat cantAcc;
@@ -56,12 +60,14 @@ class Wolfie
 		struct InfoTitulo{
 			public:
 				//constructor:
-				InfoTitulo();
+				InfoTitulo():ArrayClientes(Arreglo<TuplaPorCliente>()), titulo(Titulo("",0, 0, true)), AccionesDisponibles(){}
 				InfoTitulo(Arreglo<TuplaPorCliente> &ac, const Titulo &t, Nat ad): ArrayClientes(ac), titulo(t), AccionesDisponibles(ad){}
 				Arreglo<TuplaPorCliente> ArrayClientes;
 				Titulo titulo;
 				Nat AccionesDisponibles;
 		};
+		
+
 		
 		struct ultLlamado{
 			Cliente cliente;
@@ -84,10 +90,12 @@ class Wolfie
 				bool HayProximo() const;
 			
 			private:
-				typename DiccString<InfoTitulo>::Iterador it;
+				typename DiccString<Wolfie::InfoTitulo>::Iterador it;
 				DiccString<typename Wolfie::InfoTitulo>* dicc;
 				const_Iterador(typename DiccString<Wolfie::InfoTitulo>::Iterador& i, DiccString<Wolfie::InfoTitulo>* d): it(i), dicc(d){}
 		};
+		
+		
 		
 		ConjEstNat::const_Iterador Clientes() const;
 		Wolfie::const_Iterador Titulos() const;
@@ -108,12 +116,30 @@ class Wolfie
 		DiccString<InfoTitulo> _titulos;
 		ConjEstNat _clientes;
 		ultLlamado _ultimoLlamado;
-
+	
 
 
 };
-typename Wolfie::TuplaPorCliente BuscarCliente(Cliente c, Arreglo<Wolfie::TuplaPorCliente> a); //defino para que no crashee
-Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat::const_Iterador it, Nat n);
+template<class T, class U>
+const U& BusquedaBinaria(const T& t, const Arreglo<U>& a) {
+	Nat arriba = a.Tamanho();
+	Nat abajo = 0;
+	Nat centro;
+	while (abajo <= arriba) {
+		centro=(abajo+arriba)/2;
+		if (a[centro]==t) {
+			return a[centro];
+		}else{
+			if (a[centro]>t) {
+				arriba=centro-1;
+			}else{
+				abajo=centro+1;
+			}
+		}
+	}
+}
+//typename Wolfie::TuplaPorCliente BuscarCliente(Cliente c, Arreglo<Wolfie::TuplaPorCliente> a){return Wolfie::TuplaPorCliente();} //defino para que no crashee
+Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat::const_Iterador it, Nat n){return Arreglo<typename Wolfie::TuplaPorCliente>();}
 //: _titulos(DiccString::DiccString()), _clientes(ConjEstNat::ConjEstNat(c), _ultimoLlamado()
 Wolfie::Wolfie(const Conj<Nat> &c)
 {
@@ -141,7 +167,7 @@ Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 		Conj<Promesa> proms = Conj<Promesa>();
 		Wolfie::TuplaPorCliente tup;
 		while (it.HaySiguiente()) {
-			tup = BuscarCliente(c, _titulos.Obtener(Nombre(it.Siguiente())).ArrayClientes);
+			tup = BusquedaBinaria(c, _titulos.Obtener(Nombre(it.Siguiente())).ArrayClientes);
 			if (tup.promVenta != NULL) proms.AgregarRapido(*(tup.promVenta));
 			if (tup.promCompra != NULL) proms.AgregarRapido(*(tup.promCompra));
 			it.Avanzar();
@@ -152,7 +178,7 @@ Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 }
 
 Nat Wolfie::AccionesPorCliente(Cliente c, const Nombre& nt) const {
-	return (BuscarCliente(c, _titulos.Obtener(nt).ArrayClientes).cantAcc);
+	return (BusquedaBinaria(c, _titulos.Obtener(nt).ArrayClientes).cantAcc);
 }
 
 Wolfie Wolfie::InaugurarWolfie(const Conj<Cliente> &c) {return Wolfie(c);}

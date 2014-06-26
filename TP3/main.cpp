@@ -4,8 +4,8 @@
 #include "promesa.h"
 #include "titulo.h"
 #include "Modulos-CPP/mini_test.h"
-#include "wolfie.h"
 #include "algoritmos.h"
+#include "wolfie.h"
 
 void conjEstNat_crear(){
 	Conj<Nat> c = Conj<Nat>();

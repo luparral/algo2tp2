@@ -14,7 +14,6 @@ class Titulo {
 		bool enAlza_;
 
 	public:
-		
 		//Crea un titulo con la info pasada por parámetro
 		//Es el equivalente a crearTitulo!
 		Titulo(Name nombre, Nat maxAcciones, Dinero cotizacion, bool enAlza) : nombre_(nombre), maxAcciones_(maxAcciones), cotizacion_(cotizacion), enAlza_(enAlza){}
@@ -24,6 +23,9 @@ class Titulo {
 		Dinero cotizacion() const;
 		bool enAlza() const;
 		void recotizar(Dinero d);
+
+		Titulo(): nombre_(""), maxAcciones_(0), cotizacion_(0), enAlza_(true){}
+
 };
 
 //pasar a titulo.cpp

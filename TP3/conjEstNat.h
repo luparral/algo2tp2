@@ -35,7 +35,7 @@ class ConjEstNat
 	private:
 		Arreglo<Nat> _array;
 };
-
+ConjEstNat::ConjEstNat(): _array(Arreglo<Nat>()){}
 ConjEstNat::ConjEstNat(const Conj<Nat> &c){
 	typename Conj<Nat>::const_Iterador it = c.CrearIt();
 	Nat i=0;
