@@ -4,6 +4,8 @@
 #include "promesa.h"
 #include "titulo.h"
 #include "Modulos-CPP/mini_test.h"
+#include "wolfie.h"
+#include "algoritmos.h"
 
 void conjEstNat_crear(){
 	Conj<Nat> c = Conj<Nat>();
@@ -37,20 +39,19 @@ void conjEstNat_cardinal(){
 	ASSERT_EQ(conj.Cardinal(), 3);
 }
 
-void conjEstNat_iterador(){
+void conjEstNat_const_Iterador(){
 	Conj<Nat> c = Conj<Nat>();
 	c.Agregar(6);
 	c.Agregar(5);
-	c.Agregar(4);
 	c.Agregar(3);
+	c.Agregar(4);
+	c.Agregar(10);
+	c.Agregar(2);
+	c.Agregar(0);
 	ConjEstNat conj = ConjEstNat(c);
-	typename ConjEstNat::Iterador it = conj.CrearIt();
-	ASSERT_EQ(it.HayProx(), true);
-	ASSERT_EQ(it.Actual(), 3);
-	it.Proximo();
-	ASSERT_EQ(it.HayProx(), true);
-	ASSERT_EQ(it.Actual(), 4);
-	
+	typename ConjEstNat::const_Iterador it = conj.CrearIt();
+
+	while (it.HayProx()){std::cout<<it.Actual()<<", ";it.Proximo();}
 }
 
 void Promesa_Titulo__test(){
@@ -139,7 +140,7 @@ int main(){
 	RUN_TEST(conjEstNat_crear);
 	RUN_TEST(conjEstNat_pertenece);
 	RUN_TEST(conjEstNat_cardinal);
-	RUN_TEST(conjEstNat_iterador);
+	RUN_TEST(conjEstNat_const_Iterador);
 	RUN_TEST(Promesa_Titulo__test);//Falta implementar
 	RUN_TEST(diccString_crear);
 	RUN_TEST(diccString_definido);

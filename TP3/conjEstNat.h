@@ -4,25 +4,26 @@
 #include <iostream>
 #include <assert.h>
 #include "Modulos-CPP/aed2.h"
+#include "algoritmos.h"
 
 
 using namespace aed2;
 
-void heapsort(Arreglo<Nat> a){}
+//void heapsort(Arreglo<Nat> a){}
 class ConjEstNat
 {
 	public:
-		
-		class Iterador;
+		ConjEstNat();
+		class const_Iterador;
 		ConjEstNat(const Conj<Nat> &c);
 		bool Pertenece(Nat n);
 		Nat Cardinal();
-		Iterador CrearIt() const;
+		const_Iterador CrearIt() const;
 		
-		class Iterador
+		class const_Iterador
 		{
 			public:
-				Iterador(const ConjEstNat &c);
+				const_Iterador(const ConjEstNat &c);
 				void Proximo();
 				Nat Actual() const;
 				bool HayProx() const; 
@@ -64,25 +65,25 @@ Nat ConjEstNat::Cardinal()
 	return _array.Tamanho();
 }
 
-typename ConjEstNat::Iterador ConjEstNat::CrearIt() const 
+typename ConjEstNat::const_Iterador ConjEstNat::CrearIt() const 
 {
-	return Iterador(*(this));
+	return const_Iterador(*(this));
 }
 
-ConjEstNat::Iterador::Iterador(const ConjEstNat &c): _lista(c._array), _pos(0) {}
+ConjEstNat::const_Iterador::const_Iterador(const ConjEstNat &c): _lista(c._array), _pos(0) {}
 
-void ConjEstNat::Iterador::Proximo()
+void ConjEstNat::const_Iterador::Proximo()
 {
 	assert(_pos < _lista.Tamanho());
 	_pos++;
 }
 
-Nat ConjEstNat::Iterador::Actual() const
+Nat ConjEstNat::const_Iterador::Actual() const
 {
 	return _lista[_pos];
 }
 
-bool ConjEstNat::Iterador::HayProx() const
+bool ConjEstNat::const_Iterador::HayProx() const
 {
 	return (_pos < _lista.Tamanho());
 }
@@ -91,7 +92,7 @@ bool ConjEstNat::Iterador::HayProx() const
 
 /*
 cambios:
-ItConjEstNat ahora se llama Iterador, porque en todos los modulos basicos aparecia asi
+ItConjEstNat ahora se llama const_Iterador, porque en todos los modulos basicos aparecia asi
 Las estructuras ahora tienen un _card porque no puedo pedir longitud a un array
 
 */

@@ -5,8 +5,8 @@
 
 typedef std::string Nombre;
 enum TipoPromesa {COMPRA, VENTA};
-typedef int Dinero;
-typedef int Cant;
+typedef Nat Dinero;
+typedef Nat Cant;
 
 class Promesa {
 	private:
@@ -25,6 +25,7 @@ class Promesa {
 		TipoPromesa tipo() const;
 		Dinero limite() const;
 		Cant cantidad() const;
+		bool operator!= (Promesa p) const;
 };
 
 //pasar a promesa.cpp
@@ -44,5 +45,8 @@ Cant Promesa::cantidad() const {
 	return cantidad_;
 }
 
+bool Promesa::operator!=(Promesa p) const{
+	return (!(titulo_ == p.titulo() && tipo_ == p.tipo() && limite_ == p.limite() && cantidad_ == p.cantidad()));
+}
 
 #endif

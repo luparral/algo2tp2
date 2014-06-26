@@ -4,12 +4,12 @@
 #include <string>
 
 typedef std::string Name;
-typedef int Dinero;
+typedef Nat Dinero;
 
 class Titulo {
 	private:
 		Name nombre_;
-		int maxAcciones_;
+		Nat maxAcciones_;
 		Dinero cotizacion_;
 		bool enAlza_;
 
@@ -17,10 +17,10 @@ class Titulo {
 		
 		//Crea un titulo con la info pasada por parámetro
 		//Es el equivalente a crearTitulo!
-		Titulo(Name nombre, int maxAcciones, Dinero cotizacion, bool enAlza) : nombre_(nombre), maxAcciones_(maxAcciones), cotizacion_(cotizacion), enAlza_(enAlza){}
+		Titulo(Name nombre, Nat maxAcciones, Dinero cotizacion, bool enAlza) : nombre_(nombre), maxAcciones_(maxAcciones), cotizacion_(cotizacion), enAlza_(enAlza){}
 
 		Name nombre() const;
-		int maxAcciones() const;
+		Nat maxAcciones() const;
 		Dinero cotizacion() const;
 		bool enAlza() const;
 		void recotizar(Dinero d);
@@ -31,7 +31,7 @@ Name Titulo::nombre() const {
 	return nombre_;
 }
 
-int Titulo::maxAcciones() const {
+Nat Titulo::maxAcciones() const {
 	return maxAcciones_;
 }
 
