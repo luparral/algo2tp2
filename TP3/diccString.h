@@ -15,7 +15,7 @@ class DiccString {
 	  	class Iterador;
 
 		DiccString();
-		//~DiccString();
+		~DiccString();
 		void Definir(const String, const T&);
 		bool Definido(const String) const;
 		const T& Obtener(const String) const;
@@ -34,8 +34,10 @@ class DiccString {
 
 	private:
 		struct Nodo {
+			Nodo();
+			~Nodo();
 	    	T significado;
-				Arreglo< Nodo* > letras;
+			Arreglo< Nodo* > letras;
 		};
 
 		Nodo* _raiz;
@@ -44,11 +46,37 @@ class DiccString {
 };
 
 template<class T>
+DiccString<T>::Nodo::Nodo(){
+	Arreglo< Nodo* > leters = Arreglo<Nodo*>(256);
+	letras = leters;
+}
+
+template<class T>
+DiccString<T>::Nodo::~Nodo() {
+	delete significado;
+	Nat i = 256;
+	while(i > 0){
+		if(letras.Definido(i-1)){
+			delete letras[i];
+		}
+		i--;
+	}
+	delete i;
+}
+
+template<class T>
 DiccString<T>::DiccString(){
 	_cantClaves = 0;
 	_claves = Lista<String>();
 	_raiz = new Nodo();
 	_raiz->letras = Arreglo<Nodo*>(256);
+}
+
+template<class T>
+DiccString<T>::~DiccString(){
+	delete &_raiz;
+	delete &_claves;
+	delete &_cantClaves;
 }
 
 template<class T>
