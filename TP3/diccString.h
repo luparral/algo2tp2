@@ -18,7 +18,7 @@ class DiccString {
 		~DiccString();
 		void Definir(const String, const T&);
 		bool Definido(const String) const;
-		T& Obtener(const String) const;
+		T& Significado(const String) const;
 		Iterador Claves() const;
 
 		class Iterador{
@@ -106,7 +106,7 @@ bool DiccString<T>::Definido(const String key) const{
 }
 
 template<class T>
-T& DiccString<T>::Obtener(const String key) const{
+T& DiccString<T>::Significado(const String key) const{
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
 	for(Nat i = 0;i < cantNodosNecesarios;i++){

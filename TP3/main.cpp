@@ -81,18 +81,18 @@ void diccString_definido(){
 	ASSERT_EQ(d.Definido("tesa-test8"), true);
 }
 
-void diccString_obtener(){
+void diccString_Significado(){
 	DiccString<Nat> d = DiccString<Nat>();
 	d.Definir("test1",22);
 	d.Definir("tesa-test4",4);
 	d.Definir("tesa-test5",5);
 	d.Definir("tesa-test6",6);
 	d.Definir("tesa-test8",8);
-	ASSERT_EQ(d.Obtener("test1"), 22);
-	ASSERT_EQ(d.Obtener("tesa-test4"), 4);
-	ASSERT_EQ(d.Obtener("tesa-test5"), 5);
-	ASSERT_EQ(d.Obtener("tesa-test6"), 6);
-	ASSERT_EQ(d.Obtener("tesa-test8"), 8);
+	ASSERT_EQ(d.Significado("test1"), 22);
+	ASSERT_EQ(d.Significado("tesa-test4"), 4);
+	ASSERT_EQ(d.Significado("tesa-test5"), 5);
+	ASSERT_EQ(d.Significado("tesa-test6"), 6);
+	ASSERT_EQ(d.Significado("tesa-test8"), 8);
 }
 
 void diccString_claves_vacias(){
@@ -143,20 +143,20 @@ void diccString_cambio_de_valor_por_referencia(){
 	d.Definir("cambio",5);
 	d.Definir("de valor",6);
 	d.Definir("por referencia",7);
-	ASSERT_EQ(d.Obtener("test"),22);
-	ASSERT_EQ(d.Obtener("de"),4);
-	ASSERT_EQ(d.Obtener("cambio"),5);
-	ASSERT_EQ(d.Obtener("de valor"),6);
-	ASSERT_EQ(d.Obtener("por referencia"),7);
+	ASSERT_EQ(d.Significado("test"),22);
+	ASSERT_EQ(d.Significado("de"),4);
+	ASSERT_EQ(d.Significado("cambio"),5);
+	ASSERT_EQ(d.Significado("de valor"),6);
+	ASSERT_EQ(d.Significado("por referencia"),7);
 	
-	d.Obtener("de valor") = 44;
-	d.Obtener("cambio") = 101;
+	d.Significado("de valor") = 44;
+	d.Significado("cambio") = 101;
 
-	ASSERT_EQ(d.Obtener("test"),22);
-	ASSERT_EQ(d.Obtener("de"),4);
-	ASSERT_EQ(d.Obtener("cambio"),101);
-	ASSERT_EQ(d.Obtener("de valor"),44);
-	ASSERT_EQ(d.Obtener("por referencia"),7);
+	ASSERT_EQ(d.Significado("test"),22);
+	ASSERT_EQ(d.Significado("de"),4);
+	ASSERT_EQ(d.Significado("cambio"),101);
+	ASSERT_EQ(d.Significado("de valor"),44);
+	ASSERT_EQ(d.Significado("por referencia"),7);
 }
 
 int main(){
@@ -167,7 +167,7 @@ int main(){
 	RUN_TEST(Promesa_Titulo__test);//Falta implementar
 	RUN_TEST(diccString_crear);
 	RUN_TEST(diccString_definido);
-	RUN_TEST(diccString_obtener);
+	RUN_TEST(diccString_Significado);
 	RUN_TEST(diccString_claves_vacias);
 	RUN_TEST(diccString_claves_noVacias);
 	RUN_TEST(diccString_cambio_de_valor_por_referencia);
