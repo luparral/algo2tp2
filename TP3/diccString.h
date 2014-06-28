@@ -36,7 +36,7 @@ class DiccString {
 		struct Nodo {
 			Nodo();
 			~Nodo();
-	    	T significado;
+	    	T* significado;
 			Arreglo< Nodo* > letras;
 		};
 
@@ -49,10 +49,15 @@ template<class T>
 DiccString<T>::Nodo::Nodo(){
 	Arreglo< Nodo* > leters = Arreglo< Nodo* >(256);
 	letras = leters;
+	significado = NULL;
 }
 
 template<class T>
 DiccString<T>::Nodo::~Nodo() {
+	if(significado != NULL){
+		delete significado;
+	}
+
 	Nat i = 256;
 	while(i > 0){
 		if(letras.Definido(i-1)){
@@ -88,7 +93,7 @@ void DiccString<T>::Definir(const String key, const T& value){
 		}
 		actual = actual->letras[posicionDelCarater];
 	}
-	actual->significado = value;
+	actual->significado = new T(value);
 }
 
 template<class T>
@@ -113,7 +118,7 @@ T& DiccString<T>::Significado(const String key) const{
 		Nat posicionDelCarater = (Nat)key[i];
 		actual = actual->letras[posicionDelCarater];
 	}
-	return actual->significado;
+	return *actual->significado;
 }
 
 template<class T>
