@@ -47,21 +47,19 @@ class DiccString {
 
 template<class T>
 DiccString<T>::Nodo::Nodo(){
-	Arreglo< Nodo* > leters = Arreglo<Nodo*>(256);
+	Arreglo< Nodo* > leters = Arreglo< Nodo* >(256);
 	letras = leters;
 }
 
 template<class T>
 DiccString<T>::Nodo::~Nodo() {
-	delete significado;
 	Nat i = 256;
 	while(i > 0){
 		if(letras.Definido(i-1)){
-			delete letras[i];
+			delete letras[i-1];
 		}
 		i--;
 	}
-	delete i;
 }
 
 template<class T>
@@ -69,14 +67,11 @@ DiccString<T>::DiccString(){
 	_cantClaves = 0;
 	_claves = Lista<String>();
 	_raiz = new Nodo();
-	_raiz->letras = Arreglo<Nodo*>(256);
 }
 
 template<class T>
 DiccString<T>::~DiccString(){
-	delete &_raiz;
-	delete &_claves;
-	delete &_cantClaves;
+	delete _raiz;
 }
 
 template<class T>
@@ -89,7 +84,6 @@ void DiccString<T>::Definir(const String key, const T& value){
 		Nat posicionDelCarater = (Nat)key[i];
 		if(!(actual->letras.Definido(posicionDelCarater))){
 			Nodo* newNode = new Nodo();
-			newNode->letras = Arreglo<Nodo*>(256);
 			actual->letras.Definir(posicionDelCarater,newNode);
 		}
 		actual = actual->letras[posicionDelCarater];
