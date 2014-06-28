@@ -5,7 +5,7 @@
 #include "titulo.h"
 #include "Modulos-CPP/mini_test.h"
 #include "algoritmos.h"
-#include "wolfie.h"
+// #include "wolfie.h"
 
 void conjEstNat_crear(){
 	Conj<Nat> c = Conj<Nat>();
@@ -136,6 +136,29 @@ void diccString_claves_noVacias(){
 	ASSERT_EQ(iter.HaySiguiente(), false);
 }
 
+void diccString_cambio_de_valor_por_referencia(){
+	DiccString<Nat> d = DiccString<Nat>();
+	d.Definir("test",22);
+	d.Definir("de",4);
+	d.Definir("cambio",5);
+	d.Definir("de valor",6);
+	d.Definir("por referencia",7);
+	ASSERT_EQ(d.Obtener("test"),22);
+	ASSERT_EQ(d.Obtener("de"),4);
+	ASSERT_EQ(d.Obtener("cambio"),5);
+	ASSERT_EQ(d.Obtener("de valor"),6);
+	ASSERT_EQ(d.Obtener("por referencia"),7);
+	
+	d.Obtener("de valor") = 44;
+	d.Obtener("cambio") = 101;
+
+	ASSERT_EQ(d.Obtener("test"),22);
+	ASSERT_EQ(d.Obtener("de"),4);
+	ASSERT_EQ(d.Obtener("cambio"),101);
+	ASSERT_EQ(d.Obtener("de valor"),44);
+	ASSERT_EQ(d.Obtener("por referencia"),7);
+}
+
 int main(){
 	RUN_TEST(conjEstNat_crear);
 	RUN_TEST(conjEstNat_pertenece);
@@ -147,4 +170,5 @@ int main(){
 	RUN_TEST(diccString_obtener);
 	RUN_TEST(diccString_claves_vacias);
 	RUN_TEST(diccString_claves_noVacias);
+	RUN_TEST(diccString_cambio_de_valor_por_referencia);
 }
