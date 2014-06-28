@@ -12,18 +12,18 @@ template<typename T>
 class DiccString {
 
 	public:
-	  	class Iterador;
+	  	class ItClaves;
 
 		DiccString();
 		~DiccString();
 		void Definir(const String, const T&);
 		bool Definido(const String) const;
 		T& Significado(const String) const;
-		Iterador Claves() const;
+		ItClaves Claves() const;
 
-		class Iterador{
+		class ItClaves{
 	    	public:
-	        	Iterador(const DiccString<T> &d);
+	        	ItClaves(const DiccString<T> &d);
         		void Avanzar();
 	        	const String& Siguiente() const;
 	        	bool HaySiguiente() const;
@@ -42,13 +42,11 @@ class DiccString {
 
 		Nodo* _raiz;
 		Lista<String> _claves;
-		Nat _cantClaves;
 };
 
 template<class T>
 DiccString<T>::Nodo::Nodo(){
-	Arreglo< Nodo* > leters = Arreglo< Nodo* >(256);
-	letras = leters;
+	letras = Arreglo< Nodo* >(256);
 	significado = NULL;
 }
 
@@ -69,7 +67,6 @@ DiccString<T>::Nodo::~Nodo() {
 
 template<class T>
 DiccString<T>::DiccString(){
-	_cantClaves = 0;
 	_claves = Lista<String>();
 	_raiz = new Nodo();
 }
@@ -81,49 +78,54 @@ DiccString<T>::~DiccString(){
 
 template<class T>
 void DiccString<T>::Definir(const String key, const T& value){
-	_claves.AgregarAtras(key);
-	_cantClaves++;
-	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
-	for(Nat i = 0;i < cantNodosNecesarios;i++){
+	Nat i = 0;
+	while(i < key.length()){
 		Nat posicionDelCarater = (Nat)key[i];
 		if(!(actual->letras.Definido(posicionDelCarater))){
 			Nodo* newNode = new Nodo();
 			actual->letras.Definir(posicionDelCarater,newNode);
 		}
 		actual = actual->letras[posicionDelCarater];
+		i++;
 	}
 	actual->significado = new T(value);
+	_claves.AgregarAtras(key);
 }
 
 template<class T>
 bool DiccString<T>::Definido(const String key) const{
-	bool ret = true;
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
-	for(Nat i = 0;i < cantNodosNecesarios && ret;i++){
+	Nat i = 0;
+	while(i < cantNodosNecesarios){
 		Nat posicionDelCarater = (Nat)key[i];
-		ret = actual->letras.Definido(posicionDelCarater);
-		if(ret)
+		if(actual->letras.Definido(posicionDelCarater)){
 			actual = actual->letras[posicionDelCarater];
+			i++;
+		}else{
+			return false;
+		}
 	}
-	return ret;
+	return actual->significado != NULL;
 }
 
 template<class T>
 T& DiccString<T>::Significado(const String key) const{
 	Nat cantNodosNecesarios = key.length();
 	Nodo* actual = _raiz;
-	for(Nat i = 0;i < cantNodosNecesarios;i++){
+	Nat i = 0;
+	while(i < cantNodosNecesarios){
 		Nat posicionDelCarater = (Nat)key[i];
 		actual = actual->letras[posicionDelCarater];
+		i++;
 	}
 	return *actual->significado;
 }
 
 template<class T>
-typename DiccString<T>::Iterador DiccString<T>::Claves() const {
-	return Iterador(*(this));
+typename DiccString<T>::ItClaves DiccString<T>::Claves() const {
+	return ItClaves(*(this));
 }
 
 
@@ -131,20 +133,20 @@ typename DiccString<T>::Iterador DiccString<T>::Claves() const {
  *Implementación del iterador de claves
  */
 template<class T>
-DiccString<T>::Iterador::Iterador(const DiccString<T> &d): it(d._claves.CrearIt()) {}
+DiccString<T>::ItClaves::ItClaves(const DiccString<T> &d): it(d._claves.CrearIt()) {}
 
 template<class T>
-void DiccString<T>::Iterador::Avanzar(){
+void DiccString<T>::ItClaves::Avanzar(){
 	it.Avanzar();;
 }
 
 template<class T>
-const String& DiccString<T>::Iterador::Siguiente() const{
+const String& DiccString<T>::ItClaves::Siguiente() const{
 	return it.Siguiente();
 }
 
 template<class T>
-bool DiccString<T>::Iterador::HaySiguiente() const{
+bool DiccString<T>::ItClaves::HaySiguiente() const{
 	return it.HaySiguiente();
 }
 
