@@ -97,7 +97,7 @@ void diccString_Significado(){
 
 void diccString_claves_vacias(){
 	DiccString<Nat> d = DiccString<Nat>();
-	typename DiccString<Nat>::ItClaves it = d.Claves();
+	typename DiccString<Nat>::Iterador it = d.Claves();
 	ASSERT_EQ(it.HaySiguiente(), false);
 }
 
@@ -108,7 +108,7 @@ void diccString_claves_noVacias(){
 	e.Definir("iterador_prueba_3",5);
 	e.Definir("iterador_prueba_4",6);
 	e.Definir("iterador_prueba_5",8);
-	typename DiccString<Nat>::ItClaves it = e.Claves();
+	typename DiccString<Nat>::Iterador it = e.Claves();
 	std::cout << "\n";
 	while(it.HaySiguiente()){
 		std::cout << it.Siguiente() << "\n";
@@ -120,7 +120,7 @@ void diccString_claves_noVacias(){
 	d.Definir("el",4);
 	d.Definir("que",5);
 	d.Definir("lee",6);
-	typename DiccString<Nat>::ItClaves iter = d.Claves();
+	typename DiccString<Nat>::Iterador iter = d.Claves();
 	ASSERT_EQ(iter.HaySiguiente(), true);
 	ASSERT_EQ(iter.Siguiente(), "puto");
 	iter.Avanzar();

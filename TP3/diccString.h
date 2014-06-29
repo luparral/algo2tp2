@@ -12,18 +12,18 @@ template<typename T>
 class DiccString {
 
 	public:
-	  	class ItClaves;
+	  	class Iterador;
 
 		DiccString();
 		~DiccString();
 		void Definir(const String, const T&);
 		bool Definido(const String) const;
 		T& Significado(const String) const;
-		ItClaves Claves() const;
+		Iterador Claves() const;
 
-		class ItClaves{
+		class Iterador{
 	    	public:
-	        	ItClaves(const DiccString<T> &d);
+	        	Iterador(const DiccString<T> &d);
         		void Avanzar();
 	        	const String& Siguiente() const;
 	        	bool HaySiguiente() const;
@@ -124,8 +124,8 @@ T& DiccString<T>::Significado(const String key) const{
 }
 
 template<class T>
-typename DiccString<T>::ItClaves DiccString<T>::Claves() const {
-	return ItClaves(*(this));
+typename DiccString<T>::Iterador DiccString<T>::Claves() const {
+	return Iterador(*(this));
 }
 
 
@@ -133,20 +133,20 @@ typename DiccString<T>::ItClaves DiccString<T>::Claves() const {
  *Implementación del iterador de claves
  */
 template<class T>
-DiccString<T>::ItClaves::ItClaves(const DiccString<T> &d): it(d._claves.CrearIt()) {}
+DiccString<T>::Iterador::Iterador(const DiccString<T> &d): it(d._claves.CrearIt()) {}
 
 template<class T>
-void DiccString<T>::ItClaves::Avanzar(){
+void DiccString<T>::Iterador::Avanzar(){
 	it.Avanzar();;
 }
 
 template<class T>
-const String& DiccString<T>::ItClaves::Siguiente() const{
+const String& DiccString<T>::Iterador::Siguiente() const{
 	return it.Siguiente();
 }
 
 template<class T>
-bool DiccString<T>::ItClaves::HaySiguiente() const{
+bool DiccString<T>::Iterador::HaySiguiente() const{
 	return it.HaySiguiente();
 }
 
