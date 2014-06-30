@@ -94,11 +94,11 @@ void DiccString<T>::Definir(const String key, const T& value){
 	}
 	if(actual->significado == NULL){
 		_cantClaves++;
+		_claves.AgregarAtras(key);
 	}else{
 		delete actual->significado;
 	}
 	actual->significado = new T(value);
-	_claves.AgregarAtras(key);
 }
 
 template<class T>
