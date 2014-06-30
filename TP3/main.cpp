@@ -116,22 +116,22 @@ void diccString_claves_noVacias(){
 	}
 
 	DiccString<Nat> d = DiccString<Nat>();
-	d.Definir("puto",22);
-	d.Definir("el",4);
-	d.Definir("que",5);
-	d.Definir("lee",6);
+	d.Definir("test",22);
+	d.Definir("usando",4);
+	d.Definir("los",5);
+	d.Definir("assert",6);
 	typename DiccString<Nat>::Iterador iter = d.Claves();
 	ASSERT_EQ(iter.HaySiguiente(), true);
-	ASSERT_EQ(iter.Siguiente(), "puto");
+	ASSERT_EQ(iter.Siguiente(), "test");
 	iter.Avanzar();
 	ASSERT_EQ(iter.HaySiguiente(), true);
-	ASSERT_EQ(iter.Siguiente(), "el");
+	ASSERT_EQ(iter.Siguiente(), "usando");
 	iter.Avanzar();
 	ASSERT_EQ(iter.HaySiguiente(), true);
-	ASSERT_EQ(iter.Siguiente(), "que");
+	ASSERT_EQ(iter.Siguiente(), "los");
 	iter.Avanzar();
 	ASSERT_EQ(iter.HaySiguiente(), true);
-	ASSERT_EQ(iter.Siguiente(), "lee");
+	ASSERT_EQ(iter.Siguiente(), "assert");
 	iter.Avanzar();
 	ASSERT_EQ(iter.HaySiguiente(), false);
 }
