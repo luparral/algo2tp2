@@ -20,6 +20,7 @@ class DiccString {
 		bool Definido(const String) const;
 		T& Significado(const String) const;
 		Iterador Claves() const;
+		Nat CantClaves() const;
 
 		class Iterador{
 	    	public:
@@ -42,6 +43,7 @@ class DiccString {
 
 		Nodo* _raiz;
 		Lista<String> _claves;
+		Nat _cantClaves;
 };
 
 template<class T>
@@ -68,6 +70,7 @@ DiccString<T>::Nodo::~Nodo() {
 template<class T>
 DiccString<T>::DiccString(){
 	_claves = Lista<String>();
+	_cantClaves = 0;
 	_raiz = new Nodo();
 }
 
@@ -78,6 +81,9 @@ DiccString<T>::~DiccString(){
 
 template<class T>
 void DiccString<T>::Definir(const String key, const T& value){
+	if(!Definido(key)){
+		_cantClaves++;
+	}
 	Nodo* actual = _raiz;
 	Nat i = 0;
 	while(i < key.length()){
@@ -126,6 +132,11 @@ T& DiccString<T>::Significado(const String key) const{
 template<class T>
 typename DiccString<T>::Iterador DiccString<T>::Claves() const {
 	return Iterador(*(this));
+}
+
+template<class T>
+Nat DiccString<T>::CantClaves() const{
+	return _cantClaves;
 }
 
 

@@ -159,6 +159,41 @@ void diccString_cambio_de_valor_por_referencia(){
 	ASSERT_EQ(d.Significado("por referencia"),7);
 }
 
+void diccString_cantClaves(){
+	DiccString<Nat> d = DiccString<Nat>();
+	ASSERT_EQ(d.CantClaves(),0);
+	d.Definir("test",22);
+	ASSERT_EQ(d.CantClaves(),1);
+	d.Definir("de",4);
+	ASSERT_EQ(d.CantClaves(),2);
+	d.Definir("cantidad",5);
+	d.Definir("de claves",6);
+	ASSERT_EQ(d.CantClaves(),4);
+	d.Definir("definidas",7);
+	ASSERT_EQ(d.CantClaves(),5);
+
+//Redefinicion de clave no deberia sumar una clave
+	// d.Definir("test",22);
+	// d.Definir("de",4);
+	// d.Definir("cantidad",5);
+	// d.Definir("de claves",6);
+	// d.Definir("definidas",7);
+	// ASSERT_EQ(d.CantClaves(),5);
+
+	// d.Definir("de claves",8);
+	// ASSERT_EQ(d.CantClaves(),5);
+
+	d.Definir("agregado Extra De Clave",8);
+	ASSERT_EQ(d.CantClaves(),6);
+
+	// d.Definir("test",22);
+	// d.Definir("de",4);
+	// d.Definir("cantidad",5);
+	// d.Definir("de claves",6);
+	// d.Definir("definidas",7);
+	// ASSERT_EQ(d.CantClaves(),6);
+}
+
 int main(){
 	RUN_TEST(conjEstNat_crear);
 	RUN_TEST(conjEstNat_pertenece);
@@ -171,4 +206,5 @@ int main(){
 	RUN_TEST(diccString_claves_vacias);
 	RUN_TEST(diccString_claves_noVacias);
 	RUN_TEST(diccString_cambio_de_valor_por_referencia);
+	RUN_TEST(diccString_cantClaves);
 }
