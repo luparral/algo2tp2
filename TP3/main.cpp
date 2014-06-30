@@ -173,24 +173,21 @@ void diccString_cantClaves(){
 	ASSERT_EQ(d.CantClaves(),5);
 
 	//Redefinicion de clave no deberia sumar una clave
-	d.Definir("test",22);
-	d.Definir("de",4);
-	d.Definir("cantidad",5);
-	d.Definir("de claves",6);
-	d.Definir("definidas",7);
-	ASSERT_EQ(d.CantClaves(),5);
-
-	d.Definir("de claves",8);
+	d.Definir("test",25);
+	d.Definir("de",45);
+	d.Definir("cantidad",55);
+	d.Definir("de claves",65);
+	d.Definir("definidas",75);
 	ASSERT_EQ(d.CantClaves(),5);
 
 	d.Definir("agregado Extra De Clave",8);
 	ASSERT_EQ(d.CantClaves(),6);
 
-	d.Definir("test",22);
-	d.Definir("de",4);
-	d.Definir("cantidad",5);
-	d.Definir("de claves",6);
-	d.Definir("definidas",7);
+	d.Definir("test",226);
+	d.Definir("de",46);
+	d.Definir("cantidad",56);
+	d.Definir("de claves",66);
+	d.Definir("definidas",76);
 	ASSERT_EQ(d.CantClaves(),6);
 }
 
