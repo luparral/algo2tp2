@@ -86,10 +86,10 @@ class Wolfie
 		{
 			public:
 				const Titulo& Actual() const;
-				void Proximo() const;
+				void Proximo();
 				bool HayProximo() const;
 				const_Iterador(typename DiccString<Wolfie::InfoTitulo>::Iterador i, const DiccString<Wolfie::InfoTitulo>* d): it(i), dicc(d){}
-				typename Wolfie::const_Iterador CrearIt(const DiccString<Wolfie::InfoTitulo>& t) const;
+				//typename Wolfie::const_Iterador CrearIt(const DiccString<Wolfie::InfoTitulo>& t) const;
 			
 			private:
 				typename DiccString<Wolfie::InfoTitulo>::Iterador it;
@@ -120,6 +120,7 @@ class Wolfie
 
 
 };
+/*
 Wolfie::const_Iterador Wolfie::const_Iterador::CrearIt(const DiccString<Wolfie::InfoTitulo>& t) const{
 	const_Iterador i(t.Claves(), &t);
 	//i.it=t.Claves();
@@ -127,11 +128,18 @@ Wolfie::const_Iterador Wolfie::const_Iterador::CrearIt(const DiccString<Wolfie::
 	return i;
 	//return Wolfie::const_Iterador::const_Iterador(t.Claves(), &t);
 }
-
+*/
 const Titulo& Wolfie::const_Iterador::Actual() const {
 	return (dicc->Significado(it.Siguiente()).titulo);
 }
 
+void Wolfie::const_Iterador::Proximo() {
+	it.Avanzar();
+}
+
+bool Wolfie::const_Iterador::HayProximo() const{
+	return it.HaySiguiente();
+}
 
 
 
@@ -203,8 +211,8 @@ typename ConjEstNat::const_Iterador Wolfie::Clientes() const
 
 Wolfie::const_Iterador Wolfie::Titulos() const
 {
-	//const_Iterador i(t.Claves(), &t);
-	return Wolfie::const_Iterador::CrearIt(_titulos);
+	Wolfie::const_Iterador i(_titulos.Claves(), &_titulos);
+	return i;
 }
 
 Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
