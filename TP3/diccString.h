@@ -81,9 +81,6 @@ DiccString<T>::~DiccString(){
 
 template<class T>
 void DiccString<T>::Definir(const String key, const T& value){
-	if(!Definido(key)){
-		_cantClaves++;
-	}
 	Nodo* actual = _raiz;
 	Nat i = 0;
 	while(i < key.length()){
@@ -94,6 +91,11 @@ void DiccString<T>::Definir(const String key, const T& value){
 		}
 		actual = actual->letras[posicionDelCarater];
 		i++;
+	}
+	if(actual->significado == NULL){
+		_cantClaves++;
+	}else{
+		delete actual->significado;
 	}
 	actual->significado = new T(value);
 	_claves.AgregarAtras(key);
