@@ -1,14 +1,11 @@
 #include "Driver.h"
 #include <assert.h>
 
-Driver::Driver(const Conj<Cliente>& clientes)
-{
-	wolfie_ = Wolfie::Wolfie(clientes);
-}
+Driver::Driver(const Conj<Cliente>& clientes): wolfie_(Wolfie(clientes)) {}
 
 Driver::~Driver()
 {
-	delete wolfie_;
+	wolfie_.~Wolfie();
 }
 
 void Driver::AgregarTitulo(const NombreTitulo& nombre, Dinero cotizacion, Nat max_acciones)
@@ -18,7 +15,7 @@ void Driver::AgregarTitulo(const NombreTitulo& nombre, Dinero cotizacion, Nat ma
 
 void Driver::ActualizarCotizacion(const NombreTitulo& nombre, Nat cotizacion)
 {
-	wolfie_.ACtualizarCotizacion(nombre, cotizacion);
+	wolfie_.ActualizarCotizacion(nombre, cotizacion);
 }
 
 void Driver::AgregarPromesaDeCompra(const Cliente& cliente, const NombreTitulo& titulo, Dinero limite, Nat cantidad)
@@ -33,18 +30,18 @@ void Driver::AgregarPromesaDeVenta(const Cliente& cliente, const NombreTitulo& t
 
 Nat Driver::CantidadDeClientes() const
 {
-	return wolfie_.CantClientes()
+	return wolfie_.CantClientes();
 }
 
 Cliente Driver::IesimoCliente(Nat i) const
 {
-	ConjEstNat::const_Iterador it = wolfie_.Clientes();
-	while (i>1) {
-		assert(it.HayProx());
-		it.Proximo;
+	Wolfie::Iterador_clientes it = wolfie_.Clientes();
+	while (i>0) {
+		assert(it.HaySiguiente());
+		it.Avanzar();
 		i--;
 	}
-	return it.Actual();
+	return it.Siguiente();
 }
 
 Nat Driver::CantidadDeTitulos() const
@@ -54,10 +51,10 @@ Nat Driver::CantidadDeTitulos() const
 
 NombreTitulo Driver::IesimoTitulo(Nat i) const
 {
-	DiccString::Iterador it = wolfie_.Titulos();
-	while (i>1) {
+	Wolfie::Iterador_titulos it = wolfie_.Titulos();
+	while (i>0) {
 		assert(it.HaySiguiente());
-		it.Avanzar;
+		it.Avanzar();
 		i--;
 	}
 	return it.Siguiente();
@@ -85,12 +82,12 @@ Nat Driver::AccionesTotalesDe(const Cliente& cliente) const
 
 Nat Driver::AccionesPorCliente(const Cliente& cliente, const NombreTitulo& nombre_titulo) const
 {
-	return wolfie_.AccionesPorCliente(cliente, nombre_titulo);
+	return wolfie_.AccionesPorClienteW(cliente, nombre_titulo);
 }
 
 Nat Driver::AccionesDisponibles(const NombreTitulo& nombre_titulo) const
 {
-	return wolfie_.AccionesDisponibles;
+	return wolfie_.AccionesDisponibles(nombre_titulo);
 }
 
 bool Driver::PrometeComprar(const Cliente& cliente, const NombreTitulo& titulo) const

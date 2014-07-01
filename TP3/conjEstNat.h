@@ -18,7 +18,7 @@ class ConjEstNat
 		class const_Iterador;
 		ConjEstNat(const Conj<Nat> &c);
 		bool Pertenece(Nat n);
-		Nat Cardinal();
+		Nat Cardinal() const;
 		const_Iterador CrearIt() const;
 		
 		class const_Iterador
@@ -64,7 +64,7 @@ bool ConjEstNat::Pertenece(Nat n)
 	return b;
 }
 
-Nat ConjEstNat::Cardinal()
+Nat ConjEstNat::Cardinal() const
 {
 	return _array.Tamanho();
 }

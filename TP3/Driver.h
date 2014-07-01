@@ -3,6 +3,7 @@
 
 #include "Tipos.h"
 //#include "../aed2/TiposBasicos.h"
+#include "wolfie.h"
 
 
 namespace aed2 {
@@ -54,18 +55,18 @@ class Driver
 		Nat AccionesDisponibles(const NombreTitulo& nombre_titulo) const;
 
 		// PRE: c \in Clientes()
-		bool PrometeComprar(const Cliente& cliente, const NombreTitulo& titulo)/** const */;
+		bool PrometeComprar(const Cliente& cliente, const NombreTitulo& titulo) const ;
 		// PRE: c \in Clientes(), PrometeComprar(c, titulo)
-		Nat CantidadAComprar(const Cliente& cliente, const NombreTitulo& titulo)/** const */;
+		Nat CantidadAComprar(const Cliente& cliente, const NombreTitulo& titulo) const ;
 		// PRE: c \in Clientes(), PrometeComprar(c, titulo)
-		Dinero ValorEsperadoParaComprar(const Cliente& cliente, const NombreTitulo& titulo)/** const */;
+		Dinero ValorEsperadoParaComprar(const Cliente& cliente, const NombreTitulo& titulo) const ;
 
 		// PRE: c \in Clientes()
-		bool PrometeVender(const Cliente& cliente, const NombreTitulo& titulo)/** const */;
+		bool PrometeVender(const Cliente& cliente, const NombreTitulo& titulo) const ;
 		// PRE: c \in Clientes(), PrometeVender(c, titulo)
-		Nat CantidadAVender(const Cliente& cliente, const NombreTitulo& titulo)/** const */;
+		Nat CantidadAVender(const Cliente& cliente, const NombreTitulo& titulo) const ;
 		// PRE: c \in Clientes(), PrometeVender(c, titulo)
-		Dinero ValorEsperadoParaVender(const Cliente& cliente, const NombreTitulo& titulo)/** const */;
+		Dinero ValorEsperadoParaVender(const Cliente& cliente, const NombreTitulo& titulo) const ;
 
 	private:
 
@@ -76,7 +77,7 @@ class Driver
 	 ******************************************************************/
 
 		Wolfie wolfie_;
-
+		/*estas para que son?
 		const Titulo& getTitulo(const NombreTitulo& nombre_titulo) const {
 			//return wolfie_._titulos.Significado(nombre_titulo);
 		}
@@ -86,9 +87,10 @@ class Driver
 		}
 
 		const Promesa& promesaDeVenta(const Cliente& cliente) const {}
-
+		*/
 }; // class Driver
 
 } // namespace aed2
+
 
 #endif // DRIVER_H_

@@ -141,11 +141,11 @@ class Wolfie
 		void AgregarPromesa(Cliente c, const Promesa &p);
 		bool EnAlza(const Nombre &nt) const;
 		//funciones adicionales para el driver
-		Nat CantClientes();
-		Nat CantTitulos();
+		Nat CantClientes() const;
+		Nat CantTitulos() const;
 		Titulo BuscarTitulo(const Nombre& nombre_titulo) const;
 		Nat AccionesTotalesDe(const Cliente& cliente) const;
-		Nat AccionesPorCliente(const Cliente& cliente, const Nombre& nombre_titulo) const;
+		Nat AccionesPorClienteW(const Cliente& cliente, const Nombre& nombre_titulo) const;
 		Nat AccionesDisponibles(const Nombre& nombre_titulo) const;
 		bool PrometeComprar(const Cliente& cliente, const Nombre& titulo) const;
 		Promesa PromesaDeCompra(const Cliente& cliente, const Nombre& titulo) const;
@@ -170,12 +170,7 @@ Wolfie::const_Iterador Wolfie::const_Iterador::CrearIt(const DiccString<Wolfie::
 	//return Wolfie::const_Iterador::const_Iterador(t.Claves(), &t);
 }
 */
-Wolfie::Wolfie(const Conj<Nat> &c)
-{
-	_titulos= DiccString<InfoTitulo>();
-	_clientes= ConjEstNat(c);
-	_ultimoLlamado=ultLlamado();
-}
+Wolfie::Wolfie(const Conj<Nat> &c):	_titulos(DiccString<InfoTitulo>()),_clientes(ConjEstNat(c)),_ultimoLlamado(ultLlamado()){}
 
 // Wolfie::Wolfie() {
 // 	DiccString<InfoTitulo> dicc = DiccString<InfoTitulo>();
@@ -335,9 +330,9 @@ bool Wolfie::EnAlza(const Nombre &nt) const {
 	return (_titulos.Significado(nt).titulo.enAlza());
 }
 
-Nat Wolfie::CantClientes() {return _clientes.Cardinal();}
+Nat Wolfie::CantClientes() const {return _clientes.Cardinal();}
 
-Nat Wolfie::CantTitulos() {return _titulos.CantClaves();}
+Nat Wolfie::CantTitulos() const {return _titulos.CantClaves();}
 
 Titulo Wolfie::BuscarTitulo(const Nombre& nombre_titulo) const {
 	return _titulos.Significado(nombre_titulo).titulo;
@@ -353,7 +348,7 @@ Nat Wolfie::AccionesTotalesDe(const Cliente& cliente) const {
 	return cant;
 }
 
-Nat Wolfie::AccionesPorCliente(const Cliente& cliente, const Nombre& nombre_titulo) const {
+Nat Wolfie::AccionesPorClienteW(const Cliente& cliente, const Nombre& nombre_titulo) const {
 	return BusquedaBinaria(cliente, _titulos.Significado(nombre_titulo).ArrayClientes).cantAcc;
 }
 
