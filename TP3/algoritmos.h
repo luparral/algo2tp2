@@ -53,4 +53,23 @@ void heapsort(Arreglo<T> &a){
 	}
 }
 
+template<class T, class U>
+U& BusquedaBinaria(const T& t, Arreglo<U>& a) {
+	Nat arriba = a.Tamanho();
+	Nat abajo = 0;
+	Nat centro;
+	while (abajo <= arriba) {
+		centro=(abajo+arriba)/2;
+		if (a[centro]==t) {
+			return a[centro];
+		}else{
+			if (a[centro]>t) {
+				arriba=centro-1;
+			}else{
+				abajo=centro+1;
+			}
+		}
+	}
+}
+
 #endif

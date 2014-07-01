@@ -1,7 +1,7 @@
 #ifndef AED2_TIPOS_H_
 #define AED2_TIPOS_H_
 
-#include "aed2/TiposBasicos.h"
+#include "Modulos-CPP/aed2/TiposBasicos.h"
 
 namespace aed2{
 

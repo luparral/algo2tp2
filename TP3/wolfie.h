@@ -2,6 +2,7 @@
 #include "promesa.h"
 #include "diccString.h"
 #include "titulo.h"
+#include <assert.h>
 
 using namespace aed2;
 
@@ -60,7 +61,7 @@ class Wolfie
 		struct InfoTitulo{
 			public:
 				//constructor:
-				InfoTitulo():ArrayClientes(Arreglo<TuplaPorCliente>()), titulo(Titulo("",0, 0, true)), AccionesDisponibles(){}
+				InfoTitulo():ArrayClientes(Arreglo<TuplaPorCliente>()), titulo(Titulo(/*"",0, 0*/)), AccionesDisponibles(){}
 				InfoTitulo(Arreglo<TuplaPorCliente> &ac, const Titulo &t, Nat ad): ArrayClientes(ac), titulo(t), AccionesDisponibles(ad){}
 				Arreglo<TuplaPorCliente> ArrayClientes;
 				Titulo titulo;
@@ -107,9 +108,22 @@ class Wolfie
 		void ActualizarCotizacion(const Nombre &nt, Dinero cot);
 		void AgregarPromesa(Cliente c, const Promesa &p);
 		bool EnAlza(const Nombre &nt) const;
+		//funciones adicionales para el driver
+		Nat CantClientes();
+		Nat CantTitulos();
+		Titulo BuscarTitulo(const Nombre& nombre_titulo) const;
+		Nat AccionesTotalesDe(const Cliente& cliente) const;
+		Nat AccionesPorCliente(const Cliente& cliente, const Nombre& nombre_titulo) const;
+		Nat AccionesDisponibles(const Nombre& nombre_titulo) const;
+		bool PrometeComprar(const Cliente& cliente, const Nombre& titulo) const;
+		Promesa PromesaDeCompra(const Cliente& cliente, const Nombre& titulo) const;
+		bool PrometeVender(const Cliente& cliente, const Nombre& titulo) const;
+		Promesa PromesaDeVenta(const Cliente& cliente, const Nombre& titulo) const;
+
 		
 		Wolfie(const Conj<Nat> &c);
-		
+		Wolfie();
+		~Wolfie();
 	private:
 		
 		
@@ -139,27 +153,6 @@ void Wolfie::const_Iterador::Proximo() {
 
 bool Wolfie::const_Iterador::HayProximo() const{
 	return it.HaySiguiente();
-}
-
-
-
-template<class T, class U>
-U& BusquedaBinaria(const T& t, Arreglo<U>& a) {
-	Nat arriba = a.Tamanho();
-	Nat abajo = 0;
-	Nat centro;
-	while (abajo <= arriba) {
-		centro=(abajo+arriba)/2;
-		if (a[centro]==t) {
-			return a[centro];
-		}else{
-			if (a[centro]>t) {
-				arriba=centro-1;
-			}else{
-				abajo=centro+1;
-			}
-		}
-	}
 }
 
 void CambiarPorCantAcc(Arreglo<Wolfie::TuplaPorCliente> a1, Arreglo<Wolfie::TuplaPorCantAcc> a2) {
@@ -202,6 +195,32 @@ Wolfie::Wolfie(const Conj<Nat> &c)
 	ConjEstNat conj = ConjEstNat(c);
 	_clientes= conj;
 	_ultimoLlamado=ultLlamado();
+}
+
+Wolfie::Wolfie() {
+	DiccString<InfoTitulo> dicc = DiccString<InfoTitulo>();
+	_titulos= dicc;
+	_clientes= ConjEstNat(Conj<Nat>());
+	_ultimoLlamado=ultLlamado();
+}
+
+Wolfie::~Wolfie() {
+	DiccString<InfoTitulo>::Iterador it = _titulos.Claves();
+	while (it.HaySiguiente()) {
+		Wolfie::InfoTitulo info = _titulos.Significado(it.Siguiente());
+		Nat i=0;
+		while (i<info.ArrayClientes.Tamanho()) {
+			if (info.ArrayClientes[i].promVenta != NULL) {
+				delete info.ArrayClientes[i].promVenta;
+				info.ArrayClientes[i].promVenta=NULL;
+			}
+			if (info.ArrayClientes[i].promCompra != NULL) {
+				delete info.ArrayClientes[i].promCompra;
+				info.ArrayClientes[i].promCompra=NULL;
+			}
+			i++;
+		}
+	}
 }
 
 typename ConjEstNat::const_Iterador Wolfie::Clientes() const
@@ -273,9 +292,13 @@ void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
 void Wolfie::AgregarPromesa(Cliente c, const Promesa &p) {
 	Promesa* prom= new Promesa(p.titulo(), p.tipo(), p.limite(), p.cantidad());
 	if (prom->tipo()==COMPRA) {
-		BusquedaBinaria(c, _titulos.Significado(prom->titulo()).ArrayClientes).promCompra=prom;
+		Promesa*& ptr = BusquedaBinaria(c, _titulos.Significado(prom->titulo()).ArrayClientes).promCompra;
+		assert(ptr==NULL);
+		ptr=prom;
 	} else {
-		BusquedaBinaria(c, _titulos.Significado(prom->titulo()).ArrayClientes).promVenta=prom;
+		Promesa*& ptr = BusquedaBinaria(c, _titulos.Significado(prom->titulo()).ArrayClientes).promVenta;
+		assert(ptr==NULL);
+		ptr=prom;
 	}
 }
 
@@ -283,7 +306,49 @@ bool Wolfie::EnAlza(const Nombre &nt) const {
 	return (_titulos.Significado(nt).titulo.enAlza());
 }
 
+Nat Wolfie::CantClientes() {return _clientes.Cardinal();}
 
+Nat Wolfie::CantTitulos() {return _titulos.CantClaves();}
+
+Titulo Wolfie::BuscarTitulo(const Nombre& nombre_titulo) const {
+	return _titulos.Significado(nombre_titulo).titulo;
+}
+
+Nat Wolfie::AccionesTotalesDe(const Cliente& cliente) const {
+	Nat cant=0;
+	DiccString<InfoTitulo>::Iterador it = _titulos.Claves();
+	while (it.HaySiguiente()) {
+		cant += BusquedaBinaria(cliente, _titulos.Significado(it.Siguiente()).ArrayClientes).cantAcc;
+		it.Siguiente();
+	}
+	return cant;
+}
+
+Nat Wolfie::AccionesPorCliente(const Cliente& cliente, const Nombre& nombre_titulo) const {
+	return BusquedaBinaria(cliente, _titulos.Significado(nombre_titulo).ArrayClientes).cantAcc;
+}
+
+Nat Wolfie::AccionesDisponibles(const Nombre& nombre_titulo) const {
+	return _titulos.Significado(nombre_titulo).AccionesDisponibles;
+}
+
+bool Wolfie::PrometeComprar(const Cliente& cliente, const Nombre& titulo) const {
+	return (BusquedaBinaria(cliente, _titulos.Significado(titulo).ArrayClientes).promCompra != NULL);
+}
+
+Promesa Wolfie::PromesaDeCompra(const Cliente& cliente, const Nombre& titulo) const{
+	assert(this->Wolfie::PrometeComprar(cliente, titulo));
+	return *(BusquedaBinaria(cliente, _titulos.Significado(titulo).ArrayClientes).promCompra);
+}
+
+bool Wolfie::PrometeVender(const Cliente& cliente, const Nombre& titulo) const {
+	return (BusquedaBinaria(cliente, _titulos.Significado(titulo).ArrayClientes).promVenta != NULL);
+}
+
+Promesa Wolfie::PromesaDeVenta(const Cliente& cliente, const Nombre& titulo) const{
+	assert(this->Wolfie::PrometeVender(cliente, titulo));
+	return *(BusquedaBinaria(cliente, _titulos.Significado(titulo).ArrayClientes).promVenta);
+}
 
 /*
 cambios:

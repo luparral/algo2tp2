@@ -14,6 +14,7 @@ class ConjEstNat
 {
 	public:
 		ConjEstNat();
+		//~ConjEstNat();
 		class const_Iterador;
 		ConjEstNat(const Conj<Nat> &c);
 		bool Pertenece(Nat n);
@@ -36,6 +37,9 @@ class ConjEstNat
 		Arreglo<Nat> _array;
 };
 ConjEstNat::ConjEstNat(): _array(Arreglo<Nat>()){}
+
+//ConjEstNat::~ConjEstNat() {delete _array;}
+
 ConjEstNat::ConjEstNat(const Conj<Nat> &c){
 	typename Conj<Nat>::const_Iterador it = c.CrearIt();
 	Nat i=0;
