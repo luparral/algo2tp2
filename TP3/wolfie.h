@@ -78,7 +78,7 @@ class Wolfie
 		};
 		//*******************************************************************************************************************************
 		
-		class const_Iterador
+		/*class const_Iterador
 		{
 			public:
 				const Titulo& Actual() const;
@@ -90,21 +90,47 @@ class Wolfie
 			private:
 				typename DiccString<Wolfie::InfoTitulo>::Iterador it;
 				const DiccString<typename Wolfie::InfoTitulo>* dicc;
+		};*/
+
+		class Iterador_titulos{
+			public:
+				Iterador_titulos(const Wolfie &w);
+				void Avanzar();
+				const String& Siguiente() const;
+				bool HaySiguiente() const;
+
+			private:
+				DiccString<InfoTitulo>::Iterador it;
 		};
+
+		class Iterador_clientes{
+			public:
+				Iterador_clientes(const Wolfie &w);
+				void Avanzar();
+				Nat Siguiente() const;
+				bool HaySiguiente() const;
+
+			private:
+				ConjEstNat::const_Iterador it;
+		};
+
+
 		
 		/*
 		 *Constructores y destructor
 		 */
 		Wolfie(const Conj<Nat> &c);
 		~Wolfie();
-			// Wolfie();
-			// Wolfie InaugurarWolfie(const Conj<Cliente> &c);
+		// Wolfie();
+		// Wolfie InaugurarWolfie(const Conj<Cliente> &c);
+		
 		/*
 		 *Funciones con iterador
 		 */
-		ConjEstNat::const_Iterador Clientes() const;
-		Wolfie::const_Iterador Titulos() const;
+		Iterador_clientes Clientes() const;						//ConjEstNat::const_Iterador Clientes() const;
+		Iterador_titulos Titulos() const;						//Wolfie::const_Iterador Titulos() const;
 		Conj<Promesa>::const_Iterador PromesasDe(Cliente c);
+
 
 		/*
 		 *Métodos normales
@@ -178,7 +204,7 @@ Wolfie::~Wolfie() {
 }
 
 
-const Titulo& Wolfie::const_Iterador::Actual() const {
+/*const Titulo& Wolfie::const_Iterador::Actual() const {
 	return (dicc->Significado(it.Siguiente()).titulo);
 }
 
@@ -188,7 +214,7 @@ void Wolfie::const_Iterador::Proximo() {
 
 bool Wolfie::const_Iterador::HayProximo() const{
 	return it.HaySiguiente();
-}
+}*/
 
 void CambiarPorCantAcc(Arreglo<Wolfie::TuplaPorCliente> a1, Arreglo<Wolfie::TuplaPorCantAcc> a2) {
 	Nat i=0;
@@ -223,7 +249,7 @@ Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat
 	return arr;
 }
 
-
+/*
 typename ConjEstNat::const_Iterador Wolfie::Clientes() const
 {
 	return ConjEstNat::const_Iterador(_clientes);
@@ -234,6 +260,7 @@ Wolfie::const_Iterador Wolfie::Titulos() const
 	Wolfie::const_Iterador i(_titulos.Claves(), &_titulos);
 	return i;
 }
+*/
 
 Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 {
@@ -353,7 +380,50 @@ Promesa Wolfie::PromesaDeVenta(const Cliente& cliente, const Nombre& titulo) con
 }
 
 /*
-cambios:
-agregue la struct ultLlamado para no usar una tupla
-agregue operadores entre tuplaPorCliente y Cliente para poder hacer busqueda binaria con el nombre de cliente 
-*/
+ *Implementación del iterador de titulos
+ */
+
+ 	//Funcion Clientes
+ 	typename Wolfie::Iterador_titulos Wolfie::Titulos() const{
+ 		return Iterador_titulos(*(this));
+  	}
+
+  	//Traslate del iterador de clientes de conjEstNat
+	Wolfie::Iterador_titulos::Iterador_titulos(const Wolfie &w): it(w._titulos.Claves()) {}
+
+	void Wolfie::Iterador_titulos::Avanzar(){
+		it.Avanzar();
+	}
+
+	const String& Wolfie::Iterador_titulos::Siguiente() const{
+		return it.Siguiente();
+	}
+
+	bool Wolfie::Iterador_titulos::HaySiguiente() const{
+		return it.HaySiguiente();
+	}
+	
+
+/*
+ *Implementación del iterador de clientes
+ */
+
+ 	//Funcion Clientes
+ 	typename Wolfie::Iterador_clientes Wolfie::Clientes() const{
+ 		return Iterador_clientes(*(this));
+  	}
+
+  	//Traslate del iterador de clientes de conjEstNat
+	Wolfie::Iterador_clientes::Iterador_clientes(const Wolfie &w): it(w._clientes.CrearIt()) {}
+
+	void Wolfie::Iterador_clientes::Avanzar(){
+		it.Proximo();
+	}
+
+	Nat Wolfie::Iterador_clientes::Siguiente() const{
+		return it.Actual();
+	}
+
+	bool Wolfie::Iterador_clientes::HaySiguiente() const{
+		return it.HayProx();
+	}
