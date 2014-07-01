@@ -95,10 +95,10 @@ class Wolfie
 		/*
 		 *Constructores y destructor
 		 */
-		// Wolfie();
 		Wolfie(const Conj<Nat> &c);
 		~Wolfie();
-		// Wolfie InaugurarWolfie(const Conj<Cliente> &c);
+			// Wolfie();
+			// Wolfie InaugurarWolfie(const Conj<Cliente> &c);
 		/*
 		 *Funciones con iterador
 		 */
@@ -109,8 +109,8 @@ class Wolfie
 		/*
 		 *Métodos normales
 		 */
-		Nat AccionesPorCliente(const Cliente c, const Nombre& nt) const;
 		void AgregarTitulo(const Titulo &t);
+		Nat AccionesPorCliente(const Cliente c, const Nombre& nt) const;
 		void ActualizarCotizacion(const Nombre &nt, Dinero cot);
 		void AgregarPromesa(Cliente c, const Promesa &p);
 		bool EnAlza(const Nombre &nt) const;
@@ -147,7 +147,7 @@ Wolfie::const_Iterador Wolfie::const_Iterador::CrearIt(const DiccString<Wolfie::
 Wolfie::Wolfie(const Conj<Nat> &c)
 {
 	_titulos= DiccString<InfoTitulo>();
-	_clientes= ConjEstNat(c);;
+	_clientes= ConjEstNat(c);
 	_ultimoLlamado=ultLlamado();
 }
 
@@ -252,16 +252,17 @@ Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 	return _ultimoLlamado.promesas.CrearIt();
 }
 
+void Wolfie::AgregarTitulo(const Titulo &t) {
+	Arreglo<Wolfie::TuplaPorCliente> arr = CrearArrayClientes(_clientes.CrearIt(), _clientes.Cardinal());
+	_titulos.Definir(t.nombre(), Wolfie::InfoTitulo(arr, t, t.maxAcciones()));
+}
+
 Nat Wolfie::AccionesPorCliente(const Cliente c, const Nombre& nt) const {
 	return (BusquedaBinaria(c, _titulos.Significado(nt).ArrayClientes).cantAcc);
 }
 
 // Wolfie Wolfie::InaugurarWolfie(const Conj<Cliente> &c) {return Wolfie(c);}
 
-void Wolfie::AgregarTitulo(const Titulo &t) {
-	Arreglo<Wolfie::TuplaPorCliente> arr = CrearArrayClientes(_clientes.CrearIt(), _clientes.Cardinal());
-	_titulos.Definir(t.nombre(), Wolfie::InfoTitulo(arr, t, t.maxAcciones()));
-}
 void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
 	Wolfie::InfoTitulo s = _titulos.Significado(nt);
 	s.titulo.recotizar(cot); //aca quizas hay problema si titulo devuelve una copia, no deberia

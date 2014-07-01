@@ -192,6 +192,13 @@ void diccString_cantClaves(){
 	ASSERT_EQ(d.CantClaves(),6);
 }
 
+void wolfie_crear(){
+	Conj<Nat> c = Conj<Nat>();
+	c.Agregar(2);
+	c.Agregar(3);
+	Wolfie w = Wolfie(c);
+}
+
 int main(){
 	RUN_TEST(conjEstNat_crear);
 	RUN_TEST(conjEstNat_pertenece);
@@ -205,4 +212,5 @@ int main(){
 	RUN_TEST(diccString_claves_noVacias);
 	RUN_TEST(diccString_cambio_de_valor_por_referencia);
 	RUN_TEST(diccString_cantClaves);
+	RUN_TEST(wolfie_crear);
 }
