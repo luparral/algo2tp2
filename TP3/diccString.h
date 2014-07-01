@@ -150,7 +150,7 @@ DiccString<T>::Iterador::Iterador(const DiccString<T> &d): it(d._claves.CrearIt(
 
 template<class T>
 void DiccString<T>::Iterador::Avanzar(){
-	it.Avanzar();;
+	it.Avanzar();
 }
 
 template<class T>
