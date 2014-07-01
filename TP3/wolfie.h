@@ -24,12 +24,9 @@ class DiccString
 */
 class Wolfie
 {
-	
-
-	
-	public:
 		
-		//esto donde va, public o private?*****************************************************************************
+	public:
+		//esto VA en private*****************************************************************************
 		struct TuplaPorCliente{
 			public: 
 				TuplaPorCliente(): cliente(0), cantAcc(0), promCompra(NULL), promVenta(NULL){}
@@ -95,15 +92,24 @@ class Wolfie
 				const DiccString<typename Wolfie::InfoTitulo>* dicc;
 		};
 		
+		/*
+		 *Constructores y destructor
+		 */
 		// Wolfie();
 		Wolfie(const Conj<Nat> &c);
 		~Wolfie();
-
+		// Wolfie InaugurarWolfie(const Conj<Cliente> &c);
+		/*
+		 *Funciones con iterador
+		 */
 		ConjEstNat::const_Iterador Clientes() const;
 		Wolfie::const_Iterador Titulos() const;
 		Conj<Promesa>::const_Iterador PromesasDe(Cliente c);
-		Nat AccionesPorCliente(Cliente c, const Nombre& nt) const;
-		// Wolfie InaugurarWolfie(const Conj<Cliente> &c);
+
+		/*
+		 *Métodos normales
+		 */
+		Nat AccionesPorCliente(const Cliente c, const Nombre& nt) const;
 		void AgregarTitulo(const Titulo &t);
 		void ActualizarCotizacion(const Nombre &nt, Dinero cot);
 		void AgregarPromesa(Cliente c, const Promesa &p);
@@ -120,11 +126,8 @@ class Wolfie
 		bool PrometeVender(const Cliente& cliente, const Nombre& titulo) const;
 		Promesa PromesaDeVenta(const Cliente& cliente, const Nombre& titulo) const;
 
-		
-		
-	private:
-		
-		
+
+	private:		
 		DiccString<InfoTitulo> _titulos;
 		ConjEstNat _clientes;
 		ultLlamado _ultimoLlamado;
@@ -148,10 +151,31 @@ Wolfie::Wolfie(const Conj<Nat> &c)
 	_ultimoLlamado=ultLlamado();
 }
 
+// Wolfie::Wolfie() {
+// 	DiccString<InfoTitulo> dicc = DiccString<InfoTitulo>();
+// 	_titulos= dicc;
+// 	_clientes= ConjEstNat(Conj<Nat>());
+// 	_ultimoLlamado=ultLlamado();
+// }
 
-
-
-
+Wolfie::~Wolfie() {
+	DiccString<InfoTitulo>::Iterador it = _titulos.Claves();
+	while (it.HaySiguiente()) {
+		Wolfie::InfoTitulo info = _titulos.Significado(it.Siguiente());
+		Nat i=0;
+		while (i<info.ArrayClientes.Tamanho()) {
+			if (info.ArrayClientes[i].promVenta != NULL) {
+				delete info.ArrayClientes[i].promVenta;
+				info.ArrayClientes[i].promVenta=NULL;
+			}
+			if (info.ArrayClientes[i].promCompra != NULL) {
+				delete info.ArrayClientes[i].promCompra;
+				info.ArrayClientes[i].promCompra=NULL;
+			}
+			i++;
+		}
+	}
+}
 
 
 const Titulo& Wolfie::const_Iterador::Actual() const {
@@ -200,33 +224,6 @@ Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat
 }
 
 
-
-// Wolfie::Wolfie() {
-// 	DiccString<InfoTitulo> dicc = DiccString<InfoTitulo>();
-// 	_titulos= dicc;
-// 	_clientes= ConjEstNat(Conj<Nat>());
-// 	_ultimoLlamado=ultLlamado();
-// }
-
-Wolfie::~Wolfie() {
-	DiccString<InfoTitulo>::Iterador it = _titulos.Claves();
-	while (it.HaySiguiente()) {
-		Wolfie::InfoTitulo info = _titulos.Significado(it.Siguiente());
-		Nat i=0;
-		while (i<info.ArrayClientes.Tamanho()) {
-			if (info.ArrayClientes[i].promVenta != NULL) {
-				delete info.ArrayClientes[i].promVenta;
-				info.ArrayClientes[i].promVenta=NULL;
-			}
-			if (info.ArrayClientes[i].promCompra != NULL) {
-				delete info.ArrayClientes[i].promCompra;
-				info.ArrayClientes[i].promCompra=NULL;
-			}
-			i++;
-		}
-	}
-}
-
 typename ConjEstNat::const_Iterador Wolfie::Clientes() const
 {
 	return ConjEstNat::const_Iterador(_clientes);
@@ -255,7 +252,7 @@ Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 	return _ultimoLlamado.promesas.CrearIt();
 }
 
-Nat Wolfie::AccionesPorCliente(Cliente c, const Nombre& nt) const {
+Nat Wolfie::AccionesPorCliente(const Cliente c, const Nombre& nt) const {
 	return (BusquedaBinaria(c, _titulos.Significado(nt).ArrayClientes).cantAcc);
 }
 
