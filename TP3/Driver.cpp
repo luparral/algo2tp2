@@ -1,6 +1,8 @@
 #include "Driver.h"
 #include <assert.h>
 
+using namespace aed2;
+
 Driver::Driver(const Conj<Cliente>& clientes): wolfie_(Wolfie(clientes)) {}
 
 Driver::~Driver()

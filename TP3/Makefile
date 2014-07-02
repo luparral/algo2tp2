@@ -8,7 +8,7 @@ CFLAGS=-g -Wall
 LDFLAGS=
 
 # Agregar acá los archivos .cpp a compilar
-SOURCES=test.cpp Driver.cpp 
+SOURCES= titulo.cpp promesa.cpp conjEstNat.cpp wolfie.cpp Driver.cpp test.cpp 
 
 # Objetos que serán generados (no tocar)
 OBJECTS=$(SOURCES:.cpp=.o)

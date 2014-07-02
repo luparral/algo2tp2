@@ -97,7 +97,7 @@ void test_wolfie_simple()
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 0);
 }
 
-int main(int argc, char **argv)
+int main(/*int argc, char **argv*/)
 {
 	RUN_TEST(test_wolfie_simple);
 	
