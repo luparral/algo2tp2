@@ -196,7 +196,33 @@ void wolfie_crear(){
 	Conj<Nat> c = Conj<Nat>();
 	c.Agregar(2);
 	c.Agregar(3);
-	Wolfie w = Wolfie(c);
+	Wolfie w(c);
+}
+
+void wolfie_clientes(){
+	Conj<Nat> c = Conj<Nat>();
+	c.Agregar(2);
+	c.Agregar(3);
+	c.Agregar(1);
+	c.Agregar(5);
+	Wolfie w(c);
+	typename Wolfie::Iterador_clientes it = w.Clientes();
+	ASSERT_EQ(it.HaySiguiente(), true);
+	ASSERT_EQ(it.Siguiente(), 1);
+	it.Avanzar();
+	ASSERT_EQ(it.HaySiguiente(), true);
+	ASSERT_EQ(it.Siguiente(), 2);
+	it.Avanzar();
+}
+
+void wolfie_agregar_titulo(){
+	Conj<Nat> c = Conj<Nat>();
+	c.Agregar(2);
+	c.Agregar(3);
+	c.Agregar(1);
+	c.Agregar(5);
+	Wolfie w(c);
+	w.AgregarTitulo(Titulo("YPF",25,4));
 }
 
 int main(){
@@ -213,4 +239,6 @@ int main(){
 	RUN_TEST(diccString_cambio_de_valor_por_referencia);
 	RUN_TEST(diccString_cantClaves);
 	RUN_TEST(wolfie_crear);
+	RUN_TEST(wolfie_clientes);
+	RUN_TEST(wolfie_agregar_titulo);
 }

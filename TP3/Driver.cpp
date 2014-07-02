@@ -3,11 +3,11 @@
 
 using namespace aed2;
 
-Driver::Driver(const Conj<Cliente>& clientes): wolfie_(Wolfie(clientes)) {}
+Driver::Driver(const Conj<Cliente>& clientes): wolfie_(clientes) {}
 
 Driver::~Driver()
 {
-	wolfie_.~Wolfie();
+	//wolfie_.~Wolfie();
 }
 
 void Driver::AgregarTitulo(const NombreTitulo& nombre, Dinero cotizacion, Nat max_acciones)
