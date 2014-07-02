@@ -1,5 +1,5 @@
 #include "wolfie.h"
-
+#include <iostream>
 /*
 Wolfie::const_Iterador Wolfie::const_Iterador::CrearIt(const DiccString<Wolfie::InfoTitulo>& t) const{
 	const_Iterador i(t.Claves(), &t);
@@ -34,6 +34,7 @@ Wolfie::~Wolfie() {
 			}
 			i++;
 		}
+		it.Avanzar();
 	}
 }
 
@@ -50,24 +51,30 @@ bool Wolfie::const_Iterador::HayProximo() const{
 	return it.HaySiguiente();
 }*/
 
-void CambiarPorCantAcc(Arreglo<Wolfie::TuplaPorCliente> a1, Arreglo<Wolfie::TuplaPorCantAcc> a2) {
+void CambiarPorCantAcc(Arreglo<Wolfie::TuplaPorCliente>& a1, Arreglo<Wolfie::TuplaPorCantAcc>& a2) {
 	Nat i=0;
 	while (i<a1.Tamanho()){
+		a2.Definir(i, Wolfie::TuplaPorCantAcc(a1[i].cliente,a1[i].cantAcc,a1[i].promCompra,a1[i].promVenta));
+		/*
 		a2[i].cliente=a1[i].cliente;
 		a2[i].cantAcc=a1[i].cantAcc;
 		a2[i].promCompra=a1[i].promCompra;
 		a2[i].promVenta=a1[i].promVenta;
+		*/
 		i++;
 	}
 } 
 
-void CambiarPorCliente(Arreglo<Wolfie::TuplaPorCantAcc> a1, Arreglo<Wolfie::TuplaPorCliente> a2) {
+void CambiarPorCliente(Arreglo<Wolfie::TuplaPorCantAcc>& a1, Arreglo<Wolfie::TuplaPorCliente>& a2) {
 	Nat i=0;
 	while (i<a1.Tamanho()) {
+		a2.Definir(i, Wolfie::TuplaPorCliente(a1[i].cliente,a1[i].cantAcc,a1[i].promCompra,a1[i].promVenta));
+		/*
 		a2[i].cliente=a1[i].cliente;
 		a2[i].cantAcc=a1[i].cantAcc;
 		a2[i].promCompra=a1[i].promCompra;
 		a2[i].promVenta=a1[i].promVenta;
+		*/
 		i++;
 	}
 } 
@@ -76,9 +83,11 @@ Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat
 	Arreglo<typename Wolfie::TuplaPorCliente> arr =Arreglo<typename Wolfie::TuplaPorCliente>(n);
 	Nat i=0;
 	do{
-		arr[i] = Wolfie::TuplaPorCliente(it.Actual(), 0, NULL, NULL);
+		
+		arr.Definir(i, Wolfie::TuplaPorCliente(it.Actual(), 0, NULL, NULL));
 		i++;
 		it.Proximo();
+		
 	} while(it.HayProx());
 	return arr;
 }
@@ -114,8 +123,10 @@ Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 }
 
 void Wolfie::AgregarTitulo(const Titulo &t) {
+	
 	Arreglo<Wolfie::TuplaPorCliente> arr = CrearArrayClientes(_clientes.CrearIt(), _clientes.Cardinal());
-	_titulos.Definir(t.nombre(), Wolfie::InfoTitulo(arr, t, t.maxAcciones()));
+	typename Wolfie::InfoTitulo info(arr, t, t.maxAcciones());
+	_titulos.Definir(t.nombre(), info);
 }
 
 Nat Wolfie::AccionesPorCliente(const Cliente c, const Nombre& nt) const {
@@ -135,6 +146,7 @@ void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
 			delete s.ArrayClientes[i].promVenta;
 			s.ArrayClientes[i].promVenta = NULL;
 		}
+		i++;
 	}
 	Arreglo<TuplaPorCantAcc> arr = 	Arreglo<TuplaPorCantAcc>(s.ArrayClientes.Tamanho());
 	CambiarPorCantAcc(s.ArrayClientes, arr);
@@ -147,6 +159,7 @@ void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
 			delete s.ArrayClientes[i].promCompra;
 			arr[i].promCompra = NULL;
 		}
+		i++;
 	}
 	CambiarPorCliente(arr, s.ArrayClientes);
 	heapsort(s.ArrayClientes);

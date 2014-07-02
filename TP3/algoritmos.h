@@ -43,7 +43,7 @@ void heapify(Arreglo<T> &a){
 
 template<class T>
 void heapsort(Arreglo<T> &a){
-	for(int i=0;i<a.Tamanho();i++) assert(a.Definido(i));
+	for(int i=1;i<a.Tamanho();i++) assert(a.Definido(i));
 	Nat n=a.Tamanho();
 	heapify(a);
 	while (n>1){

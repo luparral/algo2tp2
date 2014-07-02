@@ -62,6 +62,7 @@ class Wolfie
 			public:
 				//constructor:
 				InfoTitulo():ArrayClientes(Arreglo<TuplaPorCliente>()), titulo(Titulo(/*"",0, 0*/)), AccionesDisponibles(){}
+				InfoTitulo(const InfoTitulo& otro): ArrayClientes(otro.ArrayClientes), titulo(otro.titulo), AccionesDisponibles(otro.AccionesDisponibles) {}
 				InfoTitulo(Arreglo<TuplaPorCliente> &ac, const Titulo &t, Nat ad): ArrayClientes(ac), titulo(t), AccionesDisponibles(ad){}
 				Arreglo<TuplaPorCliente> ArrayClientes;
 				Titulo titulo;

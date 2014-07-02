@@ -87,19 +87,68 @@ void test_wolfie_simple()
 	clientes.Agregar(5);
 
 	Driver wolfie(clientes);
-/*
+
 	ASSERT(wolfie.CantidadDeClientes() == clientes.Cardinal());
 
 	for(Nat i=0; i<wolfie.CantidadDeClientes(); i++) {
 		ASSERT( clientes.Pertenece( wolfie.IesimoCliente(i) ) );
 	}
 
-	ASSERT_EQ(wolfie.CantidadDeTitulos(), 0);*/
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 0);
+}
+
+void test_agregar_titulo() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",25,4);//nombre:YPF, maxAcciones:25, cotizacion 4
+}
+
+void test_actualizar_cotizacion() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",25,4);
+	wolfie.ActualizarCotizacion("YPF", 5);
+	
+}
+
+void test_agregar_promesa_compra() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",25,4);	
+
+	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
+	
+}
+
+void test_agregar_promesa_venta() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",25,4);	
+
+	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 10);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
+	//IMPORTANTE: la promesa no se deberia agregar porque no se puede cumplir!!!
+	
 }
 
 int main(/*int argc, char **argv*/)
 {
 	RUN_TEST(test_wolfie_simple);
+	RUN_TEST(test_agregar_titulo);
+	RUN_TEST(test_actualizar_cotizacion);
+	RUN_TEST(test_agregar_promesa_compra);
+	RUN_TEST(test_agregar_promesa_venta);
 	
 	/******************************************************************
 	 * TODO: escribir casos de test exhaustivos para todas            *

@@ -18,6 +18,7 @@ class Titulo {
 		//Crea un titulo con la info pasada por parámetro
 		//Es el equivalente a crearTitulo!
 		Titulo(Name nombre, Nat maxAcciones, Dinero cotizacion) : nombre_(nombre), maxAcciones_(maxAcciones), cotizacion_(cotizacion), enAlza_(true){}
+		Titulo(const Titulo& otro): nombre_(otro.nombre()), maxAcciones_(otro.maxAcciones()), cotizacion_(otro.cotizacion()), enAlza_(otro.enAlza()){}
 
 		Name nombre() const;
 		Nat maxAcciones() const;

@@ -216,14 +216,17 @@ void wolfie_clientes(){
 }
 
 void wolfie_agregar_titulo(){
+	
 	Conj<Nat> c = Conj<Nat>();
 	c.Agregar(2);
 	c.Agregar(3);
 	c.Agregar(1);
 	c.Agregar(5);
 	Wolfie w(c);
-	w.AgregarTitulo(Titulo("YPF",25,4));
+	Titulo t("YPF",25,4);
+	w.AgregarTitulo(t);
 }
+
 
 int main(){
 	RUN_TEST(conjEstNat_crear);
