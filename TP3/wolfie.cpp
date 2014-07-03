@@ -161,6 +161,7 @@ void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
 		}
 		i++;
 	}
+	
 	CambiarPorCliente(arr, s.ArrayClientes);
 	heapsort(s.ArrayClientes);
 }
