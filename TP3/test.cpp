@@ -230,7 +230,7 @@ void test_promete_comprar() {
 	wolfie.ActualizarCotizacion("YPF", 6);
 	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
 }
-
+/*
 void test_promete_comprar() {
 	Conj<Cliente> clientes;
 	clientes.Agregar(1);
@@ -249,7 +249,7 @@ void test_promete_comprar() {
 	wolfie.ActualizarCotizacion("YPF", 6);
 	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
 }
-
+*/
 
 int main(/*int argc, char **argv*/)
 {
