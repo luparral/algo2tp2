@@ -104,6 +104,13 @@ void test_agregar_titulo() {
 
 	Driver wolfie(clientes);
 	wolfie.AgregarTitulo("YPF",25,4);//nombre:YPF, maxAcciones:25, cotizacion 4
+	ASSERT_EQ(wolfie.EnAlza("YPF"), true);
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
+	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 4);
+	ASSERT_EQ(wolfie.MaxAccionesDe("YPF"), 25);
+	wolfie.AgregarTitulo("Google",32,6);
+	wolfie.AgregarTitulo("Coca",30,1);
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 3);
 }
 
 void test_actualizar_cotizacion() {
@@ -114,7 +121,16 @@ void test_actualizar_cotizacion() {
 	Driver wolfie(clientes);
 	wolfie.AgregarTitulo("YPF",25,4);
 	wolfie.ActualizarCotizacion("YPF", 5);
-	
+  ASSERT_EQ(wolfie.EnAlza("YPF"), true);
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
+	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 5);
+	ASSERT_EQ(wolfie.MaxAccionesDe("YPF"), 25);	
+	wolfie.ActualizarCotizacion("YPF", 4);
+	ASSERT_EQ(wolfie.EnAlza("YPF"), false);
+	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 4);
+	wolfie.ActualizarCotizacion("YPF", 0);
+	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 0);
+	ASSERT_EQ(wolfie.EnAlza("YPF"), false);
 }
 
 void test_agregar_promesa_compra() {
@@ -123,10 +139,40 @@ void test_agregar_promesa_compra() {
 	clientes.Agregar(5);
 
 	Driver wolfie(clientes);
-	wolfie.AgregarTitulo("YPF",25,4);	
-
+	wolfie.AgregarTitulo("YPF",25,4);
+	wolfie.AgregarTitulo("Google",30,3);
+	wolfie.AgregarTitulo("Coca",40,2);
+	wolfie.AgregarTitulo("Sprite",10,5);	
 	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
-	
+	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 4);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"YPF"), 0);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Google"), 0);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Coca"), 0);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Sprite"), 0);
+	wolfie.ActualizarCotizacion("YPF", 6);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"YPF"), 10);
+	ASSERT_EQ(wolfie.AccionesTotalesDe(1), 10);
+	ASSERT_EQ(wolfie.CotizacionDe("Google"), 3);
+	wolfie.ActualizarCotizacion("Google", 5);
+	ASSERT_EQ(wolfie.AccionesTotalesDe(1), 10);
+	ASSERT_EQ(wolfie.CotizacionDe("Google"), 5);
+	wolfie.AgregarPromesaDeCompra(1, "Google", 4, 10);//compra automaticamente porque cumple si sube de 4 y es 5
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Google"), 0);
+	wolfie.ActualizarCotizacion("Google", 5); //actualiza cotizacion con valor repetido
+	ASSERT_EQ(wolfie.CotizacionDe("Google"), 5);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Google"), 10);
+	ASSERT_EQ(wolfie.AccionesTotalesDe(1), 20);
+	wolfie.AgregarPromesaDeCompra(1, "Sprite", 6, 15);//quiere comprar mas de las que se pueden
+	wolfie.ActualizarCotizacion("Sprite", 7);
+	ASSERT_EQ(wolfie.AccionesDisponibles("Sprite"), 10);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Sprite"), 0);
+	//como no cumple la pre y no puede comprar más de las acciones disponibles, deberia quedar con la cant de acciones que ya tenia
+	ASSERT_EQ(wolfie.ValorEsperadoParaComprar(1,"Sprite"), 6);
+	ASSERT_EQ(wolfie.CantidadAComprar(1,"Sprite"), 15);
+	wolfie.AgregarPromesaDeCompra(1, "Coca", 4, 20);
+	wolfie.ActualizarCotizacion("Coca", 5);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Coca"), 20);
+	ASSERT_EQ(wolfie.AccionesTotalesDe(1), 40);
 }
 
 void test_agregar_promesa_venta() {
@@ -136,11 +182,30 @@ void test_agregar_promesa_venta() {
 
 	Driver wolfie(clientes);
 	wolfie.AgregarTitulo("YPF",25,4);	
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
 
-	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 10);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
+	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 0);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
 	//IMPORTANTE: la promesa no se deberia agregar porque no se puede cumplir!!!
-	
+	ASSERT_EQ(wolfie.PrometeVender(1, "YPF"), true); //prometeVender es puede agregar una nueva promesa de venta
+  wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);
+
+
+
+  
 }
+
+// void test_agregar_promesa_venta() {
+// 	Conj<Cliente> clientes;
+// 	clientes.Agregar(1);
+// 	clientes.Agregar(5);
+
+// 	Driver wolfie(clientes);
+// 	wolfie.AgregarTitulo("YPF",25,4);	
+
+// 	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 10);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
+
+// }
+
 
 int main(/*int argc, char **argv*/)
 {

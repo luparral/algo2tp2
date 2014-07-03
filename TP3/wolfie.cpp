@@ -136,8 +136,8 @@ Nat Wolfie::AccionesPorCliente(const Cliente c, const Nombre& nt) const {
 // Wolfie Wolfie::InaugurarWolfie(const Conj<Cliente> &c) {return Wolfie(c);}
 
 void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
-	Wolfie::InfoTitulo s = _titulos.Significado(nt);
-	s.titulo.recotizar(cot); //aca quizas hay problema si titulo devuelve una copia, no deberia
+	Wolfie::InfoTitulo &s = _titulos.Significado(nt);
+	s.titulo.recotizar(cot);
 	Nat i=0;
 	while (i<s.ArrayClientes.Tamanho()){
 		if (s.ArrayClientes[i].promVenta != NULL && (s.ArrayClientes[i].promVenta->limite() > s.titulo.cotizacion())) {
@@ -179,7 +179,7 @@ void Wolfie::AgregarPromesa(Cliente c, const Promesa &p) {
 }
 
 bool Wolfie::EnAlza(const Nombre &nt) const {
-	return (_titulos.Significado(nt).titulo.enAlza());
+	return _titulos.Significado(nt).titulo.enAlza();
 }
 
 Nat Wolfie::CantClientes() const {return _clientes.Cardinal();}
@@ -195,7 +195,7 @@ Nat Wolfie::AccionesTotalesDe(const Cliente& cliente) const {
 	DiccString<InfoTitulo>::Iterador it = _titulos.Claves();
 	while (it.HaySiguiente()) {
 		cant += BusquedaBinaria(cliente, _titulos.Significado(it.Siguiente()).ArrayClientes).cantAcc;
-		it.Siguiente();
+		it.Avanzar();//////MODIFICACION
 	}
 	return cant;
 }

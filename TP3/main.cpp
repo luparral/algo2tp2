@@ -213,6 +213,11 @@ void wolfie_clientes(){
 	ASSERT_EQ(it.HaySiguiente(), true);
 	ASSERT_EQ(it.Siguiente(), 2);
 	it.Avanzar();
+
+	Conj<Nat> d = Conj<Nat>();
+	Wolfie ws(d);
+	typename Wolfie::Iterador_clientes iter = ws.Clientes();
+	ASSERT_EQ(iter.HaySiguiente(),false);
 }
 
 void wolfie_agregar_titulo(){
@@ -225,6 +230,32 @@ void wolfie_agregar_titulo(){
 	Wolfie w(c);
 	Titulo t("YPF",25,4);
 	w.AgregarTitulo(t);
+	Titulo t2("Google", 30, 2);
+	w.AgregarTitulo(t2);
+	typename Wolfie::Iterador_titulos iter = w.Titulos();
+	ASSERT_EQ(iter.HaySiguiente(),true);
+	ASSERT_EQ(iter.Siguiente(),"YPF");
+	iter.Avanzar();
+	ASSERT_EQ(iter.HaySiguiente(),true);
+	ASSERT_EQ(iter.Siguiente(),"Google");
+	iter.Avanzar();
+	ASSERT_EQ(iter.HaySiguiente(),false);
+	ASSERT_EQ(t2.nombre(), "Google");
+	ASSERT_EQ(t.cotizacion(), 4);
+}
+
+void wolfie_recotizar_titulos_cargado(){
+	Conj<Nat> c = Conj<Nat>();
+	c.Agregar(2);
+	c.Agregar(3);
+	c.Agregar(1);
+	c.Agregar(5);
+	Wolfie w(c);
+	Titulo t("YPF",25,4);
+	w.AgregarTitulo(t);
+	ASSERT_EQ(w.EnAlza("YPF"), true);
+	w.ActualizarCotizacion("YPF", 2);
+	ASSERT_EQ(w.EnAlza("YPF"), false);
 }
 
 
@@ -244,4 +275,5 @@ int main(){
 	RUN_TEST(wolfie_crear);
 	RUN_TEST(wolfie_clientes);
 	RUN_TEST(wolfie_agregar_titulo);
+	RUN_TEST(wolfie_recotizar_titulos_cargado);
 }
