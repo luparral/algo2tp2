@@ -136,7 +136,7 @@ Nat Wolfie::AccionesPorCliente(const Cliente c, const Nombre& nt) const {
 // Wolfie Wolfie::InaugurarWolfie(const Conj<Cliente> &c) {return Wolfie(c);}
 
 void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
-	Wolfie::InfoTitulo s = _titulos.Significado(nt);
+	Wolfie::InfoTitulo& s = _titulos.Significado(nt);
 	s.titulo.recotizar(cot); //aca quizas hay problema si titulo devuelve una copia, no deberia
 	Nat i=0;
 	while (i<s.ArrayClientes.Tamanho()){
@@ -161,6 +161,7 @@ void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
 		}
 		i++;
 	}
+	
 	CambiarPorCliente(arr, s.ArrayClientes);
 	heapsort(s.ArrayClientes);
 }

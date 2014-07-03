@@ -142,6 +142,48 @@ void test_agregar_promesa_venta() {
 	
 }
 
+
+
+
+
+void test_promete_comprar() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	clientes.Agregar(8);
+	clientes.Agregar(9);
+
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",25,4);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
+	
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
+	
+	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true);
+	
+	wolfie.ActualizarCotizacion("YPF", 6);
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
+}
+
+void test_promete_comprar() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	clientes.Agregar(8);
+	clientes.Agregar(9);
+
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",25,4);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
+	
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
+	
+	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true);
+	
+	wolfie.ActualizarCotizacion("YPF", 6);
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
+}
+
 int main(/*int argc, char **argv*/)
 {
 	RUN_TEST(test_wolfie_simple);
@@ -149,6 +191,12 @@ int main(/*int argc, char **argv*/)
 	RUN_TEST(test_actualizar_cotizacion);
 	RUN_TEST(test_agregar_promesa_compra);
 	RUN_TEST(test_agregar_promesa_venta);
+	
+	
+	RUN_TEST(test_promete_comprar);
+	
+	
+	RUN_TEST(test_promete_comprar);
 	
 	/******************************************************************
 	 * TODO: escribir casos de test exhaustivos para todas            *
