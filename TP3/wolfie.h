@@ -54,8 +54,8 @@ class Wolfie
 				Nat cantAcc;
 				Promesa* promCompra;
 				Promesa* promVenta;
-				bool operator < (const typename Wolfie::TuplaPorCantAcc& otro) const {return(this->cantAcc < otro.cantAcc);}
-				bool operator > (const typename Wolfie::TuplaPorCantAcc& otro) const {return(this->cantAcc > otro.cantAcc);}
+				bool operator < (const typename Wolfie::TuplaPorCantAcc& otro) const {return(this->cantAcc > otro.cantAcc);}
+				bool operator > (const typename Wolfie::TuplaPorCantAcc& otro) const {return(this->cantAcc < otro.cantAcc);}
 		};
 		
 		struct InfoTitulo{

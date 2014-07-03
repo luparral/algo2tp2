@@ -156,7 +156,7 @@ void Wolfie::ActualizarCotizacion(const Nombre &nt, Dinero cot){
 		if (arr[i].promCompra != NULL && (arr[i].promCompra->limite() < s.titulo.cotizacion()) && (arr[i].promCompra->cantidad() <= s.AccionesDisponibles)) {
 			arr[i].cantAcc += arr[i].promCompra->cantidad();
 			s.AccionesDisponibles -= arr[i].promCompra->cantidad();
-			delete s.ArrayClientes[i].promCompra;
+			delete arr[i].promCompra;
 			arr[i].promCompra = NULL;
 		}
 		i++;
