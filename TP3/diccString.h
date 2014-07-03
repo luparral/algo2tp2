@@ -143,7 +143,7 @@ Nat DiccString<T>::CantClaves() const{
 
 
 /*
- *Implementación del iterador de claves
+ *Implementación del iterador de claves.
  */
 template<class T>
 DiccString<T>::Iterador::Iterador(const DiccString<T> &d): it(d._claves.CrearIt()) {}
