@@ -103,13 +103,13 @@ void test_agregar_titulo() {
 	clientes.Agregar(5);
 
 	Driver wolfie(clientes);
-	wolfie.AgregarTitulo("YPF",25,4);//nombre:YPF, maxAcciones:25, cotizacion 4
+	wolfie.AgregarTitulo("YPF",4,25);//nombre:YPF, cotizacion 4, maxAcciones:25,
 	ASSERT_EQ(wolfie.EnAlza("YPF"), true);
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
 	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 4);
 	ASSERT_EQ(wolfie.MaxAccionesDe("YPF"), 25);
-	wolfie.AgregarTitulo("Google",32,6);
-	wolfie.AgregarTitulo("Coca",30,1);
+	wolfie.AgregarTitulo("Google",6,32);
+	wolfie.AgregarTitulo("Coca",1,30);
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 3);
 }
 
@@ -119,9 +119,9 @@ void test_actualizar_cotizacion() {
 	clientes.Agregar(5);
 
 	Driver wolfie(clientes);
-	wolfie.AgregarTitulo("YPF",25,4);
+	wolfie.AgregarTitulo("YPF",4,25);
 	wolfie.ActualizarCotizacion("YPF", 5);
-  ASSERT_EQ(wolfie.EnAlza("YPF"), true);
+ 	ASSERT_EQ(wolfie.EnAlza("YPF"), true);
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
 	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 5);
 	ASSERT_EQ(wolfie.MaxAccionesDe("YPF"), 25);	
@@ -139,10 +139,10 @@ void test_agregar_promesa_compra() {
 	clientes.Agregar(5);
 
 	Driver wolfie(clientes);
-	wolfie.AgregarTitulo("YPF",25,4);
-	wolfie.AgregarTitulo("Google",30,3);
-	wolfie.AgregarTitulo("Coca",40,2);
-	wolfie.AgregarTitulo("Sprite",10,5);	
+	wolfie.AgregarTitulo("YPF",4,25);
+	wolfie.AgregarTitulo("Google",3,30);
+	wolfie.AgregarTitulo("Coca",2,40);
+	wolfie.AgregarTitulo("Sprite",5,10);	
 	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
 	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 4);
 	ASSERT_EQ(wolfie.AccionesPorCliente(1,"YPF"), 0);
@@ -181,7 +181,7 @@ void test_agregar_promesa_venta() {
 	clientes.Agregar(5);
 
 	Driver wolfie(clientes);
-	wolfie.AgregarTitulo("YPF",25,4);	
+	wolfie.AgregarTitulo("YPF",4,25);	
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
 
 	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 0);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
@@ -220,7 +220,7 @@ void test_promete_comprar() {
 	clientes.Agregar(9);
 
 	Driver wolfie(clientes);
-	wolfie.AgregarTitulo("YPF",25,4);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
+	wolfie.AgregarTitulo("YPF",4,25);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
 	
 	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
 	

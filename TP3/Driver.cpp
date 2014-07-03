@@ -9,7 +9,7 @@ Driver::~Driver(){}
 
 void Driver::AgregarTitulo(const NombreTitulo& nombre, Dinero cotizacion, Nat max_acciones)
 {
-	wolfie_.AgregarTitulo(Titulo(nombre,cotizacion,max_acciones));
+	wolfie_.AgregarTitulo(Titulo(nombre,max_acciones,cotizacion));
 }
 
 void Driver::ActualizarCotizacion(const NombreTitulo& nombre, Nat cotizacion)
