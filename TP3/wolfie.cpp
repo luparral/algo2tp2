@@ -44,12 +44,6 @@ void CambiarPorCantAcc(Arreglo<Wolfie::TuplaPorCliente>& a1, Arreglo<Wolfie::Tup
 	Nat i=0;
 	while (i<a1.Tamanho()){
 		a2.Definir(i, Wolfie::TuplaPorCantAcc(a1[i].cliente,a1[i].cantAcc,a1[i].promCompra,a1[i].promVenta));
-		/*
-		a2[i].cliente=a1[i].cliente;
-		a2[i].cantAcc=a1[i].cantAcc;
-		a2[i].promCompra=a1[i].promCompra;
-		a2[i].promVenta=a1[i].promVenta;
-		*/
 		i++;
 	}
 } 
@@ -59,12 +53,6 @@ void CambiarPorCliente(Arreglo<Wolfie::TuplaPorCantAcc>& a1, Arreglo<Wolfie::Tup
 	Nat i=0;
 	while (i<a1.Tamanho()) {
 		a2.Definir(i, Wolfie::TuplaPorCliente(a1[i].cliente,a1[i].cantAcc,a1[i].promCompra,a1[i].promVenta));
-		/*
-		a2[i].cliente=a1[i].cliente;
-		a2[i].cantAcc=a1[i].cantAcc;
-		a2[i].promCompra=a1[i].promCompra;
-		a2[i].promVenta=a1[i].promVenta;
-		*/
 		i++;
 	}
 } 
