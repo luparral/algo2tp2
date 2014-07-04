@@ -103,12 +103,14 @@ void test_agregar_titulo() {
 	clientes.Agregar(5);
 
 	Driver wolfie(clientes);
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 0);
 	wolfie.AgregarTitulo("YPF",4,25);//nombre:YPF, cotizacion 4, maxAcciones:25,
 	ASSERT_EQ(wolfie.EnAlza("YPF"), true);
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
 	ASSERT_EQ(wolfie.CotizacionDe("YPF"), 4);
 	ASSERT_EQ(wolfie.MaxAccionesDe("YPF"), 25);
 	wolfie.AgregarTitulo("Google",6,32);
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 2);
 	wolfie.AgregarTitulo("Coca",1,30);
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 3);
 }
@@ -187,11 +189,7 @@ void test_agregar_promesa_venta() {
 	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 0);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
 	//IMPORTANTE: la promesa no se deberia agregar porque no se puede cumplir!!!
 	ASSERT_EQ(wolfie.PrometeVender(1, "YPF"), true); //prometeVender es puede agregar una nueva promesa de venta
-  wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);
-
-
-
-  
+  wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);  
 }
 
 
@@ -208,9 +206,26 @@ void test_agregar_promesa_venta() {
 // }
 
 
+void test_cantidad_clientes() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	clientes.Agregar(8);
+	clientes.Agregar(9);
+	Driver wolfie(clientes);
+	ASSERT_EQ(wolfie.CantidadDeClientes(), 4)
+}
 
-
-
+void test_iesimo_cliente(){
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	clientes.Agregar(8);
+	clientes.Agregar(9);
+	Driver wolfie(clientes);
+	ASSERT_EQ(wolfie.IesimoCliente(3), 9)
+	ASSERT_EQ(wolfie.IesimoCliente(0), 1)
+}
 
 void test_promete_comprar() {
 	Conj<Cliente> clientes;
@@ -229,9 +244,11 @@ void test_promete_comprar() {
 	
 	wolfie.ActualizarCotizacion("YPF", 6);
 	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
+
+
 }
-/*
-void test_promete_comprar() {
+
+void test_promete_vender() {
 	Conj<Cliente> clientes;
 	clientes.Agregar(1);
 	clientes.Agregar(5);
@@ -239,18 +256,34 @@ void test_promete_comprar() {
 	clientes.Agregar(9);
 
 	Driver wolfie(clientes);
-	wolfie.AgregarTitulo("YPF",25,4);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
-	
-	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
-	
+	wolfie.AgregarTitulo("YPF",4,25);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
+	wolfie.AgregarPromesaDeVenta(1, "YPF", 5, 10);
+	ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), true);//no tiene promesas de venta, porque no tiene acciones
 	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
-	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true);
-	
 	wolfie.ActualizarCotizacion("YPF", 6);
-	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false);
-}
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"YPF"), 10);
+	wolfie.AgregarPromesaDeVenta(1, "YPF", 4, 10);
+	ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), false); //pudo agregar la promesa de venta
+	wolfie.ActualizarCotizacion("YPF", 3);
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true); //pudo cumplir la promesa, ahora no tiene mas promesas de venta
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true); //como cumplio la promesa, ahora tiene acciones y no tiene promesa de compra
+/*
 */
+}
 
+
+/*
+void test_compraDeAcciones() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	clientes.Agregar(8);
+	clientes.Agregar(9);
+	wolfie.AgregarTitulo("YPF",4,25);
+	wolfie.AgregarTitulo("Google",3,30);
+}
+
+*/
 int main(/*int argc, char **argv*/)
 {
 	RUN_TEST(test_wolfie_simple);
@@ -258,13 +291,10 @@ int main(/*int argc, char **argv*/)
 	RUN_TEST(test_actualizar_cotizacion);
 	RUN_TEST(test_agregar_promesa_compra);
 	RUN_TEST(test_agregar_promesa_venta);
-	
-	
 	RUN_TEST(test_promete_comprar);
-	
-	
-	RUN_TEST(test_promete_comprar);
-	
+	RUN_TEST(test_cantidad_clientes);
+	RUN_TEST(test_iesimo_cliente);
+	RUN_TEST(test_promete_vender);
 	/******************************************************************
 	 * TODO: escribir casos de test exhaustivos para todas            *
 	 * las funcionalidades del módulo.                                *
