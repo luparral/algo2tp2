@@ -10,21 +10,7 @@
 using namespace aed2;
 
 typedef unsigned int Cliente;
-/*
-//typedef unsigned int Dinero;
-//enum TipoPromesa{Compra,Venta};
-typedef std::string Nombre;
 
-class Promesa{};
-class Titulo{};
-
-template<typename T>
-class DiccString
-{
-	public:
-		class const_Iterador{};
-};
-*/
 class Wolfie
 {
 		
@@ -60,7 +46,6 @@ class Wolfie
 		
 		struct InfoTitulo{
 			public:
-				//constructor:
 				InfoTitulo():ArrayClientes(Arreglo<TuplaPorCliente>()), titulo(Titulo(/*"",0, 0*/)), AccionesDisponibles(){}
 				InfoTitulo(const InfoTitulo& otro): ArrayClientes(otro.ArrayClientes), titulo(otro.titulo), AccionesDisponibles(otro.AccionesDisponibles) {}
 				InfoTitulo(Arreglo<TuplaPorCliente> &ac, const Titulo &t, Nat ad): ArrayClientes(ac), titulo(t), AccionesDisponibles(ad){}
@@ -82,20 +67,6 @@ class Wolfie
 		};
 		//*******************************************************************************************************************************
 		
-		/*class const_Iterador
-		{
-			public:
-				const Titulo& Actual() const;
-				void Proximo();
-				bool HayProximo() const;
-				const_Iterador(typename DiccString<Wolfie::InfoTitulo>::Iterador i, const DiccString<Wolfie::InfoTitulo>* d): it(i), dicc(d){}
-				//typename Wolfie::const_Iterador CrearIt(const DiccString<Wolfie::InfoTitulo>& t) const;
-			
-			private:
-				typename DiccString<Wolfie::InfoTitulo>::Iterador it;
-				const DiccString<typename Wolfie::InfoTitulo>* dicc;
-		};*/
-
 		class Iterador_titulos{
 			public:
 				Iterador_titulos(const Wolfie &w);
@@ -125,16 +96,13 @@ class Wolfie
 		 */
 		Wolfie(const Conj<Nat> &c);
 		~Wolfie();
-		// Wolfie();
-		// Wolfie InaugurarWolfie(const Conj<Cliente> &c);
 		
 		/*
 		 *Funciones con iterador
 		 */
-		Iterador_clientes Clientes() const;						//ConjEstNat::const_Iterador Clientes() const;
-		Iterador_titulos Titulos() const;						//Wolfie::const_Iterador Titulos() const;
+		Iterador_clientes Clientes() const;
+		Iterador_titulos Titulos() const;
 		Conj<Promesa>::const_Iterador PromesasDe(Cliente c);
-
 
 		/*
 		 *Métodos normales
@@ -144,7 +112,10 @@ class Wolfie
 		void ActualizarCotizacion(const Nombre &nt, Dinero cot);
 		void AgregarPromesa(Cliente c, const Promesa &p);
 		bool EnAlza(const Nombre &nt) const;
-		//funciones adicionales para el driver
+
+		/*
+		 *Funciones adicionales para el driver
+		 */
 		Nat CantClientes() const;
 		Nat CantTitulos() const;
 		Titulo BuscarTitulo(const Nombre& nombre_titulo) const;
@@ -156,17 +127,11 @@ class Wolfie
 		bool PrometeVender(const Cliente& cliente, const Nombre& titulo) const;
 		Promesa PromesaDeVenta(const Cliente& cliente, const Nombre& titulo) const;
 
-
 	private:		
 		DiccString<InfoTitulo> _titulos;
 		ConjEstNat _clientes;
 		ultLlamado _ultimoLlamado;
-	
-
 
 };
-
-	
-	
 	
 #endif //WOLFIE_H
