@@ -2,6 +2,8 @@
 #include <iostream>
 
 
+
+//Constructor y destructor
 Wolfie::Wolfie(const Conj<Nat> &c):	_titulos(DiccString<InfoTitulo>()),_clientes(ConjEstNat(c)),_ultimoLlamado(ultLlamado()){}
 
 
@@ -36,6 +38,8 @@ Wolfie::~Wolfie() {
 }
 
 
+
+//Funciones auxiliares
 void CambiarPorCantAcc(Arreglo<Wolfie::TuplaPorCliente>& a1, Arreglo<Wolfie::TuplaPorCantAcc>& a2) {
 	Nat i=0;
 	while (i<a1.Tamanho()){
@@ -66,8 +70,6 @@ void CambiarPorCliente(Arreglo<Wolfie::TuplaPorCantAcc>& a1, Arreglo<Wolfie::Tup
 } 
 
 
-
-//Constructor y destructor
 Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat::const_Iterador it, Nat n){
 	Arreglo<typename Wolfie::TuplaPorCliente> arr =Arreglo<typename Wolfie::TuplaPorCliente>(n);
 	Nat i=0;
