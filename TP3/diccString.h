@@ -51,6 +51,7 @@ DiccString<T>::Nodo::Nodo(){
 	significado = NULL;
 }
 
+
 template<class T>
 DiccString<T>::Nodo::~Nodo() {
 	if(significado != NULL){
@@ -66,6 +67,7 @@ DiccString<T>::Nodo::~Nodo() {
 	}
 }
 
+
 template<class T>
 DiccString<T>::DiccString(){
 	_claves = Lista<String>();
@@ -73,10 +75,12 @@ DiccString<T>::DiccString(){
 	_raiz = new Nodo();
 }
 
+
 template<class T>
 DiccString<T>::~DiccString(){
 	delete _raiz;
 }
+
 
 template<class T>
 void DiccString<T>::Definir(const String key, const T& value){
@@ -100,6 +104,7 @@ void DiccString<T>::Definir(const String key, const T& value){
 	actual->significado = new T(value);
 }
 
+
 template<class T>
 bool DiccString<T>::Definido(const String key) const{
 	Nat cantNodosNecesarios = key.length();
@@ -117,6 +122,7 @@ bool DiccString<T>::Definido(const String key) const{
 	return actual->significado != NULL;
 }
 
+
 template<class T>
 T& DiccString<T>::Significado(const String key) const{
 	Nat cantNodosNecesarios = key.length();
@@ -130,10 +136,12 @@ T& DiccString<T>::Significado(const String key) const{
 	return *actual->significado;
 }
 
+
 template<class T>
 typename DiccString<T>::Iterador DiccString<T>::Claves() const {
 	return Iterador(*(this));
 }
+
 
 template<class T>
 Nat DiccString<T>::CantClaves() const{

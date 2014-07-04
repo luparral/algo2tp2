@@ -6,23 +6,21 @@
 #include "Modulos-CPP/aed2.h"
 #include "algoritmos.h"
 
-
 using namespace aed2;
 
-//void heapsort(Arreglo<Nat> a){}
 class ConjEstNat
 {
 	public:
+		class const_Iterador;
+
 		ConjEstNat();
 		//~ConjEstNat();
-		class const_Iterador;
 		ConjEstNat(const Conj<Nat> &c);
 		bool Pertenece(Nat n);
 		Nat Cardinal() const;
 		const_Iterador CrearIt() const;
 		
-		class const_Iterador
-		{
+		class const_Iterador{
 			public:
 				const_Iterador(const ConjEstNat &c);
 				void Proximo();
@@ -35,5 +33,7 @@ class ConjEstNat
 		
 	private:
 		Arreglo<Nat> _array;
+
 };
+
 #endif
