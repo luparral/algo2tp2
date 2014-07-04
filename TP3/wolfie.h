@@ -15,7 +15,6 @@ class Wolfie
 {
 		
 	public:
-		//esto VA en private*****************************************************************************
 		struct TuplaPorCliente{
 			public: 
 				TuplaPorCliente(): cliente(0), cantAcc(0), promCompra(NULL), promVenta(NULL){}
@@ -65,7 +64,6 @@ class Wolfie
 				fueUltimo=false;
 			}
 		};
-		//*******************************************************************************************************************************
 		
 		class Iterador_titulos{
 			public:
