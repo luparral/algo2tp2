@@ -92,7 +92,7 @@ class Wolfie
 
 		
 		/*
-		 *Constructores y destructor
+		 *Constructor y destructor
 		 */
 		Wolfie(const Conj<Nat> &c);
 		~Wolfie();
@@ -100,9 +100,9 @@ class Wolfie
 		/*
 		 *Funciones con iterador
 		 */
+		Conj<Promesa>::const_Iterador PromesasDe(Cliente c);
 		Iterador_clientes Clientes() const;
 		Iterador_titulos Titulos() const;
-		Conj<Promesa>::const_Iterador PromesasDe(Cliente c);
 
 		/*
 		 *Métodos normales

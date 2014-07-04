@@ -5,12 +5,14 @@
 Wolfie::Wolfie(const Conj<Nat> &c):	_titulos(DiccString<InfoTitulo>()),_clientes(ConjEstNat(c)),_ultimoLlamado(ultLlamado()){}
 
 
-// Wolfie::Wolfie() {
-// 	DiccString<InfoTitulo> dicc = DiccString<InfoTitulo>();
-// 	_titulos= dicc;
-// 	_clientes= ConjEstNat(Conj<Nat>());
-// 	_ultimoLlamado=ultLlamado();
-// }
+/*
+Wolfie::Wolfie() {
+	DiccString<InfoTitulo> dicc = DiccString<InfoTitulo>();
+	_titulos= dicc;
+	_clientes= ConjEstNat(Conj<Nat>());
+	_ultimoLlamado=ultLlamado();
+}
+*/
 
 
 Wolfie::~Wolfie() {
@@ -64,6 +66,8 @@ void CambiarPorCliente(Arreglo<Wolfie::TuplaPorCantAcc>& a1, Arreglo<Wolfie::Tup
 } 
 
 
+
+//Constructor y destructor
 Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat::const_Iterador it, Nat n){
 	Arreglo<typename Wolfie::TuplaPorCliente> arr =Arreglo<typename Wolfie::TuplaPorCliente>(n);
 	Nat i=0;
@@ -78,14 +82,16 @@ Arreglo<typename Wolfie::TuplaPorCliente> CrearArrayClientes(typename ConjEstNat
 }
 
 
+
+//Funciones con iterador
 Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 {
 	if (!(_ultimoLlamado.cliente == c && _ultimoLlamado.fueUltimo)) {
-		typename DiccString<InfoTitulo>::Iterador it = _titulos.Claves(); ///---
+		typename DiccString<InfoTitulo>::Iterador it = _titulos.Claves();
 		Conj<Promesa> proms = Conj<Promesa>();
 		Wolfie::TuplaPorCliente tup;
 		while (it.HaySiguiente()) {
-			tup = BusquedaBinaria(c, _titulos.Significado(it.Siguiente()).ArrayClientes);//saque Nombre(---) a ir.Siguiente()
+			tup = BusquedaBinaria(c, _titulos.Significado(it.Siguiente()).ArrayClientes);
 			if (tup.promVenta != NULL) proms.AgregarRapido(*(tup.promVenta));
 			if (tup.promCompra != NULL) proms.AgregarRapido(*(tup.promCompra));
 			it.Avanzar();
@@ -96,6 +102,18 @@ Conj<Promesa>::const_Iterador Wolfie::PromesasDe(Cliente c)
 }
 
 
+typename Wolfie::Iterador_clientes Wolfie::Clientes() const{
+	return Iterador_clientes(*(this));
+}
+
+
+typename Wolfie::Iterador_titulos Wolfie::Titulos() const{
+	return Iterador_titulos(*(this));
+}
+
+
+
+//Métodos normales
 void Wolfie::AgregarTitulo(const Titulo &t) {
 	
 	Arreglo<Wolfie::TuplaPorCliente> arr = CrearArrayClientes(_clientes.CrearIt(), _clientes.Cardinal());
@@ -160,6 +178,8 @@ bool Wolfie::EnAlza(const Nombre &nt) const {
 }
 
 
+
+//Funciones adicionales para el driver
 Nat Wolfie::CantClientes() const {
 	return _clientes.Cardinal();
 }
@@ -218,13 +238,11 @@ Promesa Wolfie::PromesaDeVenta(const Cliente& cliente, const Nombre& titulo) con
 }
 
 
+
+
 /*
  *Implementación del iterador de titulos
  */
- 	//Funcion Titulos
- 	typename Wolfie::Iterador_titulos Wolfie::Titulos() const{
- 		return Iterador_titulos(*(this));
-  	}
 
   	//Traslate del iterador de titulos de DiccString
 	Wolfie::Iterador_titulos::Iterador_titulos(const Wolfie &w): it(w._titulos.Claves()) {}
@@ -245,10 +263,6 @@ Promesa Wolfie::PromesaDeVenta(const Cliente& cliente, const Nombre& titulo) con
 /*
  *Implementación del iterador de clientes
  */
- 	//Funcion Clientes
- 	typename Wolfie::Iterador_clientes Wolfie::Clientes() const{
- 		return Iterador_clientes(*(this));
-  	}
 
   	//Traslate del iterador de clientes de conjEstNat
 	Wolfie::Iterador_clientes::Iterador_clientes(const Wolfie &w): it(w._clientes.CrearIt()) {}
