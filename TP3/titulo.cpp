@@ -1,6 +1,6 @@
 #include "titulo.h"
 
-Name Titulo::nombre() const {
+const Name& Titulo::nombre() const {
 	return nombre_;
 }
 

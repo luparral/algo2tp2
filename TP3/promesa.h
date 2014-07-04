@@ -13,7 +13,7 @@ class Promesa {
 	public:
 		//Crea una promesa con la info pasada por parámetro-
 		Promesa(Nombre titulo, TipoPromesa tipo, Dinero limite, Cant cantidad) : titulo_(titulo), tipo_(tipo), limite_(limite), cantidad_(cantidad){}
-		Nombre titulo() const;
+		const Nombre& titulo() const;
 		TipoPromesa tipo() const;
 		Dinero limite() const;
 		Cant cantidad() const;

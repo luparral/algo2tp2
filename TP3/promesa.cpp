@@ -1,6 +1,6 @@
 #include "promesa.h"
 
-Nombre Promesa::titulo() const {
+const Nombre& Promesa::titulo() const {
 	return titulo_;
 }
 
@@ -23,4 +23,3 @@ Cant Promesa::cantidad() const {
 bool Promesa::operator!=(Promesa p) const{
 	return (!(titulo_ == p.titulo() && tipo_ == p.tipo() && limite_ == p.limite() && cantidad_ == p.cantidad()));
 }
-
