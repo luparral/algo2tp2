@@ -28,7 +28,6 @@ class DiccString {
         		void Avanzar();
 	        	const String& Siguiente() const;
 	        	bool HaySiguiente() const;
-
 	    	private:
 	      		Lista<String>::const_Iterador it;
 		};
@@ -143,25 +142,25 @@ Nat DiccString<T>::CantClaves() const{
 
 
 /*
- *Implementación del iterador de claves.
+ *Implementación del iterador de claves. Es un traslator del iterador de lista.
  */
-template<class T>
-DiccString<T>::Iterador::Iterador(const DiccString<T> &d): it(d._claves.CrearIt()) {}
+	template<class T>
+	DiccString<T>::Iterador::Iterador(const DiccString<T> &d): it(d._claves.CrearIt()) {}
 
-template<class T>
-void DiccString<T>::Iterador::Avanzar(){
-	it.Avanzar();
-}
+	template<class T>
+	void DiccString<T>::Iterador::Avanzar(){
+		it.Avanzar();
+	}
 
-template<class T>
-const String& DiccString<T>::Iterador::Siguiente() const{
-	return it.Siguiente();
-}
+	template<class T>
+	const String& DiccString<T>::Iterador::Siguiente() const{
+		return it.Siguiente();
+	}
 
-template<class T>
-bool DiccString<T>::Iterador::HaySiguiente() const{
-	return it.HaySiguiente();
-}
+	template<class T>
+	bool DiccString<T>::Iterador::HaySiguiente() const{
+		return it.HaySiguiente();
+	}
 
 
 #endif //DICCSTRING_H
