@@ -186,10 +186,10 @@ void test_agregar_promesa_venta() {
 	wolfie.AgregarTitulo("YPF",4,25);	
 	ASSERT_EQ(wolfie.CantidadDeTitulos(), 1);
 
-	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 0);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
-	//IMPORTANTE: la promesa no se deberia agregar porque no se puede cumplir!!!
-	ASSERT_EQ(wolfie.PrometeVender(1, "YPF"), true); //prometeVender es puede agregar una nueva promesa de venta
-  wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);  
+	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);
+	wolfie.ActualizarCotizacion("YPF", 6);
+	wolfie.AgregarPromesaDeVenta(1, "YPF", 3, 10);//promesa del cliente 1 para vender a YPF 10 acciones cuando suban de 5
+	wolfie.ActualizarCotizacion("YPF", 2);
 }
 
 
@@ -257,16 +257,16 @@ void test_promete_vender() {
 
 	Driver wolfie(clientes);
 	wolfie.AgregarTitulo("YPF",4,25);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
-	wolfie.AgregarPromesaDeVenta(1, "YPF", 5, 10);
-	ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), true);//no tiene promesas de venta, porque no tiene acciones
+	//wolfie.AgregarPromesaDeVenta(1, "YPF", 5, 10);
+	//ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), true);//no tiene promesas de venta, porque no tiene acciones
 	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
 	wolfie.ActualizarCotizacion("YPF", 6);
 	ASSERT_EQ(wolfie.AccionesPorCliente(1,"YPF"), 10);
 	wolfie.AgregarPromesaDeVenta(1, "YPF", 4, 10);
-	ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), false); //pudo agregar la promesa de venta
+	ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), true); //pudo agregar la promesa de venta
 	wolfie.ActualizarCotizacion("YPF", 3);
-	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true); //pudo cumplir la promesa, ahora no tiene mas promesas de venta
-	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true); //como cumplio la promesa, ahora tiene acciones y no tiene promesa de compra
+	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false); //pudo cumplir la promesa, ahora no tiene mas promesas de venta
+	//ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true); //como cumplio la promesa, ahora tiene acciones y no tiene promesa de compra
 /*
 */
 }
