@@ -89,32 +89,32 @@ Nat Driver::AccionesDisponibles(const NombreTitulo& nombre_titulo) const
 	return wolfie_.AccionesDisponibles(nombre_titulo);
 }
 
-bool Driver::PrometeComprar(const Cliente& cliente, const NombreTitulo& titulo) const
+bool Driver::PrometeComprar(const Cliente& cliente, const NombreTitulo& titulo) /*const*/
 {
 	return wolfie_.PrometeComprar(cliente, titulo);
 }
 
-Nat Driver::CantidadAComprar(const Cliente& cliente, const NombreTitulo& titulo) const
+Nat Driver::CantidadAComprar(const Cliente& cliente, const NombreTitulo& titulo) /*const*/
 {
 	return wolfie_.PromesaDeCompra(cliente, titulo).cantidad();
 }
 
-Dinero Driver::ValorEsperadoParaComprar(const Cliente& cliente, const NombreTitulo& titulo) const
+Dinero Driver::ValorEsperadoParaComprar(const Cliente& cliente, const NombreTitulo& titulo) /*const*/
 {
 	return wolfie_.PromesaDeCompra(cliente, titulo).limite();
 }
 
-bool Driver::PrometeVender(const Cliente& cliente, const NombreTitulo& titulo) const
+bool Driver::PrometeVender(const Cliente& cliente, const NombreTitulo& titulo) /*const*/
 {
 	return wolfie_.PrometeVender(cliente, titulo);
 }
 
-Nat Driver::CantidadAVender(const Cliente& cliente, const NombreTitulo& titulo) const
+Nat Driver::CantidadAVender(const Cliente& cliente, const NombreTitulo& titulo) /*const*/
 {
 	return wolfie_.PromesaDeVenta(cliente, titulo).cantidad();
 }
 
-Dinero Driver::ValorEsperadoParaVender(const Cliente& cliente, const NombreTitulo& titulo) const
+Dinero Driver::ValorEsperadoParaVender(const Cliente& cliente, const NombreTitulo& titulo) /*const*/
 {
 	return wolfie_.PromesaDeVenta(cliente, titulo).limite();
 }
