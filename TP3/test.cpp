@@ -257,8 +257,6 @@ void test_promete_vender() {
 
 	Driver wolfie(clientes);
 	wolfie.AgregarTitulo("YPF",4,25);	//agrego titulo YPF con 25 acciones maximas y cotizacion 4
-	//wolfie.AgregarPromesaDeVenta(1, "YPF", 5, 10);
-	//ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), true);//no tiene promesas de venta, porque no tiene acciones
 	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10);//promesa del cliente 1 para comprar a YPF 10 acciones cuando suban de 5
 	wolfie.ActualizarCotizacion("YPF", 6);
 	ASSERT_EQ(wolfie.AccionesPorCliente(1,"YPF"), 10);
@@ -266,24 +264,165 @@ void test_promete_vender() {
 	ASSERT_EQ(wolfie.PrometeVender(1,"YPF"), true); //pudo agregar la promesa de venta
 	wolfie.ActualizarCotizacion("YPF", 3);
 	ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), false); //pudo cumplir la promesa, ahora no tiene mas promesas de venta
-	//ASSERT_EQ(wolfie.PrometeComprar(1,"YPF"), true); //como cumplio la promesa, ahora tiene acciones y no tiene promesa de compra
-/*
-*/
 }
 
-
-/*
 void test_compraDeAcciones() {
 	Conj<Cliente> clientes;
 	clientes.Agregar(1);
 	clientes.Agregar(5);
 	clientes.Agregar(8);
 	clientes.Agregar(9);
+	Driver wolfie(clientes);
 	wolfie.AgregarTitulo("YPF",4,25);
 	wolfie.AgregarTitulo("Google",3,30);
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 2);
+	ASSERT_EQ(wolfie.MaxAccionesDe("Google"), 30);
+	ASSERT_EQ(wolfie.CotizacionDe("Google"), 3);
+	ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 0);
+	ASSERT_EQ(wolfie.PrometeComprar(9, "Google"), false);
+	wolfie.AgregarPromesaDeCompra(9, "Google", 4, 15);
+	ASSERT_EQ(wolfie.PrometeComprar(9, "Google"), true);
+	ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 0);
+	wolfie.ActualizarCotizacion("Google", 5);
+  ASSERT_EQ(wolfie.CotizacionDe("Google"), 5);
+  ASSERT_EQ(wolfie.PrometeComprar(9, "Google"), false);
+  ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 15);
 }
 
-*/
+void test_no_vender_mas_del_maximo(){
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(2);
+	clientes.Agregar(3);
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("Coca", 5, 10);
+	wolfie.AgregarTitulo("Fernet", 7, 20);
+	wolfie.AgregarPromesaDeCompra(2,"Coca",6,10);
+	wolfie.AgregarPromesaDeCompra(1,"Fernet",7,20);
+	wolfie.ActualizarCotizacion("Fernet", 10);
+	ASSERT_EQ(wolfie.AccionesDisponibles("Fernet"), 0);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Fernet"), 20);
+	wolfie.AgregarPromesaDeCompra(2,"Fernet",15,20);
+	wolfie.ActualizarCotizacion("Fernet", 20);
+	ASSERT_EQ(wolfie.AccionesDisponibles("Fernet"), 0);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1,"Fernet"), 20);
+	ASSERT_EQ(wolfie.AccionesPorCliente(2,"Fernet"), 0);
+}
+
+
+void test_VentaDeAcciones() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	clientes.Agregar(8);
+	clientes.Agregar(9);
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",4,25);
+	wolfie.AgregarTitulo("Google",3,30);
+	ASSERT_EQ(wolfie.CantidadDeTitulos(), 2);
+	ASSERT_EQ(wolfie.MaxAccionesDe("Google"), 30);
+	ASSERT_EQ(wolfie.CotizacionDe("Google"), 3);
+	ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 0);
+	ASSERT_EQ(wolfie.PrometeComprar(9, "Google"), false);
+	wolfie.AgregarPromesaDeCompra(9, "Google", 4, 15);
+	ASSERT_EQ(wolfie.PrometeComprar(9, "Google"), true);
+	ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 0);
+	wolfie.ActualizarCotizacion("Google", 5);
+	ASSERT_EQ(wolfie.CotizacionDe("Google"), 5);
+  ASSERT_EQ(wolfie.PrometeComprar(9, "Google"), false);
+  ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 15);
+  //hasta aca todo lo mismo que en test_CompraDeAcciones
+  
+	wolfie.AgregarPromesaDeVenta(9, "Google", 3, 15);
+	ASSERT_EQ(wolfie.PrometeVender(9, "Google"), true);
+	ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 15);
+	wolfie.ActualizarCotizacion("Google", 2);
+	ASSERT_EQ(wolfie.PrometeVender(9, "Google"), false);
+	ASSERT_EQ(wolfie.AccionesPorCliente(9, "Google"), 0);
+}
+
+void cuando_se_vende_se_puede_comprar(){
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("Coca", 10, 50);
+	wolfie.AgregarPromesaDeCompra(1, "Coca", 20, 50);
+	wolfie.ActualizarCotizacion("Coca", 21);
+	ASSERT_EQ( wolfie.AccionesPorCliente(1, "Coca"), 50);
+	ASSERT_EQ( wolfie.AccionesDisponibles("Coca"), 0 );
+
+	wolfie.AgregarPromesaDeCompra(5, "Coca", 25, 10);
+	wolfie.ActualizarCotizacion("Coca", 50);
+
+	ASSERT_EQ( wolfie.AccionesPorCliente(1, "Coca"), 50);
+	ASSERT_EQ( wolfie.AccionesPorCliente(5, "Coca"), 0);
+
+	wolfie.AgregarPromesaDeVenta(1, "Coca", 30, 10);
+	wolfie.ActualizarCotizacion("Coca", 27);
+
+	ASSERT_EQ( wolfie.AccionesPorCliente(1, "Coca"), 40);
+	ASSERT_EQ( wolfie.AccionesPorCliente(5, "Coca"), 10);
+
+
+}
+
+
+void test_varias_promesas() {
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	clientes.Agregar(8);
+	clientes.Agregar(9);
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",4,25);
+	wolfie.AgregarTitulo("Google",3,100);
+	ASSERT_EQ(wolfie.PrometeVender(1, "Google"), false);
+	ASSERT_EQ(wolfie.PrometeComprar(1, "Google"), false);
+	ASSERT_EQ(wolfie.PrometeVender(1, "YPF"), false);
+	ASSERT_EQ(wolfie.PrometeComprar(1, "YPF"), false);
+	wolfie.AgregarPromesaDeCompra(1, "Google", 4, 15); // 1 compra si sube de 4
+	wolfie.AgregarPromesaDeCompra(1, "YPF", 5, 10); // 1 compra si sube de 5
+	wolfie.AgregarPromesaDeCompra(5, "Google", 7, 15); // 5 compra si sube de 7
+	wolfie.AgregarPromesaDeCompra(5, "YPF", 10, 10); // 5 compra si sube de 10
+	ASSERT_EQ(wolfie.PrometeComprar(1, "Google"), true);
+	ASSERT_EQ(wolfie.PrometeComprar(1, "YPF"), true);
+	ASSERT_EQ(wolfie.AccionesTotalesDe(1), 0);
+	ASSERT_EQ(wolfie.AccionesTotalesDe(5), 0);
+	wolfie.ActualizarCotizacion("Google", 5);
+	ASSERT_EQ(wolfie.AccionesPorCliente(5, "Google"), 0);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1, "Google"), 15);
+	ASSERT_EQ(wolfie.PrometeComprar(1, "Google"), false);
+	wolfie.AgregarPromesaDeCompra(1, "Google", 8, 15); // 1 compra si sube de 8
+	wolfie.AgregarPromesaDeVenta(1, "Google", 3, 15); // 1 vende si baja de 3
+	wolfie.ActualizarCotizacion("Google", 8);
+	ASSERT_EQ(wolfie.AccionesPorCliente(5, "Google"), 15);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1, "Google"), 15);
+	wolfie.AgregarPromesaDeVenta(5, "Google", 2, 15); //5 vende si baja de 2
+	ASSERT_EQ(wolfie.PrometeVender(1, "Google"), true);
+	ASSERT_EQ(wolfie.PrometeVender(5, "Google"), true);
+	wolfie.ActualizarCotizacion("Google", 1);
+	ASSERT_EQ(wolfie.AccionesPorCliente(5, "Google"), 0);
+	ASSERT_EQ(wolfie.AccionesPorCliente(1, "Google"), 0);
+	ASSERT_EQ(wolfie.PrometeVender(1, "Google"), false);
+	ASSERT_EQ(wolfie.PrometeVender(5, "Google"), false);
+	
+}
+
+void test_en_alza(){
+	Conj<Cliente> clientes;
+	clientes.Agregar(1);
+	clientes.Agregar(5);
+	Driver wolfie(clientes);
+	wolfie.AgregarTitulo("YPF",4,25);
+	ASSERT_EQ(wolfie.EnAlza("YPF"), true);
+	wolfie.ActualizarCotizacion("YPF", 6);
+	ASSERT_EQ(wolfie.EnAlza("YPF"), true);
+	wolfie.ActualizarCotizacion("YPF", 2);
+	ASSERT_EQ(wolfie.EnAlza("YPF"), false);
+}
+
+
 int main(/*int argc, char **argv*/)
 {
 	RUN_TEST(test_wolfie_simple);
@@ -292,9 +431,20 @@ int main(/*int argc, char **argv*/)
 	RUN_TEST(test_agregar_promesa_compra);
 	RUN_TEST(test_agregar_promesa_venta);
 	RUN_TEST(test_promete_comprar);
+	RUN_TEST(test_no_vender_mas_del_maximo);
 	RUN_TEST(test_cantidad_clientes);
 	RUN_TEST(test_iesimo_cliente);
 	RUN_TEST(test_promete_vender);
+	RUN_TEST(test_compraDeAcciones);
+	RUN_TEST(test_VentaDeAcciones);
+	RUN_TEST(test_varias_promesas);
+	RUN_TEST(test_en_alza);
+	RUN_TEST(cuando_se_vende_se_puede_comprar);
+
+
+
+
+
 	/******************************************************************
 	 * TODO: escribir casos de test exhaustivos para todas            *
 	 * las funcionalidades del módulo.                                *
